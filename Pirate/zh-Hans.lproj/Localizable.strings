@@ -1,0 +1,99 @@
+/* 
+  Localizable.strings
+  Pirate
+
+  Created by hyperorchid on 2020/6/28.
+  Copyright © 2020 hyperorchid. All rights reserved.
+*/
+
+
+"Invalid ethereum config"="以太坊配置无效";
+"Invalid abi file for ApplyToken"="无效的ABI文件";
+"Create contract[ApplyToken] from abi failed"="创建领取合约失败";
+"Open local test wallet to apply free token failed"="创建测试网免费领取合约失败";
+"Parse miner's id to ed25519 public key failed"="解析矿机地址失败";
+"Create shared aes key with miner failed"="创建矿机加密秘钥失败";
+"Convert pass word to data err:"="转化钱包密码失败";
+"Random salt err:"="创建盐失败";
+"No json data to save"="钱包json数据为空";
+"Empty wallet"="空钱包";
+"Failed to open hop account"="打开通证账号失败";
+"Failed to open main adress"="打开主地址失败";
+
+
+
+"Parse data to bytes array failed"="sodium解释数据失败";
+
+
+"ms"="毫秒";
+
+
+"Chosing random miner......" = "查找矿机中......";
+"Ping......"="探测中......";
+"no bas"="无效域名";
+"Ping all miners......"="探测所有矿机";
+
+
+"Disconnected"="已断开";
+"Invalid"="无效";
+"Connected"="已连接";
+"Connecting"="连接中";
+"Disconnecting"="断开中";
+"Reconnecting"="正在重连";
+"unknown"="未知";
+
+
+"Choose your pool first"="请先矿池";
+"Choose your miner first"="请选择矿机";
+"Create your wallet first"="请先创建钱包";
+"Wallet"="钱包";
+"Open wallet"="打开钱包";
+"Starting VPN"="开启VPN";
+
+
+"NAN"="未设置";
+"Hyper Orchid Protocol"="超级烂花协议";
+
+"no pool"="空的矿池";
+
+
+"Packets"="流量";
+"Token"="通证";
+"Credit"="未结算";
+
+"Scanning not supported"="不支持扫码";
+"Your device does not support scanning a code from an item. Please use a device with a camera."="该设备尚未支持扫码功能";
+"OK"="确定";
+"Cancel"="取消";
+
+"Syncing from block chain......"="同步区块链中......";
+"Loading....."="加载中......";
+"Options"="选项";
+"Create"="创建";
+"Please Select an Option"="请选择";
+"Import QR image"="导入二维码";
+"Scan QR Code"="扫描二维码";
+"Create new wallet...."="创建钱包中......";
+"Create failed"="创建失败";
+"Create success"="创建成功";
+"Image not found!"="未找到二维码";
+"Parse image failed"="解析二维码失败";
+"Importing......"="导入中......";
+"Parse json data to wallet failed"="解析钱包数据失败";
+"Author failed"="授权失败";
+
+"Apply failed"="申请失败";
+"HOP TX"="HOP 交易";
+"Create wallet or you have more than 1000 hop"="无账号或者HOP余额多于1000";
+"BlockChain"="区块链";
+"Creating TX......"="创建交易中......";
+"Eth TX"="ETH交易";
+"Create wallet or you have more than 0.1 eth"="无账号或者ETH余额多于0.1";
+
+
+"Password Confirmation!"="密码确认";
+"password"="密码";
+"Tips!"="提示";
+"Are you sure?"="确定?";
+"YES"="是";
+"NO"="否";

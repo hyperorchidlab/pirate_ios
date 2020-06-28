@@ -1,0 +1,5 @@
+github "zhuhaow/NEKit"
+github "hyperorchidlab/web3swift"
+github "hyperorchidlab/Curve25519"
+github "jdg/MBProgressHUD"
+github "swiftsocket/SwiftSocket"
