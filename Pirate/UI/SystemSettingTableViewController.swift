@@ -38,6 +38,21 @@ class SystemSettingTableViewController: UITableViewController {
                 curBasIPLabel.text = HopConstants.DefaultBasIP
                 curApiUrlCell.detailTextLabel?.text = "https://ropsten.infura.io/v3/"
                 curTokenInUseCell.detailTextLabel?.text = "HOP"
+                NotificationCenter.default.addObserver(self, selector: #selector(WalletChanged(_:)), name: HopConstants.NOTI_NEW_WALLET, object: nil)
+        }
+        deinit {
+                NotificationCenter.default.removeObserver(self)
+        }
+        
+        
+        @objc func WalletChanged(_ notification: Notification?) {
+                guard let w =  DataSyncer.sharedInstance.wallet else{
+                        return
+                }
+                DispatchQueue.main.async {
+                        self.mainAddrCell.detailTextLabel?.text = w.mainAddress?.address
+                        self.subAddrCell.detailTextLabel?.text = w.subAddress
+                }
         }
         
         override func viewWillAppear(_ animated: Bool){
