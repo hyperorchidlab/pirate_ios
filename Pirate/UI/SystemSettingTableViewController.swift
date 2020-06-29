@@ -32,7 +32,7 @@ class SystemSettingTableViewController: UITableViewController {
                 super.viewDidLoad()
                 let setting = DataSyncer.sharedInstance.ethSetting!
                 packetsPriceCell.detailTextLabel?.text = "\(setting.MBytesPerToken) M/HOP"
-                refundDurationCell.detailTextLabel?.text = "\(setting.RefundDuration.DoubleV()/(24 * 60 * 60)) Days"
+                refundDurationCell.detailTextLabel?.text = "\(setting.RefundDuration.DoubleV()/(24 * 60 * 60)) "+"Days".locStr
                 curTokenCell.detailTextLabel?.text = HopConstants.DefaultTokenAddr
                 curMPSCell.detailTextLabel?.text = HopConstants.DefaultPaymenstService
                 curBasIPLabel.text = HopConstants.DefaultBasIP
@@ -83,7 +83,7 @@ class SystemSettingTableViewController: UITableViewController {
                         switch indexPath.row {
                         case 0:
                                 guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                       self.showConfirm(msg: "Replace your current wallet?", yesHandler:{
+                                       self.showConfirm(msg: "Replace your current wallet?".locStr, yesHandler:{
                                                self.createWallet()
                                        })
                                        return
@@ -93,7 +93,7 @@ class SystemSettingTableViewController: UITableViewController {
                                 self.exportWallet()
                         case 2:
                                 guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                        self.showConfirm(msg: "Replace your current wallet?", yesHandler:{
+                                        self.showConfirm(msg: "Replace your current wallet?".locStr, yesHandler:{
                                                 self.importFromLib()
                                         })
                                         return
@@ -101,7 +101,7 @@ class SystemSettingTableViewController: UITableViewController {
                                 importFromLib()
                         case 3:
                                 guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                        self.showConfirm(msg: "Replace your current wallet?", yesHandler:{
+                                        self.showConfirm(msg: "Replace your current wallet?".locStr, yesHandler:{
                                                 self.importFromCamera()
                                         })
                                         return
@@ -109,13 +109,13 @@ class SystemSettingTableViewController: UITableViewController {
                                 importFromCamera()
                         case 4:
                                 guard DataSyncer.sharedInstance.wallet?.mainAddress != nil else{
-                                        self.ShowTips(msg: "No valid wallet")
+                                        self.ShowTips(msg: "No valid wallet".locStr)
                                         return
                                 }
                                 self.transfer()
                         case 5:
                                 guard DataSyncer.sharedInstance.wallet?.mainAddress != nil else{
-                                        self.ShowTips(msg: "No valid wallet")
+                                        self.ShowTips(msg: "No valid wallet".locStr)
                                         return
                                 }
                                 self.generateQR()
@@ -124,7 +124,7 @@ class SystemSettingTableViewController: UITableViewController {
                                         return
                                 }
                                 UIPasteboard.general.string = str
-                                self.ShowTips(msg: "Copy Success")
+                                self.ShowTips(msg: "Copy Success".locStr)
                                 return
                         }
                 }else if indexPath.section == 1{
@@ -146,7 +146,7 @@ class SystemSettingTableViewController: UITableViewController {
                                         return
                                 }
                                 UIPasteboard.general.string = str
-                                self.ShowTips(msg: "Copy Success")
+                                self.ShowTips(msg: "Copy Success".locStr)
                                 return
                         }
                 }
@@ -154,7 +154,7 @@ class SystemSettingTableViewController: UITableViewController {
 
         private func createWallet(){
                 
-                self.showIndicator(withTitle: "Wallet", and: "Creating new wallet")
+                self.showIndicator(withTitle: "", and: "Create new wallet....".locStr)
                 self.ShowPassword() { (password , isOK) in
                         defer {
                                 
@@ -166,13 +166,13 @@ class SystemSettingTableViewController: UITableViewController {
                         }
                         
                         guard let wallet = HopWallet.NewWallet(auth: pwd) else{
-                                self.ShowTips(msg: "Create failed")
+                                self.ShowTips(msg: "Create failed".locStr)
                                 return
                         }
                         
                         wallet.saveToDisk()
                         DataSyncer.sharedInstance.loadWallet()
-                        self.ShowTips(msg: "Create success")
+                        self.ShowTips(msg: "Create success".locStr)
                         PacketAccountant.Inst.setEnv(MPSA: PacketAccountant.Inst.paymentAddr!, user: wallet.mainAddress!.address)
                         }
         }
@@ -183,12 +183,12 @@ class SystemSettingTableViewController: UITableViewController {
                 if let error = error {
                 self.ShowTips(msg: error.localizedDescription)
             } else {
-                self.ShowTips(msg: "Save success to your photo library")
+                self.ShowTips(msg: "Save success to your photo library".locStr)
             }
         }
         
         func exportWallet(){
-                self.showIndicator(withTitle: "Wallet", and: "Exporting......")
+                self.showIndicator(withTitle: "", and: "Exporting......".locStr)
                 guard let w_json = DataSyncer.sharedInstance.wallet?.toJson() else{
                         self.hideIndicator()
                         return

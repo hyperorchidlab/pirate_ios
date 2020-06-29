@@ -97,3 +97,10 @@
 "Are you sure?"="确定?";
 "YES"="是";
 "NO"="否";
+
+"Days" = "天";
+"Replace your current wallet?"="覆盖当前钱包?";
+"No valid wallet"="钱包无效";
+"Copy Success"="复制成功";
+"Save success to your photo library"="成功保存大相册";
+"Exporting......"="正在导出......";
