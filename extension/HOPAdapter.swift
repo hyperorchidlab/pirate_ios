@@ -12,7 +12,7 @@ import CryptoSwift
 
 class HOPAdapter: AdapterSocket {
         
-        public static let MAX_BUFFER_SIZE = 1 << 16 - 1
+        public static let MAX_BUFFER_SIZE = Opt.MAXNWTCPSocketReadDataSize - 1
         
         enum HopAdapterStatus {
                 case invalid,
