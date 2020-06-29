@@ -186,7 +186,7 @@ class HomeVC: UIViewController {
                         let m_data = MinerData.MinerDetailsDic[miner!]
                         self.CurMinerLabel.text = "\(m_data?.Zone ?? "")"
                         self.minersIDLabel.text = m_data?.Address
-                        self.minersIPLabel.text = "NAN".locStr
+                        self.minersIPLabel.text = m_data?.IP ?? "NAN".locStr
                 }else{
                         self.CurMinerLabel.text = "NAN".locStr
                         self.minersIDLabel.text = ""
