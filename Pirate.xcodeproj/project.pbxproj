@@ -36,6 +36,12 @@
 		69767506242386DA002051F9 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511F23FCCECA00836E26 /* CocoaLumberjackSwift.framework */; };
 		697970D32408D71300A33C6E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A514223FD58DC00836E26 /* Utils.swift */; };
 		697970D524096F3B00A33C6E /* UserDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */; };
+		697FCD8724AF18C300F1AA38 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
+		697FCD8824AF18C300F1AA38 /* Curve25519.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; };
+		697FCD8B24AF18CC00F1AA38 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		697FCD8D24AF197600F1AA38 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
+		697FCD8E24AF197600F1AA38 /* Curve25519.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		698A513923FCE64E00836E26 /* HOPAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513823FCE64E00836E26 /* HOPAdapter.swift */; };
 		698A513B23FCE75700836E26 /* HOPAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */; };
@@ -64,7 +70,6 @@
 		69AB68AC2410D506006195AF /* TxWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB68AB2410D506006195AF /* TxWire.swift */; };
 		69CAED5E24012D450056E3E6 /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66A2400BC6000D45CB6 /* BigInt.framework */; };
 		69CAED5F24012D820056E3E6 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A510723FBF9C700836E26 /* CocoaAsyncSocket.framework */; };
-		69CAED6024012D820056E3E6 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; };
 		69CAED6124012D820056E3E6 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66D2400BC8A00D45CB6 /* PromiseKit.framework */; };
 		69CAED6224012D820056E3E6 /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6702400BCB800D45CB6 /* secp256k1.framework */; };
 		69CAED6324012D820056E3E6 /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6966523E24012189001D16C4 /* SipHash.framework */; };
@@ -87,8 +92,6 @@
 		69F1E40024012A0B00999194 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A512E23FCCEDB00836E26 /* tun2socks.framework */; };
 		69F1E40224012A0B00999194 /* web3swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6732400BCBC00D45CB6 /* web3swift.framework */; };
 		69F1E40424012A0B00999194 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A513123FCCEDF00836E26 /* Yaml.framework */; };
-		69FA41712402EDA6005CF3FA /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
-		69FA41722402EDB0005CF3FA /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
 		69FA418A2404B348005CF3FA /* DataShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41892404B348005CF3FA /* DataShareManager.swift */; };
 		69FA418B2404B352005CF3FA /* DataShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41892404B348005CF3FA /* DataShareManager.swift */; };
 		69FA418D2404D83E005CF3FA /* HopAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA418C2404D83E005CF3FA /* HopAccount.swift */; };
@@ -124,6 +127,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		697FCD8924AF18C300F1AA38 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				697FCD8824AF18C300F1AA38 /* Curve25519.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		697FCD8C24AF18CC00F1AA38 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				697FCD8B24AF18CC00F1AA38 /* CryptoSwift.framework in Embed Frameworks */,
+				697FCD8E24AF197600F1AA38 /* Curve25519.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69980C5323F7946C00829B09 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,15 +263,15 @@
 			files = (
 				69CAED5F24012D820056E3E6 /* CocoaAsyncSocket.framework in Frameworks */,
 				7CDBECFE241DC9D200F6A8EB /* MBProgressHUD.framework in Frameworks */,
-				69CAED6024012D820056E3E6 /* CryptoSwift.framework in Frameworks */,
 				6940EC92240A756D0029F526 /* AVFoundation.framework in Frameworks */,
 				69CAED6124012D820056E3E6 /* PromiseKit.framework in Frameworks */,
+				697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */,
 				69CAED6224012D820056E3E6 /* secp256k1.framework in Frameworks */,
 				69CAED6324012D820056E3E6 /* SipHash.framework in Frameworks */,
 				69CAED6424012D820056E3E6 /* Starscream.framework in Frameworks */,
 				69CAED6524012D820056E3E6 /* web3swift.framework in Frameworks */,
 				69CAED5E24012D450056E3E6 /* BigInt.framework in Frameworks */,
-				69FA41722402EDB0005CF3FA /* Curve25519.framework in Frameworks */,
+				697FCD8D24AF197600F1AA38 /* Curve25519.framework in Frameworks */,
 				691CCFA023F8240D007768DF /* NetworkExtension.framework in Frameworks */,
 				69A47D52240E303E00C86CFF /* SwiftSocket.framework in Frameworks */,
 			);
@@ -266,8 +292,8 @@
 				69F1E3F824012A0B00999194 /* secp256k1.framework in Frameworks */,
 				69F1E40424012A0B00999194 /* Yaml.framework in Frameworks */,
 				69F1E40024012A0B00999194 /* tun2socks.framework in Frameworks */,
+				697FCD8724AF18C300F1AA38 /* Curve25519.framework in Frameworks */,
 				691CCFA123F93F60007768DF /* NetworkExtension.framework in Frameworks */,
-				69FA41712402EDA6005CF3FA /* Curve25519.framework in Frameworks */,
 				69F1E3FE24012A0B00999194 /* Starscream.framework in Frameworks */,
 				69F1E40224012A0B00999194 /* web3swift.framework in Frameworks */,
 				69767505242386DA002051F9 /* CocoaLumberjack.framework in Frameworks */,
@@ -446,6 +472,8 @@
 				69980C2223F78D3E00829B09 /* Frameworks */,
 				69980C2323F78D3E00829B09 /* Resources */,
 				69980C5323F7946C00829B09 /* Embed App Extensions */,
+				697FCD8C24AF18CC00F1AA38 /* Embed Frameworks */,
+				697FCD8F24AF1A6000F1AA38 /* Run Script */,
 				6966523C24011280001D16C4 /* Cart */,
 			);
 			buildRules = (
@@ -465,6 +493,7 @@
 				69980C5423F7B3CD00829B09 /* Sources */,
 				69980C5523F7B3CD00829B09 /* Frameworks */,
 				69980C5623F7B3CD00829B09 /* Resources */,
+				697FCD8924AF18C300F1AA38 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -577,6 +606,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		697FCD8F24AF1A6000F1AA38 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# skip if we run in debug\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\necho \"Skip frameworks cleaning in debug version\"\nexit 0\nfi\n\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -832,7 +879,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -861,7 +908,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -888,7 +935,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -918,7 +965,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
