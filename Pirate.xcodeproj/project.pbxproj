@@ -37,11 +37,8 @@
 		697970D32408D71300A33C6E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A514223FD58DC00836E26 /* Utils.swift */; };
 		697970D524096F3B00A33C6E /* UserDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */; };
 		697FCD8724AF18C300F1AA38 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
-		697FCD8824AF18C300F1AA38 /* Curve25519.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; };
-		697FCD8B24AF18CC00F1AA38 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		697FCD8D24AF197600F1AA38 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
-		697FCD8E24AF197600F1AA38 /* Curve25519.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		697FCD8B24AF18CC00F1AA38 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		698A513923FCE64E00836E26 /* HOPAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513823FCE64E00836E26 /* HOPAdapter.swift */; };
 		698A513B23FCE75700836E26 /* HOPAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */; };
@@ -68,10 +65,13 @@
 		69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
 		69A47D70240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
 		69AB68AC2410D506006195AF /* TxWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB68AB2410D506006195AF /* TxWire.swift */; };
+		69B0D9DC24AF1C05006B665B /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
+		69B0D9DD24AF1C05006B665B /* Curve25519.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		69B0D9DE24AF1DEC006B665B /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6702400BCB800D45CB6 /* secp256k1.framework */; };
+		69B0D9DF24AF1DEC006B665B /* secp256k1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6702400BCB800D45CB6 /* secp256k1.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		69CAED5E24012D450056E3E6 /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66A2400BC6000D45CB6 /* BigInt.framework */; };
 		69CAED5F24012D820056E3E6 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A510723FBF9C700836E26 /* CocoaAsyncSocket.framework */; };
 		69CAED6124012D820056E3E6 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66D2400BC8A00D45CB6 /* PromiseKit.framework */; };
-		69CAED6224012D820056E3E6 /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6702400BCB800D45CB6 /* secp256k1.framework */; };
 		69CAED6324012D820056E3E6 /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6966523E24012189001D16C4 /* SipHash.framework */; };
 		69CAED6424012D820056E3E6 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66F2400BCB800D45CB6 /* Starscream.framework */; };
 		69CAED6524012D820056E3E6 /* web3swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6732400BCBC00D45CB6 /* web3swift.framework */; };
@@ -127,17 +127,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		697FCD8924AF18C300F1AA38 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				697FCD8824AF18C300F1AA38 /* Curve25519.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		697FCD8C24AF18CC00F1AA38 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,7 +134,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				697FCD8B24AF18CC00F1AA38 /* CryptoSwift.framework in Embed Frameworks */,
-				697FCD8E24AF197600F1AA38 /* Curve25519.framework in Embed Frameworks */,
+				69B0D9DF24AF1DEC006B665B /* secp256k1.framework in Embed Frameworks */,
+				69B0D9DD24AF1C05006B665B /* Curve25519.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,13 +255,13 @@
 				7CDBECFE241DC9D200F6A8EB /* MBProgressHUD.framework in Frameworks */,
 				6940EC92240A756D0029F526 /* AVFoundation.framework in Frameworks */,
 				69CAED6124012D820056E3E6 /* PromiseKit.framework in Frameworks */,
+				69B0D9DE24AF1DEC006B665B /* secp256k1.framework in Frameworks */,
 				697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */,
-				69CAED6224012D820056E3E6 /* secp256k1.framework in Frameworks */,
 				69CAED6324012D820056E3E6 /* SipHash.framework in Frameworks */,
 				69CAED6424012D820056E3E6 /* Starscream.framework in Frameworks */,
 				69CAED6524012D820056E3E6 /* web3swift.framework in Frameworks */,
 				69CAED5E24012D450056E3E6 /* BigInt.framework in Frameworks */,
-				697FCD8D24AF197600F1AA38 /* Curve25519.framework in Frameworks */,
+				69B0D9DC24AF1C05006B665B /* Curve25519.framework in Frameworks */,
 				691CCFA023F8240D007768DF /* NetworkExtension.framework in Frameworks */,
 				69A47D52240E303E00C86CFF /* SwiftSocket.framework in Frameworks */,
 			);
@@ -473,8 +463,8 @@
 				69980C2323F78D3E00829B09 /* Resources */,
 				69980C5323F7946C00829B09 /* Embed App Extensions */,
 				697FCD8C24AF18CC00F1AA38 /* Embed Frameworks */,
-				697FCD8F24AF1A6000F1AA38 /* Run Script */,
 				6966523C24011280001D16C4 /* Cart */,
+				697FCD8F24AF1A6000F1AA38 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -493,7 +483,6 @@
 				69980C5423F7B3CD00829B09 /* Sources */,
 				69980C5523F7B3CD00829B09 /* Frameworks */,
 				69980C5623F7B3CD00829B09 /* Resources */,
-				697FCD8924AF18C300F1AA38 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -511,7 +500,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = hyperorchid;
 				TargetAttributes = {
 					69980C2423F78D3E00829B09 = {
