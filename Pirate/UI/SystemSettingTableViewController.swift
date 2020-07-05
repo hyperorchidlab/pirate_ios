@@ -12,6 +12,7 @@ import web3swift
 
 class SystemSettingTableViewController: UITableViewController {
 
+        @IBOutlet var settingTableView: UITableView!
         @IBOutlet weak var refundDurationCell: UITableViewCell!
         @IBOutlet weak var packetsPriceCell: UITableViewCell!
         @IBOutlet weak var mainAddrCell: UITableViewCell!
@@ -30,9 +31,7 @@ class SystemSettingTableViewController: UITableViewController {
         var curEth:BigUInt = 0
         override func viewDidLoad() {
                 super.viewDidLoad()
-                let setting = DataSyncer.sharedInstance.ethSetting!
-                packetsPriceCell.detailTextLabel?.text = "\(setting.MBytesPerToken) M/HOP"
-                refundDurationCell.detailTextLabel?.text = "\(setting.RefundDuration.DoubleV()/(24 * 60 * 60)) "+"Days".locStr
+                
                 curTokenCell.detailTextLabel?.text = HopConstants.DefaultTokenAddr
                 curMPSCell.detailTextLabel?.text = HopConstants.DefaultPaymenstService
                 curBasIPLabel.text = HopConstants.DefaultBasIP
@@ -40,6 +39,9 @@ class SystemSettingTableViewController: UITableViewController {
                 curTokenInUseCell.detailTextLabel?.text = "HOP"
                 NotificationCenter.default.addObserver(self, selector: #selector(WalletChanged(_:)), name: HopConstants.NOTI_NEW_WALLET, object: nil)
         }
+        
+        
+        
         deinit {
                 NotificationCenter.default.removeObserver(self)
         }
@@ -74,6 +76,12 @@ class SystemSettingTableViewController: UITableViewController {
                                 }
                         }
                 }
+                
+                guard let setting = DataSyncer.sharedInstance.ethSetting else{
+                        return
+                }
+                packetsPriceCell.detailTextLabel?.text = "\(setting.MBytesPerToken) M/HOP"
+                refundDurationCell.detailTextLabel?.text = "\(setting.RefundDuration.DoubleV()/(24 * 60 * 60)) "+"Days".locStr
         }
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -108,12 +116,6 @@ class SystemSettingTableViewController: UITableViewController {
                                 }
                                 importFromCamera()
                         case 4:
-                                guard DataSyncer.sharedInstance.wallet?.mainAddress != nil else{
-                                        self.ShowTips(msg: "No valid wallet".locStr)
-                                        return
-                                }
-                                self.transfer()
-                        case 5:
                                 guard DataSyncer.sharedInstance.wallet?.mainAddress != nil else{
                                         self.ShowTips(msg: "No valid wallet".locStr)
                                         return
@@ -174,7 +176,15 @@ class SystemSettingTableViewController: UITableViewController {
                         DataSyncer.sharedInstance.loadWallet()
                         self.ShowTips(msg: "Create success".locStr)
                         PacketAccountant.Inst.setEnv(MPSA: PacketAccountant.Inst.paymentAddr!, user: wallet.mainAddress!.address)
+                        
+                        DispatchQueue.main.async {
+                                self.mainAddrCell.detailTextLabel?.text = wallet.mainAddress?.address
+                                self.subAddrCell.detailTextLabel?.text = wallet.subAddress
+                                self.settingTableView.reloadData()
                         }
+                        }
+                        
+                
         }
         // MARK: - Wallet action
         
