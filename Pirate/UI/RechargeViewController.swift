@@ -44,7 +44,7 @@ class RechargeViewController: UIViewController {
                 self.currentTokenName1.text = "HOP"
                 
                 let setting = DataSyncer.sharedInstance.ethSetting!
-                self.packetPrice.text = "Packet Price: \(setting.MBytesPerToken) M/HOP"
+                self.packetPrice.text = "Packet Price".locStr+": \(setting.MBytesPerToken) M/HOP"
                 
                 self.backFor500M.layer.cornerRadius = 10
                 self.backFor1G.layer.cornerRadius = 10
@@ -81,7 +81,7 @@ class RechargeViewController: UIViewController {
         
         @IBAction func BuyDynamicPackets(_ sender: UIButton) {
                 guard let token_no = (TokenNoTF.text as NSString?)?.doubleValue, token_no > 0.1 else{
-                        self.ShowTips(msg: "Token no is too small")
+                        self.ShowTips(msg: "Token no is too small".locStr)
                         return
                 }
                 
@@ -97,55 +97,55 @@ class RechargeViewController: UIViewController {
                         self.hideIndicator()
                 }
                 
-                self.showIndicator(withTitle: "BlockChain", and: "Approving......")
+                self.showIndicator(withTitle: "", and: "Approving......".locStr)
                 let no = BigUInt(tokenNo * HopConstants.DefaultTokenDecimal.DoubleV())
                 guard let approve_tx = EthUtil.sharedInstance.approve(from: user,
                                                                 tokenNo: no,
                                                                 priKey: pri_data) else{
-                        self.ShowTips(msg: "Approve failed")
+                        self.ShowTips(msg: "Approve failed".locStr)
                         return
                 }
                 
                 self.hideIndicator()
-                self.showIndicator(withTitle: "BlockChain", and: "Packaging at[\(approve_tx.hash)]")
+                self.showIndicator(withTitle: "", and: "Packaging at".locStr + ":[\(approve_tx.hash)]")
                 var success = EthUtil.sharedInstance.waitTilResult(txHash: approve_tx.hash)
                 if !success{
-                        self.ShowTips(msg: "Approve failed")
+                        self.ShowTips(msg: "Approve failed".locStr)
                         return
                 }
                 
                 self.hideIndicator()
-                self.showIndicator(withTitle: "BlockChain", and: "Buying packets......")
+                self.showIndicator(withTitle: "", and: "Buying packets......".locStr)
                 guard let buy_tx = EthUtil.sharedInstance.buyAction(user:user,
                                                                     from:pool_addr,
                                                                     tokenNo:no,
                                                                     priKey:pri_data) else{
-                        self.ShowTips(msg: "Buy action failed")
+                        self.ShowTips(msg: "Buy action failed".locStr)
                         return
                 }
                 self.hideIndicator()
-                self.showIndicator(withTitle: "BlockChain", and: "Packaging at[\(buy_tx.hash)]")
+                self.showIndicator(withTitle: "", and: "Packaging at".locStr + "[\(buy_tx.hash)]")
                 success = EthUtil.sharedInstance.waitTilResult(txHash: approve_tx.hash)
                 if !success{
-                        self.ShowTips(msg: "Buy action  failed")
+                        self.ShowTips(msg: "Buy action  failed".locStr)
                         return
                 }
-                self.ShowTips(msg: "Buy Success tx=[\(buy_tx.hash)]")
+                self.ShowTips(msg: "Buy Success".locStr + "[\(buy_tx.hash)]")
         }
         
         func _buyAction(tokenNo: Double) {
                 
                 guard let wallet = DataSyncer.sharedInstance.wallet else{
-                        self.ShowTips(msg: "Invalid wallet")
+                        self.ShowTips(msg: "Invalid account".locStr)
                         return
                 }
                 
                 guard let pool_addr = self.poolAddr else {
-                        self.ShowTips(msg: "Invalid targe pool address")
+                        self.ShowTips(msg: "Invalid targe pool address".locStr)
                         return
                 }
                 
-                self.showIndicator(withTitle: "Wallet", and: "Open wallet......")
+                self.showIndicator(withTitle: "Account".locStr, and: "Open account......".locStr)
                 self.ShowPassword { (password, isOK) in
                         defer {
                                 self.hideIndicator()

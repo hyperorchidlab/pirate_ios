@@ -74,18 +74,18 @@ class HomeVC: UIViewController {
                         return
                 }
                 guard let miner = DataSyncer.sharedInstance.localSetting?.minerInUse else {
-                        self.ShowTips(msg: "Choose your miner first".locStr)
+                        self.ShowTips(msg: "Choose your node first".locStr)
                         return
                 }
                 
                 guard let w = DataSyncer.sharedInstance.wallet else{
-                       self.ShowTips(msg: "Create a wallet first".locStr)
+                       self.ShowTips(msg: "Create a account first".locStr)
                        return
                 }
                
                 guard  w.IsOpen() else{
 
-                        self.showIndicator(withTitle: "Wallet".locStr, and: "Open wallet".locStr)
+                        self.showIndicator(withTitle: "Account".locStr, and: "Open Account".locStr)
                         self.ShowPassword() { (password, isOK) in
                                 if password == nil || isOK == false{
                                         self.hideIndicator()

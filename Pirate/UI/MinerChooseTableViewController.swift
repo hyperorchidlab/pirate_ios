@@ -33,7 +33,7 @@ class MinerChooseViewController: UIViewController {
         }
         
         @IBAction func LoadRandomMiners(_ sender: Any) {
-                self.showIndicator(withTitle: "", and: "Chosing random miner......".locStr)
+                self.showIndicator(withTitle: "", and: "Chosing random node......".locStr)
                 EthUtil.sharedInstance.queue.async {
                         self.minerArray = EthUtil.sharedInstance.RandomMiners(inPool: self.curPool!)
                         DataSyncer.sharedInstance.updateLocalSetting(minerArr: self.minerArray)
@@ -73,7 +73,7 @@ class MinerChooseViewController: UIViewController {
                 guard self.minerArray.count > 0 else {
                         return
                 }
-                self.showIndicator(withTitle: "", and: "Ping all miners......".locStr)
+                self.showIndicator(withTitle: "", and: "Ping all nodes......".locStr)
 
                 BasUtil.queue.async {
                 let dispatchGrp = DispatchGroup()

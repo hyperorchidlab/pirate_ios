@@ -81,8 +81,8 @@ class WalletVC: UIViewController {
                 DispatchQueue.global(qos: .background).async {
                         let (tokenBalance, ethBalance) = EthUtil.sharedInstance.Balance(userAddr: addr)
                         DispatchQueue.main.async {
-                                self.ETHBalance.text = "\(ethBalance.ToCoin()) ETH"
-                                self.TokenBalance.text = "\(tokenBalance.ToCoin()) HOP"
+                                self.ETHBalance.text = "\(ethBalance.ToCoin())"
+                                self.TokenBalance.text = "\(tokenBalance.ToCoin())"
                         }
                 }
         }
@@ -165,7 +165,7 @@ class WalletVC: UIViewController {
 
         @IBAction func rechargeThisPool(_ sender: UIButton) {
                 guard let _ =  DataSyncer.sharedInstance.wallet?.mainAddress else{
-                        self.ShowTips(msg: "Create your wallet first".locStr)
+                        self.ShowTips(msg: "Create your account first".locStr)
                         return
                 }
                 let user = self.Accounts[sender.tag]
@@ -238,7 +238,7 @@ extension WalletVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
                 
                 guard let w = HopWallet.from(json: code) else{
                         self.hideIndicator()
-                        self.ShowTips(msg: "Parse json data to wallet failed".locStr)
+                        self.ShowTips(msg: "Parse json data to account failed".locStr)
                         return
                 }
                 

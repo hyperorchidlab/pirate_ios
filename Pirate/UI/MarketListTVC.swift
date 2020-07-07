@@ -61,7 +61,7 @@ class MarketListTVC: UITableViewController {
 
         @IBAction func BuyThisPool(_ sender: UIButton) {
                 guard let _ =  DataSyncer.sharedInstance.wallet?.mainAddress else{
-                        self.ShowTips(msg: "Create your wallet first".locStr)
+                        self.ShowTips(msg: "Create your account first".locStr)
                         return
                 }
                 let pool_details = self.poolList[sender.tag]

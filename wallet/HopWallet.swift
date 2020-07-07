@@ -22,13 +22,13 @@ public class HopPriKey:NSObject{
         public func genAesKey(forMiner:String, subPriKey:Data)throws ->Data{
                 
                 guard let miner_ed_pub = HopAccount.getPub(address: forMiner) else{
-                        throw HopError.minerErr("Parse miner's id to ed25519 public key failed".locStr)
+                        throw HopError.minerErr("Parse account's id to ed25519 public key failed".locStr)
                 }
                 
                 let miner_pub = try HopSodium.PK25519ED2Curve(edPub: miner_ed_pub)
                 let cur_pri = try HopSodium.SK25519ED2Curve(edPri: subPriKey)
                 guard let s_key = Curve25519.SharedSecret(privateKey: cur_pri, peerPublicKey: miner_pub) else{
-                        throw HopError.minerErr("Create shared aes key with miner failed".locStr)
+                        throw HopError.minerErr("Create shared aes key with node failed".locStr)
                 }
                 
                 return s_key
@@ -204,7 +204,7 @@ public class HopWallet: NSObject, Codable {
                 
                 guard  let subAddr = self.subAddress,
                         let subCip = self.subCipher else {
-                        throw HopError.wallet("Empty wallet".locStr)
+                        throw HopError.wallet("Empty account".locStr)
                 }
                 let hop_acc = HopAccount.init(addr: subAddr, cipher: subCip)
                 guard let sub_pri = hop_acc.getPri(auth: auth) else{

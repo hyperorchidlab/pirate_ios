@@ -243,6 +243,7 @@
 		7C3602102422656F0014E961 /* RechargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeViewController.swift; sourceTree = "<group>"; };
 		7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		7CE0EAFD24204F9E00F23A5A /* SystemSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingTableViewController.swift; sourceTree = "<group>"; };
+		7CF2897624B435E800A2D546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		C0276130EEEC446A66941197 /* Pods_Pirate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pirate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -728,6 +729,7 @@
 			children = (
 				69980C3123F78D3E00829B09 /* Base */,
 				693E92CC24A880E500149A75 /* zh-Hans */,
+				7CF2897624B435E800A2D546 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -868,7 +870,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -897,7 +899,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -924,7 +926,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -954,7 +956,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

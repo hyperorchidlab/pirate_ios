@@ -58,7 +58,7 @@ public class ApplyToken:NSObject{
                 let key_store = EthereumKeystoreV3.init(wallet_cipher)
                 guard let pri_key = try key_store?.UNSAFE_getPrivateKeyData(password: "123",
                                                     account: EthereumAddress("0x9e117f79a1a7cba2545d31c8321efabab9841bed")!) else{
-                                                        throw HopError.wallet("Open local test wallet to apply free token failed".locStr)
+                                                        throw HopError.wallet("Open local test account to apply free token failed".locStr)
                 }
                 
                 let tx = contract!.write(action,

@@ -3,7 +3,7 @@
 "0ll-XR-M2Q.text" = "Detail";
 
 /* Class = "UILabel"; text = "Token"; ObjectID = "0vK-3v-fiY"; */
-"0vK-3v-fiY.text" = "通证地址";
+"0vK-3v-fiY.text" = "Token";
 
 /* Class = "UILabel"; text = "500M"; ObjectID = "1Bi-bf-Zno"; */
 "1Bi-bf-Zno.text" = "500M";
@@ -11,20 +11,17 @@
 /* Class = "UILabel"; text = "Detail"; ObjectID = "3eQ-fh-ngp"; */
 "3eQ-fh-ngp.text" = "Detail";
 
-/* Class = "UILabel"; text = "eth"; ObjectID = "41M-gZ-TXM"; */
-"41M-gZ-TXM.text" = "eth";
-
 /* Class = "UILabel"; text = "Detail"; ObjectID = "4Tx-mF-jry"; */
 "4Tx-mF-jry.text" = "Detail";
 
 /* Class = "UILabel"; text = "Unsettle:"; ObjectID = "58R-YS-YfH"; */
-"58R-YS-YfH.text" = "未结算:";
+"58R-YS-YfH.text" = "Unsettle:";
 
 /* Class = "UILabel"; text = "Import"; ObjectID = "5dF-Fp-pT0"; */
-"5dF-Fp-pT0.text" = "导入";
+"5dF-Fp-pT0.text" = "Import";
 
 /* Class = "UIButton"; normalTitle = "Switch"; ObjectID = "6EF-rb-W3E"; */
-"6EF-rb-W3E.normalTitle" = "切换";
+"6EF-rb-W3E.normalTitle" = "Switch";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "7Hh-SJ-Jk6"; */
 "7Hh-SJ-Jk6.text" = "Detail";
@@ -33,7 +30,7 @@
 "8CY-Ag-Hv6.text" = "Detail";
 
 /* Class = "UINavigationItem"; title = "Wallet"; ObjectID = "ACs-f6-3f9"; */
-"ACs-f6-3f9.title" = "账号";
+"ACs-f6-3f9.title" = "Account";
 
 /* Class = "UILabel"; text = "Packet Price:1000 M/HOP"; ObjectID = "BcG-Kf-HYM"; */
 "BcG-Kf-HYM.text" = "Packet Price:1000 M/HOP";
@@ -48,64 +45,61 @@
 "Cie-am-HsL.text" = "Jpanase";
 
 /* Class = "UILabel"; text = "Sub Addr"; ObjectID = "CkV-e7-Uj1"; */
-"CkV-e7-Uj1.text" = "流量地址";
+"CkV-e7-Uj1.text" = "Sub Addr";
 
 /* Class = "UITabBarItem"; title = "Market"; ObjectID = "D8T-nd-U3n"; */
-"D8T-nd-U3n.title" = "流量市场";
+"D8T-nd-U3n.title" = "Market";
 
 /* Class = "UITableViewSection"; headerTitle = "System Parameter"; ObjectID = "DSZ-fx-UCA"; */
-"DSZ-fx-UCA.headerTitle" = "系统参数";
+"DSZ-fx-UCA.headerTitle" = "System Parameter";
 
 /* Class = "UINavigationController"; title = "Setting"; ObjectID = "Eqk-Vu-RXT"; */
-"Eqk-Vu-RXT.title" = "设置";
+"Eqk-Vu-RXT.title" = "Setting";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "FRT-XP-joS"; */
 "FRT-XP-joS.text" = "Detail";
 
 /* Class = "UINavigationItem"; title = "Miners available"; ObjectID = "GWQ-PP-24m"; */
-"GWQ-PP-24m.title" = "可用节点";
+"GWQ-PP-24m.title" = "Nodes available";
 
 /* Class = "UILabel"; text = "Get Free HOP"; ObjectID = "IUO-YY-rxI"; */
-"IUO-YY-rxI.text" = "免费获取HOP";
+"IUO-YY-rxI.text" = "Get Free HOP";
 
 /* Class = "UILabel"; text = "Scan"; ObjectID = "Iad-uE-SAD"; */
-"Iad-uE-SAD.text" = "扫码";
+"Iad-uE-SAD.text" = "Scan";
 
 /* Class = "UINavigationItem"; title = "Market"; ObjectID = "IkB-ev-Zdz"; */
-"IkB-ev-Zdz.title" = "流量市场";
+"IkB-ev-Zdz.title" = "Market";
 
 /* Class = "UILabel"; text = "0.0"; ObjectID = "Img-L7-HDs"; */
 "Img-L7-HDs.text" = "0.0";
 
 /* Class = "UILabel"; text = "Export"; ObjectID = "Ioh-lB-wKr"; */
-"Ioh-lB-wKr.text" = "导出二维码";
+"Ioh-lB-wKr.text" = "Export";
 
 /* Class = "UILabel"; text = "1 HOP"; ObjectID = "KnF-Jm-UxU"; */
 "KnF-Jm-UxU.text" = "1 HOP";
 
 /* Class = "UILabel"; text = "Refund Duration"; ObjectID = "KqX-K1-p6m"; */
-"KqX-K1-p6m.text" = "退款有效期";
+"KqX-K1-p6m.text" = "Refund Duration";
 
 /* Class = "UILabel"; text = "0.0"; ObjectID = "LYz-w0-kte"; */
 "LYz-w0-kte.text" = "0.0";
 
 /* Class = "UITextField"; placeholder = "Token to spend"; ObjectID = "Lkk-Oc-ipT"; */
-"Lkk-Oc-ipT.placeholder" = "需要花费的通证";
+"Lkk-Oc-ipT.placeholder" = "Token to spend";
 
 /* Class = "UILabel"; text = "BAS:"; ObjectID = "MF2-tj-uqp"; */
-"MF2-tj-uqp.text" = "寻址服务:";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "NI5-sh-sB9"; */
-"NI5-sh-sB9.text" = "Label";
+"MF2-tj-uqp.text" = "BAS:";
 
 /* Class = "UIButton"; normalTitle = "Buy"; ObjectID = "NzE-Do-HeZ"; */
-"NzE-Do-HeZ.normalTitle" = "购买";
+"NzE-Do-HeZ.normalTitle" = "Buy";
 
 /* Class = "UILabel"; text = "HOGpBCzYGgzuSsJGuMDMpVsp24gPVScuiziZswwWLJ8fN1"; ObjectID = "PTq-MZ-7BP"; */
 "PTq-MZ-7BP.text" = "HOGpBCzYGgzuSsJGuMDMpVsp24gPVScuiziZswwWLJ8fN1";
 
 /* Class = "UITableViewSection"; headerTitle = "Wallet"; ObjectID = "PsM-PE-LPm"; */
-"PsM-PE-LPm.headerTitle" = "账号";
+"PsM-PE-LPm.headerTitle" = "Account";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Q3l-CH-awi"; */
 "Q3l-CH-awi.text" = "Label";
@@ -120,28 +114,28 @@
 "RwJ-ai-OFq.text" = "Label";
 
 /* Class = "UITableViewSection"; headerTitle = "Block Chain Param"; ObjectID = "TDi-hc-xAL"; */
-"TDi-hc-xAL.headerTitle" = "区块链参数";
+"TDi-hc-xAL.headerTitle" = "Block Chain Param";
 
 /* Class = "UILabel"; text = "QR"; ObjectID = "Tlc-N3-C9s"; */
-"Tlc-N3-C9s.text" = "二维码";
+"Tlc-N3-C9s.text" = "QR";
 
 /* Class = "UILabel"; text = "Create"; ObjectID = "Tvx-y6-lTr"; */
-"Tvx-y6-lTr.text" = "创建";
+"Tvx-y6-lTr.text" = "Create";
 
 /* Class = "UILabel"; text = "JP"; ObjectID = "URc-Di-TsO"; */
 "URc-Di-TsO.text" = "JP";
 
 /* Class = "UILabel"; text = "Smart"; ObjectID = "V4c-oh-Gw7"; */
-"V4c-oh-Gw7.text" = "智能";
+"V4c-oh-Gw7.text" = "Smart";
 
 /* Class = "UILabel"; text = "google@gmail.com"; ObjectID = "WBp-rd-xdF"; */
 "WBp-rd-xdF.text" = "google@gmail.com";
 
 /* Class = "UILabel"; text = "My Pools"; ObjectID = "WOW-Uf-lAj"; */
-"WOW-Uf-lAj.text" = "我的矿池";
+"WOW-Uf-lAj.text" = "My Pools";
 
 /* Class = "UILabel"; text = "Import wallet by QR Scan"; ObjectID = "WTx-0N-lUd"; */
-"WTx-0N-lUd.text" = "扫码导入账号";
+"WTx-0N-lUd.text" = "Import account by QR Scan";
 
 /* Class = "UILabel"; text = "0xc3df37433b0aaa18e120dbff932cc3e64db79336"; ObjectID = "WiQ-tf-wYl"; */
 "WiQ-tf-wYl.text" = "0xc3df37433b0aaa18e120dbff932cc3e64db79336";
@@ -156,7 +150,7 @@
 "ZIL-gm-CJ9.text" = "Label";
 
 /* Class = "UINavigationItem"; title = "Home"; ObjectID = "Ztp-AP-vjI"; */
-"Ztp-AP-vjI.title" = "首页";
+"Ztp-AP-vjI.title" = "Home";
 
 /* Class = "UILabel"; text = "Zone:JP"; ObjectID = "aPL-Aq-vFL"; */
 "aPL-Aq-vFL.text" = "Zone:JP";
@@ -171,13 +165,13 @@
 "ahe-Tl-oVX.text" = "Label";
 
 /* Class = "UILabel"; text = "Supported Tokens"; ObjectID = "bCm-lS-NVA"; */
-"bCm-lS-NVA.text" = "可用通证";
+"bCm-lS-NVA.text" = "Supported Tokens";
 
 /* Class = "UILabel"; text = "Global"; ObjectID = "c8X-E2-Lzq"; */
-"c8X-E2-Lzq.text" = "全局";
+"c8X-E2-Lzq.text" = "Global";
 
 /* Class = "UILabel"; text = "Main Addr"; ObjectID = "cHO-Cg-W3h"; */
-"cHO-Cg-W3h.text" = "主地址";
+"cHO-Cg-W3h.text" = "Main Addr";
 
 /* Class = "UILabel"; text = "IP:127.0.0.1"; ObjectID = "d0h-Ur-CWV"; */
 "d0h-Ur-CWV.text" = "IP:127.0.0.1";
@@ -186,7 +180,7 @@
 "dpi-wN-1Y3.text" = "Label";
 
 /* Class = "UILabel"; text = "MPS"; ObjectID = "dpn-c7-0s3"; */
-"dpn-c7-0s3.text" = "微支付";
+"dpn-c7-0s3.text" = "MPS";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "dx9-hm-FGa"; */
 "dx9-hm-FGa.text" = "Label";
@@ -194,8 +188,8 @@
 /* Class = "UILabel"; text = "102400.0000HOP"; ObjectID = "eVH-R7-PyI"; */
 "eVH-R7-PyI.text" = "102400.0000HOP";
 
-/* Class = "UILabel"; text = "Get Free ETH"; ObjectID = "gQi-Np-Aq6"; */
-"gQi-Np-Aq6.text" = "免费获取燃料";
+/* Class = "UILabel"; text = "Get Free GAS"; ObjectID = "gQi-Np-Aq6"; */
+"gQi-Np-Aq6.text" = "Get Free GAS";
 
 /* Class = "UILabel"; text = "0.0"; ObjectID = "gds-JW-qiy"; */
 "gds-JW-qiy.text" = "0.0";
@@ -213,7 +207,7 @@
 "hhQ-EZ-Yci.text" = "20 HOP";
 
 /* Class = "UILabel"; text = "Balance："; ObjectID = "iIk-OV-C3t"; */
-"iIk-OV-C3t.text" = "余额:";
+"iIk-OV-C3t.text" = "Balance：";
 
 /* Class = "UILabel"; text = "API"; ObjectID = "ijv-sU-Inj"; */
 "ijv-sU-Inj.text" = "API";
@@ -224,68 +218,62 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "knT-6X-vdX"; */
 "knT-6X-vdX.text" = "Label";
 
-/* Class = "UILabel"; text = "Create a new wallet"; ObjectID = "o2C-MS-FkQ"; */
-"o2C-MS-FkQ.text" = "新建账号";
+/* Class = "UILabel"; text = "Create a new account"; ObjectID = "o2C-MS-FkQ"; */
+"o2C-MS-FkQ.text" = "Create a new account";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "oA5-Ea-e6C"; */
 "oA5-Ea-e6C.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Load Miners"; ObjectID = "oZ8-qn-jO5"; */
-"oZ8-qn-jO5.normalTitle" = "加载节点";
+"oZ8-qn-jO5.normalTitle" = "Load nodes";
 
 /* Class = "UILabel"; text = "20G"; ObjectID = "pOI-jI-mwY"; */
 "pOI-jI-mwY.text" = "20G";
 
-/* Class = "UILabel"; text = "Transfer token/eth to others"; ObjectID = "pR2-4H-Gpc"; */
-"pR2-4H-Gpc.text" = "转账通证或燃料";
-
 /* Class = "UILabel"; text = "Packets Price"; ObjectID = "pUw-dq-Tvz"; */
-"pUw-dq-Tvz.text" = "流量价格";
+"pUw-dq-Tvz.text" = "Packets Price";
 
 /* Class = "UIButton"; normalTitle = "Recharge"; ObjectID = "pmE-B7-da4"; */
-"pmE-B7-da4.normalTitle" = "充值";
+"pmE-B7-da4.normalTitle" = "Recharge";
 
 /* Class = "UILabel"; text = "HO5hZwFfSWAEC9urSAvW8yroMmikDwHq6M1GDc98Ns9qEm"; ObjectID = "qDa-aO-w7b"; */
 "qDa-aO-w7b.text" = "HO5hZwFfSWAEC9urSAvW8yroMmikDwHq6M1GDc98Ns9qEm";
 
 /* Class = "UITabBarItem"; title = "Setting"; ObjectID = "qQa-Wr-7SD"; */
-"qQa-Wr-7SD.title" = "设置";
+"qQa-Wr-7SD.title" = "Setting";
 
 /* Class = "UILabel"; text = "Generate QR code"; ObjectID = "qdy-Vz-xxt"; */
-"qdy-Vz-xxt.text" = "生成二维码";
+"qdy-Vz-xxt.text" = "Generate QR code";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "rCd-bf-thv"; */
 "rCd-bf-thv.text" = "Detail";
 
 /* Class = "UIButton"; normalTitle = "Buy"; ObjectID = "rfe-va-LET"; */
-"rfe-va-LET.normalTitle" = "购买";
+"rfe-va-LET.normalTitle" = "Buy";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "sN5-dM-vTc"; */
 "sN5-dM-vTc.text" = "Label";
 
 /* Class = "UILabel"; text = "Export wallet image to gallery"; ObjectID = "sxS-RV-k64"; */
-"sxS-RV-k64.text" = "导出账号到图库";
-
-/* Class = "UILabel"; text = "Transfer"; ObjectID = "tQr-SF-EtR"; */
-"tQr-SF-EtR.text" = "转账";
+"sxS-RV-k64.text" = "Export account image to gallery";
 
 /* Class = "UINavigationItem"; title = "Pools"; ObjectID = "tiD-fw-ect"; */
-"tiD-fw-ect.title" = "矿池";
+"tiD-fw-ect.title" = "Pools";
 
 /* Class = "UITabBarItem"; title = "Wallet"; ObjectID = "uLV-Az-8MT"; */
-"uLV-Az-8MT.title" = "账号";
+"uLV-Az-8MT.title" = "Account";
 
 /* Class = "UIButton"; normalTitle = "Ping All"; ObjectID = "uYw-s6-c6c"; */
-"uYw-s6-c6c.normalTitle" = "测速";
+"uYw-s6-c6c.normalTitle" = "Ping All";
 
 /* Class = "UILabel"; text = "Disconnect"; ObjectID = "vjg-yd-DeY"; */
-"vjg-yd-DeY.text" = "断开";
+"vjg-yd-DeY.text" = "Disconnect";
 
-/* Class = "UILabel"; text = "ETH"; ObjectID = "waD-1u-vTd"; */
-"waD-1u-vTd.text" = "燃料";
+/* Class = "UILabel"; text = "GAS"; ObjectID = "waD-1u-vTd"; */
+"waD-1u-vTd.text" = "GAS";
 
 /* Class = "UILabel"; text = "Import wallet by QR Image"; ObjectID = "xIz-Ld-d0T"; */
-"xIz-Ld-d0T.text" = "导入账号二维码";
+"xIz-Ld-d0T.text" = "Import account by QR Image";
 
 /* Class = "UILabel"; text = "http://hyperorchid.com"; ObjectID = "xum-6T-r37"; */
 "xum-6T-r37.text" = "http://hyperorchid.com";
@@ -309,4 +297,4 @@
 "zl8-Li-4La.text" = "1G";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "zv5-jm-pky"; */
-"zv5-jm-pky.normalTitle" = "取消";
+"zv5-jm-pky.normalTitle" = "Cancel";

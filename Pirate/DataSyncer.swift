@@ -141,7 +141,7 @@ public final class DataSyncer:NSObject{
         func syncUserData(ethVer:BigUInt, _ hasErr:inout Bool){
               
                 guard let wallet_addr = self.wallet?.mainAddress else{
-                        NSLog("=======>Empty wallet no need to sync user data......")
+                        NSLog("=======>Empty account no need to sync user data......")
                         return
                 }
                 

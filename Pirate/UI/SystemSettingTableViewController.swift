@@ -91,7 +91,7 @@ class SystemSettingTableViewController: UITableViewController {
                         switch indexPath.row {
                         case 0:
                                 guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                       self.showConfirm(msg: "Replace your current wallet?".locStr, yesHandler:{
+                                       self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
                                                self.createWallet()
                                        })
                                        return
@@ -101,7 +101,7 @@ class SystemSettingTableViewController: UITableViewController {
                                 self.exportWallet()
                         case 2:
                                 guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                        self.showConfirm(msg: "Replace your current wallet?".locStr, yesHandler:{
+                                        self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
                                                 self.importFromLib()
                                         })
                                         return
@@ -109,7 +109,7 @@ class SystemSettingTableViewController: UITableViewController {
                                 importFromLib()
                         case 3:
                                 guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                        self.showConfirm(msg: "Replace your current wallet?".locStr, yesHandler:{
+                                        self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
                                                 self.importFromCamera()
                                         })
                                         return
@@ -117,7 +117,7 @@ class SystemSettingTableViewController: UITableViewController {
                                 importFromCamera()
                         case 4:
                                 guard DataSyncer.sharedInstance.wallet?.mainAddress != nil else{
-                                        self.ShowTips(msg: "No valid wallet".locStr)
+                                        self.ShowTips(msg: "No valid account".locStr)
                                         return
                                 }
                                 self.generateQR()
@@ -156,7 +156,7 @@ class SystemSettingTableViewController: UITableViewController {
 
         private func createWallet(){
                 
-                self.showIndicator(withTitle: "", and: "Create new wallet....".locStr)
+                self.showIndicator(withTitle: "", and: "Create new account....".locStr)
                 self.ShowPassword() { (password , isOK) in
                         defer {
                                 
@@ -253,7 +253,7 @@ class SystemSettingTableViewController: UITableViewController {
                                 self.hideIndicator()
                         }
                         guard let addr = self.mainAddr, self.curEth.DoubleV().ToCoinUnit() < 0.1 else {
-                                self.ShowTips(msg: "Create wallet or you have more than 0.1 eth".locStr)
+                                self.ShowTips(msg: "Create wallet or you have more than 0.1 token".locStr)
                                 return
                         }
                         
@@ -261,7 +261,7 @@ class SystemSettingTableViewController: UITableViewController {
                                 let request = ApplyToken()
                                 try request.initRequest()
                                 let tx = try request.ApplyeETH(user: addr)
-                                self.ShowTips(msg: "Eth TX".locStr+":[\(tx.hash)]")
+                                self.ShowTips(msg: "TX".locStr+":[\(tx.hash)]")
                         } catch let err {
                                 self.ShowTips(msg: "Apply failed".locStr + ":\(err.localizedDescription)")
                         }
@@ -338,7 +338,7 @@ extension SystemSettingTableViewController: UINavigationControllerDelegate, UIIm
                 
                 guard let w = HopWallet.from(json: code) else{
                         self.hideIndicator()
-                        self.ShowTips(msg: "Parse json data to wallet failed".locStr)
+                        self.ShowTips(msg: "Parse json data to account failed".locStr)
                         return
                 }
 
