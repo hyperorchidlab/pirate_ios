@@ -99,7 +99,7 @@
 "NI5-sh-sB9.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Buy"; ObjectID = "NzE-Do-HeZ"; */
-"NzE-Do-HeZ.normalTitle" = "购买";
+"NzE-Do-HeZ.normalTitle" = "加入";
 
 /* Class = "UILabel"; text = "HOGpBCzYGgzuSsJGuMDMpVsp24gPVScuiziZswwWLJ8fN1"; ObjectID = "PTq-MZ-7BP"; */
 "PTq-MZ-7BP.text" = "HOGpBCzYGgzuSsJGuMDMpVsp24gPVScuiziZswwWLJ8fN1";
@@ -258,7 +258,7 @@
 "rCd-bf-thv.text" = "Detail";
 
 /* Class = "UIButton"; normalTitle = "Buy"; ObjectID = "rfe-va-LET"; */
-"rfe-va-LET.normalTitle" = "购买";
+"rfe-va-LET.normalTitle" = "加入";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "sN5-dM-vTc"; */
 "sN5-dM-vTc.text" = "Label";

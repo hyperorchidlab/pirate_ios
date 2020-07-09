@@ -26,16 +26,14 @@
 "Approve failed"="授权失败";
 "Packaging at"="打包";
 "Buying packets......"="购买流量中......";
-"Buy action failed"="购买失败";
-"Buy Success"="购买成功";
+"Failed"="失败";
+"Success"="成功";
 "Invalid account"="无效账号";
 "Invalid targe pool address"="无效矿池地址";
 
 "Parse data to bytes array failed"="sodium解释数据失败";
 
-
 "ms"="毫秒";
-
 
 "Chosing random node......" = "查找节点中......";
 "Ping......"="探测中......";

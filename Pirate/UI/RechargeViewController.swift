@@ -120,17 +120,17 @@ class RechargeViewController: UIViewController {
                                                                     from:pool_addr,
                                                                     tokenNo:no,
                                                                     priKey:pri_data) else{
-                        self.ShowTips(msg: "Buy action failed".locStr)
+                        self.ShowTips(msg: "Failed".locStr)
                         return
                 }
                 self.hideIndicator()
                 self.showIndicator(withTitle: "", and: "Packaging at".locStr + "[\(buy_tx.hash)]")
                 success = EthUtil.sharedInstance.waitTilResult(txHash: approve_tx.hash)
                 if !success{
-                        self.ShowTips(msg: "Buy action  failed".locStr)
+                        self.ShowTips(msg: "Failed".locStr)
                         return
                 }
-                self.ShowTips(msg: "Buy Success".locStr + "[\(buy_tx.hash)]")
+                self.ShowTips(msg: "Success".locStr + "[\(buy_tx.hash)]")
         }
         
         func _buyAction(tokenNo: Double) {

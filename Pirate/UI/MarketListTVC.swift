@@ -19,8 +19,8 @@ class MarketListTVC: UITableViewController {
         // MARK: - Table view init
         override func viewDidLoad() {
                 super.viewDidLoad()
-                self.tableView.estimatedRowHeight = 180
-                self.tableView.rowHeight = 180
+                self.tableView.estimatedRowHeight = 140
+                self.tableView.rowHeight = 140
         }
         override func viewDidAppear(_ animated: Bool) {
                 super.viewDidAppear(animated)

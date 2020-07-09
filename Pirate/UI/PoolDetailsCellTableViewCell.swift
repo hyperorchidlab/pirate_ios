@@ -15,11 +15,11 @@ class PoolDetailsCellTableViewCell: UITableViewCell {
         
         @IBOutlet weak var backGroundView: UIView!
         @IBOutlet weak var buyButton: UIButton!
-        @IBOutlet weak var GTN: UILabel!
+//        @IBOutlet weak var GTN: UILabel!
         @IBOutlet weak var shortName: UILabel!
         @IBOutlet weak var email: UILabel!
         @IBOutlet weak var url: UILabel!
-        @IBOutlet weak var address: UILabel!
+//        @IBOutlet weak var address: UILabel!
         
         override func awakeFromNib() {
                 super.awakeFromNib()
@@ -38,8 +38,8 @@ class PoolDetailsCellTableViewCell: UITableViewCell {
                 self.shortName.text = d.ShortName
                 self.email.text = d.Email
                 self.url.text = d.Url ?? "NAN".locStr
-                self.address.text = d.MainAddr.address
-                self.GTN.text = d.GTN.ToCoin()
+//                self.address.text = d.MainAddr.address
+//                self.GTN.text = d.GTN.ToCoin()
                 let color = BackGroudColor[index%3]
                 self.buyButton.setTitleColor(color, for: .normal)
                 self.backGroundView.backgroundColor = color

@@ -744,25 +744,25 @@
                         <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PoolDetailInMarketCID" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PoolDetailInMarketCID" rowHeight="180" id="fPM-1d-b4K" customClass="PoolDetailsCellTableViewCell" customModule="Pirate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="180"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PoolDetailInMarketCID" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PoolDetailInMarketCID" rowHeight="140" id="fPM-1d-b4K" customClass="PoolDetailsCellTableViewCell" customModule="Pirate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fPM-1d-b4K" id="rKi-fc-gTD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHo-dd-sN6">
-                                            <rect key="frame" x="28" y="12" width="358" height="156"/>
+                                            <rect key="frame" x="28" y="12" width="358" height="116"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfe-va-LET">
-                                                    <rect key="frame" x="254" y="96" width="88" height="44"/>
+                                                    <rect key="frame" x="254" y="56" width="88" height="44"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="Lkc-5g-oQt"/>
                                                         <constraint firstAttribute="height" constant="44" id="xYm-7W-IOK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                                                    <state key="normal" title="Buy">
+                                                    <state key="normal" title="JOIN">
                                                         <color key="titleColor" red="0.42745098040000001" green="0.59215686270000001" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
@@ -776,25 +776,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="google@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBp-rd-xdF">
-                                                    <rect key="frame" x="16" y="89.5" width="136.5" height="19"/>
+                                                    <rect key="frame" x="16" y="49.5" width="136.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://hyperorchid.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xum-6T-r37">
-                                                    <rect key="frame" x="16" y="116.5" width="326" height="19"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HO5hZwFfSWAEC9urSAvW8yroMmikDwHq6M1GDc98Ns9qEm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDa-aO-w7b">
-                                                    <rect key="frame" x="16" y="41.5" width="326" height="17"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102400.0000HOP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVH-R7-PyI">
-                                                    <rect key="frame" x="16" y="62.5" width="326" height="19"/>
+                                                    <rect key="frame" x="16" y="76.5" width="326" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -803,22 +791,16 @@
                                             <color key="backgroundColor" red="0.42745098039215684" green="0.59215686270000001" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="rfe-va-LET" secondAttribute="trailing" constant="16" id="0OT-Oz-TM7"/>
-                                                <constraint firstItem="qDa-aO-w7b" firstAttribute="leading" secondItem="yHo-dd-sN6" secondAttribute="leading" constant="16" id="6be-4c-Xi9"/>
-                                                <constraint firstAttribute="trailing" secondItem="qDa-aO-w7b" secondAttribute="trailing" constant="16" id="7yG-z8-heC"/>
                                                 <constraint firstAttribute="trailing" secondItem="xum-6T-r37" secondAttribute="trailing" constant="16" id="8LN-DM-Mck"/>
                                                 <constraint firstItem="Cie-am-HsL" firstAttribute="top" secondItem="yHo-dd-sN6" secondAttribute="top" constant="12" id="CYg-3s-hau"/>
                                                 <constraint firstAttribute="bottom" secondItem="rfe-va-LET" secondAttribute="bottom" constant="16" id="P4o-Qu-EAF"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cie-am-HsL" secondAttribute="trailing" constant="16" id="PyZ-74-Fuz"/>
-                                                <constraint firstItem="WBp-rd-xdF" firstAttribute="top" secondItem="eVH-R7-PyI" secondAttribute="bottom" constant="8" id="Q9g-ec-SPy"/>
                                                 <constraint firstItem="Cie-am-HsL" firstAttribute="leading" secondItem="yHo-dd-sN6" secondAttribute="leading" constant="16" id="Tdd-uC-eH9"/>
                                                 <constraint firstItem="xum-6T-r37" firstAttribute="top" secondItem="WBp-rd-xdF" secondAttribute="bottom" constant="8" id="US0-sD-z2F"/>
+                                                <constraint firstItem="WBp-rd-xdF" firstAttribute="top" secondItem="Cie-am-HsL" secondAttribute="bottom" constant="12" id="Ucd-a6-pvm"/>
                                                 <constraint firstItem="WBp-rd-xdF" firstAttribute="leading" secondItem="yHo-dd-sN6" secondAttribute="leading" constant="16" id="bYz-Al-b6s"/>
-                                                <constraint firstItem="eVH-R7-PyI" firstAttribute="leading" secondItem="yHo-dd-sN6" secondAttribute="leading" constant="16" id="bfP-Oq-eR6"/>
-                                                <constraint firstItem="qDa-aO-w7b" firstAttribute="top" secondItem="Cie-am-HsL" secondAttribute="bottom" constant="4" id="fNr-Zi-Pmu"/>
                                                 <constraint firstItem="xum-6T-r37" firstAttribute="leading" secondItem="yHo-dd-sN6" secondAttribute="leading" constant="16" id="lAc-Pp-kaS"/>
-                                                <constraint firstItem="eVH-R7-PyI" firstAttribute="top" secondItem="qDa-aO-w7b" secondAttribute="bottom" constant="4" id="lGw-95-Eex"/>
                                                 <constraint firstItem="rfe-va-LET" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WBp-rd-xdF" secondAttribute="trailing" constant="8" symbolic="YES" id="mrl-2b-fX0"/>
-                                                <constraint firstAttribute="trailing" secondItem="eVH-R7-PyI" secondAttribute="trailing" constant="16" id="o1W-Uc-XaU"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -830,8 +812,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="GTN" destination="eVH-R7-PyI" id="euL-65-IdM"/>
-                                    <outlet property="address" destination="qDa-aO-w7b" id="jIY-PZ-hTU"/>
                                     <outlet property="backGroundView" destination="yHo-dd-sN6" id="3cG-rJ-QNK"/>
                                     <outlet property="buyButton" destination="rfe-va-LET" id="Ngz-Xv-NWd"/>
                                     <outlet property="email" destination="WBp-rd-xdF" id="8Rz-7g-042"/>
@@ -1083,7 +1063,7 @@
                                     <constraint firstAttribute="height" constant="44" id="vg9-e2-LeB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="16"/>
-                                <state key="normal" title="Buy">
+                                <state key="normal" title="JOIN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1772,7 +1752,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="4JG-CJ-cpa"/>
-        <segue reference="Msi-zX-ldE"/>
+        <segue reference="G8E-gh-ZBs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Dis_butt" width="232" height="232"/>
