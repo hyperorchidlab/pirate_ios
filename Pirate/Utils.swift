@@ -69,6 +69,23 @@ class Utils: NSObject {
         }
 }
 
+extension Data{
+        
+        public func ToLen() -> Int{
+                let b = self.bytes
+                let len = Int(b[3]) | Int(b[2])<<8 | Int(b[1])<<16 | Int(b[0])<<24
+                return len
+        }
+}
+        
+public func DataWithLen(data:Data) -> Data {
+        let data_len = Int32(data.count)
+        let len_data = withUnsafeBytes(of: data_len.bigEndian, Array.init)
+        var lv_data = Data(len_data)
+        lv_data.append(data)
+        return lv_data
+}
+
 extension BigUInt{
         
         public init?(_ data: Data?){

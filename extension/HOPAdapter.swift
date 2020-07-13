@@ -17,8 +17,10 @@ class HOPAdapter: AdapterSocket {
         enum HopAdapterStatus {
                 case invalid,
                 connecting,
-                readingACK,
-                readingACK2,
+                readingSetupACKLen,
+                readingSetupACK,
+                readingProbACKLen,
+                readingProbACK,
                 forwarding,
                 stopped
                 public var description: String {
@@ -27,14 +29,18 @@ class HOPAdapter: AdapterSocket {
                                 return "invalid"
                         case .connecting:
                                 return "connecting"
-                        case .readingACK:
-                                return "readingACK"
-                        case .readingACK2:
-                                return "readingACK2"
+                        case .readingSetupACKLen:
+                                return "readingSetupACKLen"
+                        case .readingSetupACK:
+                                return "readingSetupACK"
                         case .forwarding:
                                 return "forwarding"
                         case .stopped:
                                 return "stopped"
+                        case .readingProbACKLen:
+                                return "readingProbACKLen"
+                        case .readingProbACK:
+                                return "readingProbACK"
                         }
                 }
         }
@@ -94,36 +100,51 @@ class HOPAdapter: AdapterSocket {
                         return
                 }
                 
-                internalStatus = .readingACK
-                write(data: syn_data)
-                socket.readData()
-//                NSLog("--------->[\(objID)]didConnectWith status:[\(internalStatus.description)] ---")
+                internalStatus = .readingSetupACKLen
+                let lv_data = DataWithLen(data: syn_data)
+                write(data: lv_data)
+                self.socket.readDataTo(length: 4)
+//                lv_data.append(contentsOf: data)
+                NSLog("--------->[\(objID)]didConnectWith[\(lv_data.count)] status:[\(internalStatus.description)]-------->[\(lv_data.toHexString())]")
         }
 
         override public func didRead(data: Data, from rawSocket: RawTCPSocketProtocol) {
 //                NSLog("--------->[\(objID)]didRead=len=\(data.count) status:[\(internalStatus.description)] ---")
                 do {
                 switch internalStatus {
+                case .readingSetupACKLen, .readingProbACKLen :
+                        guard data.count == 4 else {
+                                throw HopError.minerErr("miner setup lent protocol failed")
+                        }
                         
-                case .readingACK:
+                        let len = data.ToLen()
+                        if len > HOPAdapter.MAX_BUFFER_SIZE{
+                                throw HopError.minerErr("too big data len[\(len)]")
+                        }
+                        
+                        if internalStatus == .readingSetupACKLen{
+                                internalStatus = .readingSetupACK
+                        }else{
+                                internalStatus = .readingProbACK
+                        }
+                        self.socket.readDataTo(length: len)
+                        NSLog("--------->[\(objID)]didRead[\(len)] status:[\(internalStatus.description)] ---")
+                        
+                case .readingSetupACK:
 
-//                        NSLog("--------->[\(objID)]didRead msg:[\(String(data:data, encoding: .utf8) ?? "-")] ---")
+                        NSLog("--------->[\(objID)] readingSetupACK[\(data.count)] msg:[\(String(data:data, encoding: .utf8) ?? "-")] ---")
                         let obj = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
                         guard let Success = obj?["Success"] as? Bool, Success == true else{
                                 throw HopError.minerErr("miner setup protocol failed")
                         }
                         
-                        internalStatus = .readingACK2
-                        let prob_data = try HopMessage.ProbMsg(target: self.target!)                        
+                        internalStatus = .readingProbACKLen
+                        let prob_data = try HopMessage.ProbMsg(target: self.target!)
                         write(data: prob_data)
-                        socket.readDataTo(length: 4)
-                        self.readHead = true
+                        self.socket.readDataTo(length: 4)
+                case .readingProbACK:
                         
-                case .readingACK2:
-                        if self.readHead{
-                                try self.readLen(data: data)
-                                return
-                        }
+                        NSLog("--------->[\(objID)]readingProbACK msg:[\(String(data:data, encoding: .utf8) ?? "-")] ---")
                         let decoded_data = try self.readEncoded(data:data)
                         let obj = try JSONSerialization.jsonObject(with: decoded_data, options: []) as? [String:Any]
                         guard let Success = obj?["Success"] as? Bool, Success == true else{
@@ -131,7 +152,6 @@ class HOPAdapter: AdapterSocket {
                         }
                         
                         internalStatus = .forwarding
-//                        NSLog("--------->[\(objID)] into forwarding")
                         observer?.signal(.readyForForward(self))
                         delegate?.didBecomeReadyToForwardWith(socket: self)
                         
@@ -170,7 +190,7 @@ class HOPAdapter: AdapterSocket {
         }
 
         override public func didWrite(data: Data?, by rawSocket: RawTCPSocketProtocol) {
-//                NSLog("--------->[\(objID)]didWrite status:[\(internalStatus.description)] len=\(data?.count ?? 0)---")
+                NSLog("--------->[\(objID)]didWrite status:[\(internalStatus.description)] len=\(data?.count ?? 0)---")
                 
                 if internalStatus == .forwarding {
                     observer?.signal(.wroteData(data, on: self))
@@ -189,17 +209,20 @@ class HOPAdapter: AdapterSocket {
         }
         
         func hopWrite(data:Data){do{
-//                NSLog("--------->[\(objID)]hopWrite before msg:[\(String(data:data, encoding: .utf8) ?? "-")] ---")
-//                NSLog("--------->[\(objID)]hopWrite before msg:[\(data.toHexString())] ---")
+                NSLog("--------->[\(objID)]hopWrite before msg:[\(String(data:data, encoding: .utf8) ?? "-")] ---")
+                NSLog("--------->[\(objID)]hopWrite[\(data.count)] before msg:[\(data.toHexString())] ---")
                 let encode_data = try self.aesKey!.encrypt(data.bytes)
                 
                 let data_len = Int32(encode_data.count)
                 let len_data = withUnsafeBytes(of: data_len.bigEndian, Array.init)
                 var lv_data = Data(len_data)
                 lv_data.append(contentsOf: encode_data)
+//
+                 
+//                let lv_data = DataWithLen(data: Data(encode_data))
                 self.socket.write(data: lv_data)
                 
-//                NSLog("--------->[\(objID)]hopWrite after msg:[\(lv_data.toHexString())] ---")
+                NSLog("--------->[\(objID)]hopWrite[\(lv_data.count)] after msg:[\(lv_data.toHexString())] ---")
                 }catch let err{
                         observer?.signal(.errorOccured(err, on: self))
                         disconnect()
@@ -217,12 +240,12 @@ class HOPAdapter: AdapterSocket {
                 super.readData()
         }
         override open func write(data: Data) {
-                if internalStatus == .readingACK2 || internalStatus == .forwarding{
+                if internalStatus == .readingProbACKLen || internalStatus == .forwarding{
                         self.hopWrite(data: data)
                         return
                 }
                 
-//                NSLog("--------->[\(objID)]write msg:[\(String(data:data, encoding: .utf8) ?? data.toHexString())] ---")
+                NSLog("--------->[\(objID)]direct write msg:[\(String(data:data, encoding: .utf8) ?? data.toHexString())] ---")
                 super.write(data: data)
         }
         
@@ -232,8 +255,7 @@ class HOPAdapter: AdapterSocket {
                 guard data.count == 4 else{
                         throw HopError.minerErr("parse crypted data length err:")
                 }
-                let b = data.bytes
-                let len = Int(b[3]) | Int(b[2])<<8 | Int(b[1])<<16 | Int(b[0])<<24
+                let len = data.ToLen()
                 if len > HOPAdapter.MAX_BUFFER_SIZE{
                         throw HopError.minerErr("too big data len[\(len)]")
                 }
