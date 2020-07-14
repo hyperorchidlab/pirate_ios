@@ -247,7 +247,7 @@ class SystemSettingTableViewController: UITableViewController {
         }
         
         func getFreeEth(){
-                self.showIndicator(withTitle: "BlockChain".locStr, and: "Creating TX......".locStr)
+                self.showIndicator(withTitle: "BlockChain".locStr, and: "Approving......".locStr)
                 DispatchQueue.global().async {
                         defer {
                                 self.hideIndicator()
@@ -260,8 +260,8 @@ class SystemSettingTableViewController: UITableViewController {
                         do {
                                 let request = ApplyToken()
                                 try request.initRequest()
-                                let tx = try request.ApplyeETH(user: addr)
-                                self.ShowTips(msg: "TX".locStr+":[\(tx.hash)]")
+                                _ = try request.ApplyeETH(user: addr)
+                                self.ShowTips(msg: "Approving".locStr)
                         } catch let err {
                                 self.ShowTips(msg: "Apply failed".locStr + ":\(err.localizedDescription)")
                         }
@@ -269,7 +269,7 @@ class SystemSettingTableViewController: UITableViewController {
         }
         
         func getFreeHOP(){
-                self.showIndicator(withTitle: "BlockChain".locStr, and: "Creating TX......".locStr)
+                self.showIndicator(withTitle: "BlockChain".locStr, and: "Approving......".locStr)
                 DispatchQueue.global().async {
                         defer {
                                 self.hideIndicator()
@@ -284,7 +284,7 @@ class SystemSettingTableViewController: UITableViewController {
                                 let request = ApplyToken()
                                 try request.initRequest()
                                 let tx = try request.ApplyeToken(user: addr)
-                                self.ShowTips(msg: "HOP TX".locStr+":[\(tx.hash)]")
+                                self.ShowTips(msg: "Approving".locStr)
                                 NSLog("=======>\(tx.hash)")
                         } catch let err {
                                 self.ShowTips(msg: "Apply failed".locStr + ":\(err.localizedDescription)")
