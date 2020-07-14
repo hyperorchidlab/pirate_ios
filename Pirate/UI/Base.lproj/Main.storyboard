@@ -1577,7 +1577,7 @@
                                     <constraint firstItem="gLS-Sd-UNV" firstAttribute="leading" secondItem="ySv-pi-Au8" secondAttribute="leading" constant="6" id="3o9-oO-DoP"/>
                                     <constraint firstItem="zSp-iM-fzA" firstAttribute="centerY" secondItem="ySv-pi-Au8" secondAttribute="centerY" id="EN6-A3-V30"/>
                                     <constraint firstAttribute="height" constant="52" id="Eu9-lE-A1F"/>
-                                    <constraint firstItem="LYz-w0-kte" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zSp-iM-fzA" secondAttribute="trailing" symbolic="YES" id="Ib0-pn-pOH"/>
+                                    <constraint firstItem="LYz-w0-kte" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zSp-iM-fzA" secondAttribute="trailing" constant="8" symbolic="YES" id="Ib0-pn-pOH"/>
                                     <constraint firstItem="zSp-iM-fzA" firstAttribute="leading" secondItem="gLS-Sd-UNV" secondAttribute="trailing" constant="6" id="KfY-IN-WeA"/>
                                     <constraint firstAttribute="trailing" secondItem="LYz-w0-kte" secondAttribute="trailing" constant="10" id="Mvo-SU-rRA"/>
                                     <constraint firstItem="LYz-w0-kte" firstAttribute="centerY" secondItem="ySv-pi-Au8" secondAttribute="centerY" id="XFg-Rw-k8h"/>
@@ -1741,7 +1741,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="4JG-CJ-cpa"/>
-        <segue reference="G8E-gh-ZBs"/>
+        <segue reference="Msi-zX-ldE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Dis_butt" width="232" height="232"/>

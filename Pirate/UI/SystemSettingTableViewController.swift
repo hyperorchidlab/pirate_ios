@@ -247,7 +247,7 @@ class SystemSettingTableViewController: UITableViewController {
         }
         
         func getFreeEth(){
-                self.showIndicator(withTitle: "BlockChain".locStr, and: "Approving......".locStr)
+                self.showIndicator(withTitle: "", and: "Approving......".locStr)
                 DispatchQueue.global().async {
                         defer {
                                 self.hideIndicator()
@@ -269,7 +269,7 @@ class SystemSettingTableViewController: UITableViewController {
         }
         
         func getFreeHOP(){
-                self.showIndicator(withTitle: "BlockChain".locStr, and: "Approving......".locStr)
+                self.showIndicator(withTitle: "", and: "Approving......".locStr)
                 DispatchQueue.global().async {
                         defer {
                                 self.hideIndicator()
