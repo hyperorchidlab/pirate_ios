@@ -435,8 +435,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Main Addr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cHO-Cg-W3h">
-                                                    <rect key="frame" x="20" y="12" width="78" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cHO-Cg-W3h">
+                                                    <rect key="frame" x="20" y="12" width="37" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -459,8 +459,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sub Addr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CkV-e7-Uj1">
-                                                    <rect key="frame" x="20" y="12" width="71.5" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CkV-e7-Uj1">
+                                                    <rect key="frame" x="20" y="12" width="58.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -516,8 +516,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Refund Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KqX-K1-p6m">
-                                                    <rect key="frame" x="20" y="12" width="124.5" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Points Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KqX-K1-p6m">
+                                                    <rect key="frame" x="20" y="12" width="117.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -540,8 +540,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Packets Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pUw-dq-Tvz">
-                                                    <rect key="frame" x="20" y="12" width="103.5" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Points Costs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pUw-dq-Tvz">
+                                                    <rect key="frame" x="20" y="12" width="96" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -640,8 +640,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Get Free HOP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IUO-YY-rxI">
-                                                    <rect key="frame" x="20" y="12" width="105.5" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Get Free Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IUO-YY-rxI">
+                                                    <rect key="frame" x="20" y="12" width="117.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -664,8 +664,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Token" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0vK-3v-fiY">
-                                                    <rect key="frame" x="20" y="12" width="46" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0vK-3v-fiY">
+                                                    <rect key="frame" x="20" y="12" width="47.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -734,7 +734,7 @@
             </objects>
             <point key="canvasLocation" x="-1032" y="136"/>
         </scene>
-        <!--Market-->
+        <!--Pools-->
         <scene sceneID="zC3-86-Ojb">
             <objects>
                 <tableViewController storyboardIdentifier="MarketListVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H5E-Rb-xLf" customClass="MarketListTVC" customModule="Pirate" customModuleProvider="target" sceneMemberID="viewController">
@@ -825,7 +825,7 @@
                             <outlet property="delegate" destination="H5E-Rb-xLf" id="0to-8y-idR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Market" id="IkB-ev-Zdz"/>
+                    <navigationItem key="navigationItem" title="Pools" id="IkB-ev-Zdz"/>
                     <connections>
                         <segue destination="Utx-3N-5Sv" kind="show" identifier="ShowRechargePage" id="G8E-gh-ZBs"/>
                     </connections>
@@ -1022,8 +1022,8 @@
                                             <constraint firstAttribute="height" constant="28" id="jWb-D7-c7q"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3l-CH-awi">
-                                        <rect key="frame" x="40" y="15.5" width="44.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3l-CH-awi">
+                                        <rect key="frame" x="40" y="15.5" width="51" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.098039215690000001" green="0.10980392160000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1286,7 +1286,7 @@
                                     <constraint firstItem="yvP-PA-nqr" firstAttribute="top" secondItem="Bsk-y5-BUs" secondAttribute="bottom" constant="2" id="wrg-2S-qFl"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token to spend" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lkk-Oc-ipT">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Points to use" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lkk-Oc-ipT">
                                 <rect key="frame" x="16" y="172" width="240" height="44"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1296,8 +1296,8 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Packet Price:1000 M/HOP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcG-Kf-HYM">
-                                <rect key="frame" x="227" y="416" width="171" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points cost:1000 M/HOP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcG-Kf-HYM">
+                                <rect key="frame" x="236" y="416" width="162" height="20"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
                                 <color key="textColor" red="0.062745098039215685" green="0.086274509803921567" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1347,7 +1347,6 @@
                         <outlet property="backFor500M" destination="R9q-em-jdl" id="Kkz-14-PQg"/>
                         <outlet property="backFor5G" destination="aD5-w4-Nik" id="wUY-3g-OQN"/>
                         <outlet property="backFor8G" destination="0pX-VZ-Xc3" id="hhH-PU-eBz"/>
-                        <outlet property="currentTokenName1" destination="Q3l-CH-awi" id="2Tb-sa-Vyd"/>
                         <outlet property="currentTokenName2" destination="dpi-wN-1Y3" id="7p5-S6-ZnO"/>
                         <outlet property="packetPrice" destination="BcG-Kf-HYM" id="2Au-gW-DoO"/>
                         <outlet property="tokenBalance" destination="Img-L7-HDs" id="SWb-od-pLb"/>
@@ -1412,8 +1411,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOW-Uf-lAj">
-                                            <rect key="frame" x="16" y="10" width="75" height="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Pools Membership" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOW-Uf-lAj">
+                                            <rect key="frame" x="16" y="10" width="181" height="24"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
                                             <color key="textColor" red="0.098039215690000001" green="0.10980392160000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1458,7 +1457,7 @@
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="qs7-Hk-06Q"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="16"/>
-                                                            <state key="normal" title="Recharge"/>
+                                                            <state key="normal" title="Update"/>
                                                             <connections>
                                                                 <action selector="rechargeThisPool:" destination="zAF-Eh-IBg" eventType="touchUpInside" id="Obf-vX-MTn"/>
                                                             </connections>
@@ -1560,16 +1559,10 @@
                                             <constraint firstAttribute="height" constant="28" id="qOZ-zS-REb"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSp-iM-fzA">
-                                        <rect key="frame" x="40" y="16.5" width="40" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSp-iM-fzA">
+                                        <rect key="frame" x="40" y="16.5" width="46" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.098039215686274508" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NI5-sh-sB9">
-                                        <rect key="frame" x="398" y="26" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" red="0.098039215690000001" green="0.10980392160000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-w0-kte">
@@ -1584,13 +1577,11 @@
                                     <constraint firstItem="gLS-Sd-UNV" firstAttribute="leading" secondItem="ySv-pi-Au8" secondAttribute="leading" constant="6" id="3o9-oO-DoP"/>
                                     <constraint firstItem="zSp-iM-fzA" firstAttribute="centerY" secondItem="ySv-pi-Au8" secondAttribute="centerY" id="EN6-A3-V30"/>
                                     <constraint firstAttribute="height" constant="52" id="Eu9-lE-A1F"/>
-                                    <constraint firstAttribute="trailing" secondItem="NI5-sh-sB9" secondAttribute="trailing" constant="6" id="HiQ-We-Tei"/>
-                                    <constraint firstItem="LYz-w0-kte" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zSp-iM-fzA" secondAttribute="trailing" constant="8" symbolic="YES" id="Ib0-pn-pOH"/>
+                                    <constraint firstItem="LYz-w0-kte" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zSp-iM-fzA" secondAttribute="trailing" symbolic="YES" id="Ib0-pn-pOH"/>
                                     <constraint firstItem="zSp-iM-fzA" firstAttribute="leading" secondItem="gLS-Sd-UNV" secondAttribute="trailing" constant="6" id="KfY-IN-WeA"/>
+                                    <constraint firstAttribute="trailing" secondItem="LYz-w0-kte" secondAttribute="trailing" constant="10" id="Mvo-SU-rRA"/>
                                     <constraint firstItem="LYz-w0-kte" firstAttribute="centerY" secondItem="ySv-pi-Au8" secondAttribute="centerY" id="XFg-Rw-k8h"/>
                                     <constraint firstItem="gLS-Sd-UNV" firstAttribute="centerY" secondItem="ySv-pi-Au8" secondAttribute="centerY" id="Zrm-nw-Ks5"/>
-                                    <constraint firstItem="NI5-sh-sB9" firstAttribute="leading" secondItem="LYz-w0-kte" secondAttribute="trailing" constant="4" id="dJ4-j6-kfI"/>
-                                    <constraint firstItem="NI5-sh-sB9" firstAttribute="centerY" secondItem="ySv-pi-Au8" secondAttribute="centerY" id="o8I-Pl-5g7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEC-pG-4wl">
@@ -1659,9 +1650,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="ERC20Name" destination="zSp-iM-fzA" id="hMG-UD-FEY"/>
                         <outlet property="ETHBalance" destination="gds-JW-qiy" id="Do9-2h-hFh"/>
-                        <outlet property="Erc20Name2" destination="NI5-sh-sB9" id="Rws-i7-2TU"/>
                         <outlet property="SubedPoolTV" destination="zZm-pB-z3P" id="HV7-SZ-EN8"/>
                         <outlet property="TokenBalance" destination="LYz-w0-kte" id="wSc-I9-IZo"/>
                         <outlet property="reloadWalletBarItem" destination="rsg-rc-rhC" id="tlB-ra-5iV"/>
@@ -1692,11 +1681,11 @@
             </objects>
             <point key="canvasLocation" x="2012" y="-815"/>
         </scene>
-        <!--Market-->
+        <!--Pools-->
         <scene sceneID="Nup-O7-GI8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B4T-ED-EPK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Market" image="Recharge_icon_s" selectedImage="Recharge_icon" id="D8T-nd-U3n"/>
+                    <tabBarItem key="tabBarItem" title="Pools" image="Recharge_icon_s" selectedImage="Recharge_icon" id="D8T-nd-U3n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jle-Hh-hn5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

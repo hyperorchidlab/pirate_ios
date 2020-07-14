@@ -45,7 +45,7 @@ class UserDetailsTableViewCell: UITableViewCell {
                 poolShortName.text = p?.ShortName
                 refundTime.text = Date.init(timeIntervalSince1970: TimeInterval(u.expire)).stringVal //u.expire
                 packetBalance.text = "\(u.packetBalance.ToPackets())\n "+"Packets".locStr
-                tokenBalance.text = "\(u.tokenBalance.ToCoin())HOP\n "+"Token".locStr
+                tokenBalance.text = "\(u.tokenBalance.ToCoin())HOP\n "+"Points".locStr
                 credit.text = "\(u.credit.ToPackets())\n "+"Credit".locStr
                 
                 let color = BackGroudColor[index%3]

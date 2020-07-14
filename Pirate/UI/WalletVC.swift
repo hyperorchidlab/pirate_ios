@@ -12,8 +12,6 @@ import web3swift
 
 class WalletVC: UIViewController {
  
-        @IBOutlet weak var Erc20Name2: UILabel!
-        @IBOutlet weak var ERC20Name: UILabel!
         @IBOutlet weak var SubedPoolTV: UITableView!
         @IBOutlet weak var ETHBalance: UILabel!
         @IBOutlet weak var TokenBalance: UILabel!        
@@ -33,8 +31,6 @@ class WalletVC: UIViewController {
                 super.viewDidLoad()
                 NSLog(DataSyncer.sharedInstance.wallet?.toJson() ?? "")
                 self.SubedPoolTV.rowHeight = 128
-                ERC20Name.text = "HOP"//TODO::
-                Erc20Name2.text = "HOP"//TODO::
                 self.Accounts = PacketAccountant.Inst.allAccountants()
                 self.SubedPoolTV.reloadData()
         }

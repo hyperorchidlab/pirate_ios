@@ -20,10 +20,11 @@
 "Failed to open hop account"="打开通证账号失败";
 "Failed to open main adress"="打开主地址失败";
 
-"Packet Price"="流量价格";
+"Approved"="审核通过";
+"Points Cost"="积分消耗比例";
 "Token no is too small"="通证数量过小";
-"Approving......"="授权中......";
-"Approve failed"="授权失败";
+"Approving......"="审核中......";
+"Approve failed"="审核失败";
 "Packaging at"="打包";
 "Buying packets......"="购买流量中......";
 "Failed"="失败";

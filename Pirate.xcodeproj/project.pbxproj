@@ -165,7 +165,6 @@
 		6932A1912407A3AE00D2DA39 /* SysSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysSetting.swift; sourceTree = "<group>"; };
 		6932A1942407BE2900D2DA39 /* DataSyncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSyncer.swift; sourceTree = "<group>"; };
 		693515C52413F9140082C3BF /* PacketAccountant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketAccountant.swift; sourceTree = "<group>"; };
-		693E92CC24A880E500149A75 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		693E92CD24A880E500149A75 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		693E92D124A8816200149A75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		693E92D324A8816400149A75 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -189,6 +188,7 @@
 		6972E3C12415E64F00550A4A /* ReceiptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptData.swift; sourceTree = "<group>"; };
 		697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
+		6985D5DD24BD4F2400B77696 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		698A510023FBACDA00836E26 /* NEKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = NEKit.framework.dSYM; path = Carthage/Build/iOS/NEKit.framework.dSYM; sourceTree = "<group>"; };
 		698A510323FBAD2E00836E26 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
 		698A510723FBF9C700836E26 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
@@ -727,7 +727,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				69980C3123F78D3E00829B09 /* Base */,
-				693E92CC24A880E500149A75 /* zh-Hans */,
+				6985D5DD24BD4F2400B77696 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

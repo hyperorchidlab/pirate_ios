@@ -3,7 +3,7 @@
 "0ll-XR-M2Q.text" = "Detail";
 
 /* Class = "UILabel"; text = "Token"; ObjectID = "0vK-3v-fiY"; */
-"0vK-3v-fiY.text" = "通证地址";
+"0vK-3v-fiY.text" = "积分地址";
 
 /* Class = "UILabel"; text = "500M"; ObjectID = "1Bi-bf-Zno"; */
 "1Bi-bf-Zno.text" = "500M";
@@ -36,7 +36,7 @@
 "ACs-f6-3f9.title" = "账号";
 
 /* Class = "UILabel"; text = "Packet Price:1000 M/HOP"; ObjectID = "BcG-Kf-HYM"; */
-"BcG-Kf-HYM.text" = "Packet Price:1000 M/HOP";
+"BcG-Kf-HYM.text" = "积分价值:1000 M/HOP";
 
 /* Class = "UILabel"; text = "2G"; ObjectID = "Bsk-y5-BUs"; */
 "Bsk-y5-BUs.text" = "2G";
@@ -51,7 +51,7 @@
 "CkV-e7-Uj1.text" = "流量地址";
 
 /* Class = "UITabBarItem"; title = "Market"; ObjectID = "D8T-nd-U3n"; */
-"D8T-nd-U3n.title" = "流量市场";
+"D8T-nd-U3n.title" = "矿池";
 
 /* Class = "UITableViewSection"; headerTitle = "System Parameter"; ObjectID = "DSZ-fx-UCA"; */
 "DSZ-fx-UCA.headerTitle" = "系统参数";
@@ -72,7 +72,7 @@
 "Iad-uE-SAD.text" = "扫码";
 
 /* Class = "UINavigationItem"; title = "Market"; ObjectID = "IkB-ev-Zdz"; */
-"IkB-ev-Zdz.title" = "流量市场";
+"IkB-ev-Zdz.title" = "矿池";
 
 /* Class = "UILabel"; text = "0.0"; ObjectID = "Img-L7-HDs"; */
 "Img-L7-HDs.text" = "0.0";
@@ -84,13 +84,13 @@
 "KnF-Jm-UxU.text" = "1 HOP";
 
 /* Class = "UILabel"; text = "Refund Duration"; ObjectID = "KqX-K1-p6m"; */
-"KqX-K1-p6m.text" = "退款有效期";
+"KqX-K1-p6m.text" = "积分有效期";
 
 /* Class = "UILabel"; text = "0.0"; ObjectID = "LYz-w0-kte"; */
 "LYz-w0-kte.text" = "0.0";
 
 /* Class = "UITextField"; placeholder = "Token to spend"; ObjectID = "Lkk-Oc-ipT"; */
-"Lkk-Oc-ipT.placeholder" = "需要花费的通证";
+"Lkk-Oc-ipT.placeholder" = "花费积分";
 
 /* Class = "UILabel"; text = "BAS:"; ObjectID = "MF2-tj-uqp"; */
 "MF2-tj-uqp.text" = "寻址服务:";
@@ -108,7 +108,7 @@
 "PsM-PE-LPm.headerTitle" = "账号";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Q3l-CH-awi"; */
-"Q3l-CH-awi.text" = "Label";
+"Q3l-CH-awi.text" = "积分余额";
 
 /* Class = "UILabel"; text = "5G"; ObjectID = "QET-36-nvq"; */
 "QET-36-nvq.text" = "5G";
@@ -138,7 +138,7 @@
 "WBp-rd-xdF.text" = "google@gmail.com";
 
 /* Class = "UILabel"; text = "My Pools"; ObjectID = "WOW-Uf-lAj"; */
-"WOW-Uf-lAj.text" = "我的矿池";
+"WOW-Uf-lAj.text" = "我的会员卡";
 
 /* Class = "UILabel"; text = "Import wallet by QR Scan"; ObjectID = "WTx-0N-lUd"; */
 "WTx-0N-lUd.text" = "扫码导入账号";
@@ -171,7 +171,7 @@
 "ahe-Tl-oVX.text" = "Label";
 
 /* Class = "UILabel"; text = "Supported Tokens"; ObjectID = "bCm-lS-NVA"; */
-"bCm-lS-NVA.text" = "可用通证";
+"bCm-lS-NVA.text" = "可用积分";
 
 /* Class = "UILabel"; text = "Global"; ObjectID = "c8X-E2-Lzq"; */
 "c8X-E2-Lzq.text" = "全局";
@@ -237,7 +237,7 @@
 "pOI-jI-mwY.text" = "20G";
 
 /* Class = "UILabel"; text = "Transfer token/eth to others"; ObjectID = "pR2-4H-Gpc"; */
-"pR2-4H-Gpc.text" = "转账通证或燃料";
+"pR2-4H-Gpc.text" = "转积分或燃料";
 
 /* Class = "UILabel"; text = "Packets Price"; ObjectID = "pUw-dq-Tvz"; */
 "pUw-dq-Tvz.text" = "流量价格";

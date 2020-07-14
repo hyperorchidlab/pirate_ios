@@ -17,7 +17,6 @@ class RechargeViewController: UIViewController {
         @IBOutlet weak var TokenNoTF: UITextField!
         @IBOutlet weak var tokenBalance: UILabel!
         @IBOutlet weak var currentTokenName2: UILabel!
-        @IBOutlet weak var currentTokenName1: UILabel!
         
         @IBOutlet weak var backFor20G: UIView!
         @IBOutlet weak var backFor8G: UIView!
@@ -41,10 +40,10 @@ class RechargeViewController: UIViewController {
                 super.viewDidLoad()
                 self.packetsPrice = (DataSyncer.sharedInstance.ethSetting?.MBytesPerToken.DoubleV())!
                 self.currentTokenName2.text = "HOP"
-                self.currentTokenName1.text = "HOP"
+//                self.currentTokenName1.text = "HOP"
                 
                 let setting = DataSyncer.sharedInstance.ethSetting!
-                self.packetPrice.text = "Packet Price".locStr+": \(setting.MBytesPerToken) M/HOP"
+                self.packetPrice.text = "Points Cost".locStr+": \(setting.MBytesPerToken) M/HOP"
                 
                 self.backFor500M.layer.cornerRadius = 10
                 self.backFor1G.layer.cornerRadius = 10
@@ -81,7 +80,7 @@ class RechargeViewController: UIViewController {
         
         @IBAction func BuyDynamicPackets(_ sender: UIButton) {
                 guard let token_no = (TokenNoTF.text as NSString?)?.doubleValue, token_no > 0.1 else{
-                        self.ShowTips(msg: "Token no is too small".locStr)
+                        self.ShowTips(msg: "Points no is too less".locStr)
                         return
                 }
                 
@@ -106,31 +105,31 @@ class RechargeViewController: UIViewController {
                         return
                 }
                 
-                self.hideIndicator()
-                self.showIndicator(withTitle: "", and: "Packaging at".locStr + ":[\(approve_tx.hash)]")
+//                self.hideIndicator()
+//                self.showIndicator(withTitle: "", and: "Packaging at".locStr + ":[\(approve_tx.hash)]")
                 var success = EthUtil.sharedInstance.waitTilResult(txHash: approve_tx.hash)
                 if !success{
                         self.ShowTips(msg: "Approve failed".locStr)
                         return
                 }
                 
-                self.hideIndicator()
-                self.showIndicator(withTitle: "", and: "Buying packets......".locStr)
-                guard let buy_tx = EthUtil.sharedInstance.buyAction(user:user,
+//                self.hideIndicator()
+//                self.showIndicator(withTitle: "", and: "Buying packets......".locStr)
+                guard let _ = EthUtil.sharedInstance.buyAction(user:user,
                                                                     from:pool_addr,
                                                                     tokenNo:no,
                                                                     priKey:pri_data) else{
                         self.ShowTips(msg: "Failed".locStr)
                         return
                 }
-                self.hideIndicator()
-                self.showIndicator(withTitle: "", and: "Packaging at".locStr + "[\(buy_tx.hash)]")
+//                self.hideIndicator()
+//                self.showIndicator(withTitle: "", and: "Packaging at".locStr + "[\(buy_tx.hash)]")
                 success = EthUtil.sharedInstance.waitTilResult(txHash: approve_tx.hash)
                 if !success{
                         self.ShowTips(msg: "Failed".locStr)
                         return
                 }
-                self.ShowTips(msg: "Success".locStr + "[\(buy_tx.hash)]")
+                self.ShowTips(msg: "Approved".locStr)
         }
         
         func _buyAction(tokenNo: Double) {
@@ -154,13 +153,12 @@ class RechargeViewController: UIViewController {
                                 return
                         }
                         
-                        
                         do{
                                 try wallet.Open(auth: pwd)
                                 guard let pri_data = wallet.privateKey?.mainPriKey else{
                                         return
                                 }
-
+                                
                                 DispatchQueue.global(qos: .background).async {
                                         
                                         self._ethAction(priKey:pri_data,
@@ -172,7 +170,7 @@ class RechargeViewController: UIViewController {
                                 
                         }catch let err{
                                 NSLog("=======>buy packets failed\(err.localizedDescription)")
-                                self.ShowTips(msg: "Buy err:\(err.localizedDescription)]")
+                                self.ShowTips(msg: "\(err.localizedDescription)]")
                         }
                 }
         }
