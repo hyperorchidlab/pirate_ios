@@ -40,7 +40,7 @@ class WalletVC: UIViewController {
                 
                 if let _ =  DataSyncer.sharedInstance.wallet?.mainAddress {
                         reloadWalletBarItem.image = UIImage.init(named: "fresh-icon")
-                        loadMyUserData()
+//                        loadMyUserData()
 //                        loadBalance(addr: addr)
                 } else {
                         reloadWalletBarItem.image = UIImage.init(named: "add")
