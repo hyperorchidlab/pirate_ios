@@ -19,7 +19,7 @@ class RechargeSimpleViewController: UIViewController {
         super.viewDidLoad()
         self.packetsPrice = (DataSyncer.sharedInstance.ethSetting?.MBytesPerToken.DoubleV())!
         let setting = DataSyncer.sharedInstance.ethSetting!
-        self.packetPrice.text = "Points Cost".locStr+": \(setting.MBytesPerToken) M/HOP"
+        self.packetPrice.text = "Points Cost".locStr+": \(setting.MBytesPerToken) M/Points"
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(tap(_:)))
         self.view.addGestureRecognizer(tap)
                        
