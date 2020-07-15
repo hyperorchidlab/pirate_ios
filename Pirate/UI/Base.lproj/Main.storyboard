@@ -908,7 +908,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Pools Membership" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOW-Uf-lAj">
-                                            <rect key="frame" x="16" y="10" width="181" height="24"/>
+                                            <rect key="frame" x="16" y="10" width="362" height="24"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
                                             <color key="textColor" red="0.098039215690000001" green="0.10980392160000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -917,6 +917,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstItem="WOW-Uf-lAj" firstAttribute="centerY" secondItem="tZ9-XV-z0j" secondAttribute="centerY" id="9Eg-AE-PFZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="WOW-Uf-lAj" secondAttribute="trailing" constant="16" id="Hil-TK-4cB"/>
                                         <constraint firstItem="WOW-Uf-lAj" firstAttribute="leading" secondItem="tZ9-XV-z0j" secondAttribute="leading" constant="16" id="suh-V6-Rw5"/>
                                     </constraints>
                                 </view>

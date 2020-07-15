@@ -75,7 +75,7 @@
 "OK"="确定";
 "Cancel"="取消";
 
-"Syncing from block chain......"="同步区块链中......";
+"Syncing......"="同步中......";
 "Loading....."="加载中......";
 "Options"="选项";
 "Create"="创建";

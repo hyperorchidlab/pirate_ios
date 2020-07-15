@@ -13,17 +13,17 @@ import web3swift
 class SystemSettingTableViewController: UITableViewController {
 
         @IBOutlet var settingTableView: UITableView!
-        @IBOutlet weak var refundDurationCell: UITableViewCell!
-        @IBOutlet weak var packetsPriceCell: UITableViewCell!
+//        @IBOutlet weak var refundDurationCell: UITableViewCell!
+//        @IBOutlet weak var packetsPriceCell: UITableViewCell!
         @IBOutlet weak var mainAddrCell: UITableViewCell!
-        @IBOutlet weak var subAddrCell: UITableViewCell!
-        @IBOutlet weak var curTokenCell: UITableViewCell!
-        @IBOutlet weak var curMPSCell: UITableViewCell!
-        @IBOutlet weak var curBasIPLabel: UILabel!
+//        @IBOutlet weak var subAddrCell: UITableViewCell!
+//        @IBOutlet weak var curTokenCell: UITableViewCell!
+//        @IBOutlet weak var curMPSCell: UITableViewCell!
+//        @IBOutlet weak var curBasIPLabel: UILabel!
         @IBOutlet weak var applyEthCell: UITableViewCell!
         @IBOutlet weak var applyTokenCell: UITableViewCell!
-        @IBOutlet weak var curApiUrlCell: UITableViewCell!
-        @IBOutlet weak var curTokenInUseCell: UITableViewCell!
+//        @IBOutlet weak var curApiUrlCell: UITableViewCell!
+//        @IBOutlet weak var curTokenInUseCell: UITableViewCell!
         
         var mainAddr:EthereumAddress?
         var imagePicker: UIImagePickerController!
@@ -32,11 +32,11 @@ class SystemSettingTableViewController: UITableViewController {
         override func viewDidLoad() {
                 super.viewDidLoad()
                 
-                curTokenCell.detailTextLabel?.text = HopConstants.DefaultTokenAddr
-                curMPSCell.detailTextLabel?.text = HopConstants.DefaultPaymenstService
-                curBasIPLabel.text = HopConstants.DefaultBasIP
-                curApiUrlCell.detailTextLabel?.text = "https://ropsten.infura.io/v3/"
-                curTokenInUseCell.detailTextLabel?.text = "HOP"
+//                curTokenCell.detailTextLabel?.text = HopConstants.DefaultTokenAddr
+//                curMPSCell.detailTextLabel?.text = HopConstants.DefaultPaymenstService
+//                curBasIPLabel.text = HopConstants.DefaultBasIP
+//                curApiUrlCell.detailTextLabel?.text = "https://ropsten.infura.io/v3/"
+//                curTokenInUseCell.detailTextLabel?.text = "HOP"
                 NotificationCenter.default.addObserver(self, selector: #selector(WalletChanged(_:)), name: HopConstants.NOTI_NEW_WALLET, object: nil)
         }
         
@@ -53,7 +53,7 @@ class SystemSettingTableViewController: UITableViewController {
                 }
                 DispatchQueue.main.async {
                         self.mainAddrCell.detailTextLabel?.text = w.mainAddress?.address
-                        self.subAddrCell.detailTextLabel?.text = w.subAddress
+//                        self.subAddrCell.detailTextLabel?.text = w.subAddress
                 }
         }
         
@@ -61,9 +61,9 @@ class SystemSettingTableViewController: UITableViewController {
                 super.viewWillAppear(animated)
                 if let addr = DataSyncer.sharedInstance.wallet?.mainAddress {
                         let main_addr = addr.address
-                        let sub_addr =  DataSyncer.sharedInstance.wallet?.subAddress
+//                        let sub_addr =  DataSyncer.sharedInstance.wallet?.subAddress
                         mainAddrCell.detailTextLabel?.text = main_addr
-                        subAddrCell.detailTextLabel?.text = sub_addr
+//                        subAddrCell.detailTextLabel?.text = sub_addr
                         
                         DispatchQueue.global().async {
                                 let (token_balance, eth_balance) = EthUtil.sharedInstance.Balance(userAddr: addr)
@@ -77,11 +77,11 @@ class SystemSettingTableViewController: UITableViewController {
                         }
                 }
                 
-                guard let setting = DataSyncer.sharedInstance.ethSetting else{
-                        return
-                }
-                packetsPriceCell.detailTextLabel?.text = "\(setting.MBytesPerToken) M/HOP"
-                refundDurationCell.detailTextLabel?.text = "\(setting.RefundDuration.DoubleV()/(24 * 60 * 60)) "+"Days".locStr
+//                guard let setting = DataSyncer.sharedInstance.ethSetting else{
+//                        return
+//                }
+//                packetsPriceCell.detailTextLabel?.text = "\(setting.MBytesPerToken) M/HOP"
+//                refundDurationCell.detailTextLabel?.text = "\(setting.RefundDuration.DoubleV()/(24 * 60 * 60)) "+"Days".locStr
         }
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -166,7 +166,7 @@ class SystemSettingTableViewController: UITableViewController {
                         
                         DispatchQueue.main.async {
                                 self.mainAddrCell.detailTextLabel?.text = wallet.mainAddress?.address
-                                self.subAddrCell.detailTextLabel?.text = wallet.subAddress
+//                                self.subAddrCell.detailTextLabel?.text = wallet.subAddress
                                 self.settingTableView.reloadData()
                         }
                         }

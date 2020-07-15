@@ -54,7 +54,7 @@ class MarketListTVC: UITableViewController {
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
                 if segue.identifier == "ShowRechargePage"{
-                        let vc : RechargeViewController = segue.destination as! RechargeViewController
+                        let vc : RechargeSimpleViewController = segue.destination as! RechargeSimpleViewController
                         vc.poolAddr = self.poolAddrToRecharge!
                 }
         }

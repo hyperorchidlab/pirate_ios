@@ -53,7 +53,7 @@ class WalletVC: UIViewController {
                         return
                 }
                 
-                self.showIndicator(withTitle: "", and: "Syncing from block chain......".locStr)
+                self.showIndicator(withTitle: "", and: "Syncing......".locStr)
                 DispatchQueue.global().async {
                         
                         defer{
@@ -156,7 +156,7 @@ class WalletVC: UIViewController {
                         let vc : ScannerViewController = segue.destination as! ScannerViewController
                         vc.delegate = self
                 }else if segue.identifier == "ShowRechargePage"{
-                        let vc : RechargeViewController = segue.destination as! RechargeViewController
+                        let vc : RechargeSimpleViewController = segue.destination as! RechargeSimpleViewController
                         vc.poolAddr = self.poolAddrToRecharge!
                 }
         }
