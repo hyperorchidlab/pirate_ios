@@ -13,8 +13,8 @@ import web3swift
 class WalletVC: UIViewController {
  
         @IBOutlet weak var SubedPoolTV: UITableView!
-        @IBOutlet weak var ETHBalance: UILabel!
-        @IBOutlet weak var TokenBalance: UILabel!        
+//        @IBOutlet weak var ETHBalance: UILabel!
+//        @IBOutlet weak var TokenBalance: UILabel!
         @IBOutlet weak var reloadWalletBarItem: UIBarButtonItem!
         
         
@@ -38,9 +38,10 @@ class WalletVC: UIViewController {
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 
-                if let addr =  DataSyncer.sharedInstance.wallet?.mainAddress {
+                if let _ =  DataSyncer.sharedInstance.wallet?.mainAddress {
                         reloadWalletBarItem.image = UIImage.init(named: "fresh-icon")
-                        loadBalance(addr: addr)
+                        loadMyUserData()
+//                        loadBalance(addr: addr)
                 } else {
                         reloadWalletBarItem.image = UIImage.init(named: "add")
                         return
@@ -72,29 +73,30 @@ class WalletVC: UIViewController {
                 
         }
         
-        func loadBalance(addr:EthereumAddress){
-                
-                DispatchQueue.global(qos: .background).async {
-                        let (tokenBalance, ethBalance) = EthUtil.sharedInstance.Balance(userAddr: addr)
-                        DispatchQueue.main.async {
-                                self.ETHBalance.text = "\(ethBalance.ToCoin())"
-                                self.TokenBalance.text = "\(tokenBalance.ToCoin())"
-                        }
-                }
-        }
+//        func loadBalance(addr:EthereumAddress){
+//
+//                DispatchQueue.global(qos: .background).async {
+//                        let (tokenBalance, ethBalance) = EthUtil.sharedInstance.Balance(userAddr: addr)
+//                        DispatchQueue.main.async {
+//                                self.ETHBalance.text = "\(ethBalance.ToCoin())"
+//                                self.TokenBalance.text = "\(tokenBalance.ToCoin())"
+//                        }
+//                }
+//        }
         
-        @IBAction func reloadMyPools(_ sender: UIButton) {
-                loadMyUserData()
-        }
+//        @IBAction func reloadMyPools(_ sender: UIButton) {
+//                loadMyUserData()
+//        }
         
         @IBAction func reloadBalance(_ sender: Any) {
-                guard let addr =  DataSyncer.sharedInstance.wallet?.mainAddress else {
-                        self.showWalletOption()
-                        return
-                }
-                self.showIndicator(withTitle: "", and: "Loading.....".locStr)
-                loadBalance(addr: addr)
-                self.hideIndicator()
+                loadMyUserData()
+//                guard let addr =  DataSyncer.sharedInstance.wallet?.mainAddress else {
+//                        self.showWalletOption()
+//                        return
+//                }
+//                self.showIndicator(withTitle: "", and: "Loading.....".locStr)
+//                loadBalance(addr: addr)
+//                self.hideIndicator()
         }
         
         func showWalletOption(){
@@ -257,7 +259,8 @@ extension WalletVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
                         
                         w.saveToDisk()
                         DataSyncer.sharedInstance.loadWallet()
-                        self.loadBalance(addr: (DataSyncer.sharedInstance.wallet?.mainAddress)!)
+                        self.loadMyUserData()
+//                        self.loadBalance(addr: (DataSyncer.sharedInstance.wallet?.mainAddress)!)
                         DispatchQueue.main.async {
                                 self.reloadWalletBarItem.image = UIImage.init(named: "fresh-icon")
                         }

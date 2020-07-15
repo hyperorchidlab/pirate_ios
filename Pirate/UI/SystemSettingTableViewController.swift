@@ -116,32 +116,19 @@ class SystemSettingTableViewController: UITableViewController {
                                 }
                                 importFromCamera()
                         case 4:
-                                guard DataSyncer.sharedInstance.wallet?.mainAddress != nil else{
-                                        self.ShowTips(msg: "No valid account".locStr)
-                                        return
-                                }
-                                self.generateQR()
-                        default:
                                 guard let str = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text else {
                                         return
                                 }
                                 UIPasteboard.general.string = str
                                 self.ShowTips(msg: "Copy Success".locStr)
+                        default:
                                 return
                         }
                 }else if indexPath.section == 1{
-                        if indexPath.row == 0{
-                                self.changeBas()
-                        }
-                }else if indexPath.section == 2{
                         switch indexPath.row {
                         case 0:
-                                self.changeTokenInUse()
-                        case 1:
-                                self.changeAPIURL()
-                        case 2:
                                 self.getFreeEth()
-                        case 3:
+                        case 1:
                                 self.getFreeHOP()
                         default:
                                 guard let str = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text else {
