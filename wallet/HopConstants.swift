@@ -31,6 +31,7 @@ public struct HopConstants {
         static public let SocketPortInit  = UInt32(52000)
         static public let SocketPortRange = UInt32(12000)
         
+        static public let GroupImageUrl = "https://hopwesley.github.io/group.jpg"
         static public let DefaultTokenAddr = "0xAd44c8493dE3FE2B070f33927A315b50Da9a0e25"
         static public let DefaultPaymenstService = "0x4291d9Ff189D90Ba875E0fc1Da4D602406DD7D6e"
         static public let DefaultInfruaToken = "f3245cef90ed440897e43efc6b3dd0f7"
