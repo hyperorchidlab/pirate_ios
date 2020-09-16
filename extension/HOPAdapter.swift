@@ -119,7 +119,7 @@ class HOPAdapter: AdapterSocket {
                         
                         let len = data.ToLen()
                         if len > HOPAdapter.MAX_BUFFER_SIZE{
-                                throw HopError.minerErr("too big data len[\(len)]")
+                                throw HopError.minerErr("--------->didRead[\(objID)]too big data len[\(len)]")
                         }
                         
                         if internalStatus == .readingSetupACKLen{
@@ -250,7 +250,7 @@ class HOPAdapter: AdapterSocket {
                 }
                 let len = data.ToLen()
                 if len > HOPAdapter.MAX_BUFFER_SIZE{
-                        throw HopError.minerErr("too big data len[\(len)]")
+                        throw HopError.minerErr("--------->readLen[\(objID)]too big data len[\(len)]")
                 }
                 self.socket.readDataTo(length: len)
                 self.readHead = false
