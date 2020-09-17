@@ -93,11 +93,7 @@ public class RcpWire:NSObject{
                                         self.udpSocket.close()
                                         self.timer?.invalidate()
                                         monitor.RcpWireExit()
-                                        guard let e =  err as? HopError else{
-                                                NSLog("--------->rcp receive wire[\(self.poolAddr)] err:\(err.localizedDescription)")
-                                                return
-                                        }
-                                        NSLog("--------->rcp receive wire[\(self.poolAddr)] exit for:\(e.description)")
+                                        NSLog("--------->rcp receive wire[\(self.poolAddr)] err:\(err.localizedDescription)")
                                 }
                         }
                 }

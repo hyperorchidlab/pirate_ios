@@ -91,11 +91,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         
                 }catch let err{
                        completionHandler(err)
-                        guard let hop_err = err as? HopError else{
-                                NSLog("--------->ethereum fetcher init failed\(err.localizedDescription)\n")
-                                return
-                        }
-                        NSLog("--------->ethereum fetcher init failed\(hop_err.description)\n")
+                       NSLog("--------->ethereum fetcher init failed\(err.localizedDescription)\n")
                }
         }
         
@@ -114,6 +110,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         NEIPv4Route(destinationAddress: "172.16.0.0", subnetMask: "255.240.0.0"),
                         NEIPv4Route(destinationAddress: "192.168.0.0", subnetMask: "255.255.0.0"),
                         NEIPv4Route(destinationAddress: "17.0.0.0", subnetMask: "255.0.0.0"),
+                        NEIPv4Route(destinationAddress: HopConstants.DefaultBasIP, subnetMask: "255.255.255.255"),
                     ]
                 }
                 

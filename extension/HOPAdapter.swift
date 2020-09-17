@@ -114,11 +114,13 @@ class HOPAdapter: AdapterSocket {
                 switch internalStatus {
                 case .readingSetupACKLen, .readingProbACKLen :
                         guard data.count == 4 else {
+                                 NSLog("--------->[\(objID)]didRead data.count [\(data.count)]---")
                                 throw HopError.minerErr("miner setup lent protocol failed")
                         }
                         
                         let len = data.ToLen()
                         if len > HOPAdapter.MAX_BUFFER_SIZE{
+                                NSLog("--------->[\(objID)]didRead too big data len[\(len)]---")
                                 throw HopError.minerErr("--------->didRead[\(objID)]too big data len[\(len)]")
                         }
                         
@@ -135,6 +137,7 @@ class HOPAdapter: AdapterSocket {
 //                        NSLog("--------->[\(objID)] readingSetupACK[\(data.count)] msg:[\(String(data:data, encoding: .utf8) ?? "-")] ---")
                         let obj = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
                         guard let Success = obj?["Success"] as? Bool, Success == true else{
+                                NSLog("--------->didRead[\(objID)]miner setup protocol failed]")
                                 throw HopError.minerErr("miner setup protocol failed")
                         }
                         
@@ -148,7 +151,8 @@ class HOPAdapter: AdapterSocket {
                         let decoded_data = try self.readEncoded(data:data)
                         let obj = try JSONSerialization.jsonObject(with: decoded_data, options: []) as? [String:Any]
                         guard let Success = obj?["Success"] as? Bool, Success == true else{
-                                throw HopError.minerErr("miner setup protocol failed")
+                                NSLog("--------->didRead[\(objID)]miner readingProbACK failed]")
+                                throw HopError.minerErr("miner readingProbACK failed")
                         }
                         
                         internalStatus = .forwarding
@@ -246,10 +250,12 @@ class HOPAdapter: AdapterSocket {
         func readLen(data:Data)throws{
                 
                 guard data.count == 4 else{
+                        NSLog("--------->[\(objID)]【readLen】data.count[\(data.count)")
                         throw HopError.minerErr("parse crypted data length err:")
                 }
                 let len = data.ToLen()
                 if len > HOPAdapter.MAX_BUFFER_SIZE{
+                        NSLog("--------->[\(objID)]【readLen】too big data len[\(len)")
                         throw HopError.minerErr("--------->readLen[\(objID)]too big data len[\(len)]")
                 }
                 self.socket.readDataTo(length: len)
@@ -261,6 +267,7 @@ class HOPAdapter: AdapterSocket {
         func readEncoded(data:Data) throws-> Data {
 //                NSLog("--------->[\(objID)]forwarding read crypt data-> before:[\(data.toHexString())] ---")
                 guard let decode_data = try self.aesKey?.decrypt(data.bytes) else{
+                        NSLog("--------->[\(objID)]【readEncoded】 miner undecrypt data---")
                         throw HopError.minerErr("miner undecrypt data")
                 }
                 self.readHead = true
