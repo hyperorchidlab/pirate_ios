@@ -22,7 +22,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         let proxyServerPort :UInt16 = 41080
         let proxyServerAddress = "127.0.0.1";
         var hopInstance:Protocol?
-        var enablePacketProcessing = true
+        var enablePacketProcessing = false
         var interface: TUNInterface!
         
         override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {

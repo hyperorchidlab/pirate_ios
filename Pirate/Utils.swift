@@ -71,7 +71,7 @@ class Utils: NSObject {
 
 extension Data{
         
-        public func ToLen() -> Int{
+        public func ToInt() -> Int{
                 let b = self.bytes
                 let len = Int(b[3]) | Int(b[2])<<8 | Int(b[1])<<16 | Int(b[0])<<24
                 return len
