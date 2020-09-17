@@ -65,8 +65,7 @@ public class TxWire:NSObject{
                         let ret = self.udpSocket?.send(data: d)
                         guard ret?.isSuccess == true else{
                                 //TODO::Notification
-                                NSLog("--------->Transaction Wire send success==\(String(data: d, encoding: .utf8) ?? d.toHexString())==>")
-                                throw HopError.txWire("Transaction Wire send success==\(String(data: d, encoding: .utf8) ?? d.toHexString())==>")
+                                throw HopError.txWire("Transaction Wire send failed==\(ret?.error?.localizedDescription ?? "<-empty error->")==>")
                         }
                         cua.curTXHash = tx_data.hashV
                         cua.syncData()
