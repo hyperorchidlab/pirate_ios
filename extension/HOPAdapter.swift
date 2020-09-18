@@ -173,21 +173,23 @@ class HOPAdapter: AdapterSocket {
                         let size = decode_data.count
 
                         self.hopdelegate.CounterWork(size:size)
-                        NSLog("--------->[\(objID)]YYYYYY indeed read len [\(size)]---")
+                        delegate?.didRead(data: decode_data, from: self)
                         
-                        guard size > HOPAdapter.MAX_BUFFER_SIZE else{
-                                delegate?.didRead(data: decode_data, from: self)
-                                return
-                        }
-                        var idx = 0;
-                        while idx < size{
-                                var end = idx + HOPAdapter.MAX_BUFFER_SIZE
-                                if end > size{
-                                        end = size
-                                }
-                                delegate?.didRead(data: decode_data[idx..<end], from: self)
-                                idx = end
-                        }
+                        NSLog("--------->[\(objID)]YYYYYY indeed read len [\(size)]---")
+//                        
+//                        guard size > HOPAdapter.MAX_BUFFER_SIZE else{
+//                                delegate?.didRead(data: decode_data, from: self)
+//                                return
+//                        }
+//                        var idx = 0;
+//                        while idx < size{
+//                                var end = idx + HOPAdapter.MAX_BUFFER_SIZE
+//                                if end > size{
+//                                        end = size
+//                                }
+//                                delegate?.didRead(data: decode_data[idx..<end], from: self)
+//                                idx = end
+//                        }
                         
                        
                 default:

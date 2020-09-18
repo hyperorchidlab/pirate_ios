@@ -126,10 +126,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 proxySettings.matchDomains = [""]
                 
                 if enablePacketProcessing {
-                    let DNSSettings = NEDNSSettings(servers: ["198.18.0.1"])
-                    DNSSettings.matchDomains = [""]
-                    DNSSettings.matchDomainsNoSearch = false
-                    networkSettings.dnsSettings = DNSSettings
+                        let DNSSettings = NEDNSSettings(servers: ["198.18.0.1"])
+                        DNSSettings.matchDomains = [""]
+                        DNSSettings.matchDomainsNoSearch = false
+                        networkSettings.dnsSettings = DNSSettings
                 }
                 
 
