@@ -71,6 +71,22 @@ extension UIViewController {
             hud.hide(animated: true, afterDelay: 3)
         }}
         
+        
+        func ConfirmAlert(YesAction:@escaping (()->Void), NoAction:(()->Void)? = nil){ DispatchQueue.main.async {
+                
+                guard let alertVC = instantiateViewController(storyboardName: "Main", viewControllerIdentifier:"ConfirmViewControllerID") as? ConfirmViewController else{
+                        return
+                }
+                
+                alertVC.OKAction = YesAction
+                alertVC.CancelAction = NoAction
+                
+                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert);
+                alertController.setValue(alertVC, forKey: "contentViewController");
+                self.present(alertController, animated: true, completion: nil);
+                }
+        }
+        
         func CustomerAlert(name:String){ DispatchQueue.main.async {
                 
                 let alertVC = instantiateViewController(storyboardName: "Main", viewControllerIdentifier:name)
@@ -93,6 +109,13 @@ extension UIViewController {
                 }
         }
         
+        func ShowOneInput(title: String, placeHolder:String?, type:UIKeyboardType = .default, nextAction:((String?, Bool)->Void)?) {
+                
+                let ap = AlertPayload(title: title, placeholderTxt: placeHolder, securityShow:false, keyType: type, action: nextAction)
+                
+                LoadAlertFromStryBoard(payload: ap)
+        }
+        
         func ShowOnePassword(nextAction:(()->Void)? = nil) {
                 
                 self.showIndicator(withTitle:"",  and: "Opening......".locStr)
@@ -103,9 +126,9 @@ extension UIViewController {
                                 self.hideIndicator()
                                 return
                         }
-                        guard true == DataSyncer.sharedInstance.wallet!.Open(auth: pwd) else{
+                        do {try DataSyncer.sharedInstance.wallet!.Open(auth: pwd) } catch let err{
                                 self.hideIndicator()
-                                self.ShowTips(msg: "Author failed".locStr)
+                                self.ShowTips(msg: err.localizedDescription)
                                 return
                         }
                         self.hideIndicator()

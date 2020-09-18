@@ -85,18 +85,8 @@ class HomeVC: UIViewController {
                
                 guard  w.IsOpen() else{
 
-                        self.showIndicator(withTitle: "Account".locStr, and: "Open Account".locStr)
-                        self.ShowPassword() { (password, isOK) in
-                                if password == nil || isOK == false{
-                                        self.hideIndicator()
-                                       return
-                                }
-                                do {
-                                        try w.Open(auth: password!)
-                                        self.hideIndicator()
-                                        try self._startVPN(wallet: w, pool: pool, miner: miner)
-                                }catch let err{
-                                        self.hideIndicator()
+                        self.ShowOnePassword() {
+                                do {try self._startVPN(wallet: w, pool: pool, miner: miner)}catch let err{
                                         self.ShowTips(msg: err.localizedDescription)
                                 }
                         }

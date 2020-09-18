@@ -106,33 +106,33 @@ class RechargeSimpleViewController: UIViewController {
                 }
                 
                 self.showIndicator(withTitle: "Account".locStr, and: "Open account......".locStr)
-                self.ShowPassword { (password, isOK) in
-                        defer {
-                                self.hideIndicator()
-                        }
-                        guard let pwd = password, isOK else{
-                                return
-                        }
-                        
-                        do{
-                                try wallet.Open(auth: pwd)
-                                guard let pri_data = wallet.privateKey?.mainPriKey else{
-                                        return
-                                }
-                                
-                                DispatchQueue.global(qos: .background).async {
-                                        
-                                        self._ethAction(priKey:pri_data,
-                                                        tokenNo: tokenNo,
-                                                        user: wallet.mainAddress!,
-                                                        pool: pool_addr)
-                                }
-                                
-                                
-                        }catch let err{
-                                NSLog("=======>buy packets failed\(err.localizedDescription)")
-                                self.ShowTips(msg: "\(err.localizedDescription)]")
-                        }
-                }
+//                self.ShowPassword { (password, isOK) in
+//                        defer {
+//                                self.hideIndicator()
+//                        }
+//                        guard let pwd = password, isOK else{
+//                                return
+//                        }
+//                        
+//                        do{
+//                                try wallet.Open(auth: pwd)
+//                                guard let pri_data = wallet.privateKey?.mainPriKey else{
+//                                        return
+//                                }
+//                                
+//                                DispatchQueue.global(qos: .background).async {
+//                                        
+//                                        self._ethAction(priKey:pri_data,
+//                                                        tokenNo: tokenNo,
+//                                                        user: wallet.mainAddress!,
+//                                                        pool: pool_addr)
+//                                }
+//                                
+//                                
+//                        }catch let err{
+//                                NSLog("=======>buy packets failed\(err.localizedDescription)")
+//                                self.ShowTips(msg: "\(err.localizedDescription)]")
+//                        }
+//                }
         }
 }

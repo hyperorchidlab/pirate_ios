@@ -86,91 +86,91 @@ class SystemSettingTableViewController: UITableViewController {
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 
-                if indexPath.section == 0{
-                        
-                        switch indexPath.row {
-                        case 0:
-                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                       self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
-                                               self.createWallet()
-                                       })
-                                       return
-                               }
-                               createWallet()
-                        case 1:
-                                self.exportWallet()
-                        case 2:
-                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                        self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
-                                                self.importFromLib()
-                                        })
-                                        return
-                                }
-                                importFromLib()
-                        case 3:
-                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-                                        self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
-                                                self.importFromCamera()
-                                        })
-                                        return
-                                }
-                                importFromCamera()
-                        case 4:
-                                guard let str = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text else {
-                                        return
-                                }
-                                UIPasteboard.general.string = str
-                                self.ShowTips(msg: "Copy Success".locStr)
-                        default:
-                                return
-                        }
-                }else if indexPath.section == 1{
-                        switch indexPath.row {
-                        case 0:
-                                self.getFreeEth()
-                        case 1:
-                                self.getFreeHOP()
-                        default:
-                                guard let str = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text else {
-                                        return
-                                }
-                                UIPasteboard.general.string = str
-                                self.ShowTips(msg: "Copy Success".locStr)
-                                return
-                        }
-                }
+//                if indexPath.section == 0{
+//
+//                        switch indexPath.row {
+//                        case 0:
+//                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
+//                                       self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
+//                                               self.createWallet()
+//                                       })
+//                                       return
+//                               }
+//                               createWallet()
+//                        case 1:
+//                                self.exportWallet()
+//                        case 2:
+//                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
+//                                        self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
+//                                                self.importFromLib()
+//                                        })
+//                                        return
+//                                }
+//                                importFromLib()
+//                        case 3:
+//                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
+//                                        self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
+//                                                self.importFromCamera()
+//                                        })
+//                                        return
+//                                }
+//                                importFromCamera()
+//                        case 4:
+//                                guard let str = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text else {
+//                                        return
+//                                }
+//                                UIPasteboard.general.string = str
+//                                self.ShowTips(msg: "Copy Success".locStr)
+//                        default:
+//                                return
+//                        }
+//                }else if indexPath.section == 1{
+//                        switch indexPath.row {
+//                        case 0:
+//                                self.getFreeEth()
+//                        case 1:
+//                                self.getFreeHOP()
+//                        default:
+//                                guard let str = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text else {
+//                                        return
+//                                }
+//                                UIPasteboard.general.string = str
+//                                self.ShowTips(msg: "Copy Success".locStr)
+//                                return
+//                        }
+//                }
         }
 
         private func createWallet(){
                 
                 self.showIndicator(withTitle: "", and: "Create new account....".locStr)
-                self.ShowPassword() { (password , isOK) in
-                        defer {
-                                
-                                self.hideIndicator()
-                        }
-                        
-                        guard let pwd = password, isOK == true else{
-                                return
-                        }
-                        
-                        guard let wallet = HopWallet.NewWallet(auth: pwd) else{
-                                self.ShowTips(msg: "Create failed".locStr)
-                                return
-                        }
-                        
-                        wallet.saveToDisk()
-                        DataSyncer.sharedInstance.loadWallet()
-                        self.ShowTips(msg: "Create success".locStr)
-                        PacketAccountant.Inst.setEnv(MPSA: PacketAccountant.Inst.paymentAddr!, user: wallet.mainAddress!.address)
-                        
-                        DispatchQueue.main.async {
-                                self.mainAddrCell.detailTextLabel?.text = wallet.mainAddress?.address
-//                                self.subAddrCell.detailTextLabel?.text = wallet.subAddress
-                                self.settingTableView.reloadData()
-                        }
-                        }
-                        
+//                self.ShowPassword() { (password , isOK) in
+//                        defer {
+//
+//                                self.hideIndicator()
+//                        }
+//
+//                        guard let pwd = password, isOK == true else{
+//                                return
+//                        }
+//
+//                        guard let wallet = HopWallet.NewWallet(auth: pwd) else{
+//                                self.ShowTips(msg: "Create failed".locStr)
+//                                return
+//                        }
+//
+//                        wallet.saveToDisk()
+//                        DataSyncer.sharedInstance.loadWallet()
+//                        self.ShowTips(msg: "Create success".locStr)
+//                        PacketAccountant.Inst.setEnv(MPSA: PacketAccountant.Inst.paymentAddr!, user: wallet.mainAddress!.address)
+//
+//                        DispatchQueue.main.async {
+//                                self.mainAddrCell.detailTextLabel?.text = wallet.mainAddress?.address
+////                                self.subAddrCell.detailTextLabel?.text = wallet.subAddress
+//                                self.settingTableView.reloadData()
+//                        }
+//                        }
+//
                 
         }
         // MARK: - Wallet action
@@ -329,27 +329,27 @@ extension SystemSettingTableViewController: UINavigationControllerDelegate, UIIm
                         return
                 }
 
-                self.ShowPassword(){
-
-                        (password, isOK) in
-
-                        defer{
-                                self.hideIndicator()
-                        }
-
-                        if !isOK || password == nil{
-                                return
-                        }
-
-                        do {try w.Open(auth: password!)}catch let err{
-                                NSLog("=======>\(err.localizedDescription)")
-                                self.ShowTips(msg: "Author failed".locStr)
-                                return
-                        }
-
-                        w.saveToDisk()
-                        DataSyncer.sharedInstance.loadWallet()
-                        NotificationCenter.default.post(name: HopConstants.NOTI_IMPORT_WALLET, object: nil, userInfo: ["mainAddress":w.mainAddress!.address])
-                }
+//                self.ShowPassword(){
+//
+//                        (password, isOK) in
+//
+//                        defer{
+//                                self.hideIndicator()
+//                        }
+//
+//                        if !isOK || password == nil{
+//                                return
+//                        }
+//
+//                        do {try w.Open(auth: password!)}catch let err{
+//                                NSLog("=======>\(err.localizedDescription)")
+//                                self.ShowTips(msg: "Author failed".locStr)
+//                                return
+//                        }
+//
+//                        w.saveToDisk()
+//                        DataSyncer.sharedInstance.loadWallet()
+//                        NotificationCenter.default.post(name: HopConstants.NOTI_IMPORT_WALLET, object: nil, userInfo: ["mainAddress":w.mainAddress!.address])
+//                }
         }
 }

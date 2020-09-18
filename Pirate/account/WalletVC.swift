@@ -127,27 +127,27 @@ class WalletVC: UIViewController {
         }
         
         func createNewWallet(){
-                self.showIndicator(withTitle: "", and: "Create new wallet....".locStr)
-                self.ShowPassword() { (password , isOK) in
-                        defer {
-                                
-                                self.hideIndicator()
-                        }
-                        
-                        guard let pwd = password, isOK == true else{
-                                return
-                        }
-                        
-                        guard let wallet = HopWallet.NewWallet(auth: pwd) else{
-                                self.ShowTips(msg: "Create failed".locStr)
-                                return
-                        }
-                        
-                        wallet.saveToDisk()
-                        DataSyncer.sharedInstance.loadWallet()
-                        self.ShowTips(msg: "Create success".locStr)
-                        PacketAccountant.Inst.setEnv(MPSA: PacketAccountant.Inst.paymentAddr!, user: wallet.mainAddress!.address)
-                }
+//                self.showIndicator(withTitle: "", and: "Create new wallet....".locStr)
+//                self.ShowOneInput(title:"", placeHolder:"password") { (password , isOK) in
+//                        defer {
+//                                
+//                                self.hideIndicator()
+//                        }
+//                        
+//                        guard let pwd = password, isOK == true else{
+//                                return
+//                        }
+//                        
+//                        guard let wallet = HopWallet.NewWallet(auth: pwd) else{
+//                                self.ShowTips(msg: "Create failed".locStr)
+//                                return
+//                        }
+//                        
+//                        wallet.saveToDisk()
+//                        DataSyncer.sharedInstance.loadWallet()
+//                        self.ShowTips(msg: "Create success".locStr)
+//                        PacketAccountant.Inst.setEnv(MPSA: PacketAccountant.Inst.paymentAddr!, user: wallet.mainAddress!.address)
+//                }
         }
         
         // Mark View Action
@@ -240,31 +240,31 @@ extension WalletVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
                         return
                 }
                 
-                self.ShowPassword(){
-                        (password, isOK) in
-                        
-                        defer{
-                                self.hideIndicator()
-                        }
-                        
-                        if !isOK || password == nil{
-                                return
-                        }
-                        
-                        do {try w.Open(auth: password!)}catch let err{
-                                NSLog("=======>\(err.localizedDescription)")
-                                self.ShowTips(msg: "Author failed".locStr)
-                                return
-                        }
-                        
-                        w.saveToDisk()
-                        DataSyncer.sharedInstance.loadWallet()
-                        self.loadMyUserData()
-//                        self.loadBalance(addr: (DataSyncer.sharedInstance.wallet?.mainAddress)!)
-                        DispatchQueue.main.async {
-                                self.reloadWalletBarItem.image = UIImage.init(named: "fresh-icon")
-                        }
-                        NotificationCenter.default.post(name: HopConstants.NOTI_IMPORT_WALLET, object: nil, userInfo: ["mainAddress":w.mainAddress!.address])
-                }
+//                self.ShowPassword(){
+//                        (password, isOK) in
+//                        
+//                        defer{
+//                                self.hideIndicator()
+//                        }
+//                        
+//                        if !isOK || password == nil{
+//                                return
+//                        }
+//                        
+//                        do {try w.Open(auth: password!)}catch let err{
+//                                NSLog("=======>\(err.localizedDescription)")
+//                                self.ShowTips(msg: "Author failed".locStr)
+//                                return
+//                        }
+//                        
+//                        w.saveToDisk()
+//                        DataSyncer.sharedInstance.loadWallet()
+//                        self.loadMyUserData()
+////                        self.loadBalance(addr: (DataSyncer.sharedInstance.wallet?.mainAddress)!)
+//                        DispatchQueue.main.async {
+//                                self.reloadWalletBarItem.image = UIImage.init(named: "fresh-icon")
+//                        }
+//                        NotificationCenter.default.post(name: HopConstants.NOTI_IMPORT_WALLET, object: nil, userInfo: ["mainAddress":w.mainAddress!.address])
+//                }
         }
 }
