@@ -19,19 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 Utils.initDomains()
                 _ = HopSodium.initialized
-                var erc20 = DataSyncer.sharedInstance.localSetting?.tokenAddrInUse
-                if erc20 == nil{
-                        erc20 = HopConstants.DefaultTokenAddr
-                }
-                var mpc = DataSyncer.sharedInstance.localSetting?.contractAddress
-                if mpc == nil{
-                        mpc = HopConstants.DefaultPaymenstService
-                }
-                
-                do {try EthUtil.sharedInstance.initEth(ERC20: erc20!,
-                                                   Contract: mpc!,
-                                                   infura:nil,
-                                                   testNet:nil)
+                Setting.Inst.initSys()
+                do {try EthUtil.sharedInstance.initEth()
                         
                 }catch let err{
                         NSLog(err.localizedDescription)

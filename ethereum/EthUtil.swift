@@ -20,11 +20,15 @@ public final class EthUtil :NSObject{
                 super.init()
         }
         
-        public func initEth(ERC20 t:String, Contract c:String, infura i:String? = nil, testNet:Bool? = true) throws{
+        public func initEth(testNet:Bool? = true) throws{
+                
+                var erc20 = HopConstants.DefaultTokenAddr
+                
+                var mpc = HopConstants.DefaultPaymenstService
+                
                 var infura_token = HopConstants.DefaultInfruaToken
-                if i != nil{
-                        infura_token = i!
-                }
+                
+                
                 if testNet == nil || testNet! == true{
                         self.web3 = Web3.InfuraRopstenWeb3(accessToken: infura_token)
                 }else{
@@ -32,7 +36,7 @@ public final class EthUtil :NSObject{
                 }
                 
                 
-                guard let token = EthereumAddress(t), let payService = EthereumAddress(c) else{
+                guard let token = EthereumAddress(erc20), let payService = EthereumAddress(mpc) else{
                         throw HopError.eth("Invalid ethereum config".locStr)
                 }
                 

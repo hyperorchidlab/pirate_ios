@@ -165,48 +165,4 @@ public class HopAccount:NSObject, Codable{
                 let (reminder, _) = hash.remainderReportingOverflow(dividingBy: HopConstants.SocketPortRange)
                 return Int32(HopConstants.SocketPortInit + reminder)
         }
-        
-        public static func testCase(){
-                let acc = NewAcc(auth: "123")!
-                NSLog("address=>\(acc.address!)")
-                NSLog("cipher=>\(acc.cipher!)")
-                NSLog("pri=>\(acc.priKey!.toHexString())")
-                
-                let pri2 = acc.getPri(auth: "123")!
-                NSLog("pri2=>\(pri2.toHexString())")
-                let pub = getPub(address: acc.address!)!
-                NSLog("pub=>\(pub.toHexString())")
-        }
-        
-        public static func testCase2(){
-                 let acc = HopAccount(addr: "HOjutVsvYzL5JvqbvTkWV5SqwkaQYqgmbfGnWxkzaZYef", cipher: "2o1PHRWYsC25uqbv42zvNhhHsRPFtWGo6CeCkdFRBQ63yLbEjkNGoJfoRMLom5JAbhc61SAmQ3XcPy3eMTVi6Q5XcSsz2b3ruRLsWMJojFrF4M")
-                let pri2 = acc.getPri(auth: "123")!
-                NSLog("pri2=>\(pri2.toHexString())")
-                let pub = getPub(address: acc.address!)!
-                NSLog("pub=>\(pub.toHexString())")
-        }
-        
-        
-        public static func testCase3(){
-                let password = "123".data(using: .utf8)?.bytes
-                var salt = Data(repeating: 0, count: 8)
-                salt[0] = UInt8(4)
-                let ss = salt[...3]
-                NSLog("ss==\(ss.count)=>\(ss.toHexString())")
-                let deriver = try? CryptoSwift.Scrypt(password: password!,
-                                                    salt: salt.bytes,
-                                                     dkLen: 32,
-                                                     N: (1 << 15),
-                                                     r: 8,
-                                                     p: 1)
-                               
-               do {
-                       let data = try deriver!.calculate()
-
-                NSLog("deriver=>\(data.toHexString())")
-                
-               }catch let err{
-                       NSLog(err.localizedDescription)
-               }
-        }
 }

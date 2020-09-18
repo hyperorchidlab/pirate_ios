@@ -37,6 +37,7 @@
 		696A71F62514891F004EA5DE /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71F52514891F004EA5DE /* AccountViewController.swift */; };
 		696A71F825148F5F004EA5DE /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71F725148F5F004EA5DE /* ConfirmViewController.swift */; };
 		696A71FA25149F2E004EA5DE /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71F925149F2E004EA5DE /* NewAccountViewController.swift */; };
+		696A71FC2514ABD8004EA5DE /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71FB2514ABD8004EA5DE /* Setting.swift */; };
 		6972E3C22415E64F00550A4A /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E3C12415E64F00550A4A /* ReceiptData.swift */; };
 		6972E3C32415E64F00550A4A /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E3C12415E64F00550A4A /* ReceiptData.swift */; };
 		69767505242386DA002051F9 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */; };
@@ -181,6 +182,7 @@
 		696A71F52514891F004EA5DE /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		696A71F725148F5F004EA5DE /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		696A71F925149F2E004EA5DE /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
+		696A71FB2514ABD8004EA5DE /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		6972E3C12415E64F00550A4A /* ReceiptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptData.swift; sourceTree = "<group>"; };
 		697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				6932A1942407BE2900D2DA39 /* DataSyncer.swift */,
 				698A513E23FD08B900836E26 /* gfw.plist */,
 				696A71F725148F5F004EA5DE /* ConfirmViewController.swift */,
+				696A71FB2514ABD8004EA5DE /* Setting.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				69FA41922404DBCD005CF3FA /* HopConstants.swift in Sources */,
 				693515C72413F91E0082C3BF /* PacketAccountant.swift in Sources */,
 				696A71EE251467DA004EA5DE /* QRCodeShowViewController.swift in Sources */,
+				696A71FC2514ABD8004EA5DE /* Setting.swift in Sources */,
 				6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */,
 				6932A1922407A3AE00D2DA39 /* SysSetting.swift in Sources */,
 				69980C2B23F78D3E00829B09 /* SceneDelegate.swift in Sources */,

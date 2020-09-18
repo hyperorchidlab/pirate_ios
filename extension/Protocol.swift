@@ -31,9 +31,7 @@ public class Protocol:NSObject{
         
         public init(param:[String : NSObject], delegate:ProtocolDelegate)throws{
                 
-                let erc20       = (param["HOP_ADDR"] as! String)
                 let mpc         = (param["MPC_ADDR"] as! String)
-                
                 let main_pri    = param["MAIN_PRI"] as! Data
                 let sub_pri     = param["SUB_PRI"] as! Data
                 priKey          = HopPriKey(main: main_pri, sub: sub_pri)
@@ -57,10 +55,7 @@ public class Protocol:NSObject{
                 
                 super.init()
                 
-                try EthUtil.sharedInstance.initEth(ERC20: erc20,
-                                                   Contract: mpc,
-                                                   infura:param["INFU_TOKEN"] as? String,
-                                                   testNet:param["IS_TEST"] as? Bool)
+                try EthUtil.sharedInstance.initEth()
                 
                 let micChain = MicroChain(paymentAddr: mpc,
                                           pool: poolAddr,
