@@ -26,6 +26,7 @@ extension NEVPNStatus: CustomStringConvertible {
 }
 
 class HomeVC: UIViewController {
+        
         @IBOutlet weak var connectButton: UIButton!
         @IBOutlet weak var vpnStatusLabel: UILabel!
         @IBOutlet weak var minersIDLabel: UILabel!
@@ -46,6 +47,8 @@ class HomeVC: UIViewController {
                 reloadManagers()
                 let img = UIImage(named: "bg_image")!
                 self.view.backgroundColor = UIColor(patternImage: img)
+                
+                
                 NotificationCenter.default.addObserver(self, selector: #selector(VPNStatusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(SettingChanged(_:)), name: HopConstants.NOTI_LOCAL_SETTING_CHANGED, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(PoolChanged(_:)), name: HopConstants.NOTI_CHANGE_POOL, object: nil)

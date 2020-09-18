@@ -72,12 +72,15 @@ extension UIViewController {
         }}
         
         
-        func ConfirmAlert(YesAction:@escaping (()->Void), NoAction:(()->Void)? = nil){ DispatchQueue.main.async {
+        func ConfirmAlert(title:String? = nil, msg:String? = nil, YesAction:@escaping (()->Void), NoAction:(()->Void)? = nil){ DispatchQueue.main.async {
                 
-                guard let alertVC = instantiateViewController(storyboardName: "Main", viewControllerIdentifier:"ConfirmViewControllerID") as? ConfirmViewController else{
+                guard let alertVC = instantiateViewController(storyboardName: "Main",
+                                      viewControllerIdentifier:"ConfirmViewControllerID") as? ConfirmViewController else{
                         return
                 }
                 
+                alertVC.titleTxt = title
+                alertVC.msgTxt = msg
                 alertVC.OKAction = YesAction
                 alertVC.CancelAction = NoAction
                 

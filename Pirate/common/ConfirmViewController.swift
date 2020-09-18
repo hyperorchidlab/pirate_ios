@@ -18,10 +18,18 @@ class ConfirmViewController: UIViewController {
         
         var CancelAction:(()->Void)?
         var OKAction:(()->Void)!
-        
+        var titleTxt:String?
+        var msgTxt:String?
         
         override func viewDidLoad() {
                 super.viewDidLoad()
+                if let txt = titleTxt {
+                        self.CTitle.text = txt
+                }
+                
+                if let msg = msgTxt{
+                        self.Msg.text = msg
+                }
         }
         
         @IBAction func Close(_ sender: UIButton) {
