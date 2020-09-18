@@ -763,6 +763,7 @@
                     <connections>
                         <segue destination="Acn-GA-cWE" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="B4T-ED-EPK" kind="relationship" relationship="viewControllers" id="z0Z-oU-rXn"/>
+                        <segue destination="zAF-Eh-IBg" kind="relationship" relationship="viewControllers" id="vl8-d9-ND7"/>
                         <segue destination="Eqk-Vu-RXT" kind="relationship" relationship="viewControllers" id="a9o-Wc-C3W"/>
                     </connections>
                 </tabBarController>
@@ -900,7 +901,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zZm-pB-z3P">
-                                <rect key="frame" x="10" y="64" width="394" height="778"/>
+                                <rect key="frame" x="10" y="64" width="394" height="729"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="tZ9-XV-z0j">
                                     <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
@@ -1041,6 +1042,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eKm-kc-BiB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Wallet" image="wallet_icon" selectedImage="wallet_icon_s" id="jiM-eW-6Rn"/>
                     <navigationItem key="navigationItem" title="Account" id="ACs-f6-3f9">
                         <barButtonItem key="rightBarButtonItem" image="fresh-icon" id="rsg-rc-rhC">
                             <connections>
@@ -1135,5 +1137,7 @@
         <image name="pick_icon" width="20" height="20"/>
         <image name="refresh_cion" width="20" height="20"/>
         <image name="speed_icon" width="24" height="24"/>
+        <image name="wallet_icon" width="26" height="26"/>
+        <image name="wallet_icon_s" width="26" height="26"/>
     </resources>
 </document>
