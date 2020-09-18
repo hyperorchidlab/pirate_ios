@@ -8,7 +8,6 @@
 
 import UIKit
 import BigInt
-import MBProgressHUD
 
 class Utils: NSObject {
         
@@ -209,83 +208,5 @@ extension Double{
         
         public func ToCoinUnit(decimal:BigUInt = HopConstants.DefaultTokenDecimal) -> Double{
                 return self/Double(decimal)
-        }
-}
-
-extension UIViewController {
-        
-        func showIndicator(withTitle title: String, and Description:String) {DispatchQueue.main.async {
-                let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
-                Indicator.label.text = title
-                Indicator.isUserInteractionEnabled = false
-                Indicator.detailsLabel.text = Description
-                Indicator.show(animated: true)
-        }}
-        
-        func createIndicator(withTitle title: String, and Description:String) -> MBProgressHUD{
-                let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
-                Indicator.label.text = title
-                Indicator.isUserInteractionEnabled = false
-                Indicator.detailsLabel.text = Description
-                return Indicator
-        }
-        
-        func hideIndicator() {DispatchQueue.main.async {
-                MBProgressHUD.hide(for: self.view, animated: true)
-        }}
-        
-        func ShowPassword(complete:@escaping((String?, Bool) -> Void)){
-               DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Password Confirmation!".locStr, message: nil, preferredStyle: .alert)
-                       
-                       var pass_word:String? = nil
-                       
-                       alert.addAction(UIAlertAction(title: "Cancel".locStr, style: .cancel, handler: { action in
-                               complete(nil, false)
-                       }))
-
-                       alert.addTextField(configurationHandler: { textField in
-                           textField.placeholder = "password".locStr
-                       })
-
-                       
-                       alert.addAction(UIAlertAction(title: "OK".locStr, style: .default, handler: { action in
-                           pass_word = alert.textFields?.first?.text
-                               complete(pass_word, true)
-                       }))
-
-                       self.present(alert, animated: true)
-               }
-        }
-        
-        func ShowTips(msg:String){
-                DispatchQueue.main.async {
-                        let ac = UIAlertController(title: "Tips!".locStr, message: msg, preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(ac, animated: true)
-                }
-        }
-        
-        func showConfirm(msg:String, yesHandler:@escaping (() -> Void) , noHandler:(() -> Void)? = nil){
-                
-                DispatchQueue.main.async {
-                        
-                        let ac = UIAlertController(title: "Are you sure?".locStr, message: msg, preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "YES".locStr, style: .default, handler: { (alert) in
-                                yesHandler()
-                        }))
-                        ac.addAction(UIAlertAction(title: "NO".locStr, style: .default, handler: {(alert) in
-                                noHandler?()
-                        }))
-                        self.present(ac, animated: true)
-               }
-        }
-}
-extension MBProgressHUD{
-        
-        func setDetailText(msg:String) {
-                 DispatchQueue.main.async {
-                        self.detailsLabel.text = msg
-                }
         }
 }
