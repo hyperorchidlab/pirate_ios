@@ -8,7 +8,6 @@
 
 import NetworkExtension
 import NEKit
-import web3swift
 
 extension Data {
     var hexString: String {
