@@ -60,7 +60,7 @@ class MarketListTVC: UITableViewController {
         }
 
         @IBAction func BuyThisPool(_ sender: UIButton) {
-                guard let _ =  DataSyncer.sharedInstance.wallet?.mainAddress else{
+                guard let _ = HopWallet.WInst?.mainAddress else{
                         self.ShowTips(msg: "Create your account first".locStr)
                         return
                 }

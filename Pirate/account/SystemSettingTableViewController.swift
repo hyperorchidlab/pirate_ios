@@ -48,7 +48,7 @@ class SystemSettingTableViewController: UITableViewController {
         
         
         @objc func WalletChanged(_ notification: Notification?) {
-                guard let w =  DataSyncer.sharedInstance.wallet else{
+                guard let w =  HopWallet.WInst else{
                         return
                 }
                 DispatchQueue.main.async {
@@ -59,7 +59,7 @@ class SystemSettingTableViewController: UITableViewController {
         
         override func viewWillAppear(_ animated: Bool){
                 super.viewWillAppear(animated)
-                if let addr = DataSyncer.sharedInstance.wallet?.mainAddress {
+                if let addr = HopWallet.WInst?.mainAddress {
                         let main_addr = addr.address
 //                        let sub_addr =  DataSyncer.sharedInstance.wallet?.subAddress
                         mainAddrCell.detailTextLabel?.text = main_addr
@@ -186,7 +186,7 @@ class SystemSettingTableViewController: UITableViewController {
         
         func exportWallet(){
                 self.showIndicator(withTitle: "", and: "Exporting......".locStr)
-                guard let w_json = DataSyncer.sharedInstance.wallet?.toJson() else{
+                guard let w_json = HopWallet.WInst?.toJson() else{
                         self.hideIndicator()
                         return
                 }

@@ -21,6 +21,15 @@ public class SysSetting:NSObject{
                 super.init()
         }
         
+        //TODO::
+        public func initSys(){
+                HopWallet.loadWallet()
+                guard let w = HopWallet.WInst else{
+                        return
+                }
+                PacketAccountant.Inst.setEnv(MPSA: HopConstants.DefaultPaymenstService, user: w.mainAddress!.address)
+        }
+        
         public convenience init(_ sys:CDSystemSettings){
                 self.init()
                 

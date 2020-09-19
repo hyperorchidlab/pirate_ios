@@ -22,21 +22,14 @@ public final class EthUtil :NSObject{
         
         public func initEth(testNet:Bool? = true) throws{
                 
-                var erc20 = HopConstants.DefaultTokenAddr
-                
-                var mpc = HopConstants.DefaultPaymenstService
-                
-                var infura_token = HopConstants.DefaultInfruaToken
-                
-                
                 if testNet == nil || testNet! == true{
-                        self.web3 = Web3.InfuraRopstenWeb3(accessToken: infura_token)
+                        self.web3 = Web3.InfuraRopstenWeb3(accessToken: HopConstants.DefaultInfruaToken)
                 }else{
-                        self.web3 = Web3.InfuraMainnetWeb3(accessToken: infura_token)
+                        self.web3 = Web3.InfuraMainnetWeb3(accessToken: HopConstants.DefaultInfruaToken)
                 }
                 
                 
-                guard let token = EthereumAddress(erc20), let payService = EthereumAddress(mpc) else{
+                guard let token = EthereumAddress(HopConstants.DefaultTokenAddr), let payService = EthereumAddress(HopConstants.DefaultPaymenstService) else{
                         throw HopError.eth("Invalid ethereum config".locStr)
                 }
                 

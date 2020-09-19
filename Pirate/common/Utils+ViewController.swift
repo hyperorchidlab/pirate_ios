@@ -129,7 +129,7 @@ extension UIViewController {
                                 self.hideIndicator()
                                 return
                         }
-                        do {try DataSyncer.sharedInstance.wallet!.Open(auth: pwd) } catch let err{
+                        do {try HopWallet.WInst!.Open(auth: pwd) } catch let err{
                                 self.hideIndicator()
                                 self.ShowTips(msg: err.localizedDescription)
                                 return

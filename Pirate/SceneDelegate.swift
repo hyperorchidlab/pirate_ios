@@ -12,7 +12,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
-        var timer:Timer?
+//        var timer:Timer?
         var window: UIWindow?
 
         func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -30,14 +30,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         func sceneDidBecomeActive(_ scene: UIScene) {
-                DataSyncer.EthVersionCheck()
-                DispatchQueue.main.async {
-                        NSLog("============>timer init--->")
-                        self.timer = Timer.scheduledTimer(withTimeInterval:
-                        AppDelegate.SyncTimer, repeats: true) {
-                                (time) in
-                                DataSyncer.EthVersionCheck()
-                }}
+//                DataSyncer.EthVersionCheck()
+//                DispatchQueue.main.async {
+//                        NSLog("============>timer init--->")
+//                        self.timer = Timer.scheduledTimer(withTimeInterval:
+//                        AppDelegate.SyncTimer, repeats: true) {
+//                                (time) in
+//                                DataSyncer.EthVersionCheck()
+//                }}
         }
 
         func sceneWillResignActive(_ scene: UIScene) {
@@ -51,7 +51,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         func sceneDidEnterBackground(_ scene: UIScene) {
                 NSLog("============>timer invalidate--->")
-                self.timer?.invalidate()
+//                self.timer?.invalidate()
+                let context = DataShareManager.privateQueueContext()
+                DataShareManager.saveContext(context)
+                DataShareManager.syncAllContext(context)
         }
 
 }

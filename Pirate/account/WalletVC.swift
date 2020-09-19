@@ -29,7 +29,6 @@ class WalletVC: UIViewController {
         
         override func viewDidLoad() {
                 super.viewDidLoad()
-                NSLog(DataSyncer.sharedInstance.wallet?.toJson() ?? "")
                 self.SubedPoolTV.rowHeight = 128
                 self.Accounts = PacketAccountant.Inst.allAccountants()
                 self.SubedPoolTV.reloadData()
@@ -38,7 +37,7 @@ class WalletVC: UIViewController {
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 
-                if let _ =  DataSyncer.sharedInstance.wallet?.mainAddress {
+                if let _ =  HopWallet.WInst?.mainAddress {
                         reloadWalletBarItem.image = UIImage.init(named: "fresh-icon")
 //                        loadMyUserData()
 //                        loadBalance(addr: addr)
@@ -49,7 +48,7 @@ class WalletVC: UIViewController {
         }
         
         func loadMyUserData(){
-                guard let addr =  DataSyncer.sharedInstance.wallet?.mainAddress else {
+                guard let addr =  HopWallet.WInst?.mainAddress else {
                         return
                 }
                 
@@ -162,7 +161,7 @@ class WalletVC: UIViewController {
         }
 
         @IBAction func rechargeThisPool(_ sender: UIButton) {
-                guard let _ =  DataSyncer.sharedInstance.wallet?.mainAddress else{
+                guard let _ =  HopWallet.WInst?.mainAddress else{
                         self.ShowTips(msg: "Create your account first".locStr)
                         return
                 }

@@ -37,6 +37,8 @@ public class HopPriKey:NSObject{
 
 public class HopWallet: NSObject, Codable {
         
+        public static var WInst:HopWallet?
+        
         public var version:Int = 0
         public var mainAddress:EthereumAddress?
         public var crypto:CryptoParamsV3?
@@ -48,6 +50,24 @@ public class HopWallet: NSObject, Codable {
         
         override init() {
                 super.init()
+        }
+        
+        public static func loadWallet(){
+                let w_url = HopConstants.WalletPath()
+                NSFileCoordinator().coordinate(readingItemAt: w_url, options: [], error: nil, byAccessor: { (new_url:URL) in
+                        
+                        do{
+                                guard let data = try? Data.init(contentsOf: new_url) else{
+                                        return
+                                }
+                                let decoder = JSONDecoder()
+                                
+                                HopWallet.WInst = try decoder.decode(HopWallet.self, from: data)
+                                
+                        }catch let err{
+                                NSLog(err.localizedDescription)
+                        }
+                })
         }
         
         required public init(from decoder: Decoder) throws{
@@ -166,19 +186,6 @@ public class HopWallet: NSObject, Codable {
                 }
         }
         
-        public static func from(url:URL)->HopWallet?{
-                do{
-                        guard let data = try? Data.init(contentsOf: url) else{
-                                return nil
-                        }
-                        let decoder = JSONDecoder()
-                        return try decoder.decode(HopWallet.self, from: data)
-                        
-                }catch let err{
-                        NSLog(err.localizedDescription)
-                        return nil
-                }
-        }
         
         public func saveToDisk(){
                 

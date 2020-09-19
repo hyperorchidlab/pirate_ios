@@ -95,7 +95,7 @@ class RechargeSimpleViewController: UIViewController {
                 }
         func _buyAction(tokenNo: Double) {
                 
-                guard let wallet = DataSyncer.sharedInstance.wallet else{
+                guard let wallet = HopWallet.WInst else{
                         self.ShowTips(msg: "Invalid account".locStr)
                         return
                 }

@@ -81,7 +81,7 @@ class HomeVC: UIViewController {
                         return
                 }
                 
-                guard let w = DataSyncer.sharedInstance.wallet else{
+                guard let w = HopWallet.WInst else{
                        self.ShowTips(msg: "Create a account first".locStr)
                        return
                 }

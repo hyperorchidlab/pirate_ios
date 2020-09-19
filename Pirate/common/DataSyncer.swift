@@ -16,10 +16,9 @@ public final class DataSyncer:NSObject{
         public static var isGlobalModel:Bool = false
         
         public let currentMPS:String = HopConstants.DefaultPaymenstService
-        public var wallet:HopWallet?
+       
         public var poolData:[String:PoolDetails] = [:]
         let dbContext = DataShareManager.privateQueueContext()
-        let fileCoordinator = NSFileCoordinator()
         var ethSetting:SysSetting?
         var localSetting:CDCurSettings?
         var localVersion:MPSVersion
@@ -36,11 +35,8 @@ public final class DataSyncer:NSObject{
                 NSLog("=======>Pools in market size[\(self.poolData.count)]")
                 
                 super.init()
-                
-                loadWallet()
-                
-                localSetting = SysSetting.loadLocalSetting(for: currentMPS, curWallet: self.wallet?.mainAddress?.address, context: dbContext)
-                NSLog("=======>Local setting:=>\(localSetting?.toString() ?? "<->")")
+//                localSetting = SysSetting.loadLocalSetting(for: currentMPS, curWallet: self.wallet?.mainAddress?.address, context: dbContext)
+//                NSLog("=======>Local setting:=>\(localSetting?.toString() ?? "<->")")
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(WalletChanged(_:)), name: HopConstants.NOTI_NEW_WALLET, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(WalletChanged(_:)), name: HopConstants.NOTI_IMPORT_WALLET, object: nil)
@@ -51,20 +47,6 @@ public final class DataSyncer:NSObject{
                 let w = notification?.userInfo?["mainAddress"] as? String
                 localSetting = SysSetting.loadLocalSetting(for: currentMPS, curWallet: w, context: dbContext)
                 NotificationCenter.default.post(name: HopConstants.NOTI_LOCAL_SETTING_CHANGED, object: nil, userInfo: nil)
-        }
-        
-        public func loadWallet(){
-                
-                let w_url = HopConstants.WalletPath()
-                fileCoordinator.coordinate(readingItemAt: w_url, options: [], error: nil, byAccessor: { (new_url:URL) in
-                        guard let w = HopWallet.from(url: new_url) else{
-                                NSLog("=======>Load wallet from[\(new_url.path)] failed")
-                                return
-                        }
-                        self.wallet = w
-                        PacketAccountant.Inst.setEnv(MPSA: currentMPS, user: w.mainAddress!.address)
-                })
-//                NSLog("=======>Load wallet \(self.wallet?.toJson() ?? "invalid wallet") ")
         }
         
         public static func EthVersionCheck(){
@@ -140,22 +122,22 @@ public final class DataSyncer:NSObject{
         
         func syncUserData(ethVer:BigUInt, _ hasErr:inout Bool){
               
-                guard let wallet_addr = self.wallet?.mainAddress else{
-                        NSLog("=======>Empty account no need to sync user data......")
-                        return
-                }
-                
-                if ethVer == self.localVersion.vUser{
-                        NSLog("=======>Current user data no need to sync......")
-                        return
-                }
-                
-                NSLog("=======>User data need to sync......")
-                let user_datas = EthUtil.sharedInstance.AllMyUserData(userAddr:wallet_addr)
-                for (pool, u_d) in user_datas{
-                       PacketAccountant.Inst.updateByEthData(userData: u_d, forPool:pool)
-                }
-                self.localVersion.vUser = ethVer
+//                guard let wallet_addr = self.wallet?.mainAddress else{
+//                        NSLog("=======>Empty account no need to sync user data......")
+//                        return
+//                }
+//
+//                if ethVer == self.localVersion.vUser{
+//                        NSLog("=======>Current user data no need to sync......")
+//                        return
+//                }
+//
+//                NSLog("=======>User data need to sync......")
+//                let user_datas = EthUtil.sharedInstance.AllMyUserData(userAddr:wallet_addr)
+//                for (pool, u_d) in user_datas{
+//                       PacketAccountant.Inst.updateByEthData(userData: u_d, forPool:pool)
+//                }
+//                self.localVersion.vUser = ethVer
         }
         
         public func updateLocalSetting(minerArr:[MinerData]){
