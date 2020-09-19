@@ -18,7 +18,7 @@ public struct ScryptParam {
 
 public struct HopConstants {
         
-        static public let DefaultBasIP = "108.61.223.99"
+        static public let DefaultBasIP = "198.13.44.159"
         static public let DefaultBasPort = 8853
         static public let ReceiptSyncPort = 32021
         static public let TxReceivePort = 32020
