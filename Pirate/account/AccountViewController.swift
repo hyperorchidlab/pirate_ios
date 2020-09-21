@@ -10,8 +10,14 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
+        @IBOutlet weak var walletAddrLabel: UILabel!
+        @IBOutlet weak var ethBalanceLabel: UILabel!
+        @IBOutlet weak var tokenBalanceLabel: UILabel!
         override func viewDidLoad() {
                 super.viewDidLoad()
+                walletAddrLabel.text = Wallet.WInst.Address
+                ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
+                tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
         }
 
         /*

@@ -61,7 +61,13 @@ class HomeVC: UIViewController {
                         self.showCreateDialog()
                         return
                 }
-//                setPoolMiners()
+                self.poolAddrLabel.text = AppSetting.curPoolAddr ?? ""
+                self.minersIDLabel.text = AppSetting.curMinerAddr ?? ""
+                self.minersIPLabel.text = "NAN".locStr//TODO::
+                self.packetBalanceLabel.text = "0.0"
+                self.creditPacketLabel.text = "0.0"
+                self.CurMinerLabel.text = "NAN"
+                self.curPoolLabel.text = "NAN"
         }
         
         func showCreateDialog(){
