@@ -149,7 +149,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		396C25BF2AFE1228C5D2FD77 /* Pods_extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6902ED082515DAED00BCDED6 /* iosLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iosLib.framework; path = bin/iosLib.framework; sourceTree = "<group>"; };
 		691CCF9F23F8240D007768DF /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6924223D240D365000590536 /* PoolChoseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolChoseTableViewController.swift; sourceTree = "<group>"; };
@@ -169,8 +168,6 @@
 		6940EC8D240A6BA00029F526 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		6940EC8F240A75460029F526 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		6940EC91240A756D0029F526 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		6948E65623FFBE0500D45CB6 /* EthereumKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EthereumKit.framework; path = Carthage/Build/iOS/EthereumKit.framework; sourceTree = "<group>"; };
-		6948E65723FFBE0500D45CB6 /* CryptoEthereumSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoEthereumSwift.framework; path = Carthage/Build/iOS/CryptoEthereumSwift.framework; sourceTree = "<group>"; };
 		6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		6948E66A2400BC6000D45CB6 /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigInt.framework; path = Carthage/Build/iOS/BigInt.framework; sourceTree = "<group>"; };
 		6948E66D2400BC8A00D45CB6 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
@@ -193,7 +190,6 @@
 		697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
 		6985D5DD24BD4F2400B77696 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		698A510023FBACDA00836E26 /* NEKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = NEKit.framework.dSYM; path = Carthage/Build/iOS/NEKit.framework.dSYM; sourceTree = "<group>"; };
 		698A510323FBAD2E00836E26 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
 		698A510723FBF9C700836E26 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
@@ -248,7 +244,6 @@
 		7C63049624BFB5BE003D459E /* RechargeSimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeSimpleViewController.swift; sourceTree = "<group>"; };
 		7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		7CE0EAFD24204F9E00F23A5A /* SystemSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingTableViewController.swift; sourceTree = "<group>"; };
-		C0276130EEEC446A66941197 /* Pods_Pirate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pirate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,9 +315,7 @@
 				6948E66F2400BCB800D45CB6 /* Starscream.framework */,
 				6948E66D2400BC8A00D45CB6 /* PromiseKit.framework */,
 				6948E66A2400BC6000D45CB6 /* BigInt.framework */,
-				6948E65723FFBE0500D45CB6 /* CryptoEthereumSwift.framework */,
 				6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */,
-				6948E65623FFBE0500D45CB6 /* EthereumKit.framework */,
 				698A513123FCCEDF00836E26 /* Yaml.framework */,
 				698A512E23FCCEDB00836E26 /* tun2socks.framework */,
 				698A512B23FCCED800836E26 /* Sodium.framework */,
@@ -333,10 +326,7 @@
 				698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */,
 				698A510723FBF9C700836E26 /* CocoaAsyncSocket.framework */,
 				698A510323FBAD2E00836E26 /* NEKit.framework */,
-				698A510023FBACDA00836E26 /* NEKit.framework.dSYM */,
 				691CCF9F23F8240D007768DF /* NetworkExtension.framework */,
-				C0276130EEEC446A66941197 /* Pods_Pirate.framework */,
-				396C25BF2AFE1228C5D2FD77 /* Pods_extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
