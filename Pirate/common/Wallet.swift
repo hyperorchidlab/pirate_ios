@@ -9,15 +9,17 @@
 import Foundation
 import CoreData
 import IosLib
+import SwiftyJSON
 
 class Wallet:NSObject{
         
         var Address:String?
         var SubAddress:String?
+        var coreData:CDWallet?
+        
         var tokenBalance:Double = 0
         var ethBalance:Double = 0
         var approve:Double = 0
-        var coreData:CDWallet?
         
         public static var WInst = Wallet()
         
@@ -45,5 +47,39 @@ class Wallet:NSObject{
                 self.ethBalance = core_data.ethBalance
                 self.approve = core_data.approve
                 coreData = core_data
+        }
+        
+        public func initByJson(_ jsonData:Data){
+                let jsonObj = JSON(jsonData)
+                self.Address = jsonObj["mainAddress"].string
+                self.SubAddress = jsonObj["subAddress"].string
+        }
+        
+        public static func NewInst(auth:String) -> Bool{
+                guard let jsonData = IosLibNewWallet(auth) else{
+                        return false
+                }
+                
+                
+                WInst.initByJson(jsonData)
+                
+                let context = DataShareManager.privateQueueContext()
+                let w = NSPredicate(format:"mps == %@", HopConstants.DefaultPaymenstService)
+                var core_data = NSManagedObject.findOneEntity(HopConstants.DBNAME_WALLET,
+                                                              where: w,
+                                                              context: context) as? CDWallet
+                if core_data == nil{
+                        core_data = CDWallet(context: context)
+                        core_data!.mps = HopConstants.DefaultPaymenstService
+                }
+                
+                core_data!.walletJSON = String(data: jsonData, encoding: .utf8)
+                core_data!.address = WInst.Address
+                core_data!.subAddress = WInst.SubAddress
+                WInst.coreData = core_data
+                
+                DataShareManager.saveContext(context)
+                
+                return true
         }
 }

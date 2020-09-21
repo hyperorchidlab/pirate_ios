@@ -57,7 +57,7 @@ class HomeVC: UIViewController {
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
-                guard let addr = Wallet.WInst.Address else {
+                guard let addr = Wallet.WInst.Address, addr != "" else {
                         self.showCreateDialog()
                         return
                 }

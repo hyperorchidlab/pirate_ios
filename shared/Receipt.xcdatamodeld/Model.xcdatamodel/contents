@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20A5374g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDAppSetting" representedClassName="CDAppSetting" syncable="YES" codeGenerationType="class">
+        <attribute name="minerAddrInUsed" optional="YES" attributeType="String"/>
+        <attribute name="mps" optional="YES" attributeType="String"/>
+        <attribute name="poolAddrInUsed" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="CDCurSettings" representedClassName="CDCurSettings" syncable="YES" codeGenerationType="class">
         <attribute name="basIPInUse" optional="YES" attributeType="String"/>
         <attribute name="contractAddress" optional="YES" attributeType="String"/>
@@ -63,5 +68,6 @@
         <element name="CDUserAccount" positionX="-54" positionY="63" width="128" height="223"/>
         <element name="CDVersionManager" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="CDWallet" positionX="-54" positionY="117" width="128" height="134"/>
+        <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="74"/>
     </elements>
 </model>

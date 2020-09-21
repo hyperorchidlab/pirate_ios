@@ -1033,27 +1033,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-Jz-L4b">
-                                <rect key="frame" x="20" y="112" width="374" height="44"/>
+                                <rect key="frame" x="20" y="96" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="j9d-VG-pXN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="22"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LcQ-ao-Oej">
-                                <rect key="frame" x="20" y="164" width="374" height="44"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Again" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LcQ-ao-Oej">
+                                <rect key="frame" x="20" y="148" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4g8-N4-U7N"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="22"/>
@@ -1061,13 +1061,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two Passwords are not same" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9e2-zp-w88">
-                                <rect key="frame" x="20" y="212" width="374" height="17"/>
+                                <rect key="frame" x="20" y="196" width="374" height="17"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wf-Bt-4KE">
-                                <rect key="frame" x="20" y="230" width="374" height="44"/>
+                                <rect key="frame" x="20" y="214" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4dl-Fe-Z4U"/>
@@ -1086,7 +1086,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjB-4q-fwi">
-                                <rect key="frame" x="20" y="294" width="374" height="44"/>
+                                <rect key="frame" x="20" y="278" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ydv-J1-s1f"/>
@@ -1104,6 +1104,12 @@
                                     <action selector="ImportAccount:" destination="XfE-gE-lDD" eventType="touchUpInside" id="dh2-JQ-hNa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tv-ic-15D">
+                                <rect key="frame" x="196" y="258" width="22" height="17.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Trl-BQ-xRZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1112,10 +1118,12 @@
                             <constraint firstItem="pjB-4q-fwi" firstAttribute="leading" secondItem="Trl-BQ-xRZ" secondAttribute="leading" constant="20" id="62M-48-rbO"/>
                             <constraint firstItem="Trl-BQ-xRZ" firstAttribute="trailing" secondItem="pjB-4q-fwi" secondAttribute="trailing" constant="20" id="87G-rk-ZtD"/>
                             <constraint firstItem="O8Y-Jz-L4b" firstAttribute="leading" secondItem="Trl-BQ-xRZ" secondAttribute="leading" constant="20" id="Bp5-W3-mkY"/>
+                            <constraint firstItem="4Tv-ic-15D" firstAttribute="top" secondItem="3Wf-Bt-4KE" secondAttribute="bottom" id="DVK-di-trL"/>
                             <constraint firstItem="b2F-qU-Jg1" firstAttribute="leading" secondItem="Trl-BQ-xRZ" secondAttribute="leading" constant="20" id="DdU-XZ-CFL"/>
                             <constraint firstItem="LcQ-ao-Oej" firstAttribute="top" secondItem="O8Y-Jz-L4b" secondAttribute="bottom" constant="8" id="IoW-wx-PMf"/>
-                            <constraint firstItem="O8Y-Jz-L4b" firstAttribute="top" secondItem="b2F-qU-Jg1" secondAttribute="bottom" constant="32" id="TnX-Bs-NdO"/>
+                            <constraint firstItem="O8Y-Jz-L4b" firstAttribute="top" secondItem="b2F-qU-Jg1" secondAttribute="bottom" constant="16" id="TnX-Bs-NdO"/>
                             <constraint firstItem="Trl-BQ-xRZ" firstAttribute="trailing" secondItem="LcQ-ao-Oej" secondAttribute="trailing" constant="20" id="Wic-Ek-Kd1"/>
+                            <constraint firstItem="4Tv-ic-15D" firstAttribute="centerX" secondItem="Ck3-Zh-yZd" secondAttribute="centerX" id="Wjt-u9-mUA"/>
                             <constraint firstItem="pjB-4q-fwi" firstAttribute="top" secondItem="3Wf-Bt-4KE" secondAttribute="bottom" constant="20" id="XeL-SH-tJ4"/>
                             <constraint firstItem="Trl-BQ-xRZ" firstAttribute="trailing" secondItem="9e2-zp-w88" secondAttribute="trailing" constant="20" id="aCe-I1-5fS"/>
                             <constraint firstItem="LcQ-ao-Oej" firstAttribute="leading" secondItem="Trl-BQ-xRZ" secondAttribute="leading" constant="20" id="aE2-YO-kgV"/>

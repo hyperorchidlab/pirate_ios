@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 Utils.initDomains()
                 _ = HopSodium.initialized
+                AppSetting.initSystem()
+                
                 do {try EthUtil.sharedInstance.initEth()
                 }catch let err{
                         NSLog(err.localizedDescription)
