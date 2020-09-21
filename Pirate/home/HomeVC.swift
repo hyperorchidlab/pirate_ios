@@ -57,8 +57,17 @@ class HomeVC: UIViewController {
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
-                setPoolMiners()
+                guard let addr = Wallet.WInst.Address else {
+                        self.showCreateDialog()
+                        return
+                }
+//                setPoolMiners()
         }
+        
+        func showCreateDialog(){
+                self.performSegue(withIdentifier: "CreateAccountSegID", sender: self)
+        }
+        
         // MARK:  UI Action
         @IBAction func startOrStop(_ sender: Any) {
                 

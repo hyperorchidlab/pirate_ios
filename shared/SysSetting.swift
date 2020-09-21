@@ -10,6 +10,7 @@ import Foundation
 import BigInt
 import CoreData
 import web3swift
+
 public class SysSetting:NSObject{
         
         public var MBytesPerToken:BigUInt = 0
@@ -23,11 +24,12 @@ public class SysSetting:NSObject{
         
         //TODO::
         public func initSys(){
-                HopWallet.loadWallet()
-                guard let w = HopWallet.WInst else{
-                        return
-                }
-                PacketAccountant.Inst.setEnv(MPSA: HopConstants.DefaultPaymenstService, user: w.mainAddress!.address)
+                
+//                HopWallet.loadWallet()
+//                guard let w = HopWallet.WInst else{
+//                        return
+//                }
+//                PacketAccountant.Inst.setEnv(MPSA: HopConstants.DefaultPaymenstService, user: w.mainAddress!.address)
         }
         
         public convenience init(_ sys:CDSystemSettings){
