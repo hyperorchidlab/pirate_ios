@@ -162,23 +162,10 @@ class HOPAdapter: AdapterSocket {
                         }
                        
                         let decode_data = try self.readEncoded(data: data)
-                        observer?.signal(.readData(decode_data, on: self))
+//                        observer?.signal(.readData(decode_data, on: self))
                         let size = decode_data.count
-                        guard size > HOPAdapter.MAX_BUFFER_SIZE else{
-                                delegate?.didRead(data: decode_data, from: self)
-                                return
-                        }
-                        var idx = 0;
-                        while idx < size{
-                                var end = idx + HOPAdapter.MAX_BUFFER_SIZE
-                                if end > size{
-                                        end = size
-                                }
-                                delegate?.didRead(data: decode_data[idx..<end], from: self)
-                                idx = end
-                        }
-                        
-                       
+                        delegate?.didRead(data: decode_data, from: self)
+                        self.hopdelegate.CounterWork(size:size)
                 default:
                     return
                 }
@@ -249,12 +236,8 @@ class HOPAdapter: AdapterSocket {
                         throw HopError.minerErr("parse crypted data length err:")
                 }
                 let len = data.ToLen()
-                if len > HOPAdapter.MAX_BUFFER_SIZE{
-                        throw HopError.minerErr("too big data len[\(len)]")
-                }
                 self.socket.readDataTo(length: len)
                 self.readHead = false
-                self.hopdelegate.CounterWork(size:len)
 //                NSLog("--------->[\(objID)]readLen:[\(len)] and counter---")
         }
         
