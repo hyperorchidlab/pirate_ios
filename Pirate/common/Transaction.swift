@@ -6,13 +6,12 @@
 //  Copyright © 2020 hyperorchid. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import IosLib
-
 
 public enum TransactionStatus:Int16 {
         case pending
-        case failed
+        case fail
         case success
         case nosuch
         
@@ -20,12 +19,44 @@ public enum TransactionStatus:Int16 {
                 switch self {
                 case .pending:
                         return "Pending".locStr
-                case .failed:
+                case .fail:
                         return "Failed".locStr
                 case .success:
                         return "Success".locStr
                 case .nosuch:
                         return "No suche TX".locStr
+                }
+        }
+        var StatusBGColor:UIColor{
+                switch self {
+                case .success:
+                        return UIColor.init(hex: "#458AF933")!
+                case .fail:
+                        return UIColor.init(hex: "#F9704533")!
+                case .pending, .nosuch:
+                        return UIColor.init(hex: "#FFAC0033")!
+                }
+        }
+        
+        var StatusBorderColor:CGColor{
+                switch self {
+                case .success:
+                        return UIColor.init(hex: "#458AF94D")!.cgColor
+                case .fail:
+                        return UIColor.init(hex: "#F970454D")!.cgColor
+                case .pending, .nosuch:
+                        return UIColor.init(hex: "#FFAC004D")!.cgColor
+                }
+        }
+        
+        var StatusTxtColor:UIColor{
+                switch self {
+                case .success:
+                        return UIColor.init(hex: "#458AF9FF")!
+                case .fail:
+                        return UIColor.init(hex: "#F97045FF")!
+                case .pending, .nosuch:
+                        return UIColor.init(hex: "#FFB214FF")!
                 }
         }
 }
@@ -49,6 +80,7 @@ public enum TransactionType:Int16 {
                         return "Unknown".locStr
                 }
         }
+        
 }
         
         
@@ -71,11 +103,6 @@ class Transaction : NSObject {
                 txHash = tx
                 txType = typ
                 txValue = value ?? 0
-                
-        }
-        
-        private func syncCache(reloadAll:Bool = false){
-               
         }
         
         public static func applyFreeEth(forAddr address:String) -> Bool{
@@ -94,18 +121,19 @@ class Transaction : NSObject {
                 let dbCtx = DataShareManager.privateQueueContext()
                 let cdata = CDTransaction(context: dbCtx)
                 cdata.initByObj(obj: obj, addr: address)
+                obj.coreData = cdata
                 
-                
-                
-                
+                DataShareManager.saveContext(dbCtx)
                 return true
         }
 }
-
 
 extension CDTransaction{
         
         func initByObj(obj:Transaction, addr:String){
                 self.walletAddr = addr
+                self.txHash = obj.txHash
+                self.actType = obj.txType.rawValue
+                self.status = obj.txStatus.rawValue
         }
 }

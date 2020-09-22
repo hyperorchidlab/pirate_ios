@@ -17,13 +17,14 @@ class AppSetting:NSObject{
         public static var curMinerAddr:String?
         public static var dnsIP:String?
         static var coreData:CDAppSetting?
-        
+        private static var AInst = AppSetting()
         public static func initSystem(){
                 
                 IosLibInitSystem(HopConstants.DefaultDnsIP,
                                  HopConstants.DefaultTokenAddr,
                                  HopConstants.DefaultPaymenstService,
-                                 HopConstants.DefaultInfruaToken)
+                                 HopConstants.DefaultInfruaToken,
+                                 AppSetting.AInst)
                 
                 let context = DataShareManager.privateQueueContext()
                 
@@ -61,3 +62,18 @@ class AppSetting:NSObject{
         }
 }
 
+extension AppSetting : IosLibUICallBackProtocol{
+        func log(_ str: String?) {
+                NSLog("======>[LibLog]\(String(describing: str))")
+        }
+        
+        func notify(_ note: String?, data: String?) {
+                PostNoti(Notification.Name(rawValue: note!), data: data)
+        }
+        
+        func sysExit(_ err: Error?) {
+        //TODO::
+        }
+        
+        
+}

@@ -139,6 +139,19 @@ class AccountViewController: UIViewController {
         }
         
         @IBAction func ApplyEthAction(_ sender: UIButton) {
+                self.showIndicator(withTitle: "", and: "Applying......".locStr)
+                
+                AppSetting.workQueue.async {
+                        defer{self.hideIndicator()}
+                        if false == Transaction.applyFreeEth(forAddr: Wallet.WInst.Address!){
+                                self.ShowTips(msg: "Apply Failed".locStr)
+                                return
+                        }
+                        
+                        DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                        }
+                }
         }
         
         @IBAction func ShowAdressQR(_ sender: UIButton) {

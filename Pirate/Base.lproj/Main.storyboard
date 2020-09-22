@@ -1124,7 +1124,7 @@
                                         </constraints>
                                         <state key="normal" image="next_icon"/>
                                         <connections>
-                                            <segue destination="k6e-0n-hK5" kind="show" identifier="ShowTransactionDetails" id="Ykb-TN-0aZ"/>
+                                            <segue destination="k6e-0n-hK5" kind="show" identifier="ShowTransactionDetailsSegID" id="Ykb-TN-0aZ"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKQ-nX-a0z">
@@ -1480,13 +1480,65 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ABN-bj-RCw">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TransactionTableViewCellID" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TransactionTableViewCellID" rowHeight="80" id="ABN-bj-RCw" customClass="TransactionTableViewCell" customModule="Pirate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ABN-bj-RCw" id="Lme-lQ-70J">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0xb1e5df42ee314ca844dde57dd6603d47bced88188ebd2051f31d0ffc7e49546b" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ8-da-KH7">
+                                                    <rect key="frame" x="8" y="8" width="367" height="28.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" red="0.14054560660000001" green="0.16497102380000001" blue="0.18438088890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apply Eth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKl-Rf-emf">
+                                                    <rect key="frame" x="8" y="53" width="69.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" red="0.015686274510000001" green="0.023529411760000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apply Eth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHq-77-RKW">
+                                                    <rect key="frame" x="157" y="53" width="69.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" red="0.015686274510000001" green="0.023529411760000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apply Eth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRu-Xa-E0h">
+                                                    <rect key="frame" x="305.5" y="53" width="69.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" red="0.015686274510000001" green="0.023529411760000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="YRu-Xa-E0h" secondAttribute="trailing" constant="8" id="175-hS-jdq"/>
+                                                <constraint firstItem="eQ8-da-KH7" firstAttribute="leading" secondItem="Lme-lQ-70J" secondAttribute="leading" constant="8" id="CjP-1S-lyU"/>
+                                                <constraint firstItem="eQ8-da-KH7" firstAttribute="top" secondItem="Lme-lQ-70J" secondAttribute="top" constant="8" id="Hzu-PQ-6VL"/>
+                                                <constraint firstAttribute="trailing" secondItem="eQ8-da-KH7" secondAttribute="trailing" constant="8" id="JXa-O2-MTx"/>
+                                                <constraint firstAttribute="bottom" secondItem="YRu-Xa-E0h" secondAttribute="bottom" constant="8" id="WVr-mP-8lR"/>
+                                                <constraint firstItem="cKl-Rf-emf" firstAttribute="leading" secondItem="Lme-lQ-70J" secondAttribute="leading" constant="8" id="bzL-sy-pvd"/>
+                                                <constraint firstAttribute="bottom" secondItem="cKl-Rf-emf" secondAttribute="bottom" constant="8" id="pfw-vb-XWw"/>
+                                                <constraint firstItem="PHq-77-RKW" firstAttribute="centerX" secondItem="Lme-lQ-70J" secondAttribute="centerX" id="tjQ-AJ-mEY"/>
+                                                <constraint firstAttribute="bottom" secondItem="PHq-77-RKW" secondAttribute="bottom" constant="8" id="ubf-0j-3Vj"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hashLabel" destination="eQ8-da-KH7" id="w70-PU-rzb"/>
+                                            <outlet property="statusLabel" destination="PHq-77-RKW" id="3nI-e2-4Vi"/>
+                                            <outlet property="typeLabel" destination="cKl-Rf-emf" id="8Q8-xg-oyc"/>
+                                            <outlet property="valueLabel" destination="YRu-Xa-E0h" id="Htx-A7-HAk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1501,10 +1553,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c8U-am-v8A"/>
+                    <connections>
+                        <outlet property="tableview" destination="1UH-Tt-LsU" id="QHw-Gh-H1c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWP-4W-1zB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4041" y="2594"/>
+            <point key="canvasLocation" x="4040.579710144928" y="2593.5267857142858"/>
         </scene>
         <!--New Account View Controller-->
         <scene sceneID="lOG-34-qte">

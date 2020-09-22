@@ -10,19 +10,25 @@ import UIKit
 
 class TransactionViewController: UIViewController {
 
+        @IBOutlet weak var tableview: UITableView!
         override func viewDidLoad() {
                 super.viewDidLoad()
         }
+}
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension TransactionViewController:UITableViewDelegate, UITableViewDataSource{
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+                return Transaction.CachedTX.count
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                let cell = tableview.dequeueReusableCell(withIdentifier: "TransactionTableViewCellID")
+                guard let c = cell as? TransactionTableViewCell else {
+                        return cell!
+                }
+                
+                let tx = Transaction.CachedTX[indexPath.row]
+                c.fieldUP(tx)
+                return c
+        }
 }
