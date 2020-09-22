@@ -10,6 +10,7 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
+        @IBOutlet weak var applyFreeEthBtn: UIButton!
         @IBOutlet weak var transactionNOLabel: UILabel!
         @IBOutlet weak var applyFreeTokenBtn: UIButton!
         @IBOutlet weak var membershipView: UIView!
@@ -62,12 +63,21 @@ class AccountViewController: UIViewController {
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 
-                applyFreeTokenBtn.isHidden = true
+                if Wallet.WInst.ethBalance < 0.005{
+                        applyFreeEthBtn.isHidden = false
+                }
+                
+                if Wallet.WInst.tokenBalance < 20.0{
+                        applyFreeTokenBtn.isHidden = false
+                }
+                
         }
         
         deinit {
                 NotificationCenter.default.removeObserver(self)
         }
+        
+        // MARK: - Embedded Actions
         
         @objc func dnsChanged(_ notification: Notification?) {
                 DispatchQueue.main.async {
@@ -116,7 +126,16 @@ class AccountViewController: UIViewController {
                     UIApplication.shared.open(url)
                 }
         }
+        
 
+        // MARK: - Button Actions
+        @IBAction func ApplyTokenAction(_ sender: UIButton) {
+        }
+        
+        @IBAction func ApplyEthAction(_ sender: UIButton) {
+        }
+        
+        
         // MARK: - Navigation
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         }
