@@ -10,6 +10,8 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
+        @IBOutlet weak var applyFreeEthBtn: UIButton!
+        @IBOutlet weak var applyFreeTokenBtn: UIButton!
         @IBOutlet weak var walletView: UIView!
         @IBOutlet weak var transactionNOLabel: UILabel!
         @IBOutlet weak var membershipView: UIView!
@@ -34,6 +36,9 @@ class AccountViewController: UIViewController {
                 walletAddrLabel.text = Wallet.WInst.Address
                 ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
                 tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
+                appVerLabel.text = appVersion
+                dnsIPLabel.text = AppSetting.dnsIP
+                
                 
                 let tap = UITapGestureRecognizer(target: self, action: #selector(openTelegram))
                 tap.numberOfTapsRequired = 1
@@ -55,16 +60,18 @@ class AccountViewController: UIViewController {
                 tap5.numberOfTapsRequired = 2
                 walletView.addGestureRecognizer(tap5)
                 
-                appVerLabel.text = appVersion
-                dnsIPLabel.text = AppSetting.dnsIP
-                
-                
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(dnsChanged(_:)), name: HopConstants.NOTI_DNS_CHANGED.name, object: nil)
         }
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
+                
+                if Wallet.WInst.ethBalance < 0.005{
+                        applyFreeEthBtn.isHidden = false
+                }else if Wallet.WInst.tokenBalance < 20{
+                        applyFreeTokenBtn.isHidden = false
+                }
         }
         
         deinit {
@@ -126,11 +133,15 @@ class AccountViewController: UIViewController {
                 self.ShowTips(msg: "Copy Success".locStr)
         }
         
+        
         // MARK: - Button Actions
         @IBAction func ApplyTokenAction(_ sender: UIButton) {
         }
         
         @IBAction func ApplyEthAction(_ sender: UIButton) {
+        }
+        
+        @IBAction func ShowAdressQR(_ sender: UIButton) {
         }
         
         
