@@ -10,9 +10,8 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
-        @IBOutlet weak var applyFreeEthBtn: UIButton!
+        @IBOutlet weak var walletView: UIView!
         @IBOutlet weak var transactionNOLabel: UILabel!
-        @IBOutlet weak var applyFreeTokenBtn: UIButton!
         @IBOutlet weak var membershipView: UIView!
         @IBOutlet weak var membershipNoLabel: UILabel!
         @IBOutlet weak var appVerLabel: UILabel!
@@ -52,6 +51,10 @@ class AccountViewController: UIViewController {
                 tap4.numberOfTapsRequired = 1
                 shareView.addGestureRecognizer(tap4)
                 
+                let tap5 = UITapGestureRecognizer(target: self, action: #selector(copyAddress))
+                tap5.numberOfTapsRequired = 2
+                walletView.addGestureRecognizer(tap5)
+                
                 appVerLabel.text = appVersion
                 dnsIPLabel.text = AppSetting.dnsIP
                 
@@ -62,15 +65,6 @@ class AccountViewController: UIViewController {
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
-                
-                if Wallet.WInst.ethBalance < 0.005{
-                        applyFreeEthBtn.isHidden = false
-                }
-                
-                if Wallet.WInst.tokenBalance < 20.0{
-                        applyFreeTokenBtn.isHidden = false
-                }
-                
         }
         
         deinit {
@@ -127,7 +121,11 @@ class AccountViewController: UIViewController {
                 }
         }
         
-
+        @objc func copyAddress() {
+                UIPasteboard.general.string = Wallet.WInst.Address
+                self.ShowTips(msg: "Copy Success".locStr)
+        }
+        
         // MARK: - Button Actions
         @IBAction func ApplyTokenAction(_ sender: UIButton) {
         }
