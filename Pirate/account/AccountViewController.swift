@@ -10,7 +10,8 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
-        @IBOutlet weak var applyFreeView: UIView!
+        @IBOutlet weak var transactionNOLabel: UILabel!
+        @IBOutlet weak var applyFreeTokenBtn: UIButton!
         @IBOutlet weak var membershipView: UIView!
         @IBOutlet weak var membershipNoLabel: UILabel!
         @IBOutlet weak var appVerLabel: UILabel!
@@ -53,7 +54,15 @@ class AccountViewController: UIViewController {
                 appVerLabel.text = appVersion
                 dnsIPLabel.text = AppSetting.dnsIP
                 
+                
+                
                 NotificationCenter.default.addObserver(self, selector: #selector(dnsChanged(_:)), name: HopConstants.NOTI_DNS_CHANGED.name, object: nil)
+        }
+        
+        override func viewWillAppear(_ animated: Bool) {
+                super.viewWillAppear(animated)
+                
+                applyFreeTokenBtn.isHidden = true
         }
         
         deinit {
