@@ -41,6 +41,7 @@
 		696B02DC25188C6700F76A51 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696B02DB25188C6700F76A51 /* SwiftyJSON.framework */; };
 		696B02DD25188C6700F76A51 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696B02DB25188C6700F76A51 /* SwiftyJSON.framework */; };
 		696B02E52519EB2000F76A51 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02E42519EB2000F76A51 /* TransactionViewController.swift */; };
+		696B02E9251A079500F76A51 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02E8251A079500F76A51 /* RoundedCornerView.swift */; };
 		6972E3C22415E64F00550A4A /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E3C12415E64F00550A4A /* ReceiptData.swift */; };
 		6972E3C32415E64F00550A4A /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E3C12415E64F00550A4A /* ReceiptData.swift */; };
 		69767505242386DA002051F9 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */; };
@@ -188,6 +189,7 @@
 		696B02D325187B8E00F76A51 /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
 		696B02DB25188C6700F76A51 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		696B02E42519EB2000F76A51 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		696B02E8251A079500F76A51 /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
 		6972E3C12415E64F00550A4A /* ReceiptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptData.swift; sourceTree = "<group>"; };
 		697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				696A71F725148F5F004EA5DE /* ConfirmViewController.swift */,
 				69C112D32515DC7C00C5E9F5 /* Wallet.swift */,
 				696B02D325187B8E00F76A51 /* AppSetting.swift */,
+				696B02E8251A079500F76A51 /* RoundedCornerView.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				696A71F62514891F004EA5DE /* AccountViewController.swift in Sources */,
 				69980C2F23F78D3E00829B09 /* WalletVC.swift in Sources */,
 				69987DFC2412225700029C0A /* HopSodium.swift in Sources */,
+				696B02E9251A079500F76A51 /* RoundedCornerView.swift in Sources */,
 				6932A18F24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift in Sources */,
 				69FA41A324055274005CF3FA /* EthUtil.swift in Sources */,
 				69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */,

@@ -58,8 +58,8 @@
                                 <color key="textColor" red="0.062745098040000002" green="0.086274509799999996" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yls-aj-mGF">
-                                <rect key="frame" x="16" y="631" width="382" height="73"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yls-aj-mGF" customClass="RoundedCornerView" customModule="Pirate" customModuleProvider="target">
+                                <rect key="frame" x="16" y="635" width="382" height="73"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URc-Di-TsO">
                                         <rect key="frame" x="16" y="16" width="19.5" height="23"/>
@@ -116,12 +116,18 @@
                                     <constraint firstItem="PTq-MZ-7BP" firstAttribute="leading" secondItem="URc-Di-TsO" secondAttribute="leading" id="vwA-gV-b9G"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="12"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94901960780000005" green="0.52156862749999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOr-ll-MMB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOr-ll-MMB" customClass="RoundedCornerView" customModule="Pirate" customModuleProvider="target">
                                 <rect key="frame" x="16" y="716" width="382" height="73"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ios_pool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxP-D1-RFx">
@@ -194,8 +200,14 @@
                                     <constraint firstAttribute="centerX" relation="greaterThanOrEqual" secondItem="RwJ-ai-OFq" secondAttribute="trailing" priority="10" constant="20" id="xi2-Px-vT4"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="12"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.44110548500000002" green="0.5746358037" blue="0.71548396349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -217,7 +229,7 @@
                             <constraint firstItem="V4c-oh-Gw7" firstAttribute="centerX" secondItem="MQW-gS-npj" secondAttribute="centerX" constant="-56" id="G6b-FM-r2J"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="VOr-ll-MMB" secondAttribute="trailing" constant="16" id="O5K-Wv-IiJ"/>
                             <constraint firstItem="X98-0J-3sd" firstAttribute="bottom" secondItem="vjg-yd-DeY" secondAttribute="bottom" priority="100" constant="24" id="PrU-UO-Sig"/>
-                            <constraint firstItem="VOr-ll-MMB" firstAttribute="top" secondItem="Yls-aj-mGF" secondAttribute="bottom" constant="12" id="UCj-ii-hbz"/>
+                            <constraint firstItem="VOr-ll-MMB" firstAttribute="top" secondItem="Yls-aj-mGF" secondAttribute="bottom" constant="8" id="UCj-ii-hbz"/>
                             <constraint firstItem="MQW-gS-npj" firstAttribute="centerX" secondItem="c8X-E2-Lzq" secondAttribute="centerX" constant="-56" id="abY-sF-YFP"/>
                             <constraint firstItem="X98-0J-3sd" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ctb-Lr-1GN"/>
                             <constraint firstItem="Yls-aj-mGF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tsR-hK-woN" secondAttribute="centerY" priority="10" constant="10" id="hhX-AO-Ztd"/>
@@ -236,6 +248,7 @@
                         <outlet property="creditPacketLabel" destination="sN5-dM-vTc" id="rHD-wz-KvT"/>
                         <outlet property="curPoolLabel" destination="XxP-D1-RFx" id="2VZ-xW-elt"/>
                         <outlet property="globalModelSeg" destination="MQW-gS-npj" id="44C-d0-PdC"/>
+                        <outlet property="minerBGView" destination="Yls-aj-mGF" id="mgj-bH-jsc"/>
                         <outlet property="minersIDLabel" destination="PTq-MZ-7BP" id="e6D-hU-hVm"/>
                         <outlet property="minersIPLabel" destination="jQM-qb-t4G" id="RXq-E9-cOm"/>
                         <outlet property="packetBalanceLabel" destination="RwJ-ai-OFq" id="Acm-24-09g"/>

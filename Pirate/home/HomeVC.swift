@@ -27,6 +27,7 @@ extension NEVPNStatus: CustomStringConvertible {
 
 class HomeVC: UIViewController {
         
+        @IBOutlet weak var minerBGView: UIView!
         @IBOutlet weak var connectButton: UIButton!
         @IBOutlet weak var vpnStatusLabel: UILabel!
         @IBOutlet weak var minersIDLabel: UILabel!
@@ -44,6 +45,8 @@ class HomeVC: UIViewController {
         
         override func viewDidLoad() {
                 super.viewDidLoad()
+//                minerBGView.layer.borderColor = UIColor.red.cgColor
+                
                 reloadManagers()
                 let img = UIImage(named: "bg_image")!
                 self.view.backgroundColor = UIColor(patternImage: img)
@@ -61,8 +64,8 @@ class HomeVC: UIViewController {
                         self.showCreateDialog()
                         return
                 }
-                self.poolAddrLabel.text = AppSetting.curPoolAddr ?? ""
-                self.minersIDLabel.text = AppSetting.curMinerAddr ?? ""
+                self.poolAddrLabel.text = AppSetting.curPoolAddr ?? "Choose one pool please".locStr
+                self.minersIDLabel.text = AppSetting.curMinerAddr ?? "Choose one miner please".locStr
                 self.minersIPLabel.text = "NAN".locStr//TODO::
                 self.packetBalanceLabel.text = "0.0"
                 self.creditPacketLabel.text = "0.0"
