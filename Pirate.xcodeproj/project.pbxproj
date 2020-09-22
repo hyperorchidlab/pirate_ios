@@ -42,6 +42,7 @@
 		696B02DD25188C6700F76A51 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696B02DB25188C6700F76A51 /* SwiftyJSON.framework */; };
 		696B02E52519EB2000F76A51 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02E42519EB2000F76A51 /* TransactionViewController.swift */; };
 		696B02E9251A079500F76A51 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02E8251A079500F76A51 /* RoundedCornerView.swift */; };
+		696B02ED251A0A4D00F76A51 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02EC251A0A4D00F76A51 /* Transaction.swift */; };
 		6972E3C22415E64F00550A4A /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E3C12415E64F00550A4A /* ReceiptData.swift */; };
 		6972E3C32415E64F00550A4A /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E3C12415E64F00550A4A /* ReceiptData.swift */; };
 		69767505242386DA002051F9 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */; };
@@ -190,6 +191,7 @@
 		696B02DB25188C6700F76A51 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		696B02E42519EB2000F76A51 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		696B02E8251A079500F76A51 /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
+		696B02EC251A0A4D00F76A51 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		6972E3C12415E64F00550A4A /* ReceiptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptData.swift; sourceTree = "<group>"; };
 		697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				69C112D32515DC7C00C5E9F5 /* Wallet.swift */,
 				696B02D325187B8E00F76A51 /* AppSetting.swift */,
 				696B02E8251A079500F76A51 /* RoundedCornerView.swift */,
+				696B02EC251A0A4D00F76A51 /* Transaction.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				6932A1892406AD4C00D2DA39 /* MPSVersion.swift in Sources */,
 				69A47D6C240EB6B500C86CFF /* RcpWire.swift in Sources */,
 				6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */,
+				696B02ED251A0A4D00F76A51 /* Transaction.swift in Sources */,
 				69FA419624050059005CF3FA /* HopError.swift in Sources */,
 				695E4C3D24017F5A00A13631 /* HopWallet.swift in Sources */,
 				7C36020C2421132D0014E961 /* ApplyToken.swift in Sources */,

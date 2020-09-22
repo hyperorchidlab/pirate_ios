@@ -32,6 +32,12 @@
         <attribute name="price" optional="YES" attributeType="Binary"/>
         <attribute name="refund" optional="YES" attributeType="Binary"/>
     </entity>
+    <entity name="CDTransaction" representedClassName="CDTransaction" syncable="YES" codeGenerationType="class">
+        <attribute name="actType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="txHash" optional="YES" attributeType="String"/>
+        <attribute name="walletAddr" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="CDUserAccount" representedClassName="CDUserAccount" syncable="YES" codeGenerationType="class">
         <attribute name="contractAddress" optional="YES" attributeType="String"/>
         <attribute name="credit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -63,12 +69,13 @@
         <attribute name="walletJSON" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="89"/>
         <element name="CDCurSettings" positionX="-54" positionY="117" width="128" height="148"/>
         <element name="CDPoolData" positionX="-63" positionY="18" width="128" height="163"/>
         <element name="CDSystemSettings" positionX="-54" positionY="72" width="128" height="118"/>
         <element name="CDUserAccount" positionX="-54" positionY="63" width="128" height="223"/>
         <element name="CDVersionManager" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="CDWallet" positionX="-54" positionY="117" width="128" height="134"/>
-        <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="89"/>
+        <element name="CDTransaction" positionX="-27" positionY="144" width="128" height="89"/>
     </elements>
 </model>
