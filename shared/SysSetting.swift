@@ -123,7 +123,7 @@ public class SysSetting:NSObject{
                                                                           where: w,context: context) as? CDCurSettings else{
                                 let new_obj = CDCurSettings(context: context)
                                 new_obj.contractAddress = mps
-                                new_obj.basIPInUse = HopConstants.DefaultBasIP
+                                new_obj.basIPInUse = HopConstants.DefaultDnsIP
                                 new_obj.curMainAddr = user
                                 context.insert(new_obj)
                                 DataShareManager.saveContext(context)

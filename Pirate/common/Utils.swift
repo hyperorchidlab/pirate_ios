@@ -68,6 +68,10 @@ class Utils: NSObject {
         }
 }
 
+public func PostNoti(_ namedNoti:Notification){
+        NotificationCenter.default.post(namedNoti)
+}
+
 extension Data{
         
         public func ToInt() -> Int{
@@ -208,5 +212,17 @@ extension Double{
         
         public func ToCoinUnit(decimal:BigUInt = HopConstants.DefaultTokenDecimal) -> Double{
                 return self/Double(decimal)
+        }
+}
+
+extension String {
+        var locStr:String {
+                return NSLocalizedString(self, comment: "")
+        }
+        
+        func isValidIP() -> Bool {
+                let parts = self.split(separator: ".")// .componentsSeparatedByString(".")
+                let nums = parts.compactMap { Int($0) }
+            return parts.count == 4 && nums.count == 4 && nums.filter { $0 >= 0 && $0 < 256}.count == 4
         }
 }

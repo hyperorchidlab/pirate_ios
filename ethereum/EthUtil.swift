@@ -222,8 +222,3 @@ extension EthereumAddress{
                 return self.isValid && self.address != EthereumAddress.ZeroAddress
         }
 }
-extension String {
-        var locStr:String {
-                return NSLocalizedString(self, comment: "")
-        }
-}

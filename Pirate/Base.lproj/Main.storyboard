@@ -1139,7 +1139,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="192168.1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wV-Ne-3B5">
-                                        <rect key="frame" x="49" y="13.5" width="70.5" height="17"/>
+                                        <rect key="frame" x="279.5" y="13.5" width="70.5" height="17"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1148,11 +1148,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="LOD-is-3QJ" firstAttribute="centerY" secondItem="Ii6-Wf-x3H" secondAttribute="centerY" id="2JF-Ew-zMC"/>
-                                    <constraint firstItem="rQ6-Pa-GKd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2wV-Ne-3B5" secondAttribute="trailing" constant="8" symbolic="YES" id="SKO-2p-ON5"/>
+                                    <constraint firstItem="rQ6-Pa-GKd" firstAttribute="leading" secondItem="2wV-Ne-3B5" secondAttribute="trailing" constant="8" id="SKO-2p-ON5"/>
                                     <constraint firstAttribute="height" constant="44" id="SO4-ae-dhf"/>
                                     <constraint firstAttribute="trailing" secondItem="rQ6-Pa-GKd" secondAttribute="trailing" constant="8" id="Y45-7B-gJw"/>
                                     <constraint firstItem="LOD-is-3QJ" firstAttribute="leading" secondItem="Ii6-Wf-x3H" secondAttribute="leading" constant="8" id="a6k-86-6Ih"/>
-                                    <constraint firstItem="2wV-Ne-3B5" firstAttribute="leading" secondItem="LOD-is-3QJ" secondAttribute="trailing" priority="100" constant="8" symbolic="YES" id="cPN-Er-57d"/>
+                                    <constraint firstItem="2wV-Ne-3B5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LOD-is-3QJ" secondAttribute="trailing" priority="100" constant="8" symbolic="YES" id="cPN-Er-57d"/>
                                     <constraint firstItem="2wV-Ne-3B5" firstAttribute="centerY" secondItem="Ii6-Wf-x3H" secondAttribute="centerY" id="erC-Hz-NDW"/>
                                     <constraint firstItem="rQ6-Pa-GKd" firstAttribute="centerY" secondItem="Ii6-Wf-x3H" secondAttribute="centerY" id="jcy-di-Cz2"/>
                                 </constraints>
@@ -1298,8 +1298,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="192168.1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZK-Ql-bK1">
-                                        <rect key="frame" x="311.5" y="13.5" width="70.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZK-Ql-bK1">
+                                        <rect key="frame" x="362.5" y="13.5" width="19.5" height="17"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1360,7 +1360,7 @@
                         <outlet property="applyFreeView" destination="F8Z-6j-m6e" id="9fv-9U-8kw"/>
                         <outlet property="dnsIPLabel" destination="2wV-Ne-3B5" id="TPf-8K-QOe"/>
                         <outlet property="dnsView" destination="Ii6-Wf-x3H" id="JQI-Zo-B1C"/>
-                        <outlet property="docView" destination="Bp4-v7-zRV" id="41T-1Q-BbY"/>
+                        <outlet property="docView" destination="dsq-Dx-7BW" id="TQZ-9Q-Erh"/>
                         <outlet property="ethBalanceLabel" destination="plJ-vh-BzI" id="NWp-dH-Rv1"/>
                         <outlet property="membershipNoLabel" destination="km7-00-VSB" id="Hc6-JZ-Z8d"/>
                         <outlet property="membershipView" destination="ZFt-7l-9pi" id="kKn-lA-fPQ"/>

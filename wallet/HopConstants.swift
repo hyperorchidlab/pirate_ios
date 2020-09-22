@@ -18,7 +18,7 @@ public struct ScryptParam {
 
 public struct HopConstants {
         
-        static public let DefaultBasIP = "198.13.44.159"//47.242.11.173//198.13.44.159
+        static public let DefaultDnsIP = "198.13.44.159"//47.242.11.173//198.13.44.159
         static public let DefaultBasPort = 8853
         static public let ReceiptSyncPort = 32021
         static public let TxReceivePort = 32020
@@ -62,6 +62,11 @@ public struct HopConstants {
         static let NOTI_CHANGE_POOL = Notification.Name("NOTI_CHANGE_POOL")
         static let NOTI_CHANGE_MINER = Notification.Name("NOTI_CHANGE_MINER")
         static let NOTI_LOCAL_SETTING_CHANGED = Notification.Name("NOTI_LOCAL_SETTING_CHANGED")
+        
+        
+        
+        static let NOTI_DNS_CHANGED = Notification.init(name: Notification.Name("NOTI_DNS_CHANGED"))
+        
         
         static public func WalletPath() -> URL{
                 let base = DataShareManager.sharedInstance.containerURL

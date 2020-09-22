@@ -34,7 +34,7 @@ public class BasUtil{
                 }
                 
                 do {
-                        let client = UDPClient(address: HopConstants.DefaultBasIP,
+                        let client = UDPClient(address: HopConstants.DefaultDnsIP,
                                                port: Int32(HopConstants.DefaultBasPort))
                         
                         let req = ["ba": ba_data!]

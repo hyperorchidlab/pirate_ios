@@ -14,7 +14,7 @@ class AccountViewController: UIViewController {
         @IBOutlet weak var membershipView: UIView!
         @IBOutlet weak var membershipNoLabel: UILabel!
         @IBOutlet weak var appVerLabel: UILabel!
-        @IBOutlet weak var docView: UIButton!
+        @IBOutlet weak var docView: UIView!
         @IBOutlet weak var shareView: UIView!
         @IBOutlet weak var dnsView: UIView!
         @IBOutlet weak var telegramView: UIView!
@@ -22,6 +22,10 @@ class AccountViewController: UIViewController {
         @IBOutlet weak var ethBalanceLabel: UILabel!
         @IBOutlet weak var tokenBalanceLabel: UILabel!
         @IBOutlet weak var dnsIPLabel: UILabel!
+        
+        var appVersion: String? {
+            return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        }
         
         override func viewDidLoad() {
                 super.viewDidLoad()
@@ -45,6 +49,21 @@ class AccountViewController: UIViewController {
                 let tap4 = UITapGestureRecognizer(target: self, action: #selector(shareApp))
                 tap4.numberOfTapsRequired = 1
                 shareView.addGestureRecognizer(tap4)
+                
+                appVerLabel.text = appVersion
+                dnsIPLabel.text = AppSetting.dnsIP
+                
+                NotificationCenter.default.addObserver(self, selector: #selector(dnsChanged(_:)), name: HopConstants.NOTI_DNS_CHANGED.name, object: nil)
+        }
+        
+        deinit {
+                NotificationCenter.default.removeObserver(self)
+        }
+        
+        @objc func dnsChanged(_ notification: Notification?) {
+                DispatchQueue.main.async {
+                        self.dnsIPLabel.text = AppSetting.dnsIP
+                }
         }
         
         @objc func openTelegram() {
@@ -61,12 +80,32 @@ class AccountViewController: UIViewController {
         }
         
         @objc func changeBASIP() {
+                
+                self.ShowOneInput(title: "Change Dns".locStr, placeHolder: "New Dns") { (newdns, isOK) in
+                        guard let dns = newdns, isOK else{
+                                return
+                        }
+                        
+                        guard dns.isValidIP() else{
+                                self.ShowTips(msg: "dns is invalid")
+                                return
+                        }
+                        
+                        AppSetting.changeDNS(dns)
+                }
         }
         
         @objc func shareApp() {
+                let items = [URL(string: "https://apps.apple.com/app/id1521121265")!,
+                             URL(string: "https://testflight.apple.com/join/aMDfC5cV")!]
+                let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                present(ac, animated: true)
         }
         
         @objc func showDoc() {
+                if let url = URL(string: "https://docs.hyperorchid.org/") {
+                    UIApplication.shared.open(url)
+                }
         }
 
         // MARK: - Navigation

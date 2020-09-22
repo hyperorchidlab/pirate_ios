@@ -15,11 +15,12 @@ class AppSetting:NSObject{
         public static let workQueue = DispatchQueue.init(label: "APP Work Queue")
         public static var curPoolAddr:String?
         public static var curMinerAddr:String?
+        public static var dnsIP:String?
         static var coreData:CDAppSetting?
         
         public static func initSystem(){
                 
-                IosLibInitSystem(HopConstants.DefaultBasIP,
+                IosLibInitSystem(HopConstants.DefaultDnsIP,
                                  HopConstants.DefaultTokenAddr,
                                  HopConstants.DefaultPaymenstService,
                                  HopConstants.DefaultInfruaToken)
@@ -34,9 +35,13 @@ class AppSetting:NSObject{
                 if setting == nil{
                         setting = CDAppSetting(context: context)
                         setting!.mps = HopConstants.DefaultPaymenstService
+                        setting!.dnsIP = HopConstants.DefaultDnsIP
                         setting!.minerAddrInUsed = nil
                         setting!.poolAddrInUsed = nil
+                        
                         AppSetting.coreData = setting
+                        AppSetting.dnsIP = setting?.dnsIP
+                        
                         DataShareManager.saveContext(context)
                         return 
                 }
@@ -44,6 +49,15 @@ class AppSetting:NSObject{
                 AppSetting.coreData = setting
                 AppSetting.curPoolAddr = setting!.poolAddrInUsed
                 AppSetting.curMinerAddr = setting!.minerAddrInUsed
+                AppSetting.dnsIP = setting?.dnsIP ??  HopConstants.DefaultDnsIP
+        }
+        
+        public static func changeDNS(_ dns:String){
+                coreData?.dnsIP = dns
+                AppSetting.dnsIP = dns
+                let context = DataShareManager.privateQueueContext()
+                DataShareManager.saveContext(context)
+                PostNoti(HopConstants.NOTI_DNS_CHANGED)
         }
 }
 
