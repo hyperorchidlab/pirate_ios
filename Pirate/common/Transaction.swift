@@ -8,6 +8,7 @@
 
 import UIKit
 import IosLib
+import CoreData
 
 public enum TransactionStatus:Int16 {
         case pending
@@ -98,11 +99,42 @@ class Transaction : NSObject {
                 super.init()
         }
         
+        public static func reLoad(){
+                
+                guard let addr = Wallet.WInst.Address else{
+                        return
+                }
+                CachedTX.removeAll()
+                let dbContext = DataShareManager.privateQueueContext()
+                let w = NSPredicate(format: "walletAddr == %@", addr)
+                let order = [NSSortDescriptor.init(key: "time", ascending: false)]
+                guard let txArr = NSManagedObject.findEntity(HopConstants.DBNAME_TRASACTION,
+                                                             where: w,
+                                                             orderBy: order,
+                                                             context: dbContext) as? [CDTransaction] else{
+                        return
+                }
+                
+                for cData in txArr{
+                        let txObj = Transaction(coredata:cData)
+                        CachedTX.append(txObj)
+                }
+        }
+        
         public init(tx:String, typ:TransactionType, value:Double? = nil){
                 super.init()
                 txHash = tx
                 txType = typ
                 txValue = value ?? 0
+        }
+        
+        public init(coredata:CDTransaction){
+                super.init()
+                coreData = coredata
+                self.txValue = coredata.txValue
+                self.txStatus = TransactionStatus(rawValue: coredata.status) ?? .pending
+                self.txType = TransactionType(rawValue: coredata.actType) ?? .unknown
+                self.txHash = coredata.txHash
         }
         
         public static func applyFreeEth(forAddr address:String) -> Bool{
@@ -135,5 +167,7 @@ extension CDTransaction{
                 self.txHash = obj.txHash
                 self.actType = obj.txType.rawValue
                 self.status = obj.txStatus.rawValue
+                self.txValue = obj.txValue
+                self.time = Int64(Date.init().timeIntervalSince1970)
         }
 }

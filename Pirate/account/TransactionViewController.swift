@@ -11,6 +11,7 @@ import UIKit
 class TransactionViewController: UIViewController {
 
         @IBOutlet weak var tableview: UITableView!
+        
         override func viewDidLoad() {
                 super.viewDidLoad()
         }
@@ -30,5 +31,13 @@ extension TransactionViewController:UITableViewDelegate, UITableViewDataSource{
                 let tx = Transaction.CachedTX[indexPath.row]
                 c.fieldUP(tx)
                 return c
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                let tx = Transaction.CachedTX[indexPath.row]
+                let urlStr = "https://etherscan.io/tx/\(tx.txHash!)"
+                if let url = URL(string: urlStr) {
+                        UIApplication.shared.open(url)
+                }
         }
 }
