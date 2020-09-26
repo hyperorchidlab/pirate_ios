@@ -147,6 +147,11 @@ class Transaction : NSObject {
                         return false
                 }
                 
+                saveTX(txHash, forAddress: address)
+                return true
+        }
+        
+        private static func saveTX(_ txHash:String, forAddress address:String){
                 let obj = Transaction(tx: txHash, typ: .applyEth)
                 CachedTX.append(obj)
                 
@@ -156,7 +161,6 @@ class Transaction : NSObject {
                 obj.coreData = cdata
                 
                 DataShareManager.saveContext(dbCtx)
-                return true
         }
 }
 

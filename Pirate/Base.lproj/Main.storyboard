@@ -1444,6 +1444,9 @@
                         <barButtonItem key="backBarButtonItem" title="Account" id="x9g-bU-4Ki"/>
                         <barButtonItem key="rightBarButtonItem" image="refresh_cion" id="cGl-lG-pEa">
                             <color key="tintColor" red="0.94901960780000005" green="0.52156862749999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="ReloadWallet:" destination="1fD-Hm-fHU" id="NlD-Ch-Pac"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1541,6 +1544,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="k6e-0n-hK5" id="wQX-d8-JHi"/>
+                                    <outlet property="delegate" destination="k6e-0n-hK5" id="YMv-Qt-fvD"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nho-72-nK3"/>

@@ -27,8 +27,6 @@ public final class EthUtil :NSObject{
                 }else{
                         self.web3 = Web3.InfuraMainnetWeb3(accessToken: HopConstants.DefaultInfruaToken)
                 }
-                
-                
                 guard let token = EthereumAddress(HopConstants.DefaultTokenAddr), let payService = EthereumAddress(HopConstants.DefaultPaymenstService) else{
                         throw HopError.eth("Invalid ethereum config".locStr)
                 }

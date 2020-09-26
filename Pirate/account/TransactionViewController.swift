@@ -14,6 +14,16 @@ class TransactionViewController: UIViewController {
         
         override func viewDidLoad() {
                 super.viewDidLoad()
+                loadTXData()
+        }
+        
+        func loadTXData(){
+                AppSetting.workQueue.async {
+                        Transaction.reLoad()
+                        DispatchQueue.main.async {
+                                self.tableview.reloadData()
+                        }
+                }
         }
 }
 

@@ -17,15 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var window: UIWindow?
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
                 
-                Utils.initDomains()
-                _ = HopSodium.initialized
                 AppSetting.initSystem()
-                
-                do {try EthUtil.sharedInstance.initEth()
-                }catch let err{
-                        NSLog(err.localizedDescription)
-                        return false
-                }
                 
                 return true
         }

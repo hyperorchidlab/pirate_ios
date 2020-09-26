@@ -34,8 +34,6 @@ class AccountViewController: UIViewController {
                 super.viewDidLoad()
                 
                 walletAddrLabel.text = Wallet.WInst.Address
-                ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
-                tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
                 appVerLabel.text = appVersion
                 dnsIPLabel.text = AppSetting.dnsIP
                 
@@ -66,7 +64,10 @@ class AccountViewController: UIViewController {
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
+                ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
+                tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
                 
+                transactionNOLabel.text = "\(Transaction.CachedTX.count)"
                 if Wallet.WInst.ethBalance < 0.005{
                         applyFreeEthBtn.isHidden = false
                 }else if Wallet.WInst.tokenBalance < 20{
@@ -157,6 +158,15 @@ class AccountViewController: UIViewController {
         @IBAction func ShowAdressQR(_ sender: UIButton) {
         }
         
+        @IBAction func ReloadWallet(_ sender: UIBarButtonItem) {
+                AppSetting.workQueue.async {
+                        Wallet.WInst.queryBalance()
+                        DispatchQueue.main.async {
+                                self.ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
+                                self.tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
+                        }
+                }
+        }
         
         // MARK: - Navigation
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

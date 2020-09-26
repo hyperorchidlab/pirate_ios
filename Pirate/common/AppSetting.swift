@@ -18,7 +18,20 @@ class AppSetting:NSObject{
         public static var dnsIP:String?
         static var coreData:CDAppSetting?
         private static var AInst = AppSetting()
+        
         public static func initSystem(){
+                
+                AppSetting.initSetting()
+                
+                AppSetting.workQueue.async {
+                        Utils.initDomains()
+                        _ = HopSodium.initialized
+                        try? EthUtil.sharedInstance.initEth()
+                        Wallet.WInst.queryBalance()
+                        Transaction.reLoad()
+                }
+        }
+        public static func initSetting(){
                 
                 IosLibInitSystem(HopConstants.DefaultDnsIP,
                                  HopConstants.DefaultTokenAddr,

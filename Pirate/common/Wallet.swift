@@ -49,6 +49,26 @@ class Wallet:NSObject{
                 coreData = core_data
         }
         
+        public func queryBalance(){
+                
+                guard let addr = self.Address, addr != "" else {
+                        return
+                }
+                
+                guard let bData = IosLibBalance(addr) else{
+                        return
+                }
+                
+                let jsonObj = JSON(bData)
+                self.ethBalance = jsonObj["Eth"].double ?? 0
+                self.tokenBalance = jsonObj["Hop"].double ?? 0
+                self.approve = jsonObj["Approved"].double ?? 0
+                
+                self.coreData?.approve = self.approve
+                self.coreData?.tokenBalance = self.tokenBalance
+                self.coreData?.ethBalance = self.ethBalance
+        }
+        
         public func initByJson(_ jsonData:Data){
                 let jsonObj = JSON(jsonData)
                 self.Address = jsonObj["mainAddress"].string
