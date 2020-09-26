@@ -67,7 +67,13 @@ class AccountViewController: UIViewController {
                 ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
                 tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
                 
-                transactionNOLabel.text = "\(Transaction.CachedTX.count)"
+                if Transaction.CachedTX.count > 0{
+                        transactionNOLabel.isHidden = false
+                        transactionNOLabel.text = "\(Transaction.CachedTX.count)"
+                }else{
+                        transactionNOLabel.isHidden = true
+                }
+                
                 if Wallet.WInst.ethBalance < 0.005{
                         applyFreeEthBtn.isHidden = false
                 }else if Wallet.WInst.tokenBalance < 20{
@@ -137,6 +143,20 @@ class AccountViewController: UIViewController {
         
         // MARK: - Button Actions
         @IBAction func ApplyTokenAction(_ sender: UIButton) {
+                self.showIndicator(withTitle: "", and: "Applying......".locStr)
+                
+                AppSetting.workQueue.async {
+                        defer{self.hideIndicator()}
+                        if false == Transaction.applyFreeToken(forAddr: Wallet.WInst.Address!){
+                                self.ShowTips(msg: "Apply Failed".locStr)
+                                return
+                        }
+                        
+                        DispatchQueue.main.async {
+                                self.applyFreeTokenBtn.isHidden = true
+                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                        }
+                }
         }
         
         @IBAction func ApplyEthAction(_ sender: UIButton) {
@@ -150,6 +170,7 @@ class AccountViewController: UIViewController {
                         }
                         
                         DispatchQueue.main.async {
+                                self.applyFreeEthBtn.isHidden = true
                                 self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
                         }
                 }

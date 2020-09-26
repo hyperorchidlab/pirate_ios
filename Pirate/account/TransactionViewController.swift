@@ -10,19 +10,46 @@ import UIKit
 
 class TransactionViewController: UIViewController {
 
+        var refreshControl: UIRefreshControl! = UIRefreshControl()
         @IBOutlet weak var tableview: UITableView!
         
         override func viewDidLoad() {
                 super.viewDidLoad()
                 loadTXData()
+                
+                tableview.rowHeight = 80
+                refreshControl.tintColor = UIColor.red
+                refreshControl.addTarget(self, action: #selector(self.reloadCachedTx(_:)), for: .valueChanged)
+                tableview.addSubview(refreshControl)
+                
+                NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(txChanged(_:)),
+                                                       name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
+                                                       object: nil)
         }
         
         func loadTXData(){
                 AppSetting.workQueue.async {
                         Transaction.reLoad()
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [self] in
+                                self.refreshControl.endRefreshing()
                                 self.tableview.reloadData()
                         }
+                }
+        }
+        
+        @objc private func reloadCachedTx(_ sender: Any?){
+                loadTXData()
+        }
+        
+        @objc func txChanged(_ notification: Notification?) {
+                guard let tx = notification?.userInfo?["data"] as? String else{
+                        return
+                }
+                
+                Transaction.updateStatus(forTx: tx)
+                DispatchQueue.main.async {
+                        self.tableview.reloadData()
                 }
         }
 }

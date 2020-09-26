@@ -12,8 +12,8 @@ import CoreData
 
 public enum TransactionStatus:Int16 {
         case pending
-        case fail
         case success
+        case fail
         case nosuch
         
         var name:String {
@@ -116,9 +116,21 @@ class Transaction : NSObject {
                 }
                 
                 for cData in txArr{
+                        
                         let txObj = Transaction(coredata:cData)
                         CachedTX.append(txObj)
+                        
+                        if txObj.txStatus == .pending || txObj.txStatus == .nosuch{
+                                let statusInt = IosLibTXStatus(txObj.txHash)
+                                txObj.txStatus = TransactionStatus(rawValue:statusInt) ?? .nosuch
+                                txObj.coreData?.status = txObj.txStatus.rawValue
+                        }
                 }
+        }
+        
+        public static func updateStatus(forTx tx: String){
+                let w = NSPredicate(format: "txHash == %@", tx)
+//                NSManagedObject.
         }
         
         public init(tx:String, typ:TransactionType, value:Double? = nil){
@@ -151,6 +163,20 @@ class Transaction : NSObject {
                 return true
         }
         
+        public static func applyFreeToken(forAddr address:String) -> Bool{
+                guard address != ""  else {
+                        return false
+                }
+                
+                let txHash = IosLibApplyFreeToken(address)
+                if txHash == ""{
+                        return false
+                }
+                
+                saveTX(txHash, forAddress: address)
+                return true
+        }
+        
         private static func saveTX(_ txHash:String, forAddress address:String){
                 let obj = Transaction(tx: txHash, typ: .applyEth)
                 CachedTX.append(obj)
@@ -159,6 +185,8 @@ class Transaction : NSObject {
                 let cdata = CDTransaction(context: dbCtx)
                 cdata.initByObj(obj: obj, addr: address)
                 obj.coreData = cdata
+                
+                IosLibMonitorTx(txHash, HopConstants.NOTI_TX_STATUS_CHANGED.name.rawValue)
                 
                 DataShareManager.saveContext(dbCtx)
         }

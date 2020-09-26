@@ -67,7 +67,7 @@ public struct HopConstants {
         
         
         static let NOTI_DNS_CHANGED = Notification.init(name: Notification.Name("NOTI_DNS_CHANGED"))
-        
+        static let NOTI_TX_STATUS_CHANGED = Notification.init(name: Notification.Name("NOTI_TX_STATUS_CHANGED"))
         
         static public func WalletPath() -> URL{
                 let base = DataShareManager.sharedInstance.containerURL
