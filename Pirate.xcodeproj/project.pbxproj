@@ -469,6 +469,7 @@
 		69AD9FE9252071C10077CFCF /* object */ = {
 			isa = PBXGroup;
 			children = (
+				696B02D325187B8E00F76A51 /* AppSetting.swift */,
 				69AD9FE2252071750077CFCF /* Pool.swift */,
 				696B02EC251A0A4D00F76A51 /* Transaction.swift */,
 				69C112D32515DC7C00C5E9F5 /* Wallet.swift */,
@@ -487,7 +488,6 @@
 				6932A1942407BE2900D2DA39 /* DataSyncer.swift */,
 				698A513E23FD08B900836E26 /* gfw.plist */,
 				696A71F725148F5F004EA5DE /* ConfirmViewController.swift */,
-				696B02D325187B8E00F76A51 /* AppSetting.swift */,
 				696B02E8251A079500F76A51 /* RoundedCornerView.swift */,
 			);
 			path = common;

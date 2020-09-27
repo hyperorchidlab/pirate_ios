@@ -29,6 +29,7 @@ class AppSetting:NSObject{
                         try? EthUtil.sharedInstance.initEth()
                         Wallet.WInst.queryBalance()
                         Transaction.reLoad()
+                        Pool.reloadCachedPool()
                 }
         }
         public static func initSetting(){

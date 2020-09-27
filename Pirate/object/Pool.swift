@@ -27,7 +27,6 @@ class Pool : NSObject {
         
         public static func reloadCachedPool()  {
                 
-                
                 let dbContext = DataShareManager.privateQueueContext()
                 let w = NSPredicate(format: "mps == %@", HopConstants.DefaultPaymenstService)
                 let order = [NSSortDescriptor.init(key: "address", ascending: false)]
@@ -41,6 +40,7 @@ class Pool : NSObject {
                 }
                 
                 CachedPool.removeAll()
+                
                 for cData in poolArr{
                         let obj = Pool(coredata:cData)
                         CachedPool[obj.Address] = obj
@@ -94,6 +94,10 @@ class Pool : NSObject {
                 }
                 
                 DataShareManager.saveContext(dbContext)
+        }
+        
+        public static func ArrayData() ->[Pool]{
+                return Array(CachedPool.values)
         }
 }
 

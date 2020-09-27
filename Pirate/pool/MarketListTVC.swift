@@ -13,25 +13,24 @@ class MarketListTVC: UITableViewController {
         // MARK: - Table view variables
         
         let dbContext = DataShareManager.privateQueueContext()
-        var poolList:[PoolDetails] = []
+        var poolList:[Pool] = []
         var poolAddrToRecharge:String?
         
         // MARK: - Table view init
         override func viewDidLoad() {
                 super.viewDidLoad()
+                
+                self.poolList = Pool.ArrayData()
+                
                 self.tableView.estimatedRowHeight = 140
                 self.tableView.rowHeight = 140
+                
                 refreshControl = UIRefreshControl()
                 refreshControl!.tintColor = UIColor.red
                 refreshControl!.addTarget(self, action: #selector(self.reloadPoolList(_:)), for: .valueChanged)
                 tableView.addSubview(refreshControl!)
+                
         }
-        override func viewDidAppear(_ animated: Bool) {
-                super.viewDidAppear(animated)
-                self.poolList = Array(DataSyncer.sharedInstance.poolData.values)
-                self.tableView.reloadData()
-        }
-
         // MARK: - Table view data source
         override func numberOfSections(in tableView: UITableView) -> Int {
                 return 1
@@ -64,18 +63,27 @@ class MarketListTVC: UITableViewController {
         }
 
         @IBAction func BuyThisPool(_ sender: UIButton) {
-                guard let _ = HopWallet.WInst?.mainAddress else{
+                
+                
+                guard let _ = Wallet.WInst.Address else{
                         self.ShowTips(msg: "Create your account first".locStr)
                         return
                 }
                 let pool_details = self.poolList[sender.tag]
-                self.poolAddrToRecharge = pool_details.MainAddr.address
+                self.poolAddrToRecharge = pool_details.Address
                 
                 self.performSegue(withIdentifier: "ShowRechargePage", sender: self)
         }
         
         //MARK: - object c
         @objc func reloadPoolList(_ sender: Any?){
-                
+                AppSetting.workQueue.async {
+                        Pool.fetchPool()
+                        self.poolList = Pool.ArrayData()
+                        DispatchQueue.main.async {
+                                self.refreshControl?.endRefreshing()
+                                self.tableView.reloadData()
+                        }
+                }
         }
 }

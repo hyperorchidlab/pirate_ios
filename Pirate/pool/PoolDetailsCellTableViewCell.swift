@@ -34,12 +34,10 @@ class PoolDetailsCellTableViewCell: UITableViewCell {
                 self.backGroundView.layer.cornerRadius = 10
         }
         
-        public func initWith(details d:PoolDetails, index:Int){
-                self.shortName.text = d.ShortName
+        public func initWith(details d:Pool, index:Int){
+                self.shortName.text = d.Name
                 self.email.text = d.Email
                 self.url.text = d.Url ?? "NAN".locStr
-//                self.address.text = d.MainAddr.address
-//                self.GTN.text = d.GTN.ToCoin()
                 let color = BackGroudColor[index%3]
                 self.buyButton.setTitleColor(color, for: .normal)
                 self.backGroundView.backgroundColor = color
