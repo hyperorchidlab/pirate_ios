@@ -10,6 +10,7 @@ import UIKit
 
 class TransactionViewController: UIViewController {
 
+        var tableData:[Transaction] = []
         var refreshControl: UIRefreshControl! = UIRefreshControl()
         @IBOutlet weak var tableview: UITableView!
         
@@ -31,6 +32,7 @@ class TransactionViewController: UIViewController {
         func loadTXData(){
                 AppSetting.workQueue.async {
                         Transaction.reLoad()
+                        self.tableData = Transaction.CachedArray()
                         DispatchQueue.main.async { [self] in
                                 self.refreshControl.endRefreshing()
                                 self.tableview.reloadData()
@@ -56,7 +58,7 @@ class TransactionViewController: UIViewController {
 
 extension TransactionViewController:UITableViewDelegate, UITableViewDataSource{
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                return Transaction.CachedTX.count
+                return self.tableData.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,14 +67,14 @@ extension TransactionViewController:UITableViewDelegate, UITableViewDataSource{
                         return cell!
                 }
                 
-                let tx = Transaction.CachedTX[indexPath.row]
+                let tx = self.tableData[indexPath.row]
                 c.fieldUP(tx)
                 return c
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                let tx = Transaction.CachedTX[indexPath.row]
-                let urlStr = "https://etherscan.io/tx/\(tx.txHash!)"
+                let tx = self.tableData[indexPath.row]
+                let urlStr = "\(HopConstants.EthScanUrl)\(tx.txHash!)"
                 if let url = URL(string: urlStr) {
                         UIApplication.shared.open(url)
                 }

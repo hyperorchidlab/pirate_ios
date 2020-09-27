@@ -87,7 +87,7 @@ public enum TransactionType:Int16 {
         
 class Transaction : NSObject {
         
-        public static var CachedTX:[Transaction] = []
+        public static var CachedTX:[String : Transaction] = [:]
         
         var coreData:CDTransaction?
         var txValue:Double = 0
@@ -118,7 +118,7 @@ class Transaction : NSObject {
                 for cData in txArr{
                         
                         let txObj = Transaction(coredata:cData)
-                        CachedTX.append(txObj)
+                        CachedTX[txObj.txHash!] = txObj
                         
                         if txObj.txStatus == .pending || txObj.txStatus == .nosuch{
                                 let statusInt = IosLibTXStatus(txObj.txHash)
@@ -129,8 +129,16 @@ class Transaction : NSObject {
         }
         
         public static func updateStatus(forTx tx: String){
-                let w = NSPredicate(format: "txHash == %@", tx)
-//                NSManagedObject.
+                
+                
+                guard let obj = CachedTX[tx] else{
+                        return
+                }
+                
+                obj.coreData?.status = IosLibTXStatus(tx)
+                obj.txStatus = TransactionStatus(rawValue: (obj.coreData?.status)!) ?? .nosuch
+                
+                DataShareManager.saveContext(DataShareManager.privateQueueContext())
         }
         
         public init(tx:String, typ:TransactionType, value:Double? = nil){
@@ -159,7 +167,7 @@ class Transaction : NSObject {
                         return false
                 }
                 
-                saveTX(txHash, forAddress: address)
+                saveTX(txHash, forAddress: address, txValue: 0.1)
                 return true
         }
         
@@ -173,13 +181,17 @@ class Transaction : NSObject {
                         return false
                 }
                 
-                saveTX(txHash, forAddress: address)
+                saveTX(txHash, forAddress: address, txValue: 1000)
                 return true
         }
         
-        private static func saveTX(_ txHash:String, forAddress address:String){
-                let obj = Transaction(tx: txHash, typ: .applyEth)
-                CachedTX.append(obj)
+        public static func CachedArray() -> [Transaction]{
+                return Array(Transaction.CachedTX.values)
+        }
+        
+        private static func saveTX(_ txHash:String, forAddress address:String, txValue val:Double? = 0){
+                let obj = Transaction(tx: txHash, typ: .applyEth, value: val)
+                CachedTX[obj.txHash!] = obj
                 
                 let dbCtx = DataShareManager.privateQueueContext()
                 let cdata = CDTransaction(context: dbCtx)

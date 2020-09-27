@@ -73,12 +73,8 @@ class AccountViewController: UIViewController {
                 }else{
                         transactionNOLabel.isHidden = true
                 }
-                
-                if Wallet.WInst.ethBalance < 0.005{
-                        applyFreeEthBtn.isHidden = false
-                }else if Wallet.WInst.tokenBalance < 20{
-                        applyFreeTokenBtn.isHidden = false
-                }
+                applyFreeEthBtn.isHidden =  Wallet.WInst.ethBalance > 0.005
+                applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
         }
         
         deinit {
