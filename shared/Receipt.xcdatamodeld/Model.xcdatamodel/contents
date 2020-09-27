@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20A5374g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDAppSetting" representedClassName="CDAppSetting" syncable="YES" codeGenerationType="class">
         <attribute name="dnsIP" optional="YES" attributeType="String"/>
         <attribute name="minerAddrInUsed" optional="YES" attributeType="String"/>
@@ -14,6 +14,13 @@
         <attribute name="minerListInUse" optional="YES" attributeType="Binary"/>
         <attribute name="poolInUse" optional="YES" attributeType="String"/>
         <attribute name="tokenAddrInUse" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CDPool" representedClassName="CDPool" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="mps" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
     <entity name="CDPoolData" representedClassName="CDPoolData" syncable="YES" codeGenerationType="class">
         <attribute name="contractAddress" optional="YES" attributeType="String"/>
@@ -79,5 +86,6 @@
         <element name="CDUserAccount" positionX="-54" positionY="63" width="128" height="223"/>
         <element name="CDVersionManager" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="CDWallet" positionX="-54" positionY="117" width="128" height="134"/>
+        <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
     </elements>
 </model>

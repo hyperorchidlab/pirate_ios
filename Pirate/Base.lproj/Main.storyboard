@@ -1304,8 +1304,8 @@
                                             <color key="titleShadowColor" red="0.94901960780000005" green="0.52156862749999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telegram:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuI-kD-T1l">
-                                        <rect key="frame" x="8" y="12.5" width="70" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuI-kD-T1l">
+                                        <rect key="frame" x="8" y="12.5" width="69" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2182,7 +2182,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qJJ-AI-AJd"/>
-        <segue reference="yeo-53-NVf"/>
+        <segue reference="ONx-76-VRJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="&gt;_icon" width="23" height="22"/>

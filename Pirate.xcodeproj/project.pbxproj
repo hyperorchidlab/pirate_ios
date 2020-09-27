@@ -76,6 +76,7 @@
 		69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
 		69A47D70240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
 		69AB68AC2410D506006195AF /* TxWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB68AB2410D506006195AF /* TxWire.swift */; };
+		69AD9FE3252071750077CFCF /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD9FE2252071750077CFCF /* Pool.swift */; };
 		69B0D9DC24AF1C05006B665B /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
 		69B0D9DE24AF1DEC006B665B /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6702400BCB800D45CB6 /* secp256k1.framework */; };
 		69C112D22515D58700C5E9F5 /* DataSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A1942407BE2900D2DA39 /* DataSyncer.swift */; };
@@ -233,6 +234,7 @@
 		69A47D6B240EB6B500C86CFF /* RcpWire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RcpWire.swift; sourceTree = "<group>"; };
 		69A47D6E240EB8C100C86CFF /* HopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopMessage.swift; sourceTree = "<group>"; };
 		69AB68AB2410D506006195AF /* TxWire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxWire.swift; sourceTree = "<group>"; };
+		69AD9FE2252071750077CFCF /* Pool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
 		69C112D32515DC7C00C5E9F5 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		69D1DFA9240D7E8300D3BA30 /* MinerDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinerDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		69E0BEB8240800D900E0B982 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 		69980C2723F78D3E00829B09 /* Pirate */ = {
 			isa = PBXGroup;
 			children = (
+				69AD9FE9252071C10077CFCF /* object */,
 				69980C3023F78D3E00829B09 /* Main.storyboard */,
 				69980C3323F78D3F00829B09 /* Assets.xcassets */,
 				69980C3523F78D3F00829B09 /* LaunchScreen.storyboard */,
@@ -463,6 +466,16 @@
 			path = extension;
 			sourceTree = "<group>";
 		};
+		69AD9FE9252071C10077CFCF /* object */ = {
+			isa = PBXGroup;
+			children = (
+				69AD9FE2252071750077CFCF /* Pool.swift */,
+				696B02EC251A0A4D00F76A51 /* Transaction.swift */,
+				69C112D32515DC7C00C5E9F5 /* Wallet.swift */,
+			);
+			path = object;
+			sourceTree = "<group>";
+		};
 		69E0BEBE240838CA00E0B982 /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,10 +487,8 @@
 				6932A1942407BE2900D2DA39 /* DataSyncer.swift */,
 				698A513E23FD08B900836E26 /* gfw.plist */,
 				696A71F725148F5F004EA5DE /* ConfirmViewController.swift */,
-				69C112D32515DC7C00C5E9F5 /* Wallet.swift */,
 				696B02D325187B8E00F76A51 /* AppSetting.swift */,
 				696B02E8251A079500F76A51 /* RoundedCornerView.swift */,
-				696B02EC251A0A4D00F76A51 /* Transaction.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -667,6 +678,7 @@
 			files = (
 				69242240240D368F00590536 /* MinerChooseTableViewController.swift in Sources */,
 				7CE0EAFE24204F9E00F23A5A /* SystemSettingTableViewController.swift in Sources */,
+				69AD9FE3252071750077CFCF /* Pool.swift in Sources */,
 				696A71F62514891F004EA5DE /* AccountViewController.swift in Sources */,
 				69980C2F23F78D3E00829B09 /* WalletVC.swift in Sources */,
 				69987DFC2412225700029C0A /* HopSodium.swift in Sources */,

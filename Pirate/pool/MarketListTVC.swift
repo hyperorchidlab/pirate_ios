@@ -21,6 +21,10 @@ class MarketListTVC: UITableViewController {
                 super.viewDidLoad()
                 self.tableView.estimatedRowHeight = 140
                 self.tableView.rowHeight = 140
+                refreshControl = UIRefreshControl()
+                refreshControl!.tintColor = UIColor.red
+                refreshControl!.addTarget(self, action: #selector(self.reloadPoolList(_:)), for: .valueChanged)
+                tableView.addSubview(refreshControl!)
         }
         override func viewDidAppear(_ animated: Bool) {
                 super.viewDidAppear(animated)
@@ -68,5 +72,10 @@ class MarketListTVC: UITableViewController {
                 self.poolAddrToRecharge = pool_details.MainAddr.address
                 
                 self.performSegue(withIdentifier: "ShowRechargePage", sender: self)
+        }
+        
+        //MARK: - object c
+        @objc func reloadPoolList(_ sender: Any?){
+                
         }
 }

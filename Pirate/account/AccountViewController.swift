@@ -178,9 +178,11 @@ class AccountViewController: UIViewController {
         @IBAction func ReloadWallet(_ sender: UIBarButtonItem) {
                 AppSetting.workQueue.async {
                         Wallet.WInst.queryBalance()
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [self] in
                                 self.ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
                                 self.tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
+                                self.applyFreeEthBtn.isHidden =  Wallet.WInst.ethBalance > 0.005
+                                self.applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
                         }
                 }
         }

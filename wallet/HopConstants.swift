@@ -57,6 +57,7 @@ public struct HopConstants {
         static public let DBNAME_WALLET = "CDWallet"
         static public let DBNAME_APPSETTING = "CDAppSetting"
         static public let DBNAME_TRASACTION = "CDTransaction"
+        static public let DBNAME_POOL = "CDPool"
         
         
         static let NOTI_NEW_WALLET = Notification.Name("NOTI_NEW_WALLET")
