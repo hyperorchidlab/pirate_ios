@@ -80,7 +80,6 @@ class Wallet:NSObject{
                         return false
                 }
                 
-                
                 WInst.initByJson(jsonData)
                 
                 let context = DataShareManager.privateQueueContext()

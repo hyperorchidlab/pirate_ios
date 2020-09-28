@@ -167,7 +167,8 @@ class Transaction : NSObject {
                         return false
                 }
                 
-                saveTX(txHash, forAddress: address, txValue: 0.1)
+                let obj = Transaction(tx: txHash, typ: .applyToken, value: 0.1)
+                saveTX(obj, forAddress: address)
                 return true
         }
         
@@ -180,8 +181,8 @@ class Transaction : NSObject {
                 if txHash == ""{
                         return false
                 }
-                
-                saveTX(txHash, forAddress: address, txValue: 1000)
+                let obj = Transaction(tx: txHash, typ: .applyToken, value: 1000)
+                saveTX(obj, forAddress: address)
                 return true
         }
         
@@ -189,8 +190,8 @@ class Transaction : NSObject {
                 return Array(Transaction.CachedTX.values)
         }
         
-        private static func saveTX(_ txHash:String, forAddress address:String, txValue val:Double? = 0){
-                let obj = Transaction(tx: txHash, typ: .applyEth, value: val)
+        private static func saveTX(_ obj:Transaction, forAddress address:String){
+                
                 CachedTX[obj.txHash!] = obj
                 
                 let dbCtx = DataShareManager.privateQueueContext()
@@ -198,7 +199,7 @@ class Transaction : NSObject {
                 cdata.initByObj(obj: obj, addr: address)
                 obj.coreData = cdata
                 
-                IosLibMonitorTx(txHash, HopConstants.NOTI_TX_STATUS_CHANGED.name.rawValue)
+                IosLibMonitorTx(obj.txHash, HopConstants.NOTI_TX_STATUS_CHANGED.name.rawValue)
                 
                 DataShareManager.saveContext(dbCtx)
         }
