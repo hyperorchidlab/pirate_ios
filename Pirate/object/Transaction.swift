@@ -167,7 +167,7 @@ class Transaction : NSObject {
                         return false
                 }
                 
-                let obj = Transaction(tx: txHash, typ: .applyToken, value: 0.1)
+                let obj = Transaction(tx: txHash, typ: .applyEth, value: 0.1)
                 saveTX(obj, forAddress: address)
                 return true
         }

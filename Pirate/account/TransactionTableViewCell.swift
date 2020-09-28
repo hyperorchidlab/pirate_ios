@@ -32,7 +32,7 @@ class TransactionTableViewCell: UITableViewCell {
                 statusLabel.textColor = tx.txStatus.StatusTxtColor
                 
                 typeLabel.text = tx.txType.name
-                valueLabel.text = tx.txValue.ToCoin()
+                valueLabel.text = "\(tx.txValue)"
                 hashLabel.text = tx.txHash
         }
 }

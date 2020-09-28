@@ -59,6 +59,9 @@ class AccountViewController: UIViewController {
                 walletView.addGestureRecognizer(tap5)
                 
                 
+                applyFreeEthBtn.isHidden =  Wallet.WInst.ethBalance > 0.005
+                applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
+                
                 NotificationCenter.default.addObserver(self, selector: #selector(dnsChanged(_:)), name: HopConstants.NOTI_DNS_CHANGED.name, object: nil)
         }
         
@@ -73,8 +76,6 @@ class AccountViewController: UIViewController {
                 }else{
                         transactionNOLabel.isHidden = true
                 }
-                applyFreeEthBtn.isHidden =  Wallet.WInst.ethBalance > 0.005
-                applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
         }
         
         deinit {
