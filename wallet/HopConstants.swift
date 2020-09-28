@@ -36,6 +36,7 @@ public struct HopConstants {
         static public let DefaultTokenAddr = "0xAd44c8493dE3FE2B070f33927A315b50Da9a0e25"
         static public let DefaultPaymenstService = "0x4291d9Ff189D90Ba875E0fc1Da4D602406DD7D6e"
         static public let DefaultInfruaToken = "f3245cef90ed440897e43efc6b3dd0f7"
+        static public let DefaultServicePrice = Int64(1000)
         
         static public let DefaultApplyFreeAddr = "0xE4d20a76c18E73ce82035ef43e8C3ca7Fd94035E"
         static public let DefaultTokenDecimal = BigUInt(1e18)

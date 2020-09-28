@@ -101,4 +101,8 @@ class Wallet:NSObject{
                 
                 return true
         }
+        
+        public static func IsValidAdress(addrStr:String)->Bool{
+                return IosLibValidateAddress(addrStr)
+        }
 }

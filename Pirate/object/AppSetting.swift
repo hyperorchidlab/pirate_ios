@@ -16,6 +16,8 @@ class AppSetting:NSObject{
         public static var curPoolAddr:String?
         public static var curMinerAddr:String?
         public static var dnsIP:String?
+        public static var servicePrice:Int64 = 0
+        
         static var coreData:CDAppSetting?
         private static var AInst = AppSetting()
         
@@ -30,8 +32,20 @@ class AppSetting:NSObject{
                         Wallet.WInst.queryBalance()
                         Transaction.reLoad()
                         Pool.reloadCachedPool()
+                        loadServicePrice()
                 }
         }
+        
+        public static func loadServicePrice(){
+                let price = IosLibServicePrice()
+                if price == 0{
+                        return
+                }
+                
+                servicePrice = price
+                AppSetting.coreData?.servicePrice = price
+        }
+        
         public static func initSetting(){
                 
                 IosLibInitSystem(HopConstants.DefaultDnsIP,
@@ -51,6 +65,7 @@ class AppSetting:NSObject{
                         setting = CDAppSetting(context: context)
                         setting!.mps = HopConstants.DefaultPaymenstService
                         setting!.dnsIP = HopConstants.DefaultDnsIP
+                        setting!.servicePrice = HopConstants.DefaultServicePrice
                         setting!.minerAddrInUsed = nil
                         setting!.poolAddrInUsed = nil
                         
@@ -65,6 +80,7 @@ class AppSetting:NSObject{
                 AppSetting.curPoolAddr = setting!.poolAddrInUsed
                 AppSetting.curMinerAddr = setting!.minerAddrInUsed
                 AppSetting.dnsIP = setting?.dnsIP ??  HopConstants.DefaultDnsIP
+                AppSetting.servicePrice = setting!.servicePrice
         }
         
         public static func changeDNS(_ dns:String){

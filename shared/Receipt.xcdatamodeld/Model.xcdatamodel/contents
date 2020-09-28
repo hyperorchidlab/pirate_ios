@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20A5374g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20A5374i" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDAppSetting" representedClassName="CDAppSetting" syncable="YES" codeGenerationType="class">
         <attribute name="dnsIP" optional="YES" attributeType="String"/>
         <attribute name="minerAddrInUsed" optional="YES" attributeType="String"/>
         <attribute name="mps" optional="YES" attributeType="String"/>
         <attribute name="poolAddrInUsed" optional="YES" attributeType="String"/>
+        <attribute name="servicePrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="CDCurSettings" representedClassName="CDCurSettings" syncable="YES" codeGenerationType="class">
         <attribute name="basIPInUse" optional="YES" attributeType="String"/>
@@ -78,14 +79,14 @@
         <attribute name="walletJSON" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="89"/>
+        <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="104"/>
         <element name="CDCurSettings" positionX="-54" positionY="117" width="128" height="148"/>
+        <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
         <element name="CDPoolData" positionX="-63" positionY="18" width="128" height="163"/>
         <element name="CDSystemSettings" positionX="-54" positionY="72" width="128" height="118"/>
         <element name="CDTransaction" positionX="-27" positionY="144" width="128" height="133"/>
         <element name="CDUserAccount" positionX="-54" positionY="63" width="128" height="223"/>
         <element name="CDVersionManager" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="CDWallet" positionX="-54" positionY="117" width="128" height="134"/>
-        <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
     </elements>
 </model>

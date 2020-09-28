@@ -9,6 +9,7 @@
 import UIKit
 import BigInt
 import web3swift
+
 class MarketListTVC: UITableViewController {
         // MARK: - Table view variables
         
@@ -57,14 +58,12 @@ class MarketListTVC: UITableViewController {
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
                 if segue.identifier == "ShowRechargePage"{
-                        let vc : RechargeSimpleViewController = segue.destination as! RechargeSimpleViewController
+                        let vc : RechargeViewController = segue.destination as! RechargeViewController
                         vc.poolAddr = self.poolAddrToRecharge!
                 }
         }
 
         @IBAction func BuyThisPool(_ sender: UIButton) {
-                
-                
                 guard let _ = Wallet.WInst.Address else{
                         self.ShowTips(msg: "Create your account first".locStr)
                         return
