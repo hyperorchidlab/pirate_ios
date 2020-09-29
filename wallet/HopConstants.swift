@@ -41,6 +41,8 @@ public struct HopConstants {
         static public let DefaultApplyFreeAddr = "0xE4d20a76c18E73ce82035ef43e8C3ca7Fd94035E"
         static public let DefaultTokenDecimal = BigUInt(1e18)
         
+        static public let DefaultTokenDecimal2 = Double(1e18)
+        
         static public let ECSDA_AES_MODE = "aes-128-ctr"
         static public let HOP_SUB_PREFIX = "HO"
         static public let HOP_WALLET_VERSION = 1

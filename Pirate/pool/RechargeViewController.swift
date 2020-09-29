@@ -51,10 +51,61 @@ class RechargeViewController: UIViewController {
                 AddressTFD.text = content
         }
         
-        @IBAction func BuyPackets(_ sender: UIButton) {
+        private func buyAction(token:Double, user:String, pool:String){
+                self.showIndicator(withTitle: "", and: "Applying......".locStr)
+                AppSetting.workQueue.async {
+                        
+                        defer{self.hideIndicator()}
+                        
+                        if false == Transaction.BuyPacket(userAddr: user, poolAddr: pool, token: token){
+                                self.ShowTips(msg: "Apply Failed".locStr)
+                                return
+                        }
+                        
+                        DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                        }
+                }
         }
         
-        
+        @IBAction func BuyPackets(_ sender: UIButton) {
+                
+                guard let user = AddressTFD.text else {
+                        self.ShowTips(msg:"Account Address Invalid")
+                        AddressTFD.becomeFirstResponder()
+                        return
+                }
+                guard AppSetting.servicePrice > 0 else {
+                        self.ShowTips(msg: "Service Price Invalid")
+                        return
+                }
+                
+                var tokenNo = Double(0.0)
+                if sender.tag == -1{
+                        guard let noStr = TokenNoTFD.text else{
+                                self.ShowTips(msg: "Token No Is Empty")
+                                TokenNoTFD.becomeFirstResponder()
+                                return
+                        }
+                        tokenNo = Double(noStr)!
+                }else{
+                        tokenNo = Double(sender.tag) * 1e9 / Double(AppSetting.servicePrice)
+                }
+                
+                if Wallet.WInst.tokenBalance < tokenNo * HopConstants.DefaultTokenDecimal2{
+                        self.ShowTips(msg: "Token Insufficient")
+                        return
+                }
+                
+                guard Wallet.WInst.IsOpen() else {
+                        self.ShowOnePassword(){
+                                self.buyAction(token: tokenNo, user: user, pool: self.poolAddr)
+                        }
+                        return
+                }
+                
+                self.buyAction(token: tokenNo, user: user, pool: self.poolAddr)
+        }
         
         /*
     // MARK: - Navigation

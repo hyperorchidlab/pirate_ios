@@ -106,17 +106,6 @@ class Wallet:NSObject{
                 return IosLibValidateAddress(addrStr)
         }
         
-        public func ApproveThisApp() -> Bool{
-               
-                let txHash = IosLibApproveAPP()
-                if txHash == ""{
-                        return false
-                }
-                let obj = Transaction(tx: txHash, typ: .authorize, value: 0)
-                Transaction.saveTX(obj, forAddress: self.Address!)
-                return true
-        }
-        
         public func IsOpen() -> Bool{
                 return IosLibIsOpen()
         }

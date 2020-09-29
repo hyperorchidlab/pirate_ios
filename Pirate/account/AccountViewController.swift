@@ -195,7 +195,7 @@ class AccountViewController: UIViewController {
         private func approve(){
                 AppSetting.workQueue.async {
                         defer{self.hideIndicator()}
-                        if false == Wallet.WInst.ApproveThisApp(){
+                        if false == Transaction.ApproveThisApp(forAddress: Wallet.WInst.Address!){
                                 self.ShowTips(msg: "Approve Failed".locStr)
                                 return
                         }

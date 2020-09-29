@@ -193,7 +193,7 @@ class Transaction : NSObject {
                 return Array(Transaction.CachedTX.values)
         }
         
-        public static func saveTX(_ obj:Transaction, forAddress address:String){
+        private static func saveTX(_ obj:Transaction, forAddress address:String){
                 
                 CachedTX[obj.txHash!] = obj
                 
@@ -205,6 +205,29 @@ class Transaction : NSObject {
                 IosLibMonitorTx(obj.txHash, HopConstants.NOTI_TX_STATUS_CHANGED.name.rawValue)
                 
                 DataShareManager.saveContext(dbCtx)
+        }
+        
+        
+        public static func ApproveThisApp(forAddress addr: String) -> Bool{
+               
+                let txHash = IosLibApproveAPP()
+                if txHash == ""{
+                        return false
+                }
+                let obj = Transaction(tx: txHash, typ: .authorize, value: 0)
+                saveTX(obj, forAddress: addr)
+                return true
+        }
+        
+        public static func BuyPacket(userAddr:String, poolAddr:String, token:Double) ->Bool{
+                let txHash = IosLibBuyPackets(userAddr, poolAddr, token)
+                if txHash == ""{
+                        return false
+                }
+                
+                let obj = Transaction(tx: txHash, typ: .authorize, value: token)
+                saveTX(obj, forAddress: Wallet.WInst.Address!)
+                return true
         }
 }
 

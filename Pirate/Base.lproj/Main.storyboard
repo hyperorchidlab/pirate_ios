@@ -1148,7 +1148,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnv-oU-NoX">
+                            <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnv-oU-NoX">
                                 <rect key="frame" x="208" y="210" width="88" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1164,6 +1164,9 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="BuyPackets:" destination="V0S-cP-xro" eventType="touchUpInside" id="VvY-6M-NuW"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1c-pj-pSr" userLabel="200G">
                                 <rect key="frame" x="302" y="368" width="100" height="66"/>
@@ -1243,11 +1246,12 @@
                         <outlet property="PriceLabel" destination="evT-sH-udE" id="SNW-b0-bWC"/>
                         <outlet property="TokenNoTFD" destination="whJ-Uo-hSL" id="eyT-TC-7D6"/>
                         <outlet property="pasteBtn" destination="tPD-KQ-pcs" id="5iD-eS-SW6"/>
+                        <segue destination="k6e-0n-hK5" kind="show" identifier="ShowTransactionDetailsSegID" id="PMM-jB-JXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTF-SV-DuR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6834.7826086956529" y="211.60714285714286"/>
+            <point key="canvasLocation" x="4041" y="188"/>
         </scene>
         <!--Scanner View Controller-->
         <scene sceneID="N42-bh-foM">
@@ -1297,7 +1301,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="da3-Ua-crF">
                                 <rect key="frame" x="8" y="92" width="398" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4000" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wic-x7-BtC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wic-x7-BtC">
                                         <rect key="frame" x="99" y="48" width="160" height="32"/>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -2575,6 +2579,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="PMM-jB-JXA"/>
         <segue reference="4JG-CJ-cpa"/>
     </inferredMetricsTieBreakers>
     <resources>
