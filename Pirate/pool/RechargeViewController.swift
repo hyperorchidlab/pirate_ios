@@ -70,7 +70,7 @@ class RechargeViewController: UIViewController {
         
         @IBAction func BuyPackets(_ sender: UIButton) {
                 
-                guard let user = AddressTFD.text else {
+                guard let user = AddressTFD.text, Wallet.IsValidAdress(addrStr: user) else {
                         self.ShowTips(msg:"Account Address Invalid")
                         AddressTFD.becomeFirstResponder()
                         return

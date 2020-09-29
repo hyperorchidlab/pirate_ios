@@ -48,6 +48,7 @@
 		69767505242386DA002051F9 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */; };
 		69767506242386DA002051F9 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511F23FCCECA00836E26 /* CocoaLumberjackSwift.framework */; };
 		69779A7825219F48003A163C /* RechargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7725219F48003A163C /* RechargeViewController.swift */; };
+		69779A7E25234684003A163C /* MemberShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7D25234684003A163C /* MemberShip.swift */; };
 		697970D524096F3B00A33C6E /* UserDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */; };
 		697FCD8724AF18C300F1AA38 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
 		697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; };
@@ -197,6 +198,7 @@
 		696B02EC251A0A4D00F76A51 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		6972E3C12415E64F00550A4A /* ReceiptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptData.swift; sourceTree = "<group>"; };
 		69779A7725219F48003A163C /* RechargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeViewController.swift; sourceTree = "<group>"; };
+		69779A7D25234684003A163C /* MemberShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberShip.swift; sourceTree = "<group>"; };
 		697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
 		6985D5DD24BD4F2400B77696 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				69AD9FE2252071750077CFCF /* Pool.swift */,
 				696B02EC251A0A4D00F76A51 /* Transaction.swift */,
 				69C112D32515DC7C00C5E9F5 /* Wallet.swift */,
+				69779A7D25234684003A163C /* MemberShip.swift */,
 			);
 			path = object;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				69E0BEB9240800D900E0B982 /* UserData.swift in Sources */,
 				69FA41922404DBCD005CF3FA /* HopConstants.swift in Sources */,
 				69C112D22515D58700C5E9F5 /* DataSyncer.swift in Sources */,
+				69779A7E25234684003A163C /* MemberShip.swift in Sources */,
 				693515C72413F91E0082C3BF /* PacketAccountant.swift in Sources */,
 				696A71EE251467DA004EA5DE /* QRCodeShowViewController.swift in Sources */,
 				6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */,

@@ -16,6 +16,20 @@
         <attribute name="poolInUse" optional="YES" attributeType="String"/>
         <attribute name="tokenAddrInUse" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="CDMemberShip" representedClassName="CDMemberShip" syncable="YES" codeGenerationType="class">
+        <attribute name="credit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="curTXHash" optional="YES" attributeType="String"/>
+        <attribute name="epoch" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expire" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="inRecharge" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="microNonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mps" optional="YES" attributeType="String"/>
+        <attribute name="nonce" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="packetBalance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="poolAddr" optional="YES" attributeType="String"/>
+        <attribute name="tokenBalance" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="userAddr" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="CDPool" representedClassName="CDPool" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
@@ -88,5 +102,6 @@
         <element name="CDUserAccount" positionX="-54" positionY="63" width="128" height="223"/>
         <element name="CDVersionManager" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="CDWallet" positionX="-54" positionY="117" width="128" height="134"/>
+        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="209"/>
     </elements>
 </model>
