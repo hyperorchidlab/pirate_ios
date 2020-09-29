@@ -989,7 +989,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-9G-eYw" userLabel="30G">
                                 <rect key="frame" x="157" y="278" width="100" height="66"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="30" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VL-Ox-b0J">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VL-Ox-b0J">
                                         <rect key="frame" x="31.5" y="21" width="37.5" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="0.97273641820000001" green="0.97639149430000005" blue="0.9797351956" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1055,7 +1055,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23G-er-6hh" userLabel="100G">
                                 <rect key="frame" x="157" y="368" width="100" height="66"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="50" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9u-4p-5tr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9u-4p-5tr">
                                         <rect key="frame" x="25.5" y="21" width="49" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="0.97273641820000001" green="0.97639149430000005" blue="0.9797351956" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1085,7 +1085,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BI8-rN-Scu" userLabel="50G">
                                 <rect key="frame" x="302" y="278" width="100" height="66"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="50" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u21-vK-oNf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u21-vK-oNf">
                                         <rect key="frame" x="31.5" y="21" width="37.5" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="0.97273641820000001" green="0.97639149430000005" blue="0.9797351956" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1118,7 +1118,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3p-iI-6xn" userLabel="80G">
                                 <rect key="frame" x="12" y="368" width="100" height="66"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="80" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdD-BH-8df">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdD-BH-8df">
                                         <rect key="frame" x="31.5" y="21" width="37.5" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="0.97273641820000001" green="0.97639149430000005" blue="0.9797351956" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
