@@ -116,17 +116,17 @@ extension BigUInt{
                 
                 let ss = Double(self)
                 
-                if ss > 1e12{
+                if ss >= 1e12{
                         return String.init(format: "%.2f T", (ss / 1e12))
                 }
-                if ss > 1e9{
+                if ss >= 1e9{
                         return String.init(format: "%.2f G", (ss / 1e9))
                 }
-                if ss > 1e6{
+                if ss >= 1e6{
                         return String.init(format: "%.2f M", (ss / 1e6))
                 }
-                if ss > 1000{
-                        return String.init(format: "%.2f M", (ss / 1000))
+                if ss >= 1000{
+                        return String.init(format: "%.2f K", (ss / 1000))
                 }
                 
                 return "\(self) B"
@@ -155,17 +155,17 @@ extension Int64{
                        
                let ss = Double(self)
                
-               if ss > 1e12{
+               if ss >= 1e12{
                        return String.init(format: "%.2f T", (ss / 1e12))
                }
-               if ss > 1e9{
+               if ss >= 1e9{
                        return String.init(format: "%.2f G", (ss / 1e9))
                }
-               if ss > 1e6{
+               if ss >= 1e6{
                        return String.init(format: "%.2f M", (ss / 1e6))
                }
-               if ss > 1000{
-                       return String.init(format: "%.2f M", (ss / 1000))
+               if ss >= 1000{
+                       return String.init(format: "%.2f K", (ss / 1000))
                }
                
                return "\(self) B"
@@ -204,7 +204,7 @@ extension Double{
                         return String.init(format: "%.2f M", (self / 1e6))
                 }
                 if self >= 1000{
-                        return String.init(format: "%.2f M", (self / 1000))
+                        return String.init(format: "%.2f K", (self / 1000))
                 }
                 
                 return "\(self) B"

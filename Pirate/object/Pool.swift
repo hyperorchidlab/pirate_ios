@@ -40,11 +40,12 @@ class Pool : NSObject {
                 }
                 
                 CachedPool.removeAll()
-                
                 for cData in poolArr{
                         let obj = Pool(coredata:cData)
                         CachedPool[obj.Address] = obj
                 }
+                
+                PostNoti(HopConstants.NOTI_POOL_CACHE_LOADED)
         }
         
         public init(coredata:CDPool){

@@ -31,6 +31,15 @@ class MarketListTVC: UITableViewController {
                 refreshControl!.addTarget(self, action: #selector(self.reloadPoolList(_:)), for: .valueChanged)
                 tableView.addSubview(refreshControl!)
                 
+                
+                NotificationCenter.default.addObserver(self, selector: #selector(poolLoaded(_:)), name: HopConstants.NOTI_POOL_CACHE_LOADED.name, object: nil)
+        }
+        
+        @objc func poolLoaded(_ notification: Notification?)  {
+                self.poolList = Pool.ArrayData()
+                DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                }
         }
         // MARK: - Table view data source
         override func numberOfSections(in tableView: UITableView) -> Int {

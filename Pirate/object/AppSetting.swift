@@ -26,13 +26,13 @@ class AppSetting:NSObject{
                 AppSetting.initSetting()
                 
                 AppSetting.workQueue.async {
-                        Utils.initDomains()
+                        Wallet.WInst.queryBalance()
                         _ = HopSodium.initialized
                         try? EthUtil.sharedInstance.initEth()
-                        Wallet.WInst.queryBalance()
                         Transaction.reLoad()
                         Pool.reloadCachedPool()
                         loadServicePrice()
+                        Utils.initDomains()
                 }
         }
         
