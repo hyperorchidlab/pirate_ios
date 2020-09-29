@@ -946,7 +946,7 @@
                                     <constraint firstAttribute="height" constant="32" id="i80-6M-BLS"/>
                                 </constraints>
                                 <color key="textColor" red="0.015686274510000001" green="0.023529411760000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1212,7 +1212,7 @@
                             <constraint firstItem="RRd-o0-M0x" firstAttribute="top" secondItem="xCb-1g-hMc" secondAttribute="bottom" constant="24" id="Erm-c8-p2T"/>
                             <constraint firstItem="nor-ml-Zox" firstAttribute="trailing" secondItem="xCb-1g-hMc" secondAttribute="trailing" constant="12" id="HPO-ch-IaO"/>
                             <constraint firstItem="M3p-iI-6xn" firstAttribute="top" secondItem="Tyd-hu-N22" secondAttribute="bottom" constant="24" id="KM7-WB-czj"/>
-                            <constraint firstItem="nnv-oU-NoX" firstAttribute="leading" secondItem="whJ-Uo-hSL" secondAttribute="trailing" constant="16" id="M8N-vV-lfg"/>
+                            <constraint firstItem="nnv-oU-NoX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="whJ-Uo-hSL" secondAttribute="trailing" constant="8" symbolic="YES" id="M8N-vV-lfg"/>
                             <constraint firstItem="evT-sH-udE" firstAttribute="bottom" secondItem="sUY-wF-D5g" secondAttribute="bottom" id="O0b-de-Tuh"/>
                             <constraint firstItem="whJ-Uo-hSL" firstAttribute="leading" secondItem="nor-ml-Zox" secondAttribute="leading" constant="12" id="QLB-8x-PPG"/>
                             <constraint firstItem="nor-ml-Zox" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IxF-je-hDt" secondAttribute="trailing" symbolic="YES" id="RXE-ms-7gy"/>
@@ -1235,6 +1235,7 @@
                             <constraint firstItem="whJ-Uo-hSL" firstAttribute="top" secondItem="RRd-o0-M0x" secondAttribute="bottom" constant="12" id="oRe-SP-SUO"/>
                             <constraint firstItem="IxF-je-hDt" firstAttribute="leading" secondItem="nor-ml-Zox" secondAttribute="leading" constant="8" id="po7-57-rZF"/>
                             <constraint firstItem="nor-ml-Zox" firstAttribute="trailing" secondItem="y1c-pj-pSr" secondAttribute="trailing" constant="12" id="qYa-3D-iLN"/>
+                            <constraint firstItem="nor-ml-Zox" firstAttribute="trailing" secondItem="nnv-oU-NoX" secondAttribute="trailing" constant="118" id="r21-yJ-dda"/>
                             <constraint firstItem="tPD-KQ-pcs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="whJ-Uo-hSL" secondAttribute="trailing" constant="8" symbolic="YES" id="vK7-xc-Nlz"/>
                             <constraint firstItem="nor-ml-Zox" firstAttribute="trailing" secondItem="BI8-rN-Scu" secondAttribute="trailing" constant="12" id="vyR-Sl-zTG"/>
                             <constraint firstItem="GJd-9G-eYw" firstAttribute="top" secondItem="Tyd-hu-N22" secondAttribute="top" id="yso-8l-X7x"/>
