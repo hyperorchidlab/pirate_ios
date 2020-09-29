@@ -67,6 +67,7 @@ public enum TransactionType:Int16 {
         case unknown
         case applyEth
         case applyToken
+        case authorize
         case buyPool
         
         var name:String{
@@ -79,6 +80,8 @@ public enum TransactionType:Int16 {
                         return "Buy Service".locStr
                 case .unknown:
                         return "Unknown".locStr
+                case .authorize:
+                        return "APP Authorization".locStr
                 }
         }
         
@@ -190,7 +193,7 @@ class Transaction : NSObject {
                 return Array(Transaction.CachedTX.values)
         }
         
-        private static func saveTX(_ obj:Transaction, forAddress address:String){
+        public static func saveTX(_ obj:Transaction, forAddress address:String){
                 
                 CachedTX[obj.txHash!] = obj
                 

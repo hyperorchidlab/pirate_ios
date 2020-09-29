@@ -10,6 +10,7 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
+        @IBOutlet weak var citBalanceLabel: UILabel!
         @IBOutlet weak var applyFreeEthBtn: UIButton!
         @IBOutlet weak var applyFreeTokenBtn: UIButton!
         @IBOutlet weak var walletView: UIView!
@@ -25,6 +26,7 @@ class AccountViewController: UIViewController {
         @IBOutlet weak var ethBalanceLabel: UILabel!
         @IBOutlet weak var tokenBalanceLabel: UILabel!
         @IBOutlet weak var dnsIPLabel: UILabel!
+        @IBOutlet weak var authorBtn: UIButton!
         
         var appVersion: String? {
             return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
@@ -58,11 +60,10 @@ class AccountViewController: UIViewController {
                 tap5.numberOfTapsRequired = 2
                 walletView.addGestureRecognizer(tap5)
                 
-                
-                applyFreeEthBtn.isHidden =  Wallet.WInst.ethBalance > 0.005
-                applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
+                checkStatusButon()
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(dnsChanged(_:)), name: HopConstants.NOTI_DNS_CHANGED.name, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(walletChanged(_:)), name: HopConstants.NOTI_TX_STATUS_CHANGED.name, object: nil)
         }
         
         override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +89,10 @@ class AccountViewController: UIViewController {
                 DispatchQueue.main.async {
                         self.dnsIPLabel.text = AppSetting.dnsIP
                 }
+        }
+        
+        @objc func walletChanged(_ notification: Notification?) {
+                reloadWalletData()
         }
         
         @objc func openTelegram() {
@@ -137,7 +142,21 @@ class AccountViewController: UIViewController {
                 self.ShowTips(msg: "Copy Success".locStr)
         }
         
-        
+        private func checkStatusButon(){
+                self.applyFreeEthBtn.isHidden =  Wallet.WInst.ethBalance > 0.005
+                self.applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
+                self.authorBtn.isHidden = Wallet.WInst.ethBalance > 0.005 && Wallet.WInst.approve > 1000
+        }
+        private func reloadWalletData(){
+                AppSetting.workQueue.async {
+                        Wallet.WInst.queryBalance()
+                        DispatchQueue.main.async { [self] in
+                                self.ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
+                                self.tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
+                                self.checkStatusButon()
+                        }
+                }
+        }
         // MARK: - Button Actions
         @IBAction func ApplyTokenAction(_ sender: UIButton) {
                 self.showIndicator(withTitle: "", and: "Applying......".locStr)
@@ -173,19 +192,39 @@ class AccountViewController: UIViewController {
                 }
         }
         
+        private func approve(){
+                AppSetting.workQueue.async {
+                        defer{self.hideIndicator()}
+                        if false == Wallet.WInst.ApproveThisApp(){
+                                self.ShowTips(msg: "Approve Failed".locStr)
+                                return
+                        }
+                        
+                        DispatchQueue.main.async {
+                                self.authorBtn.isHidden = true
+                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                        }
+                }
+        }
+        
+        @IBAction func AuthorizeAction(_ sender: UIButton) {
+                
+                guard Wallet.WInst.IsOpen() else {
+                        self.ShowOnePassword(){
+                                self.approve()
+                        }
+                        return
+                }
+                
+                self.approve()
+        }
+        
         @IBAction func ShowAdressQR(_ sender: UIButton) {
+                self.ShowQRAlertView(data: Wallet.WInst.Address!)
         }
         
         @IBAction func ReloadWallet(_ sender: UIBarButtonItem) {
-                AppSetting.workQueue.async {
-                        Wallet.WInst.queryBalance()
-                        DispatchQueue.main.async { [self] in
-                                self.ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
-                                self.tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
-                                self.applyFreeEthBtn.isHidden =  Wallet.WInst.ethBalance > 0.005
-                                self.applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
-                        }
-                }
+                reloadWalletData()
         }
         
         // MARK: - Navigation

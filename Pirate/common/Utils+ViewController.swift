@@ -125,16 +125,17 @@ extension UIViewController {
                 
                 let ap = AlertPayload(title: "Unlock Account".locStr, placeholderTxt: "Password".locStr){
                         (password, isOK) in
+                        
+                        defer{
+                                self.hideIndicator()
+                        }
                         guard let pwd = password, isOK else{
-                                self.hideIndicator()
                                 return
                         }
-                        do {try HopWallet.WInst!.Open(auth: pwd) } catch let err{
-                                self.hideIndicator()
-                                self.ShowTips(msg: err.localizedDescription)
+                        if Wallet.WInst.OpenWallet(auth: pwd) == false{
+                                self.ShowTips(msg: "Auth Failed".locStr)
                                 return
                         }
-                        self.hideIndicator()
                         nextAction?()
                 }
                 
