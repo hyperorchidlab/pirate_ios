@@ -92,7 +92,15 @@ class RechargeViewController: UIViewController {
                         tokenNo = Double(sender.tag) * 1e9 / Double(AppSetting.servicePrice)
                 }
                 
-                if Wallet.WInst.tokenBalance < tokenNo * HopConstants.DefaultTokenDecimal2{
+                let tokenSum = tokenNo * HopConstants.DefaultTokenDecimal2
+                
+                guard Wallet.WInst.approve > tokenSum else{
+                        
+                        SwitchTab(Idx: 2, tips: "Please Approve Token Usage".locStr)
+                        return
+                }
+                
+                if Wallet.WInst.tokenBalance < tokenSum{
                         self.ShowTips(msg: "Token Insufficient")
                         return
                 }

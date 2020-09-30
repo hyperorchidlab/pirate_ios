@@ -148,9 +148,11 @@ class AccountViewController: UIViewController {
                 self.authorBtn.isHidden = Wallet.WInst.ethBalance > 0.005 && Wallet.WInst.approve > 1000
         }
         private func reloadWalletData(){
+                self.showIndicator(withTitle: "", and: "Loading.....")
                 AppSetting.workQueue.async {
                         Wallet.WInst.queryBalance()
                         DispatchQueue.main.async { [self] in
+                                self.hideIndicator()
                                 self.ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
                                 self.tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
                                 self.checkStatusButon()

@@ -35,6 +35,17 @@ public func instantiateViewController(storyboardName: String, viewControllerIden
     return storyboard.instantiateViewController(withIdentifier: viewControllerIdentifier);
 }
 
+
+func SwitchTab(Idx:Int, tips:String? = nil) {
+        DispatchQueue.main.async {
+                guard let tabbarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController else { return }
+                tabbarController.selectedIndex = Idx
+                if let tipTxt = tips{
+                        tabbarController.alertMessageToast(title: tipTxt)
+                }
+        }
+}
+
 public struct AlertPayload {
         var title:String!
         var placeholderTxt:String?
@@ -44,6 +55,16 @@ public struct AlertPayload {
 }
 
 extension UIViewController {
+        
+        func alertMessageToast(title:String) ->Void {DispatchQueue.main.async {
+            let hud : MBProgressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+            hud.mode = MBProgressHUDMode.text
+            hud.detailsLabel.text = title
+            hud.removeFromSuperViewOnHide = true
+            hud.margin = 10
+            hud.offset.y = 250.0
+            hud.hide(animated: true, afterDelay: 3)
+        }}
         
         func showIndicator(withTitle title: String, and Description:String) {DispatchQueue.main.async {
                 let Indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
