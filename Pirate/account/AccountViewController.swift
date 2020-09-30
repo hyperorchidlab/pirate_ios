@@ -77,6 +77,13 @@ class AccountViewController: UIViewController {
                 }else{
                         transactionNOLabel.isHidden = true
                 }
+                
+                if MemberShip.Cache.count > 0{
+                        membershipNoLabel.isHidden = false
+                }else{
+                        membershipNoLabel.text = "\(MemberShip.Cache.count)"
+                        membershipNoLabel.isHidden = true
+                }
         }
         
         deinit {
@@ -96,7 +103,6 @@ class AccountViewController: UIViewController {
         }
         
         @objc func openTelegram() {
-
                 let screenName = "hopcommunity"
                 let appURL = NSURL(string: "tg://resolve?domain=\(screenName)")!
                 let webURL = NSURL(string: "https://t.me/\(screenName)")!
