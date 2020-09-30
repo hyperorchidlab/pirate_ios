@@ -33,6 +33,7 @@ class AppSetting:NSObject{
                         Pool.reloadCachedPool()
                         loadServicePrice()
                         Utils.initDomains()
+                        MemberShip.reLoad()
                 }
         }
         

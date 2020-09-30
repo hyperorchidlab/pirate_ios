@@ -19,12 +19,12 @@
     <entity name="CDMemberShip" representedClassName="CDMemberShip" syncable="YES" codeGenerationType="class">
         <attribute name="credit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="curTXHash" optional="YES" attributeType="String"/>
-        <attribute name="epoch" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="expire" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="epoch" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expire" optional="YES" attributeType="String"/>
         <attribute name="inRecharge" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="microNonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mps" optional="YES" attributeType="String"/>
-        <attribute name="nonce" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="packetBalance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="poolAddr" optional="YES" attributeType="String"/>
         <attribute name="tokenBalance" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
@@ -95,7 +95,7 @@
     <elements>
         <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="104"/>
         <element name="CDCurSettings" positionX="-54" positionY="117" width="128" height="148"/>
-        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="209"/>
+        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="223"/>
         <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
         <element name="CDPoolData" positionX="-63" positionY="18" width="128" height="163"/>
         <element name="CDSystemSettings" positionX="-54" positionY="72" width="128" height="118"/>

@@ -19,7 +19,7 @@ class MemberShip:NSObject{
         var Nonce:Int64 = 0
         var TokenBalance:Double = 0
         var RemindPacket:Double = 0
-        var Expire:Int64 = 0
+        var Expire:String = ""
         var Epoch:Int64 = 0
         var ClaimedAmount:Double = 0
         var ClaimedMicNonce:Int64 = 0
@@ -44,7 +44,7 @@ class MemberShip:NSObject{
                 self.Nonce = json["Nonce"].int64 ?? 0
                 self.TokenBalance = json["TokenBalance"].double ?? 0
                 self.RemindPacket = json["RemindPacket"].double ?? 0
-                self.Expire = json["Expire"].int64 ?? 0
+                self.Expire = json["Expire"].string ?? ""
                 self.Epoch = json["Epoch"].int64 ?? 0
                 self.ClaimedAmount = json["ClaimedAmount"].double ?? 0
                 self.ClaimedMicNonce = json["ClaimedMicNonce"].int64 ?? 0
@@ -65,6 +65,11 @@ class MemberShip:NSObject{
                                                              where: w,
                                                              orderBy: order,
                                                              context: dbContext) as? [CDMemberShip] else{
+                        return
+                }
+                
+                if memberArr.count == 0{
+                        syncAllMyMemberships()
                         return
                 }
         
@@ -157,6 +162,12 @@ extension CDMemberShip{
                 self.poolAddr = obj.poolAddr
                 self.userAddr = addr
                 self.mps = HopConstants.DefaultPaymenstService
+                self.nonce = obj.Nonce
+                self.tokenBalance = obj.TokenBalance
+                self.packetBalance = obj.RemindPacket
+                self.expire = obj.Expire
+                self.epoch = obj.Epoch
+                self.microNonce = obj.ClaimedMicNonce
         }
         
         func updateByObj(obj:MemberShip, addr:String){
