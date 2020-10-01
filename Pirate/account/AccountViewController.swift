@@ -91,8 +91,8 @@ class AccountViewController: UIViewController {
                 
                 if MemberShip.Cache.count > 0{
                         membershipNoLabel.isHidden = false
-                }else{
                         membershipNoLabel.text = "\(MemberShip.Cache.count)"
+                }else{
                         membershipNoLabel.isHidden = true
                 }
         }

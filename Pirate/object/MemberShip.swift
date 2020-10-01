@@ -60,8 +60,8 @@ class MemberShip:NSObject{
                 
                 let poolJson = JSON(data)
                 var needSync = false
-                for (_, poolAddr):(String, JSON) in poolJson{
-                        guard let obj = Cache[ poolAddr.string!] else{
+                for (poolAddr, _):(String, JSON) in poolJson{
+                        guard let obj = Cache[poolAddr] else{
                                 needSync = true
                                 continue
                         }
