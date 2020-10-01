@@ -217,6 +217,11 @@ class AccountViewController: UIViewController {
         
         @IBAction func AuthorizeAction(_ sender: UIButton) {
                 
+                if Wallet.WInst.ethBalance == 0{
+                        self.ShowTips(msg: "Insuffcient GAS".locStr)
+                        return
+                }
+                
                 guard Wallet.WInst.IsOpen() else {
                         self.ShowOnePassword(){
                                 self.approve()

@@ -35,7 +35,11 @@ class Pool : NSObject {
                                                              where: w,
                                                              orderBy: order,
                                                              context: dbContext) as? [CDPool] else{
-                        fetchPool()
+                        return
+                }
+                
+                if poolArr.count == 0{
+                        syncPoolFromETH()
                         return
                 }
                 
@@ -65,7 +69,7 @@ class Pool : NSObject {
                 self.Url = json["Url"].string
         }
         
-        public static func fetchPool(){
+        public static func syncPoolFromETH(){
                 
                 guard let data = IosLibPoolInMarket() else {
                         return
@@ -93,8 +97,8 @@ class Pool : NSObject {
                         
                         CachedPool[obj.Address] = obj
                 }
-                
                 DataShareManager.saveContext(dbContext)
+                PostNoti(HopConstants.NOTI_POOL_CACHE_LOADED)
         }
         
         public static func ArrayData() ->[Pool]{

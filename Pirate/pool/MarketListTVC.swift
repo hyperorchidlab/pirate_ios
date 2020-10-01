@@ -86,7 +86,7 @@ class MarketListTVC: UITableViewController {
         //MARK: - object c
         @objc func reloadPoolList(_ sender: Any?){
                 AppSetting.workQueue.async {
-                        Pool.fetchPool()
+                        Pool.syncPoolFromETH()
                         self.poolList = Pool.ArrayData()
                         DispatchQueue.main.async {
                                 self.refreshControl?.endRefreshing()

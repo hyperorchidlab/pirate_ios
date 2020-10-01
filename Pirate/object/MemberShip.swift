@@ -158,6 +158,7 @@ class MemberShip:NSObject{
 }
 
 extension CDMemberShip{
+        
         func populate(obj:MemberShip, addr:String)  {
                 self.poolAddr = obj.poolAddr
                 self.userAddr = addr

@@ -1739,14 +1739,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ko-g3-IHD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SuG-Qz-e1H">
                                 <rect key="frame" x="8" y="749" width="398" height="44"/>
-                                <color key="backgroundColor" red="0.29803921570000003" green="0.76078431369999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.66666666666666663" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="wE5-qj-Rqh"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Cwn-Mj-HAe"/>
+                                    <constraint firstAttribute="height" constant="44" id="gQk-ah-PIR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="Apply Free GAS">
+                                <state key="normal" title="Authorize This App Use Token">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1755,7 +1756,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="ApplyEthAction:" destination="1fD-Hm-fHU" eventType="touchUpInside" id="WNB-vH-SEI"/>
+                                    <action selector="AuthorizeAction:" destination="1fD-Hm-fHU" eventType="touchUpInside" id="95N-rn-h6M"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeT-dC-nWA">
@@ -1778,15 +1779,14 @@
                                     <action selector="ApplyTokenAction:" destination="1fD-Hm-fHU" eventType="touchUpInside" id="RE2-AT-7yv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SuG-Qz-e1H">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ko-g3-IHD">
                                 <rect key="frame" x="8" y="749" width="398" height="44"/>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.66666666666666663" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.76078431369999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Cwn-Mj-HAe"/>
-                                    <constraint firstAttribute="height" constant="44" id="gQk-ah-PIR"/>
+                                    <constraint firstAttribute="height" constant="44" id="wE5-qj-Rqh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="Authorize This App Use Token">
+                                <state key="normal" title="Apply Free GAS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1795,7 +1795,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="AuthorizeAction:" destination="1fD-Hm-fHU" eventType="touchUpInside" id="95N-rn-h6M"/>
+                                    <action selector="ApplyEthAction:" destination="1fD-Hm-fHU" eventType="touchUpInside" id="WNB-vH-SEI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1930,6 +1930,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="eQ8-da-KH7" secondAttribute="trailing" constant="8" id="JXa-O2-MTx"/>
                                                 <constraint firstAttribute="bottom" secondItem="YRu-Xa-E0h" secondAttribute="bottom" constant="8" id="WVr-mP-8lR"/>
                                                 <constraint firstItem="cKl-Rf-emf" firstAttribute="leading" secondItem="Lme-lQ-70J" secondAttribute="leading" constant="8" id="bzL-sy-pvd"/>
+                                                <constraint firstItem="PHq-77-RKW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cKl-Rf-emf" secondAttribute="trailing" constant="8" symbolic="YES" id="h09-ni-dKc"/>
+                                                <constraint firstItem="YRu-Xa-E0h" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PHq-77-RKW" secondAttribute="trailing" constant="8" symbolic="YES" id="j1E-xR-Qxc"/>
                                                 <constraint firstAttribute="bottom" secondItem="cKl-Rf-emf" secondAttribute="bottom" constant="8" id="pfw-vb-XWw"/>
                                                 <constraint firstItem="PHq-77-RKW" firstAttribute="centerX" secondItem="Lme-lQ-70J" secondAttribute="centerX" id="tjQ-AJ-mEY"/>
                                                 <constraint firstAttribute="bottom" secondItem="PHq-77-RKW" secondAttribute="bottom" constant="8" id="ubf-0j-3Vj"/>
@@ -2580,7 +2582,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PMM-jB-JXA"/>
+        <segue reference="Ykb-TN-0aZ"/>
         <segue reference="4JG-CJ-cpa"/>
     </inferredMetricsTieBreakers>
     <resources>
