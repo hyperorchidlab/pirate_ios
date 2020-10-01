@@ -12,42 +12,16 @@ import IosLib
 import SwiftyJSON
 
 class MemberShip:NSObject{
-        public static var Cache:[String:MemberShip] = [:]
+        public static var Cache:[String:CDMemberShip] = [:]
         
         var coreData:CDMemberShip?
-        var poolAddr:String!
-        var Nonce:Int64 = 0
-        var TokenBalance:Double = 0
-        var RemindPacket:Double = 0
-        var Expire:String = ""
-        var Epoch:Int64 = 0
-        var ClaimedAmount:Double = 0
-        var ClaimedMicNonce:Int64 = 0
         
-        
-        public static func MemberArray() ->[MemberShip]{
+        public static func MemberArray() ->[CDMemberShip]{
                 return Array(Cache.values)
         }
         
         override init() {
                 super.init()
-        }
-        
-        init(coredata:CDMemberShip){
-                super.init()
-                coreData = coredata
-                poolAddr = coredata.poolAddr
-        }
-        
-        init(json:JSON){
-                
-                self.Nonce = json["Nonce"].int64 ?? 0
-                self.TokenBalance = json["TokenBalance"].double ?? 0
-                self.RemindPacket = json["RemindPacket"].double ?? 0
-                self.Expire = json["Expire"].string ?? ""
-                self.Epoch = json["Epoch"].int64 ?? 0
-                self.ClaimedAmount = json["ClaimedAmount"].double ?? 0
-                self.ClaimedMicNonce = json["ClaimedMicNonce"].int64 ?? 0
         }
         
         public static func reLoad(){
@@ -69,46 +43,35 @@ class MemberShip:NSObject{
                 }
                 
                 if memberArr.count == 0{
-                        syncAllMyMemberships()
+                        AppSetting.workQueue.async {
+                                syncAllMyMemberships()
+                        }
                         return
                 }
         
                 for cData in memberArr{
-                        let obj = MemberShip(coredata:cData)
-                        Cache[obj.poolAddr] = obj
+                        cData.available = false
+                        Cache[cData.poolAddr!] = cData
                 }
-        }
-        
-        public func syncMemberDetailFromETH(){
-                guard let addr = Wallet.WInst.Address else{
+                
+                guard let data = IosLibAvailablePools(addr) else{
                         return
                 }
                 
-                guard let data = IosLibUserDataOnBlockChain(coreData?.userAddr, self.poolAddr) else{
-                        return
+                let poolJson = JSON(data)
+                var needSync = false
+                for (_, poolAddr):(String, JSON) in poolJson{
+                        guard let obj = Cache[ poolAddr.string!] else{
+                                needSync = true
+                                continue
+                        }
+                        obj.available = true
                 }
-                
-                let json = JSON(data)
-                let obj = MemberShip(json: json)
-                let dbContext = DataShareManager.privateQueueContext()
-                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
-                                    HopConstants.DefaultPaymenstService,
-                                    addr,
-                                    obj.poolAddr)
-                
-                let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
-                request.predicate = w
-                guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
-                        let cData = CDMemberShip(context: dbContext)
-                        cData.populate(obj: obj, addr: addr)
-                        obj.coreData = cData
-                        MemberShip.Cache[obj.poolAddr] = obj
-                        return
+                if needSync{
+                        AppSetting.workQueue.async {
+                                syncAllMyMemberships()
+                        }
                 }
-                result.updateByObj(obj: obj, addr: addr)
-                
-                DataShareManager.saveContext(dbContext)
-                DataShareManager.syncAllContext(dbContext)
         }
         
         //TODO:: test this carefully
@@ -128,50 +91,142 @@ class MemberShip:NSObject{
                 
                 for (poolAddr, subJson):(String, JSON) in json {
                         
-                        let obj = MemberShip(json:subJson)
-                        obj.poolAddr = poolAddr
                         let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
                                             HopConstants.DefaultPaymenstService,
                                             addr,
-                                            obj.poolAddr)
+                                            poolAddr)
                         
                         let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
                         request.predicate = w
                         guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
-                                
-                                let cData = CDMemberShip(context: dbContext)
-                                cData.populate(obj: obj, addr: addr)
-                                obj.coreData = cData
-                                
-                                Cache[obj.poolAddr] = obj
+                                let cData = CDMemberShip.newMembership(json: subJson, pool:poolAddr, user:addr)
+                                Cache[poolAddr] = cData
                                 continue
                         }
                         
-                        result.updateByObj(obj: obj, addr: addr)
-                        obj.coreData = result
-                        Cache[obj.poolAddr] = obj
+                        result.updateByETH(json: subJson, addr: addr)
+                        Cache[poolAddr] = result
                 }
                 
                 DataShareManager.saveContext(dbContext)
                 DataShareManager.syncAllContext(dbContext)
+                PostNoti(HopConstants.NOTI_MEMBERSHIP_SYNCED)
         }
+        
+//        public func syncMemberDetailFromETH(){
+//                guard let addr = Wallet.WInst.Address else{
+//                        return
+//                }
+//
+//                guard let data = IosLibUserDataOnBlockChain(coreData?.userAddr, self.poolAddr) else{
+//                        return
+//                }
+//
+//                let json = JSON(data)
+//                let dbContext = DataShareManager.privateQueueContext()
+//                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
+//                                    HopConstants.DefaultPaymenstService,
+//                                    addr,
+//                                    obj.poolAddr)
+//
+//                let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
+//                request.predicate = w
+//                guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
+//                        let cData = CDMemberShip(context: dbContext)
+//                        cData.populate(obj: obj, addr: addr)
+//                        obj.coreData = cData
+//                        MemberShip.Cache[obj.poolAddr] = obj
+//                        return
+//                }
+//                result.updateByObj(obj: obj, addr: addr)
+//
+//                DataShareManager.saveContext(dbContext)
+//                DataShareManager.syncAllContext(dbContext)
+//        }
 }
 
 extension CDMemberShip{
         
-        func populate(obj:MemberShip, addr:String)  {
-                self.poolAddr = obj.poolAddr
-                self.userAddr = addr
-                self.mps = HopConstants.DefaultPaymenstService
-                self.nonce = obj.Nonce
-                self.tokenBalance = obj.TokenBalance
-                self.packetBalance = obj.RemindPacket
-                self.expire = obj.Expire
-                self.epoch = obj.Epoch
-                self.microNonce = obj.ClaimedMicNonce
+        public static func newMembership(json:JSON, pool:String, user:String) -> CDMemberShip {
+                let dbContext = DataShareManager.privateQueueContext()
+                let data = CDMemberShip(context: dbContext)
+                data.poolAddr = pool
+                data.userAddr = user
+                data.mps = HopConstants.DefaultPaymenstService
+                data.nonce = json["Nonce"].int64 ?? 0
+                data.tokenBalance = json["TokenBalance"].double ?? 0
+                data.packetBalance = json["RemindPacket"].double ?? 0
+                data.expire = json["Expire"].string ?? ""
+                data.epoch = json["Epoch"].int64 ?? 0
+                data.microNonce = json["ClaimedMicNonce"].int64 ?? 0
+                data.credit = 0
+                data.curTXHash = nil
+                data.inRecharge = 0
+                data.available = true
+                return data
         }
         
-        func updateByObj(obj:MemberShip, addr:String){
+        func updateByETH(json:JSON, addr:String){
                 
+                self.available = true
+                guard let nonce = json["Nonce"].int64 else{
+                        return
+                }
+                if self.nonce >= nonce{
+                        NSLog("======>[updateByETH]:nothing to update for pool[\(self.poolAddr ?? "")]")
+                        return
+                }
+                
+                let epoch = json["Epoch"].int64 ?? 0
+                if self.epoch > epoch{
+                        NSLog("======>[updateByETH]: [self opech =\(self.epoch)]invalid epoch[\(epoch)] info for pool[\(self.poolAddr ?? "")]")
+                        return
+                }
+                
+                guard let tokenBalance = json["TokenBalance"].double,
+                      let packetBalance = json["RemindPacket"].double,
+                      let expire = json["Expire"].string else{
+                        NSLog("======>[updateByETH]: invalid josn[\(json)]")
+                        return
+                }
+                
+                if self.epoch == epoch{
+                        self.nonce = nonce
+                        self.tokenBalance = tokenBalance
+                        self.packetBalance = packetBalance
+                        self.expire = expire
+                        
+                        NSLog("======>[updateByETH]: update sucess nonce=[\(nonce)] epoch=[\(epoch)]")
+                        return
+                }
+                
+                guard let microNonce = json["ClaimedMicNonce"].int64,
+                      let claimedAmount = json["ClaimedAmount"].int64 else{
+                        NSLog("======>[updateByETH]: invalid josn[\(json)]")
+                        return
+                }
+                
+                if self.microNonce < microNonce{
+                        NSLog("======>[updateByETH]: invalid microNonce=[\(microNonce)]")
+                        return
+                }
+                
+                self.nonce = nonce
+                self.tokenBalance = tokenBalance
+                self.packetBalance = packetBalance
+                self.expire = expire
+                self.microNonce = microNonce
+                self.epoch = epoch
+                
+                let reminder = self.credit + self.inRecharge - claimedAmount
+                if reminder < 0{
+                        self.credit = 0
+                        self.inRecharge = 0
+                        NSLog("======>[updateByETH]:Something wrong [credit=\(self.credit)] [claimedAmount=\(claimedAmount)]")
+                } else {
+                        self.credit = reminder
+                        self.inRecharge = 0
+                        self.curTXHash = nil
+                }
         }
 }

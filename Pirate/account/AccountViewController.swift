@@ -62,8 +62,19 @@ class AccountViewController: UIViewController {
                 
                 checkStatusButon()
                 
-                NotificationCenter.default.addObserver(self, selector: #selector(dnsChanged(_:)), name: HopConstants.NOTI_DNS_CHANGED.name, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(walletChanged(_:)), name: HopConstants.NOTI_TX_STATUS_CHANGED.name, object: nil)
+                NotificationCenter.default.addObserver(self, selector:
+                                                        #selector(dnsChanged(_:)),
+                                                       name: HopConstants.NOTI_DNS_CHANGED.name,
+                                                       object: nil)
+                NotificationCenter.default.addObserver(self, selector:
+                                                        #selector(txStatusChanged(_:)),
+                                                       name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
+                                                       object: nil)
+                
+                NotificationCenter.default.addObserver(self, selector:
+                                                        #selector(membershipChanged(_:)),
+                                                       name: HopConstants.NOTI_MEMBERSHIP_SYNCED.name,
+                                                       object: nil)
         }
         
         override func viewWillAppear(_ animated: Bool) {
@@ -98,8 +109,12 @@ class AccountViewController: UIViewController {
                 }
         }
         
-        @objc func walletChanged(_ notification: Notification?) {
+        @objc func txStatusChanged(_ notification: Notification?) {
                 reloadWalletData()
+        }
+        
+        @objc func membershipChanged(_ notification: Notification?) {
+                MemberShip.reLoad()
         }
         
         @objc func openTelegram() {
@@ -153,6 +168,7 @@ class AccountViewController: UIViewController {
                 self.applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
                 self.authorBtn.isHidden = Wallet.WInst.ethBalance > 0.005 && Wallet.WInst.approve > 1000
         }
+        
         private func reloadWalletData(){
                 self.showIndicator(withTitle: "", and: "Loading.....")
                 AppSetting.workQueue.async {

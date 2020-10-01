@@ -17,6 +17,7 @@
         <attribute name="tokenAddrInUse" optional="YES" attributeType="String"/>
     </entity>
     <entity name="CDMemberShip" representedClassName="CDMemberShip" syncable="YES" codeGenerationType="class">
+        <attribute name="available" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="credit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="curTXHash" optional="YES" attributeType="String"/>
         <attribute name="epoch" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -95,7 +96,7 @@
     <elements>
         <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="104"/>
         <element name="CDCurSettings" positionX="-54" positionY="117" width="128" height="148"/>
-        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="223"/>
+        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="238"/>
         <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
         <element name="CDPoolData" positionX="-63" positionY="18" width="128" height="163"/>
         <element name="CDSystemSettings" positionX="-54" positionY="72" width="128" height="118"/>
