@@ -11,7 +11,7 @@ import CoreData
 import IosLib
 import SwiftyJSON
 
-class MemberShip:NSObject{
+class Membership:NSObject{
         public static var Cache:[String:CDMemberShip] = [:]
         
         var coreData:CDMemberShip?
@@ -33,7 +33,7 @@ class MemberShip:NSObject{
                 Cache.removeAll()
                 
                 let dbContext = DataShareManager.privateQueueContext()
-                let w = NSPredicate(format: "mps == %@ AND userAddr == %@", HopConstants.DefaultPaymenstService, addr)
+                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND available == true", HopConstants.DefaultPaymenstService, addr)
                 let order = [NSSortDescriptor.init(key: "epoch", ascending: false)]
                 guard let memberArr = NSManagedObject.findEntity(HopConstants.DBNAME_MEMBERSHIP,
                                                              where: w,
@@ -67,6 +67,7 @@ class MemberShip:NSObject{
                         }
                         obj.available = true
                 }
+                
                 if needSync{
                         AppSetting.workQueue.async {
                                 syncAllMyMemberships()
@@ -100,7 +101,7 @@ class MemberShip:NSObject{
                         request.predicate = w
                         guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
                                 let cData = CDMemberShip.newMembership(json: subJson, pool:poolAddr, user:addr)
-                                Cache[poolAddr] = cData
+                                Cache[poolAddr.lowercased()] = cData
                                 continue
                         }
                         

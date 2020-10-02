@@ -41,7 +41,7 @@ class AppSetting:NSObject{
                         loadServicePrice()
                 }
                 AppSetting.workQueue.async {
-                        MemberShip.reLoad()
+                        Membership.reLoad()
                 }
         }
         

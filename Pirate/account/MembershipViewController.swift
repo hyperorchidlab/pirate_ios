@@ -12,12 +12,27 @@ class MembershipViewController: UIViewController {
 
         @IBOutlet weak var tableView: UITableView!
         
+        var refreshControl = UIRefreshControl()
         var memberships:[CDMemberShip] = []
         var curPoolAddr:String?
         override func viewDidLoad() {
                 super.viewDidLoad()
                 tableView.rowHeight = 80
-                self.memberships = MemberShip.MemberArray()
+                self.memberships = Membership.MemberArray()
+                
+                refreshControl.addTarget(self, action: #selector(self.reloadMemberDetail(_:)), for: .valueChanged)
+                tableView.addSubview(refreshControl)
+        }
+        //MARK: - object c
+        @objc func reloadMemberDetail(_ sender: Any?){
+                AppSetting.workQueue.async {
+                        Membership.syncAllMyMemberships()
+                        self.memberships =  Membership.MemberArray()
+                        DispatchQueue.main.async {
+                                self.refreshControl.endRefreshing()
+                                self.tableView.reloadData()
+                        }
+                }
         }
         
         // MARK: - Navigation
