@@ -15,6 +15,7 @@ class MembershipViewController: UIViewController {
         var memberships:[CDMemberShip] = []
         override func viewDidLoad() {
                 super.viewDidLoad()
+                tableView.rowHeight = 80
                 self.memberships = MemberShip.MemberArray()
         }
     

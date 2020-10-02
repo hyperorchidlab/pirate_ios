@@ -46,7 +46,7 @@ class Pool : NSObject {
                 CachedPool.removeAll()
                 for cData in poolArr{
                         let obj = Pool(coredata:cData)
-                        CachedPool[obj.Address] = obj
+                        CachedPool[obj.Address.lowercased()] = obj
                 }
                 
                 PostNoti(HopConstants.NOTI_POOL_CACHE_LOADED)
@@ -95,7 +95,7 @@ class Pool : NSObject {
                         cData.populate(obj)
                         obj.coreData = cData
                         
-                        CachedPool[obj.Address] = obj
+                        CachedPool[obj.Address.lowercased()] = obj
                 }
                 DataShareManager.saveContext(dbContext)
                 PostNoti(HopConstants.NOTI_POOL_CACHE_LOADED)

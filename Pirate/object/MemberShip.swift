@@ -61,7 +61,7 @@ class MemberShip:NSObject{
                 let poolJson = JSON(data)
                 var needSync = false
                 for (poolAddr, _):(String, JSON) in poolJson{
-                        guard let obj = Cache[poolAddr] else{
+                        guard let obj = Cache[poolAddr.lowercased()] else{
                                 needSync = true
                                 continue
                         }
@@ -105,7 +105,7 @@ class MemberShip:NSObject{
                         }
                         
                         result.updateByETH(json: subJson, addr: addr)
-                        Cache[poolAddr] = result
+                        Cache[poolAddr.lowercased()] = result
                 }
                 
                 DataShareManager.saveContext(dbContext)

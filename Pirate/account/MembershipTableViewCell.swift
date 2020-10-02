@@ -35,7 +35,10 @@ class MembershipTableViewCell: UITableViewCell {
         
 
         func populate(membership obj:CDMemberShip, idx:Int) {
-                let pool = Pool.CachedPool[obj.poolAddr!]
+                guard let poolAddr = obj.poolAddr else {
+                        return
+                }
+                let pool = Pool.CachedPool[poolAddr.lowercased()]
                 
                 let color = BackGroudColor[idx%3]
                 self.BGView.backgroundColor = color
