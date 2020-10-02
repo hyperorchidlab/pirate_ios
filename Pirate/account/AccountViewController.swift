@@ -15,8 +15,6 @@ class AccountViewController: UIViewController {
         @IBOutlet weak var applyFreeTokenBtn: UIButton!
         @IBOutlet weak var walletView: UIView!
         @IBOutlet weak var transactionNOLabel: UILabel!
-        @IBOutlet weak var membershipView: UIView!
-        @IBOutlet weak var membershipNoLabel: UILabel!
         @IBOutlet weak var appVerLabel: UILabel!
         @IBOutlet weak var docView: UIView!
         @IBOutlet weak var shareView: UIView!
@@ -38,7 +36,6 @@ class AccountViewController: UIViewController {
                 walletAddrLabel.text = Wallet.WInst.Address
                 appVerLabel.text = appVersion
                 dnsIPLabel.text = AppSetting.dnsIP
-                
                 
                 let tap = UITapGestureRecognizer(target: self, action: #selector(openTelegram))
                 tap.numberOfTapsRequired = 1
@@ -87,13 +84,6 @@ class AccountViewController: UIViewController {
                         transactionNOLabel.text = "\(Transaction.CachedTX.count)"
                 }else{
                         transactionNOLabel.isHidden = true
-                }
-                
-                if MemberShip.Cache.count > 0{
-                        membershipNoLabel.isHidden = false
-                        membershipNoLabel.text = "\(MemberShip.Cache.count)"
-                }else{
-                        membershipNoLabel.isHidden = true
                 }
         }
         

@@ -18,6 +18,7 @@ class MembershipTableViewCell: UITableViewCell {
         @IBOutlet weak var BGView: UIView!
         @IBOutlet weak var poolNameLabel: UILabel!
         @IBOutlet weak var poolAddressLabel: UILabel!
+        @IBOutlet weak var balanceLabel: UILabel!
         @IBOutlet weak var moreBtn: UIButton!
         
         override func awakeFromNib() {
@@ -31,8 +32,6 @@ class MembershipTableViewCell: UITableViewCell {
         override func setSelected(_ selected: Bool, animated: Bool) {
                 super.setSelected(selected, animated: animated)
         }
-        
-        
 
         func populate(membership obj:CDMemberShip, idx:Int) {
                 guard let poolAddr = obj.poolAddr else {
@@ -43,10 +42,12 @@ class MembershipTableViewCell: UITableViewCell {
                 let color = BackGroudColor[idx%3]
                 self.BGView.backgroundColor = color
                 self.moreBtn.setTitleColor(color, for: .normal)
-                
+                self.moreBtn.tag = idx
                 
                 poolNameLabel.text = pool?.Name
                 poolAddressLabel.text = pool?.Address
+                balanceLabel.text = "\((obj.packetBalance - Double(obj.credit)).ToPackets())"
+                
 //                refundTime.text = Date.init(timeIntervalSince1970: TimeInterval(u.expire)).stringVal //u.expire
 //                packetBalance.text = "\(u.packetBalance.ToPackets())\n "+"Packets".locStr
 //                tokenBalance.text = "\(u.tokenBalance.ToCoin())HOP\n "+"Points".locStr

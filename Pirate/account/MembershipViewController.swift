@@ -13,24 +13,26 @@ class MembershipViewController: UIViewController {
         @IBOutlet weak var tableView: UITableView!
         
         var memberships:[CDMemberShip] = []
+        var curPoolAddr:String?
         override func viewDidLoad() {
                 super.viewDidLoad()
                 tableView.rowHeight = 80
                 self.memberships = MemberShip.MemberArray()
         }
-    
-
         
-        
-        /*
         // MARK: - Navigation
-
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+                if let vc = segue.destination as? RechargeViewController,
+                   let addr = self.curPoolAddr{
+                        vc.poolAddr = addr
+                }
         }
-        */
+        
+        @IBAction func RechargeAction(_ sender: UIButton) {
+                curPoolAddr = self.memberships[sender.tag].poolAddr
+                self.performSegue(withIdentifier: "ShowRechargePage", sender: self)
+        }
+        
 }
 extension MembershipViewController:UITableViewDelegate, UITableViewDataSource{
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
