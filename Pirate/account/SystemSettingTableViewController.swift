@@ -13,17 +13,6 @@ import web3swift
 class SystemSettingTableViewController: UITableViewController {
 
         @IBOutlet var settingTableView: UITableView!
-//        @IBOutlet weak var refundDurationCell: UITableViewCell!
-//        @IBOutlet weak var packetsPriceCell: UITableViewCell!
-        @IBOutlet weak var mainAddrCell: UITableViewCell!
-//        @IBOutlet weak var subAddrCell: UITableViewCell!
-//        @IBOutlet weak var curTokenCell: UITableViewCell!
-//        @IBOutlet weak var curMPSCell: UITableViewCell!
-//        @IBOutlet weak var curBasIPLabel: UILabel!
-        @IBOutlet weak var applyEthCell: UITableViewCell!
-        @IBOutlet weak var applyTokenCell: UITableViewCell!
-//        @IBOutlet weak var curApiUrlCell: UITableViewCell!
-//        @IBOutlet weak var curTokenInUseCell: UITableViewCell!
         
         var mainAddr:EthereumAddress?
         var imagePicker: UIImagePickerController!
@@ -31,147 +20,32 @@ class SystemSettingTableViewController: UITableViewController {
         var curEth:BigUInt = 0
         override func viewDidLoad() {
                 super.viewDidLoad()
-                
-//                curTokenCell.detailTextLabel?.text = HopConstants.DefaultTokenAddr
-//                curMPSCell.detailTextLabel?.text = HopConstants.DefaultPaymenstService
-//                curBasIPLabel.text = HopConstants.DefaultBasIP
-//                curApiUrlCell.detailTextLabel?.text = "https://ropsten.infura.io/v3/"
-//                curTokenInUseCell.detailTextLabel?.text = "HOP"
-                NotificationCenter.default.addObserver(self, selector: #selector(WalletChanged(_:)), name: HopConstants.NOTI_NEW_WALLET, object: nil)
         }
-        
-        
         
         deinit {
                 NotificationCenter.default.removeObserver(self)
         }
         
-        
-        @objc func WalletChanged(_ notification: Notification?) {
-                guard let w =  HopWallet.WInst else{
+        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+                switch indexPath.row {
+                case 0:
+                        self.ConfirmAlert(title: "Confirm".locStr, msg: "Replace current account") {self.createWallet()}
+                case 1:
+                        exportWallet()
+                case 2:
+                        importFromLib()
+                case 3:
+                        importFromCamera()
+                case 4:
+                        showAccountQR()
+                default:
                         return
                 }
-                DispatchQueue.main.async {
-                        self.mainAddrCell.detailTextLabel?.text = w.mainAddress?.address
-//                        self.subAddrCell.detailTextLabel?.text = w.subAddress
-                }
-        }
-        
-        override func viewWillAppear(_ animated: Bool){
-                super.viewWillAppear(animated)
-                if let addr = HopWallet.WInst?.mainAddress {
-                        let main_addr = addr.address
-//                        let sub_addr =  DataSyncer.sharedInstance.wallet?.subAddress
-                        mainAddrCell.detailTextLabel?.text = main_addr
-//                        subAddrCell.detailTextLabel?.text = sub_addr
-                        
-                        DispatchQueue.global().async {
-                                let (token_balance, eth_balance) = EthUtil.sharedInstance.Balance(userAddr: addr)
-                                DispatchQueue.main.async {
-                                        self.applyEthCell.detailTextLabel?.text = "\(eth_balance.ToCoin())"
-                                        self.applyTokenCell.detailTextLabel?.text = "\(token_balance.ToCoin())"
-                                        self.curToken = token_balance
-                                        self.curEth = eth_balance
-                                        self.mainAddr = addr
-                                }
-                        }
-                }
-                
-//                guard let setting = DataSyncer.sharedInstance.ethSetting else{
-//                        return
-//                }
-//                packetsPriceCell.detailTextLabel?.text = "\(setting.MBytesPerToken) M/HOP"
-//                refundDurationCell.detailTextLabel?.text = "\(setting.RefundDuration.DoubleV()/(24 * 60 * 60)) "+"Days".locStr
-        }
-        
-        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                
-//                if indexPath.section == 0{
-//
-//                        switch indexPath.row {
-//                        case 0:
-//                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-//                                       self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
-//                                               self.createWallet()
-//                                       })
-//                                       return
-//                               }
-//                               createWallet()
-//                        case 1:
-//                                self.exportWallet()
-//                        case 2:
-//                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-//                                        self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
-//                                                self.importFromLib()
-//                                        })
-//                                        return
-//                                }
-//                                importFromLib()
-//                        case 3:
-//                                guard nil == DataSyncer.sharedInstance.wallet?.mainAddress else {
-//                                        self.showConfirm(msg: "Replace your current account?".locStr, yesHandler:{
-//                                                self.importFromCamera()
-//                                        })
-//                                        return
-//                                }
-//                                importFromCamera()
-//                        case 4:
-//                                guard let str = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text else {
-//                                        return
-//                                }
-//                                UIPasteboard.general.string = str
-//                                self.ShowTips(msg: "Copy Success".locStr)
-//                        default:
-//                                return
-//                        }
-//                }else if indexPath.section == 1{
-//                        switch indexPath.row {
-//                        case 0:
-//                                self.getFreeEth()
-//                        case 1:
-//                                self.getFreeHOP()
-//                        default:
-//                                guard let str = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text else {
-//                                        return
-//                                }
-//                                UIPasteboard.general.string = str
-//                                self.ShowTips(msg: "Copy Success".locStr)
-//                                return
-//                        }
-//                }
         }
 
         private func createWallet(){
-                
-                self.showIndicator(withTitle: "", and: "Create new account....".locStr)
-//                self.ShowPassword() { (password , isOK) in
-//                        defer {
-//
-//                                self.hideIndicator()
-//                        }
-//
-//                        guard let pwd = password, isOK == true else{
-//                                return
-//                        }
-//
-//                        guard let wallet = HopWallet.NewWallet(auth: pwd) else{
-//                                self.ShowTips(msg: "Create failed".locStr)
-//                                return
-//                        }
-//
-//                        wallet.saveToDisk()
-//                        DataSyncer.sharedInstance.loadWallet()
-//                        self.ShowTips(msg: "Create success".locStr)
-//                        PacketAccountant.Inst.setEnv(MPSA: PacketAccountant.Inst.paymentAddr!, user: wallet.mainAddress!.address)
-//
-//                        DispatchQueue.main.async {
-//                                self.mainAddrCell.detailTextLabel?.text = wallet.mainAddress?.address
-////                                self.subAddrCell.detailTextLabel?.text = wallet.subAddress
-//                                self.settingTableView.reloadData()
-//                        }
-//                        }
-//
-                
+                self.performSegue(withIdentifier: "CreateAccountSegID", sender: self)
         }
         // MARK: - Wallet action
         
@@ -214,70 +88,7 @@ class SystemSettingTableViewController: UITableViewController {
                 self.performSegue(withIdentifier: "ShowQRScanerID", sender: self)
         }
         
-        func transfer(){
-                
-        }
-        func generateQR(){
-                
-        }
-        
-        // MARK: - System parameter action
-        func changeBas(){
-        }
-        
-        
-        // MARK: - Block chain parameter
-        func changeTokenInUse(){
-        }
-        
-        func changeAPIURL(){
-        }
-        
-        func getFreeEth(){
-                self.showIndicator(withTitle: "", and: "Approving......".locStr)
-                DispatchQueue.global().async {
-                        defer {
-                                self.hideIndicator()
-                        }
-                        guard let addr = self.mainAddr, self.curEth.DoubleV().ToCoinUnit() < 0.1 else {
-                                self.ShowTips(msg: "Create wallet or you have more than 0.1 token".locStr)
-                                return
-                        }
-                        
-                        do {
-                                let request = ApplyToken()
-                                try request.initRequest()
-                                _ = try request.ApplyeETH(user: addr)
-                                self.ShowTips(msg: "Approving".locStr)
-                        } catch let err {
-                                self.ShowTips(msg: "Apply failed".locStr + ":\(err.localizedDescription)")
-                        }
-                }
-        }
-        
-        func getFreeHOP(){
-                self.showIndicator(withTitle: "", and: "Approving......".locStr)
-                DispatchQueue.global().async {
-                        defer {
-                                self.hideIndicator()
-                        }
-                        guard let addr = self.mainAddr, self.curToken.DoubleV().ToCoinUnit() <= 1000  else {
-                                self.ShowTips(msg: "Create wallet or you have more than 1000 hop".locStr)
-                                return
-                        }
-                        
-                        do {
-                                
-                                let request = ApplyToken()
-                                try request.initRequest()
-                                let tx = try request.ApplyeToken(user: addr)
-                                self.ShowTips(msg: "Approving".locStr)
-                                NSLog("=======>\(tx.hash)")
-                        } catch let err {
-                                self.ShowTips(msg: "Apply failed".locStr + ":\(err.localizedDescription)")
-                        }
-                }
-                
+        func showAccountQR(){
         }
         
         // Mark View Action
