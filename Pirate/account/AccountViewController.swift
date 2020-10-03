@@ -115,6 +115,8 @@ class AccountViewController: UIViewController {
                         Wallet.WInst.queryBalance()
                         Transaction.reLoad()
                         DispatchQueue.main.async {
+                                self.walletAddrLabel.text = Wallet.WInst.Address
+                                self.checkStatusButon()
                                 self.setWalletUI()
                                 self.hideIndicator()
                         }
@@ -262,9 +264,5 @@ class AccountViewController: UIViewController {
         
         // MARK: - Navigation
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                guard let vc = segue.destination as? NewAccountViewController else {
-                        return
-                }
-                vc.showImport = false
         }
 }

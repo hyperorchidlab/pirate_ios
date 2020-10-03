@@ -38,12 +38,12 @@ class Pool : NSObject {
                         return
                 }
                 
+                CachedPool.removeAll()
                 if poolArr.count == 0{
                         syncPoolFromETH()
                         return
                 }
                 
-                CachedPool.removeAll()
                 for cData in poolArr{
                         let obj = Pool(coredata:cData)
                         CachedPool[obj.Address.lowercased()] = obj
@@ -71,12 +71,12 @@ class Pool : NSObject {
         
         public static func syncPoolFromETH(){
                 
+                CachedPool.removeAll()
                 guard let data = IosLibPoolInMarket() else {
                         return
                 }
                 
                 let json = JSON(data)
-                CachedPool.removeAll()
                 let dbContext = DataShareManager.privateQueueContext()
                 
                 let w = NSPredicate(format: "mps == %@", HopConstants.DefaultPaymenstService)

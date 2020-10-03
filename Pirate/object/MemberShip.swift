@@ -77,17 +77,16 @@ class Membership:NSObject{
         
         //TODO:: test this carefully
         public static func syncAllMyMemberships(){
-                
                 guard let addr = Wallet.WInst.Address else{
                         return
                 }
                 
+                Cache.removeAll()
                 guard let data = IosLibMemberShipData(addr) else {
                         return
                 }
                 
                 let json = JSON(data)
-                Cache.removeAll()
                 let dbContext = DataShareManager.privateQueueContext()
                 
                 for (poolAddr, subJson):(String, JSON) in json {

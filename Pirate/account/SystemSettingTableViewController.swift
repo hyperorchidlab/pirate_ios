@@ -30,7 +30,9 @@ class SystemSettingTableViewController: UITableViewController {
 
                 switch indexPath.row {
                 case 0:
-                        self.ConfirmAlert(title: "Confirm".locStr, msg: "Replace current account") {self.createWallet()}
+                        self.ConfirmAlert(title: "Confirm".locStr, msg: "Replace current account") {
+                                self.performSegue(withIdentifier: "CreateAccountSegID", sender: self)
+                        }
                 case 1:
                         exportWallet()
                 case 2:
@@ -42,10 +44,6 @@ class SystemSettingTableViewController: UITableViewController {
                 default:
                         return
                 }
-        }
-
-        private func createWallet(){
-                self.performSegue(withIdentifier: "CreateAccountSegID", sender: self)
         }
         // MARK: - Wallet action
         
@@ -106,6 +104,11 @@ class SystemSettingTableViewController: UITableViewController {
                 if segue.identifier == "ShowQRScanerID"{
                         let vc : ScannerViewController = segue.destination as! ScannerViewController
                         vc.delegate = self
+                }else if segue.identifier == "CreateAccountSegID"{
+                        guard let vc = segue.destination as? NewAccountViewController else {
+                                return
+                        }
+                        vc.showImport = false
                 }
         }
 }
@@ -154,6 +157,7 @@ extension SystemSettingTableViewController: UINavigationControllerDelegate, UIIm
                                 self.ShowTips(msg: "Import Failed".locStr)
                                 return
                         }
+                        self.ShowTips(msg: "Import Success".locStr)
                 })
         }
 }
