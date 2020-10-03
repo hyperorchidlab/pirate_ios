@@ -262,5 +262,9 @@ class AccountViewController: UIViewController {
         
         // MARK: - Navigation
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                guard let vc = segue.destination as? NewAccountViewController else {
+                        return
+                }
+                vc.showImport = false
         }
 }
