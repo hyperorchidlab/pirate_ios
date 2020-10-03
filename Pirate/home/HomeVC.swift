@@ -32,10 +32,9 @@ class HomeVC: UIViewController {
         @IBOutlet weak var vpnStatusLabel: UILabel!
         @IBOutlet weak var minersIDLabel: UILabel!
         @IBOutlet weak var minersIPLabel: UILabel!
-        @IBOutlet weak var creditPacketLabel: UILabel!
-        @IBOutlet weak var CurMinerLabel: UILabel!
+        @IBOutlet weak var minerZoneLabel: UILabel!
         @IBOutlet weak var packetBalanceLabel: UILabel!
-        @IBOutlet weak var curPoolLabel: UILabel!
+        @IBOutlet weak var poolNameLabel: UILabel!
         @IBOutlet weak var poolAddrLabel: UILabel!
         @IBOutlet weak var globalModelSeg: UISegmentedControl!
         
@@ -45,7 +44,6 @@ class HomeVC: UIViewController {
         
         override func viewDidLoad() {
                 super.viewDidLoad()
-//                minerBGView.layer.borderColor = UIColor.red.cgColor
                 
                 reloadManagers()
                 let img = UIImage(named: "bg_image")!
@@ -54,7 +52,7 @@ class HomeVC: UIViewController {
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(VPNStatusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(SettingChanged(_:)), name: HopConstants.NOTI_LOCAL_SETTING_CHANGED, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(PoolChanged(_:)), name: HopConstants.NOTI_CHANGE_POOL, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(PoolChanged(_:)), name: HopConstants.NOTI_POOL_INUSE_CHANGED.name, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(MinerChanged(_:)), name: HopConstants.NOTI_CHANGE_MINER, object: nil)
         }
         
@@ -64,13 +62,8 @@ class HomeVC: UIViewController {
                         self.showCreateDialog()
                         return
                 }
-                self.poolAddrLabel.text = AppSetting.curPoolAddr ?? "Choose one pool please".locStr
-                self.minersIDLabel.text = AppSetting.curMinerAddr ?? "Choose one miner please".locStr
-                self.minersIPLabel.text = "NAN".locStr//TODO::
-                self.packetBalanceLabel.text = "0.0"
-                self.creditPacketLabel.text = "0.0"
-                self.CurMinerLabel.text = "NAN"
-                self.curPoolLabel.text = "NAN"
+                
+                setPoolMinersUI()
         }
         
         func showCreateDialog(){
@@ -176,34 +169,7 @@ class HomeVC: UIViewController {
                 }
         }
         
-        private func setPoolMiners(){
-                
-                let pool = DataSyncer.sharedInstance.localSetting?.poolInUse
-                if pool != nil{
-                        let p_data = DataSyncer.sharedInstance.poolData[pool!]
-                        self.curPoolLabel.text = "\(p_data?.ShortName ?? "")"
-                        self.poolAddrLabel.text = pool
-                        let u_acc = PacketAccountant.Inst.accountant(ofPool:pool!)
-                        self.packetBalanceLabel.text = u_acc?.packetBalance.ToPackets()
-                        self.creditPacketLabel.text = u_acc?.credit.ToPackets()
-                        
-                }else{
-                        self.curPoolLabel.text = "NAN".locStr
-                        self.poolAddrLabel.text = ""
-                }
-                
-                let miner = DataSyncer.sharedInstance.localSetting?.minerInUse
-                if miner != nil {
-                        let m_data = MinerData.MinerDetailsDic[miner!]
-                        self.CurMinerLabel.text = "\(m_data?.Zone ?? "")"
-                        self.minersIDLabel.text = m_data?.Address
-                        self.minersIPLabel.text = m_data?.IP ?? "NAN".locStr
-                }else{
-                        self.CurMinerLabel.text = "NAN".locStr
-                        self.minersIDLabel.text = ""
-                        self.minersIPLabel.text = ""
-                }
-        }
+        
         
         @IBAction func changeModel(_ sender: UISegmentedControl) {
                 let old_model = DataSyncer.isGlobalModel
@@ -342,16 +308,11 @@ class HomeVC: UIViewController {
         
         // MARK - miner or pool changed
         @objc func PoolChanged(_ notification: Notification?) {
-                let new_pool = notification?.userInfo?["New_Pool"] as? String
-                DataSyncer.sharedInstance.localSetting?.poolInUse = new_pool
-                DataSyncer.sharedInstance.localSetting?.minerInUse = ""
-                MinerData.MinerDetailsDic.removeAll()
-                DataShareManager.saveContext(DataSyncer.sharedInstance.dbContext)
                 if self.targetManager?.connection.status == .connected{
                         self.targetManager?.connection.stopVPNTunnel()
                 }
                 
-                setPoolMiners()
+                setPoolMinersUI()
         }
         
         @objc func MinerChanged(_ notification: Notification?)  {
@@ -362,6 +323,62 @@ class HomeVC: UIViewController {
                 if self.targetManager?.connection.status == .connected{
                         self.targetManager?.connection.stopVPNTunnel()
                 }
-                setPoolMiners()
+                setPoolMinersUI()
+        }
+        
+        private func setPoolMinersUI(){
+                DispatchQueue.main.async {
+                        if let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != ""{
+                                
+                                self.poolAddrLabel.text = poolAddr
+                                let pool = Pool.CachedPool[poolAddr]
+                                self.poolNameLabel.text = pool?.Name
+                                
+                                let membership = Membership.Cache[poolAddr]
+                                self.packetBalanceLabel.text = "\((membership!.packetBalance - Double(membership!.credit)).ToPackets())"
+                        }else{
+                                self.poolAddrLabel.text = "Choose one pool please".locStr
+                                self.packetBalanceLabel.text = "0.0"
+                                self.poolNameLabel.text = "NAN".locStr
+                        }
+                        
+                        if let minerAddr = AppSetting.coreData?.minerAddrInUsed, minerAddr != ""{
+                                self.minersIDLabel.text = minerAddr
+                                let m_data = MinerData.MinerDetailsDic[minerAddr]
+                                self.minerZoneLabel.text = m_data?.Zone
+                                self.minersIPLabel.text = m_data?.IP
+                        }else{
+                                self.minersIDLabel.text = "Choose one miner please".locStr
+                                self.minerZoneLabel.text = "NAN".locStr
+                                self.minersIPLabel.text = "NAN".locStr
+                        }
+                }
+                
+                
+//                let pool = DataSyncer.sharedInstance.localSetting?.poolInUse
+//                if pool != nil{
+//                        let p_data = DataSyncer.sharedInstance.poolData[pool!]
+//                        self.curPoolLabel.text = "\(p_data?.ShortName ?? "")"
+//                        self.poolAddrLabel.text = pool
+//                        let u_acc = PacketAccountant.Inst.accountant(ofPool:pool!)
+//                        self.packetBalanceLabel.text = u_acc?.packetBalance.ToPackets()
+//                        self.creditPacketLabel.text = u_acc?.credit.ToPackets()
+//
+//                }else{
+//                        self.curPoolLabel.text = "NAN".locStr
+//                        self.poolAddrLabel.text = ""
+//                }
+//
+//                let miner = DataSyncer.sharedInstance.localSetting?.minerInUse
+//                if miner != nil {
+//                        let m_data = MinerData.MinerDetailsDic[miner!]
+//                        self.CurMinerLabel.text = "\(m_data?.Zone ?? "")"
+//                        self.minersIDLabel.text = m_data?.Address
+//                        self.minersIPLabel.text = m_data?.IP ?? "NAN".locStr
+//                }else{
+//                        self.CurMinerLabel.text = "NAN".locStr
+//                        self.minersIDLabel.text = ""
+//                        self.minersIPLabel.text = ""
+//                }
         }
 }

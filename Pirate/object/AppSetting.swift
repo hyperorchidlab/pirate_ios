@@ -13,8 +13,6 @@ import IosLib
 class AppSetting:NSObject{
         
         public static let workQueue = DispatchQueue.init(label: "APP Work Queue")
-        public static var curPoolAddr:String?
-        public static var curMinerAddr:String?
         public static var dnsIP:String?
         public static var servicePrice:Int64 = 0
         
@@ -86,8 +84,6 @@ class AppSetting:NSObject{
                 }
                 
                 AppSetting.coreData = setting
-                AppSetting.curPoolAddr = setting!.poolAddrInUsed
-                AppSetting.curMinerAddr = setting!.minerAddrInUsed
                 AppSetting.dnsIP = setting?.dnsIP ??  HopConstants.DefaultDnsIP
                 AppSetting.servicePrice = setting!.servicePrice
         }

@@ -14,9 +14,12 @@ class PoolChoseItemTableViewCell: UITableViewCell {
         @IBOutlet weak var poolNameLabel: UILabel!
         @IBOutlet weak var checkImg: UIImageView!
         var checked: Bool = false
-        public func initWith(name:String?, addr:String?, isSelected:Bool){
-                poolAddrLabel.text = addr
-                poolNameLabel.text = name
+        
+        
+        public func initWith(member:CDMemberShip, isSelected:Bool){
+                poolAddrLabel.text = member.poolAddr
+                let pool = Pool.CachedPool[(member.poolAddr?.lowercased()) ?? "-1"]
+                poolNameLabel.text = pool?.Name
                 checkImg.isHidden = !isSelected
                 checked = isSelected
         }
@@ -28,22 +31,44 @@ class PoolChoseItemTableViewCell: UITableViewCell {
 
 class PoolChoseTableViewController: UITableViewController {
 
-        var validPoolArr:[CDUserAccount] = []
+        var validPoolArr:[CDMemberShip] = []
         var curPoolAddr:String?
         var curCell:PoolChoseItemTableViewCell?
+        
         override func viewDidLoad() {
                 super.viewDidLoad()
+                
                 self.tableView.rowHeight = 64
-                validPoolArr =  PacketAccountant.Inst.allAccountants()
-                curPoolAddr = DataSyncer.sharedInstance.localSetting?.poolInUse
+                validPoolArr =  Membership.MemberArray()
+                curPoolAddr = AppSetting.coreData?.poolAddrInUsed?.lowercased()
+                
+                refreshControl = UIRefreshControl()
+                refreshControl?.tintColor = UIColor.red
+                refreshControl?.addTarget(self, action: #selector(self.reloadMembership(_:)), for: .valueChanged)
+                tableView.addSubview(refreshControl!)
         }
         
         override func viewDidDisappear(_ animated: Bool) {
                 super.viewDidDisappear(animated)
-                if curPoolAddr != DataSyncer.sharedInstance.localSetting?.poolInUse{
-                        NotificationCenter.default.post(name:HopConstants.NOTI_CHANGE_POOL, object: nil, userInfo: ["New_Pool": curPoolAddr as Any])
+                if curPoolAddr?.lowercased() != AppSetting.coreData?.poolAddrInUsed?.lowercased(){
+                        AppSetting.coreData?.poolAddrInUsed = curPoolAddr?.lowercased()
+                        AppSetting.coreData?.minerAddrInUsed = ""
+                        DataShareManager.saveContext(DataShareManager.privateQueueContext())
+                        PostNoti(HopConstants.NOTI_POOL_INUSE_CHANGED)
                 }
         }
+        
+        @objc private func reloadMembership(_ sender: Any?){
+                AppSetting.workQueue.async {
+                        Membership.reLoad()
+                        self.validPoolArr =  Membership.MemberArray()
+                        DispatchQueue.main.async {
+                                self.refreshControl?.endRefreshing()
+                                self.tableView.reloadData()
+                        }
+                }
+        }
+        
         // MARK: - Table view data source
 
         override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,13 +84,11 @@ class PoolChoseTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PoolItemToChooseID", for: indexPath)
                 if let c = cell as? PoolChoseItemTableViewCell{
                         let p_data = self.validPoolArr[indexPath.row]
-                        let p_addr = p_data.poolAddr!
-                        let pool = DataSyncer.sharedInstance.poolData[p_addr]
-                        let is_checked = p_addr == self.curPoolAddr
-                        c.initWith(name: pool?.ShortName, addr: p_addr, isSelected: is_checked)
+                        let is_checked = p_data.poolAddr?.lowercased() == self.curPoolAddr?.lowercased()
+                        c.initWith(member: p_data, isSelected: is_checked)
                         if is_checked{
                                 self.curCell = c
-                                self.curPoolAddr = p_addr
+                                self.curPoolAddr = p_data.poolAddr?.lowercased()
                         }
                 }
                 
@@ -78,57 +101,9 @@ class PoolChoseTableViewController: UITableViewController {
                 }
                 let p_data = self.validPoolArr[indexPath.row]
                 self.curCell?.update(check:false)
-                self.curPoolAddr = p_data.poolAddr
+                self.curPoolAddr = p_data.poolAddr?.lowercased()
                 
                 cell.update(check: true)
                 self.curCell = cell
         }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    */
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowMinerListOfPool"{
-//                let miner_sel = segue.destination as! MinerChooseViewController
-//                miner_sel.curPool = curPoolAddr
-//        }
-//    }
-
 }
