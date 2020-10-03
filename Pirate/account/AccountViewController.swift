@@ -59,18 +59,29 @@ class AccountViewController: UIViewController {
                 
                 checkStatusButon()
                 
-                NotificationCenter.default.addObserver(self, selector:
-                                                        #selector(dnsChanged(_:)),
-                                                       name: HopConstants.NOTI_DNS_CHANGED.name,
-                                                       object: nil)
-                NotificationCenter.default.addObserver(self, selector:
-                                                        #selector(txStatusChanged(_:)),
-                                                       name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
-                                                       object: nil)
+                NotificationCenter.default.addObserver(self,
+                                               selector:
+                                                #selector(dnsChanged(_:)),
+                                               name: HopConstants.NOTI_DNS_CHANGED.name,
+                                               object: nil)
+                NotificationCenter.default.addObserver(self,
+                                               selector:
+                                                #selector(txStatusChanged(_:)),
+                                               name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
+                                               object: nil)
+                NotificationCenter.default.addObserver(self,
+                                               selector:
+                                                #selector(walletChanged(_:)),
+                                               name: HopConstants.NOTI_WALLET_CHANGED.name,
+                                               object: nil)
         }
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
+                setWalletUI()
+        }
+        
+        private func setWalletUI(){
                 ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
                 tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
                 
@@ -96,6 +107,18 @@ class AccountViewController: UIViewController {
         
         @objc func txStatusChanged(_ notification: Notification?) {
                 reloadWalletData()
+        }
+        
+        @objc func walletChanged(_ notification: Notification?) {
+                self.showIndicator(withTitle: "", and: "Reloading Account Data".locStr)
+                AppSetting.workQueue.async {
+                        Wallet.WInst.queryBalance()
+                        Transaction.reLoad()
+                        DispatchQueue.main.async {
+                                self.setWalletUI()
+                                self.hideIndicator()
+                        }
+                }
         }
         
         @objc func openTelegram() {

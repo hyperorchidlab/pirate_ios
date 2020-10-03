@@ -47,12 +47,5 @@ class MembershipTableViewCell: UITableViewCell {
                 poolNameLabel.text = pool?.Name
                 poolAddressLabel.text = pool?.Address
                 balanceLabel.text = "\((obj.packetBalance - Double(obj.credit)).ToPackets())"
-                
-//                refundTime.text = Date.init(timeIntervalSince1970: TimeInterval(u.expire)).stringVal //u.expire
-//                packetBalance.text = "\(u.packetBalance.ToPackets())\n "+"Packets".locStr
-//                tokenBalance.text = "\(u.tokenBalance.ToCoin())HOP\n "+"Points".locStr
-//                credit.text = "\(u.credit.ToPackets())\n "+"Credit".locStr
-                
-                
         }
 }

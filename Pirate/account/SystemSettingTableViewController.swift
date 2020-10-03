@@ -59,9 +59,11 @@ class SystemSettingTableViewController: UITableViewController {
         }
         
         func exportWallet(){
+                
                 self.showIndicator(withTitle: "", and: "Exporting......".locStr)
-                guard let w_json = HopWallet.WInst?.toJson() else{
+                guard let w_json = Wallet.WInst.coreData?.walletJSON else{
                         self.hideIndicator()
+                        self.ShowTips(msg: "No Valid Account".locStr)
                         return
                 }
                 
@@ -89,6 +91,14 @@ class SystemSettingTableViewController: UITableViewController {
         }
         
         func showAccountQR(){
+                guard let w_json = Wallet.WInst.coreData?.walletJSON else{
+                        self.ShowTips(msg: "No Valid Account".locStr)
+                        return
+                }
+                
+                self.ShowOnePassword() {
+                        self.ShowQRAlertView(data: w_json)
+                }
         }
         
         // Mark View Action
@@ -134,33 +144,16 @@ extension SystemSettingTableViewController: UINavigationControllerDelegate, UIIm
                 self.showIndicator(withTitle: "", and: "Importing......".locStr)
                 NSLog("=======>Scan result:=>[\(code)]")
                 
-                guard let w = HopWallet.from(json: code) else{
-                        self.hideIndicator()
-                        self.ShowTips(msg: "Parse json data to account failed".locStr)
-                        return
-                }
-
-//                self.ShowPassword(){
-//
-//                        (password, isOK) in
-//
-//                        defer{
-//                                self.hideIndicator()
-//                        }
-//
-//                        if !isOK || password == nil{
-//                                return
-//                        }
-//
-//                        do {try w.Open(auth: password!)}catch let err{
-//                                NSLog("=======>\(err.localizedDescription)")
-//                                self.ShowTips(msg: "Author failed".locStr)
-//                                return
-//                        }
-//
-//                        w.saveToDisk()
-//                        DataSyncer.sharedInstance.loadWallet()
-//                        NotificationCenter.default.post(name: HopConstants.NOTI_IMPORT_WALLET, object: nil, userInfo: ["mainAddress":w.mainAddress!.address])
-//                }
+                self.ShowOneInput(title: "Import Account".locStr, placeHolder: "Password For Import", nextAction: { (password, isOK) in
+                        defer{self.hideIndicator()}
+                        guard let pwd = password, isOK else{
+                                return
+                        }
+                        
+                        guard Wallet.ImportWallet(auth: pwd, josn:code) else{
+                                self.ShowTips(msg: "Import Failed".locStr)
+                                return
+                        }
+                })
         }
 }

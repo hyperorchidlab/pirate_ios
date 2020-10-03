@@ -153,7 +153,6 @@ public class HopWallet: NSObject, Codable {
                         wallet.privateKey = HopPriKey.init(main: main_pri, sub: hop_acc.priKey!)
                         hop_acc.priKey = nil
                         
-                        NotificationCenter.default.post(name: HopConstants.NOTI_NEW_WALLET, object: nil, userInfo: ["mainAddress":addr.address])
                         return wallet
                 }catch let err{
                         NSLog(err.localizedDescription)

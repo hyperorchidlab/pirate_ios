@@ -35,12 +35,6 @@ public final class DataSyncer:NSObject{
                 NSLog("=======>Pools in market size[\(self.poolData.count)]")
                 
                 super.init()
-//                localSetting = SysSetting.loadLocalSetting(for: currentMPS, curWallet: self.wallet?.mainAddress?.address, context: dbContext)
-//                NSLog("=======>Local setting:=>\(localSetting?.toString() ?? "<->")")
-                
-                NotificationCenter.default.addObserver(self, selector: #selector(WalletChanged(_:)), name: HopConstants.NOTI_NEW_WALLET, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(WalletChanged(_:)), name: HopConstants.NOTI_IMPORT_WALLET, object: nil)
-                
         }
         
         @objc func WalletChanged(_ notification: Notification?) {

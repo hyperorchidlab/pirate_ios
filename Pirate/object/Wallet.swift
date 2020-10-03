@@ -79,8 +79,13 @@ class Wallet:NSObject{
                 guard let jsonData = IosLibNewWallet(auth) else{
                         return false
                 }
+                populateWallet(data: jsonData)
                 
-                WInst.initByJson(jsonData)
+                return true
+        }
+        
+        private static func populateWallet(data:Data){
+                WInst.initByJson(data)
                 
                 let context = DataShareManager.privateQueueContext()
                 let w = NSPredicate(format:"mps == %@", HopConstants.DefaultPaymenstService)
@@ -92,12 +97,20 @@ class Wallet:NSObject{
                         core_data!.mps = HopConstants.DefaultPaymenstService
                 }
                 
-                core_data!.walletJSON = String(data: jsonData, encoding: .utf8)
+                core_data!.walletJSON = String(data: data, encoding: .utf8)
                 core_data!.address = WInst.Address
                 core_data!.subAddress = WInst.SubAddress
                 WInst.coreData = core_data
                 
                 DataShareManager.saveContext(context)
+                PostNoti(HopConstants.NOTI_WALLET_CHANGED)
+        }
+        
+        public static func ImportWallet(auth:String, josn:String) -> Bool{
+                guard IosLibImportWallet(josn, auth) else {
+                        return false
+                }
+                populateWallet(data: Data(josn.utf8))
                 
                 return true
         }
