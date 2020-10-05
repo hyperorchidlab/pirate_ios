@@ -126,4 +126,12 @@ class Wallet:NSObject{
         public func OpenWallet(auth:String) -> Bool{
                 return IosLibOpenWallet(auth)
         }
+        
+        public func MainPrikey() -> Data?{
+                return IosLibPriKeyData()
+        }
+        
+        public func SubPrikey() -> Data?{
+                return IosLibSubPriKeyData()
+        }
 }

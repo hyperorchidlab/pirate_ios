@@ -10,31 +10,6 @@ import web3swift
 import CryptoSwift
 import Curve25519
 
-public class HopPriKey:NSObject{
-        var subPriKey: Data?
-        var mainPriKey:Data?
-        
-        public init(main:Data, sub:Data){
-                mainPriKey = main
-                subPriKey = sub
-        }
-        
-        public func genAesKey(forMiner:String, subPriKey:Data)throws ->Data{
-                
-                guard let miner_ed_pub = HopAccount.getPub(address: forMiner) else{
-                        throw HopError.minerErr("Parse account's id to ed25519 public key failed".locStr)
-                }
-                
-                let miner_pub = try HopSodium.PK25519ED2Curve(edPub: miner_ed_pub)
-                let cur_pri = try HopSodium.SK25519ED2Curve(edPri: subPriKey)
-                guard let s_key = Curve25519.SharedSecret(privateKey: cur_pri, peerPublicKey: miner_pub) else{
-                        throw HopError.minerErr("Create shared aes key with node failed".locStr)
-                }
-                
-                return s_key
-        }
-}
-
 public class HopWallet: NSObject, Codable {
         
         public static var WInst:HopWallet?
@@ -46,7 +21,7 @@ public class HopWallet: NSObject, Codable {
         public var subAddress:String?
         public var subCipher:String?
         
-        public var privateKey:HopPriKey?
+        public var privateKey:HopKey?
         
         override init() {
                 super.init()
@@ -150,7 +125,7 @@ public class HopWallet: NSObject, Codable {
                         
                         wallet.subAddress = hop_acc.address
                         wallet.subCipher = hop_acc.cipher
-                        wallet.privateKey = HopPriKey.init(main: main_pri, sub: hop_acc.priKey!)
+                        wallet.privateKey = HopKey.init(main: main_pri, sub: hop_acc.priKey!)
                         hop_acc.priKey = nil
                         
                         return wallet
@@ -221,7 +196,7 @@ public class HopWallet: NSObject, Codable {
                         throw HopError.wallet("Failed to open main adress".locStr)
                 }
                 
-                self.privateKey = HopPriKey(main: main_pri, sub: sub_pri)
+                self.privateKey = HopKey(main: main_pri, sub: sub_pri)
         }
         
         public func Close(){

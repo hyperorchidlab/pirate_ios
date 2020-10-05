@@ -93,24 +93,25 @@ class HomeVC: UIViewController {
                         return
                 }
                 
-                guard let pool = DataSyncer.sharedInstance.localSetting?.poolInUse else {
+                guard let pool = AppSetting.coreData?.poolAddrInUsed else {
                         self.ShowTips(msg: "Choose your pool first".locStr)
                         return
                 }
-                guard let miner = DataSyncer.sharedInstance.localSetting?.minerInUse else {
+                guard let miner = AppSetting.coreData?.minerAddrInUsed else {
                         self.ShowTips(msg: "Choose your node first".locStr)
                         return
                 }
                 
-                guard let w = HopWallet.WInst else{
-                       self.ShowTips(msg: "Create a account first".locStr)
-                       return
+                let membership = Membership.Cache[pool]
+                guard let balance = membership?.packetBalance ?? 0 - Double(membership?.credit ?? 0),
+                      Int(balance) > HopConstants.RechargePieceSize else{
+                        SwitchTab(Idx: 1, tips: "Insuffcient Founds".locStr)
+                        return
                 }
                
-                guard  w.IsOpen() else{
-
+                guard  Wallet.WInst.IsOpen() else{
                         self.ShowOnePassword() {
-                                do {try self._startVPN(wallet: w, pool: pool, miner: miner)}catch let err{
+                                do {try self._startVPN(pool: pool, miner: miner)}catch let err{
                                         self.ShowTips(msg: err.localizedDescription)
                                 }
                         }
@@ -118,25 +119,30 @@ class HomeVC: UIViewController {
                 }
                 
                 do {
-                        try self._startVPN(wallet: w, pool: pool, miner: miner)
+                        try self._startVPN(pool: pool, miner: miner)
                 }catch let err{
                         NSLog("=======>Failed to start the VPN: \(err)")
                         self.ShowTips(msg: err.localizedDescription)
                 }
         }
         
-        private func _startVPN(wallet w:HopWallet, pool:String, miner:String) throws{
+        private func _startVPN(pool:String, miner:String) throws{
+                
+                guard let pri = Wallet.WInst.MainPrikey(),
+                      let subPri = Wallet.WInst.SubPrikey() else {
+                        throw HopError.wallet("No valid key data".locStr)
+                }
                 
                 self.showIndicator(withTitle: "VPN", and: "Starting VPN".locStr)
                 
                 let options = ["HOP_ADDR":HopConstants.DefaultTokenAddr,
                                "MPC_ADDR":HopConstants.DefaultPaymenstService,
                                "ROUTE_RULES": Utils.Domains["CN"] as Any,
-                               "MAIN_PRI":w.privateKey?.mainPriKey as Any,
-                               "SUB_PRI":w.privateKey?.subPriKey as Any,
+                               "MAIN_PRI":pri as Any,
+                               "SUB_PRI":subPri as Any,
                                "POOL_ADDR":pool as Any,
-                               "USER_ADDR":w.mainAddress?.address as Any,
-                               "USER_SUB_ADDR":w.subAddress! as Any,
+                               "USER_ADDR":Wallet.WInst.Address as Any,
+                               "USER_SUB_ADDR":Wallet.WInst.SubAddress as Any,
                                "GLOBAL_MODE":DataSyncer.isGlobalModel,
                                "MINER_ADDR":miner as Any]
                         as! [String : NSObject]
@@ -355,32 +361,5 @@ class HomeVC: UIViewController {
                                 self.minersIPLabel.text = "NAN".locStr
                         }
                 }
-                
-                
-//                let pool = DataSyncer.sharedInstance.localSetting?.poolInUse
-//                if pool != nil{
-//                        let p_data = DataSyncer.sharedInstance.poolData[pool!]
-//                        self.curPoolLabel.text = "\(p_data?.ShortName ?? "")"
-//                        self.poolAddrLabel.text = pool
-//                        let u_acc = PacketAccountant.Inst.accountant(ofPool:pool!)
-//                        self.packetBalanceLabel.text = u_acc?.packetBalance.ToPackets()
-//                        self.creditPacketLabel.text = u_acc?.credit.ToPackets()
-//
-//                }else{
-//                        self.curPoolLabel.text = "NAN".locStr
-//                        self.poolAddrLabel.text = ""
-//                }
-//
-//                let miner = DataSyncer.sharedInstance.localSetting?.minerInUse
-//                if miner != nil {
-//                        let m_data = MinerData.MinerDetailsDic[miner!]
-//                        self.CurMinerLabel.text = "\(m_data?.Zone ?? "")"
-//                        self.minersIDLabel.text = m_data?.Address
-//                        self.minersIPLabel.text = m_data?.IP ?? "NAN".locStr
-//                }else{
-//                        self.CurMinerLabel.text = "NAN".locStr
-//                        self.minersIDLabel.text = ""
-//                        self.minersIPLabel.text = ""
-//                }
         }
 }

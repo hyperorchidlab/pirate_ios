@@ -23,7 +23,7 @@ import Curve25519
 public class Protocol:NSObject{ 
        
         public static var EthSyncTime = TimeInterval(30)
-        var priKey:HopPriKey
+        var priKey:HopKey
         var aesKey:Data
         var mainAddr:EthereumAddress
         var subAddr:String
@@ -34,7 +34,7 @@ public class Protocol:NSObject{
                 let mpc         = (param["MPC_ADDR"] as! String)
                 let main_pri    = param["MAIN_PRI"] as! Data
                 let sub_pri     = param["SUB_PRI"] as! Data
-                priKey          = HopPriKey(main: main_pri, sub: sub_pri)
+                priKey          = HopKey(main: main_pri, sub: sub_pri)
                 
                 let poolAddrStr = (param["POOL_ADDR"] as! String)
                 let poolAddr    = EthereumAddress(poolAddrStr)!
