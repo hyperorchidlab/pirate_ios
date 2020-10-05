@@ -49,7 +49,6 @@
 		69767506242386DA002051F9 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511F23FCCECA00836E26 /* CocoaLumberjackSwift.framework */; };
 		69779A7825219F48003A163C /* RechargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7725219F48003A163C /* RechargeViewController.swift */; };
 		69779A7E25234684003A163C /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7D25234684003A163C /* Membership.swift */; };
-		697970D524096F3B00A33C6E /* UserDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */; };
 		697FCD8724AF18C300F1AA38 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
 		697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; };
 		6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
@@ -202,7 +201,6 @@
 		6972E3C12415E64F00550A4A /* ReceiptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptData.swift; sourceTree = "<group>"; };
 		69779A7725219F48003A163C /* RechargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeViewController.swift; sourceTree = "<group>"; };
 		69779A7D25234684003A163C /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
-		697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
 		6985D5DD24BD4F2400B77696 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		698A510323FBAD2E00836E26 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
@@ -395,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				7CE0EAFD24204F9E00F23A5A /* SystemSettingTableViewController.swift */,
-				697970D424096F3B00A33C6E /* UserDetailsTableViewCell.swift */,
 				696A71F52514891F004EA5DE /* AccountViewController.swift */,
 				696B02E42519EB2000F76A51 /* TransactionViewController.swift */,
 				7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */,
@@ -715,7 +712,6 @@
 				696A71EC25146725004EA5DE /* PasswordViewController.swift in Sources */,
 				696B02E52519EB2000F76A51 /* TransactionViewController.swift in Sources */,
 				696A71F02514680A004EA5DE /* Utils+ViewController.swift in Sources */,
-				697970D524096F3B00A33C6E /* UserDetailsTableViewCell.swift in Sources */,
 				695E4C392401778600A13631 /* Receipt.xcdatamodeld in Sources */,
 				69242242240D389100590536 /* MinerData.swift in Sources */,
 				69FA41AC2405711E005CF3FA /* PacketMarket.swift in Sources */,
