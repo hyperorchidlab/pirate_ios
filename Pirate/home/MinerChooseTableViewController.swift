@@ -21,20 +21,20 @@ class MinerChooseViewController: UIViewController {
                 minerArray = Array(MinerData.MinerDetailsDic.values)
                 minerListView.rowHeight = 97
                 
-                curPool = DataSyncer.sharedInstance.localSetting?.poolInUse
-                curMiner = DataSyncer.sharedInstance.localSetting?.minerInUse
+                curPool = AppSetting.coreData?.poolAddrInUsed
+                curMiner = AppSetting.coreData?.minerAddrInUsed
         }
         
         override func viewDidDisappear(_ animated: Bool) {
                 super.viewDidDisappear(animated)
-                if curMiner != DataSyncer.sharedInstance.localSetting?.minerInUse{
+                if curMiner != AppSetting.coreData?.minerAddrInUsed{
                         NotificationCenter.default.post(name:HopConstants.NOTI_CHANGE_MINER, object: nil, userInfo: ["New_Miner":curMiner as Any])
                 }
         }
         
         @IBAction func LoadRandomMiners(_ sender: Any) {
                 self.showIndicator(withTitle: "", and: "Chosing random node......".locStr)
-                EthUtil.sharedInstance.queue.async {
+                AppSetting.workQueue.async {
                         self.minerArray = EthUtil.sharedInstance.RandomMiners(inPool: self.curPool!)
                         DataSyncer.sharedInstance.updateLocalSetting(minerArr: self.minerArray)
                         DispatchQueue.main.async {

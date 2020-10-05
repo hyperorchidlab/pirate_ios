@@ -125,6 +125,7 @@
 		7C36020C2421132D0014E961 /* ApplyToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36020B2421132D0014E961 /* ApplyToken.swift */; };
 		7C36020E242113FD0014E961 /* ApplyToken.abi in Resources */ = {isa = PBXBuildFile; fileRef = 7C36020D242113FD0014E961 /* ApplyToken.abi */; };
 		7C36020F242129250014E961 /* ApplyToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36020B2421132D0014E961 /* ApplyToken.swift */; };
+		7C3D0524252AA5B800B59255 /* Miner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D0523252AA5B800B59255 /* Miner.swift */; };
 		7C63049724BFB5BE003D459E /* RechargeSimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63049624BFB5BE003D459E /* RechargeSimpleViewController.swift */; };
 		7C6D5050251A381500F03992 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */; };
 		7CDBECFE241DC9D200F6A8EB /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */; };
@@ -256,6 +257,7 @@
 		69FD93942402ED5700DB9DBC /* Curve25519.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curve25519.framework; path = Carthage/Build/iOS/Curve25519.framework; sourceTree = "<group>"; };
 		7C36020B2421132D0014E961 /* ApplyToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyToken.swift; sourceTree = "<group>"; };
 		7C36020D242113FD0014E961 /* ApplyToken.abi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApplyToken.abi; sourceTree = "<group>"; };
+		7C3D0523252AA5B800B59255 /* Miner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miner.swift; sourceTree = "<group>"; };
 		7C63049624BFB5BE003D459E /* RechargeSimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeSimpleViewController.swift; sourceTree = "<group>"; };
 		7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				696B02EC251A0A4D00F76A51 /* Transaction.swift */,
 				69C112D32515DC7C00C5E9F5 /* Wallet.swift */,
 				69779A7D25234684003A163C /* Membership.swift */,
+				7C3D0523252AA5B800B59255 /* Miner.swift */,
 			);
 			path = object;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				69FA418A2404B348005CF3FA /* DataShareManager.swift in Sources */,
 				69D1DFAA240D7E8300D3BA30 /* MinerDetailsTableViewCell.swift in Sources */,
 				6972E3C22415E64F00550A4A /* ReceiptData.swift in Sources */,
+				7C3D0524252AA5B800B59255 /* Miner.swift in Sources */,
 				696B02D425187B8E00F76A51 /* AppSetting.swift in Sources */,
 				7C6D5050251A381500F03992 /* TransactionTableViewCell.swift in Sources */,
 				6932A18C2406BAC100D2DA39 /* PoolDetails.swift in Sources */,

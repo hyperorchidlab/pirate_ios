@@ -62,7 +62,9 @@ class HomeVC: UIViewController {
                 NotificationCenter.default.addObserver(self, selector: #selector(MinerChanged(_:)),
                                                        name: HopConstants.NOTI_CHANGE_MINER, object: nil)
         }
-        
+        deinit {
+                NotificationCenter.default.removeObserver(self)
+        }
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 guard let addr = Wallet.WInst.Address, addr != "" else {
@@ -171,9 +173,6 @@ class HomeVC: UIViewController {
         }
         
         @objc func minerPoolDetailed(_ notification: Notification?) {
-//                if self.vpnStatusOn{
-//                        self.targetManager?.connection.stopVPNTunnel()
-//                }
                 self.setPoolMinersUI()
         }
         
@@ -197,8 +196,7 @@ class HomeVC: UIViewController {
         }
         
         @IBAction func ShowMinerChooseView(_ sender: Any) {
-                
-                guard DataSyncer.sharedInstance.localSetting?.poolInUse != nil else {
+                guard let _ = AppSetting.coreData?.poolAddrInUsed else {
                         self.ShowTips(msg: "Choose your pool first".locStr)
                         return
                 }

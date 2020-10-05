@@ -28,6 +28,9 @@ class TransactionViewController: UIViewController {
                                                        name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
                                                        object: nil)
         }
+        deinit {
+                NotificationCenter.default.removeObserver(self)
+        }
         
         func loadTXData(){
                 AppSetting.workQueue.async {

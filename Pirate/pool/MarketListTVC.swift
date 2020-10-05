@@ -34,7 +34,9 @@ class MarketListTVC: UITableViewController {
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(poolLoaded(_:)), name: HopConstants.NOTI_POOL_CACHE_LOADED.name, object: nil)
         }
-        
+        deinit {
+                NotificationCenter.default.removeObserver(self)
+        }
         @objc func poolLoaded(_ notification: Notification?)  {
                 self.poolList = Pool.ArrayData()
                 DispatchQueue.main.async {

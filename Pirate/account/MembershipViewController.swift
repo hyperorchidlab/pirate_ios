@@ -28,6 +28,9 @@ class MembershipViewController: UIViewController {
                                                name: HopConstants.NOTI_WALLET_CHANGED.name,
                                                object: nil)
         }
+        deinit {
+                NotificationCenter.default.removeObserver(self)
+        }
         //MARK: - object c
         @objc func reloadMemberDetail(_ sender: Any?){
                 AppSetting.workQueue.async {
