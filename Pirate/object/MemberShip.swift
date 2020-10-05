@@ -51,9 +51,10 @@ class Membership:NSObject{
         
                 for cData in memberArr{
                         cData.available = false
-                        Cache[cData.poolAddr!] = cData
+                        Cache[cData.poolAddr!.lowercased()] = cData
                 }
                 
+                PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
                 guard let data = IosLibAvailablePools(addr) else{
                         return
                 }
@@ -111,6 +112,7 @@ class Membership:NSObject{
                 DataShareManager.saveContext(dbContext)
                 DataShareManager.syncAllContext(dbContext)
                 PostNoti(HopConstants.NOTI_MEMBERSHIP_SYNCED)
+                PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
         }
         
 //        public func syncMemberDetailFromETH(){

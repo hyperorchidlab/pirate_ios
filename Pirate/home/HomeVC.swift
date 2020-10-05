@@ -46,14 +46,21 @@ class HomeVC: UIViewController {
                 super.viewDidLoad()
                 
                 reloadManagers()
+                
                 let img = UIImage(named: "bg_image")!
                 self.view.backgroundColor = UIColor(patternImage: img)
                 
+                NotificationCenter.default.addObserver(self, selector: #selector(VPNStatusDidChange(_:)),
+                                                       name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(minerPoolDetailed(_:)),
+                                                       name: HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED.name, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(minerPoolDetailed(_:)),
+                                                       name: HopConstants.NOTI_POOL_CACHE_LOADED.name, object: nil)
                 
-                NotificationCenter.default.addObserver(self, selector: #selector(VPNStatusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(SettingChanged(_:)), name: HopConstants.NOTI_LOCAL_SETTING_CHANGED, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(PoolChanged(_:)), name: HopConstants.NOTI_POOL_INUSE_CHANGED.name, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(MinerChanged(_:)), name: HopConstants.NOTI_CHANGE_MINER, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(PoolChanged(_:)),
+                                                       name: HopConstants.NOTI_POOL_INUSE_CHANGED.name, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(MinerChanged(_:)),
+                                                       name: HopConstants.NOTI_CHANGE_MINER, object: nil)
         }
         
         override func viewWillAppear(_ animated: Bool) {
@@ -163,13 +170,12 @@ class HomeVC: UIViewController {
                 }
         }
         
-        @objc func SettingChanged(_ notification: Notification?) {
-                if self.vpnStatusOn{
-                        self.targetManager?.connection.stopVPNTunnel()
-                }
+        @objc func minerPoolDetailed(_ notification: Notification?) {
+//                if self.vpnStatusOn{
+//                        self.targetManager?.connection.stopVPNTunnel()
+//                }
+                self.setPoolMinersUI()
         }
-        
-        
         
         @IBAction func changeModel(_ sender: UISegmentedControl) {
                 let old_model = DataSyncer.isGlobalModel
@@ -335,7 +341,8 @@ class HomeVC: UIViewController {
                                 self.poolNameLabel.text = pool?.Name
                                 
                                 let membership = Membership.Cache[poolAddr]
-                                self.packetBalanceLabel.text = "\((membership!.packetBalance - Double(membership!.credit)).ToPackets())"
+                                let balance = membership?.packetBalance ?? 0 - Double(membership?.credit ?? 0)
+                                self.packetBalanceLabel.text = "\((balance).ToPackets())"
                         }else{
                                 self.poolAddrLabel.text = "Choose one pool please".locStr
                                 self.packetBalanceLabel.text = "0.0"

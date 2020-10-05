@@ -66,13 +66,13 @@ public struct HopConstants {
         
         static let NOTI_CHANGE_POOL = Notification.Name("NOTI_CHANGE_POOL")
         static let NOTI_CHANGE_MINER = Notification.Name("NOTI_CHANGE_MINER")
-        static let NOTI_LOCAL_SETTING_CHANGED = Notification.Name("NOTI_LOCAL_SETTING_CHANGED")
         
         
         static let NOTI_DNS_CHANGED = Notification.init(name: Notification.Name("NOTI_DNS_CHANGED"))
         static let NOTI_TX_STATUS_CHANGED = Notification.init(name: Notification.Name("NOTI_TX_STATUS_CHANGED"))
         static let NOTI_POOL_CACHE_LOADED = Notification.init(name: Notification.Name("NOTI_POOL_CACHE_LOADED"))
         static let NOTI_MEMBERSHIP_SYNCED = Notification.init(name: Notification.Name("NOTI_MEMBERSHIP_SYNCED"))
+        static let NOTI_MEMBERSHIPL_CACHE_LOADED = Notification.init(name: Notification.Name("NOTI_MEMBERSHIPL_CACHE_LOADED"))
         static let NOTI_WALLET_CHANGED = Notification.init(name: Notification.Name("NOTI_WALLET_CHANGED"))
         static let NOTI_POOL_INUSE_CHANGED = Notification.init(name: Notification.Name("NOTI_POOL_INUSE_CHANGED"))
         

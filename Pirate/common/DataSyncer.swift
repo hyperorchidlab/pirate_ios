@@ -40,7 +40,6 @@ public final class DataSyncer:NSObject{
         @objc func WalletChanged(_ notification: Notification?) {
                 let w = notification?.userInfo?["mainAddress"] as? String
                 localSetting = SysSetting.loadLocalSetting(for: currentMPS, curWallet: w, context: dbContext)
-                NotificationCenter.default.post(name: HopConstants.NOTI_LOCAL_SETTING_CHANGED, object: nil, userInfo: nil)
         }
         
         public static func EthVersionCheck(){
