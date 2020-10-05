@@ -17,8 +17,6 @@ class MinerDetailsTableViewCell: UITableViewCell {
         @IBOutlet weak var Ping: UILabel!
         @IBOutlet weak var PingBtn: UIButton!
         
-        
-        var minerData:MinerData?
         override func awakeFromNib() {
                 super.awakeFromNib()
         }
@@ -27,12 +25,11 @@ class MinerDetailsTableViewCell: UITableViewCell {
                 super.setSelected(selected, animated: animated)
         }
 
-        func initWith(minerData:inout MinerData, isChecked:Bool, index:Int) {
-                self.Zone.text = minerData.Zone
-                self.IP.text = minerData.IP ?? "0.0.0.0"
-                self.Ping.text = String(format: "%.2f "+"ms".locStr, minerData.Ping ?? -1)
-                self.Address.text = minerData.Address
-                self.minerData = minerData
+        func initWith(minerData:inout CDMiner, isChecked:Bool, index:Int) {
+                self.Zone.text = minerData.zon
+                self.IP.text = minerData.ipAddr ?? "0.0.0.0"
+                self.Ping.text = String(format: "%.2f "+"ms".locStr, minerData.ping )
+                self.Address.text = minerData.subAddr
                 checkIcon.isHidden = !isChecked
                 self.PingBtn.tag = index
         }

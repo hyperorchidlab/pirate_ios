@@ -11,36 +11,56 @@ import UIKit
 class MinerChooseViewController: UIViewController {
 
         @IBOutlet weak var minerListView: UITableView!
-        var minerArray:[MinerData] = []
+        
+        
+        var minerArray:[CDMiner] = []
         var curPool:String?
         var curMiner:String?
         var curCell:MinerDetailsTableViewCell?
         
         override func viewDidLoad() {
                 super.viewDidLoad()
-                minerArray = Array(MinerData.MinerDetailsDic.values)
+                
                 minerListView.rowHeight = 97
                 
                 curPool = AppSetting.coreData?.poolAddrInUsed
                 curMiner = AppSetting.coreData?.minerAddrInUsed
+                
+                AppSetting.workQueue.async {
+                        Miner.LoadCache()
+                }
+                NotificationCenter.default.addObserver(self, selector: #selector(minerSynced(_:)),
+                                                       name: HopConstants.NOTI_MINER_SYNCED.name, object: nil)
+                
+                NotificationCenter.default.addObserver(self, selector: #selector(minerSynced(_:)),
+                                                       name: HopConstants.NOTI_MINER_CACHE_LOADED.name, object: nil)
+        }
+        deinit {
+                NotificationCenter.default.removeObserver(self)
+        }
+        
+        @objc func minerSynced(_ notification: Notification?) {
+                minerArray = Miner.ArrayData()
+                DispatchQueue.main.async {
+                        self.minerListView.reloadData()
+                }
         }
         
         override func viewDidDisappear(_ animated: Bool) {
                 super.viewDidDisappear(animated)
-                if curMiner != AppSetting.coreData?.minerAddrInUsed{
-                        NotificationCenter.default.post(name:HopConstants.NOTI_CHANGE_MINER, object: nil, userInfo: ["New_Miner":curMiner as Any])
+                
+                if curMiner?.lowercased() != AppSetting.coreData?.minerAddrInUsed?.lowercased(){
+                        AppSetting.coreData?.minerAddrInUsed = curMiner
+                        DataShareManager.saveContext(DataShareManager.privateQueueContext())
+                        PostNoti(HopConstants.NOTI_MINER_INUSE_CHANGED)
                 }
         }
         
         @IBAction func LoadRandomMiners(_ sender: Any) {
-                self.showIndicator(withTitle: "", and: "Chosing random node......".locStr)
+                self.showIndicator(withTitle: "", and: "Loading miners......".locStr)
                 AppSetting.workQueue.async {
-                        self.minerArray = EthUtil.sharedInstance.RandomMiners(inPool: self.curPool!)
-                        DataSyncer.sharedInstance.updateLocalSetting(minerArr: self.minerArray)
-                        DispatchQueue.main.async {
-                                self.minerListView.reloadData()
-                                self.hideIndicator()
-                        }
+                        Miner.SyncMinerFromETH()
+                        self.hideIndicator()
                 }
         }
         
@@ -55,15 +75,15 @@ class MinerChooseViewController: UIViewController {
                                        self.minerListView.reloadData()
                                 }
                        }
-                       let miner_addr = m_data.Address
-                       guard let ip = BasUtil.Query(addr: miner_addr) else{
-                        m_data.IP = "no bas".locStr
+                       let miner_addr = m_data.subAddr!
+                        guard let ip = BasUtil.Query(addr: miner_addr) else{
+                        m_data.ipAddr = "no bas".locStr
                                return
                        }
                        
-                       m_data.IP = ip
+                       m_data.ipAddr = ip
                        let ping =  BasUtil.Ping(addr: miner_addr, withIP: ip)
-                       m_data.Ping = ping
+                       m_data.ping = ping
                 }
         }
         
@@ -76,29 +96,25 @@ class MinerChooseViewController: UIViewController {
                 self.showIndicator(withTitle: "", and: "Ping all nodes......".locStr)
 
                 BasUtil.queue.async {
-                let dispatchGrp = DispatchGroup()
-                
-                
-                for miner in self.minerArray{
+                        let dispatchGrp = DispatchGroup()
                         
-//                        BasUtil.queue.async {
                         
-                        dispatchGrp.enter()
-                                let (ip, ping) = BasUtil.Ping(addr: miner.Address)
-                                miner.IP = ip
-                                miner.Ping = ping
-                                NSLog("=======> ip=\(ip) ping=\(ping)")
-                        dispatchGrp.leave()
-//                        }
+                        for miner in self.minerArray{
+                                dispatchGrp.enter()
+                                        let (ip, ping) = BasUtil.Ping(addr: miner.subAddr!)
+                                        miner.ipAddr = ip
+                                        miner.ping = ping
+                                        NSLog("=======> ip=\(ip) ping=\(ping)")
+                                dispatchGrp.leave()
+                        }
+                        
+                        dispatchGrp.notify(queue: DispatchQueue.main){
+                                self.minerListView.reloadData()
+                                self.hideIndicator()
+                        }
                 }
-                
-                dispatchGrp.notify(queue: DispatchQueue.main){
-                        self.minerListView.reloadData()
-                        self.hideIndicator()
-                }
-        }
 
-                }
+        }
 
 }
 
@@ -111,9 +127,9 @@ extension MinerChooseViewController:UITableViewDelegate, UITableViewDataSource{
                 
                 if let c = cell as? MinerDetailsTableViewCell{
                         var m_data = self.minerArray[indexPath.row]
-                        c.initWith(minerData:&m_data, isChecked: curMiner == m_data.Address, index: indexPath.row)
-                        if self.curMiner == m_data.Address{
-                                NSLog("=======>find selector=>\(m_data.Address)")
+                        let checked = curMiner?.lowercased() == m_data.subAddr?.lowercased()
+                        c.initWith(minerData:&m_data, isChecked: checked, index: indexPath.row)
+                        if checked{
                                 self.curCell = c
                         }
                         
@@ -134,7 +150,7 @@ extension MinerChooseViewController:UITableViewDelegate, UITableViewDataSource{
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 let miner = self.minerArray[indexPath.row]
                 self.curCell?.update(check:false)
-                curMiner = miner.Address
+                curMiner = miner.subAddr
                 guard let c = tableView.cellForRow(at: indexPath) as? MinerDetailsTableViewCell else{
                         return
                 }

@@ -51,16 +51,17 @@ class HomeVC: UIViewController {
                 self.view.backgroundColor = UIColor(patternImage: img)
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(VPNStatusDidChange(_:)),
+                                                       
                                                        name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(minerPoolDetailed(_:)),
                                                        name: HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED.name, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(minerPoolDetailed(_:)),
                                                        name: HopConstants.NOTI_POOL_CACHE_LOADED.name, object: nil)
                 
-                NotificationCenter.default.addObserver(self, selector: #selector(PoolChanged(_:)),
+                NotificationCenter.default.addObserver(self, selector: #selector(poolChanged(_:)),
                                                        name: HopConstants.NOTI_POOL_INUSE_CHANGED.name, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(MinerChanged(_:)),
-                                                       name: HopConstants.NOTI_CHANGE_MINER, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(minerChanged(_:)),
+                                                       name: HopConstants.NOTI_MINER_INUSE_CHANGED.name, object: nil)
         }
         deinit {
                 NotificationCenter.default.removeObserver(self)
@@ -310,23 +311,19 @@ class HomeVC: UIViewController {
                 }
         }
         
-        // MARK - miner or pool changed
-        @objc func PoolChanged(_ notification: Notification?) {
-                if self.targetManager?.connection.status == .connected{
-                        self.targetManager?.connection.stopVPNTunnel()
+        // MARK - pool changed
+        @objc func poolChanged(_ notification: Notification?) {
+                guard let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != "" else{
+                        return
                 }
                 
-                setPoolMinersUI()
+                self.performSegue(withIdentifier: "ChooseMinersViewControllerSS", sender: self)
         }
-        
-        @objc func MinerChanged(_ notification: Notification?)  {
-                let new_miner = notification?.userInfo?["New_Miner"] as? String                
-                DataSyncer.sharedInstance.localSetting?.minerInUse = new_miner
-                DataShareManager.saveContext(DataSyncer.sharedInstance.dbContext)
-                
+        @objc func minerChanged(_ notification: Notification?) {
                 if self.targetManager?.connection.status == .connected{
                         self.targetManager?.connection.stopVPNTunnel()
                 }
+                
                 setPoolMinersUI()
         }
         
@@ -349,9 +346,9 @@ class HomeVC: UIViewController {
                         
                         if let minerAddr = AppSetting.coreData?.minerAddrInUsed, minerAddr != ""{
                                 self.minersIDLabel.text = minerAddr
-                                let m_data = MinerData.MinerDetailsDic[minerAddr]
-                                self.minerZoneLabel.text = m_data?.Zone
-                                self.minersIPLabel.text = m_data?.IP
+                                let m_data = Miner.CachedMiner[minerAddr.lowercased()]
+                                self.minerZoneLabel.text = m_data?.zon
+                                self.minersIPLabel.text = m_data?.ipAddr
                         }else{
                                 self.minersIDLabel.text = "Choose one miner please".locStr
                                 self.minerZoneLabel.text = "NAN".locStr

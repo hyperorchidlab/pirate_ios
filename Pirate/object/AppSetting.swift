@@ -22,24 +22,24 @@ class AppSetting:NSObject{
         public static func initSystem(){
                 
                 AppSetting.initSetting()
+                _ = HopSodium.initialized
+                try? EthUtil.sharedInstance.initEth()//TODO::
+                Utils.initDomains()
                 
                 AppSetting.workQueue.async {
                         Wallet.WInst.queryBalance()
-                        _ = HopSodium.initialized
-                        try? EthUtil.sharedInstance.initEth()
-                        Utils.initDomains()
-                }
-                AppSetting.workQueue.async {
-                        Transaction.reLoad()
-                }
-                AppSetting.workQueue.async {
-                        Pool.reloadCachedPool()
                 }
                 AppSetting.workQueue.async {
                         loadServicePrice()
                 }
                 AppSetting.workQueue.async {
+                        Pool.reloadCachedPool()
+                }
+                AppSetting.workQueue.async {
                         Membership.reLoad()
+                }
+                AppSetting.workQueue.async {
+                        Miner.LoadCache()
                 }
         }
         

@@ -36,6 +36,7 @@ class AccountViewController: UIViewController {
                 walletAddrLabel.text = Wallet.WInst.Address
                 appVerLabel.text = appVersion
                 dnsIPLabel.text = AppSetting.dnsIP
+               
                 
                 let tap = UITapGestureRecognizer(target: self, action: #selector(openTelegram))
                 tap.numberOfTapsRequired = 1
@@ -58,6 +59,7 @@ class AccountViewController: UIViewController {
                 walletView.addGestureRecognizer(tap5)
                 
                 checkStatusButon()
+                loadTransaction()
                 
                 NotificationCenter.default.addObserver(self,
                                                selector:
@@ -78,19 +80,27 @@ class AccountViewController: UIViewController {
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
-                setWalletUI()
+                walletBalanceUI()
         }
         
-        private func setWalletUI(){
+        private func loadTransaction(){
+                AppSetting.workQueue.async {
+                        Transaction.reLoad()
+                        DispatchQueue.main.async {
+                                if Transaction.CachedTX.count > 0{
+                                        self.transactionNOLabel.isHidden = false
+                                        self.transactionNOLabel.text = "\(Transaction.CachedTX.count)"
+                                }else{
+                                        self.transactionNOLabel.isHidden = true
+                                }
+                        }
+                }
+        }
+        
+        private func walletBalanceUI(){
                 ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
                 tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
-                
-                if Transaction.CachedTX.count > 0{
-                        transactionNOLabel.isHidden = false
-                        transactionNOLabel.text = "\(Transaction.CachedTX.count)"
-                }else{
-                        transactionNOLabel.isHidden = true
-                }
+                citBalanceLabel.text = 0.0.ToCoin()
         }
         
         deinit {
@@ -107,6 +117,7 @@ class AccountViewController: UIViewController {
         
         @objc func txStatusChanged(_ notification: Notification?) {
                 reloadWalletData()
+                loadTransaction()
         }
         
         @objc func walletChanged(_ notification: Notification?) {
@@ -117,7 +128,7 @@ class AccountViewController: UIViewController {
                         DispatchQueue.main.async {
                                 self.walletAddrLabel.text = Wallet.WInst.Address
                                 self.checkStatusButon()
-                                self.setWalletUI()
+                                self.walletBalanceUI()
                                 self.hideIndicator()
                         }
                 }
@@ -181,8 +192,7 @@ class AccountViewController: UIViewController {
                         Wallet.WInst.queryBalance()
                         DispatchQueue.main.async { [self] in
                                 self.hideIndicator()
-                                self.ethBalanceLabel.text = Wallet.WInst.ethBalance.ToCoin()
-                                self.tokenBalanceLabel.text = Wallet.WInst.tokenBalance.ToCoin()
+                                self.walletBalanceUI()
                                 self.checkStatusButon()
                         }
                 }
