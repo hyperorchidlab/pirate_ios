@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import SwiftyJSON
+import web3swift
 
 class MembershipEX:NSObject{
         
@@ -41,6 +42,7 @@ extension CDMemberShip{
                 guard let tx = rcp.tx else{
                         throw HopError.rcpWire("No valid transaction data")
                 }
+                NSLog("--------->create rcp\n\(rcp.toString())")
                 
                 guard tx.verifyTx() == true else{
                         throw HopError.rcpWire("Signature verify failed for receipt")

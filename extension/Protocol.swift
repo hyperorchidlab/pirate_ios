@@ -10,6 +10,7 @@ import Foundation
 import Curve25519
 import CoreData
 import SwiftSocket
+import web3swift
 
 @objc public protocol ProtocolDelegate: NSObjectProtocol{
         func VPNShouldDone()
@@ -82,7 +83,9 @@ extension Protocol{
         
         func initRcp() -> Bool{
                 self.rcpSocket = UDPClient(address: self.poolIP, port: Int32(HopConstants.ReceiptSyncPort))
-                self.rcpKAData = HopMessage.rcpKAMsg(from: userAddress!)
+                let userAddr = EthereumAddress.toChecksumAddress(self.userAddress!)
+                self.rcpKAData = HopMessage.rcpKAMsg(from: userAddr!)
+                
                 DispatchQueue.main.async {
                         self.rcpTimer = Timer.scheduledTimer(timeInterval: HopConstants.RCPKeepAlive,
                                                      target: self,
@@ -90,7 +93,8 @@ extension Protocol{
                                                      userInfo: nil,
                                                      repeats: true)
                 }
-                guard let data = HopMessage.rcpSynMsg(from: self.userAddress!,
+                
+                guard let data = HopMessage.rcpSynMsg(from: userAddr!,
                                                     pool: self.poolAddress!,
                                                     sigKey: self.priKey.mainPriKey!) else {
                         NSLog("--------->rcp wire[\(self.userAddress!)->\(self.poolAddress!)]hand shake data error:")

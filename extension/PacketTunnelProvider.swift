@@ -89,7 +89,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         
                 }catch let err{
                        completionHandler(err)
-                       NSLog("--------->ethereum fetcher init failed\(err.localizedDescription)\n")
+                       NSLog("--------->startTunnel failed\n[\(err.localizedDescription)]")
                }
         }
         

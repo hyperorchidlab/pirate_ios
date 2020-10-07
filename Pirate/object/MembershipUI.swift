@@ -52,8 +52,6 @@ class MembershipUI:NSObject{
                 for cData in memberArr{
                         cData.available = false
                         Cache[cData.poolAddr!.lowercased()] = cData
-                        
-                        NSLog("=======> membership:[\(cData.userAddr!)---->\(cData.poolAddr!)]")
                 }
                 
                 PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)

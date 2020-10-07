@@ -21,6 +21,7 @@ class PasswordViewController: UIViewController {
                 paswordInputTF.keyboardType = self.payload.keyType
                 self.titleLab.text = payload.title
                 self.paswordInputTF.placeholder = payload.placeholderTxt
+                paswordInputTF.becomeFirstResponder()
         }
         
         @IBAction func OKCation(_ sender: Any) {

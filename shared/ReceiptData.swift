@@ -47,12 +47,12 @@ public class TransactionData:NSObject{
                 self.to = json["to"].string
                 self.amount = json["amount"].int64
                 self.credit = json["credit"].int64
-                self.contractAddr = json["contract"].string
-                self.tokenAddr = json["token"].string
+                self.contractAddr = json["author"]["contract"].string
+                self.tokenAddr = json["author"]["token"].string
         }
         
         public func toString()->String{
-                return "Transaction=>{\ntxsig=\(txSig ?? "<->")\nhashV=\(hashV ?? "<->")\nepoch=\(epoch!)\nnonce=\(nonce!)\ntime=\(time!)\nminerID=\(minerID!)\nfrom=\(from!) \nto=\(to!)\namount=\(amount!)\ncredit=\(credit!)\n}}"
+                return "Transaction=>{\ntxsig=\(txSig ?? "<->")\nhashV=\(hashV ?? "<->")\nepoch=\(epoch!)\nnonce=\(nonce!)\ntime=\(time!)\nminerID=\(minerID!)\nfrom=\(from!) \nto=\(to!)\namount=\(amount!)\ncredit=\(credit!)\ncontractAddr=\(contractAddr!)\ntokenAddr=\(tokenAddr!)\n}\n"
         }
         
         public init(userData:CDMemberShip, amount:Int64, for miner:String){
@@ -109,26 +109,31 @@ public class TransactionData:NSObject{
            
                 guard self.tokenAddr?.lowercased() == HopConstants.DefaultTokenAddr.lowercased(),
                       self.contractAddr?.lowercased() == HopConstants.DefaultPaymenstService.lowercased() else {
+                        NSLog("--------->verifyTx mps or token wrong")
                         return false
                 }
                 
                 guard let hash_data = self.createABIHash() else {
+                        NSLog("--------->verifyTx createABIHash failed")
                         return false
                 }
                 
                 guard let signature = Data.init(base64Encoded: self.txSig!) else{
+                        NSLog("--------->verifyTx signature base64Encoded failed")
                         return false
                 }
                 
                 guard let recovered = Web3.Utils.hashECRecover(hash: hash_data, signature: signature) else {
+                        NSLog("--------->verifyTx recovered failed")
                         return false
                 }
                 
                 guard let userAddr = EthereumAddress(self.from!) else{
+                        NSLog("--------->verifyTx userAddr invalid")
                         return false
                 }
-                
-                 return recovered == userAddr
+                NSLog("--------->recoverd=\(recovered) userAddr=\(userAddr)")
+                return recovered == userAddr
         }
 }
 
@@ -150,12 +155,4 @@ public class ReceiptData:NSObject{
         public func toString()->String{
                 return "\n ReceiptData=>{\n sig=\(self.sig ?? "<->") \n\(self.tx!.toString())\n}"
         }
-}
-
-extension CDMemberShip{
-        
-        func updateByReceipt(json:JSON){
-                
-        }
-
 }

@@ -177,7 +177,7 @@ class HOPAdapter: AdapterSocket {
                         Protocol.pInst.CounterWork(size:size)
                         delegate?.didRead(data: decode_data, from: self)
                         
-                        NSLog("--------->[\(objID)]YYYYYY indeed read len [\(size)]---")
+//                        NSLog("--------->[\(objID)]YYYYYY indeed read len [\(size)]---")
 //                        
 //                        guard size > HOPAdapter.MAX_BUFFER_SIZE else{
 //                                delegate?.didRead(data: decode_data, from: self)
@@ -227,13 +227,13 @@ class HOPAdapter: AdapterSocket {
         override open func readData() {
                 if internalStatus == .forwarding{
                         if self.readHead{
-                                NSLog("--------->[\(objID)]readData --read head-")
+//                                NSLog("--------->[\(objID)]readData --read head-")
                                 self.socket.readDataTo(length: HOPAdapter.PACK_HEAD_SIZE)
                         }
                         return
                 }
                 
-                NSLog("--------->[\(objID)]readData --controller data-")
+//                NSLog("--------->[\(objID)]readData --controller data-")
                 super.readData()
         }
         override open func write(data: Data) {
@@ -242,7 +242,7 @@ class HOPAdapter: AdapterSocket {
                         return
                 }
                 
-                NSLog("--------->[\(objID)]direct write msg:[\(data.count)] ---")
+//                NSLog("--------->[\(objID)]direct write msg:[\(data.count)] ---")
                 super.write(data: data)
         }
         
@@ -256,7 +256,7 @@ class HOPAdapter: AdapterSocket {
                 let len = data.ToInt()
                 self.socket.readDataTo(length: len)
                 self.readHead = false
-                NSLog("--------->[\(objID)]XXXXXX need to read len [\(len)]---")
+//                NSLog("--------->[\(objID)]XXXXXX need to read len [\(len)]---")
         }
         
         func readEncoded(data:Data) throws-> Data {
