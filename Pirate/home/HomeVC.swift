@@ -102,16 +102,19 @@ class HomeVC: UIViewController {
                         return
                 }
                 
-                let membership = MembershipUI.Cache[pool]
-                guard let balance = membership?.packetBalance ?? 0 - Double(membership?.credit ?? 0),
-                      Int(balance) > HopConstants.RechargePieceSize else{
+                guard let membership = MembershipUI.Cache[pool.lowercased()] else{
+                        self.ShowTips(msg: "Memship is invalid".locStr)
+                        return
+                }
+                let balance = membership.packetBalance - Double(membership.credit)
+                guard Int(balance) > HopConstants.RechargePieceSize else{
                         SwitchTab(Idx: 1, tips: "Insuffcient Founds".locStr)
                         return
                 }
                
                 guard  Wallet.WInst.IsOpen() else{
                         self.ShowOnePassword() {
-                                do {try self._startVPN(pool: pool, miner: miner)}catch let err{
+                                do {try self._startVPN(pool: membership.poolAddr!, miner: miner)}catch let err{
                                         self.ShowTips(msg: err.localizedDescription)
                                 }
                         }
@@ -119,7 +122,7 @@ class HomeVC: UIViewController {
                 }
                 
                 do {
-                        try self._startVPN(pool: pool, miner: miner)
+                        try self._startVPN(pool: membership.poolAddr!, miner: miner)
                 }catch let err{
                         NSLog("=======>Failed to start the VPN: \(err)")
                         self.ShowTips(msg: err.localizedDescription)

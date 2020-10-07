@@ -65,7 +65,7 @@ public class Protocol:NSObject{
                 }
                 self.poolIP = pool_ip
                 guard MembershipEX.Membership(user: userAddr, pool: poolAddrStr) else {
-                        throw HopError.txWire("Init membership failed")
+                        throw HopError.txWire("Init membership failed[\(userAddr)---->\(poolAddrStr)]")
                 }
                 
                 guard initRcp() else{
