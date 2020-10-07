@@ -87,10 +87,14 @@ class NewAccountViewController: UIViewController {
                 alert.popoverPresentationController?.sourceView = self.view;
                 alert.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 1, height: 1) //(0,0,1.0,1.0);
                 self.present(alert, animated: true)
-                
-                
         }
-        
+        // Mark View Action
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                if segue.identifier == "ShowQRScanerID"{
+                        let vc : ScannerViewController = segue.destination as! ScannerViewController
+                        vc.delegate = self
+                }
+        }
 }
 
 extension NewAccountViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate, ScannerViewControllerDelegate{
@@ -136,6 +140,8 @@ extension NewAccountViewController: UINavigationControllerDelegate, UIImagePicke
                                 self.ShowTips(msg: "Import Failed".locStr)
                                 return
                         }
+                        
+                        self.dismiss(animated: true)
                 })
         }
 }

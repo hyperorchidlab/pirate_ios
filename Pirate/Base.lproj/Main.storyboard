@@ -1140,7 +1140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9M-Kp-qVP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5896" y="1146"/>
+            <point key="canvasLocation" x="5868" y="58"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="Qdi-qI-YaK">
@@ -1884,6 +1884,7 @@
                         <outlet property="importBtn" destination="pjB-4q-fwi" id="pZr-E5-NM6"/>
                         <outlet property="orTipsLabel" destination="4Tv-ic-15D" id="Ahv-dp-dQO"/>
                         <outlet property="passwordTips" destination="9e2-zp-w88" id="pBV-bY-0ao"/>
+                        <segue destination="xrm-9S-OwR" kind="presentation" identifier="ShowQRScanerID" id="tSU-nr-QHu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLc-mp-Mtz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2339,8 +2340,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gKr-DU-bPn"/>
+        <segue reference="2Nw-Iy-5p1"/>
         <segue reference="Ykb-TN-0aZ"/>
+        <segue reference="qJJ-AI-AJd"/>
         <segue reference="132-jk-Nft"/>
     </inferredMetricsTieBreakers>
     <resources>

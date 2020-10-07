@@ -50,8 +50,6 @@ class Wallet:NSObject{
                 self.ethBalance = core_data.ethBalance
                 self.approve = core_data.approve
                 coreData = core_data
-                
-                test2()
         }
         
         public func queryBalance(){
