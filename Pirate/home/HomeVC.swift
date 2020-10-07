@@ -9,6 +9,7 @@
 import UIKit
 import NetworkExtension
 import web3swift
+import SwiftyJSON
 
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
@@ -274,25 +275,15 @@ class HomeVC: UIViewController {
                                 NSLog("=======>Can't not load global model")
                                 return
                 }
-                
-                NSLog("=======>VPN is on and need to load global model")
-                let message = NSKeyedArchiver.archivedData(withRootObject: ["GetModel": true])
-                try? session.sendProviderMessage(message, responseHandler: {reponse in
-                        guard let r = reponse else{
-                                return
-                        }
-                        guard let param = NSKeyedUnarchiver.unarchiveObject(with: r) as? [String:Any],
-                        let is_global = param["Global"] as? Bool, is_global == true else{
-                                DataSyncer.isGlobalModel = false
-                                self.setModelStatus(sender: self.globalModelSeg, oldStatus: false)
-                                NSLog("=======>Curretn global model is false")
-                                return
-                        }
-
-                        NSLog("=======>Curretn global model is true")
-                        DataSyncer.isGlobalModel = true
-                        self.setModelStatus(sender: self.globalModelSeg, oldStatus: true)
-                })
+                guard let message = try? JSON(["GetModel": true]).rawData() else{
+                        return
+                }
+                try? session.sendProviderMessage(message){reponse in
+                        let param = JSON(reponse!)
+                        DataSyncer.isGlobalModel = param["Global"].bool ?? false
+                        self.setModelStatus(sender: self.globalModelSeg, oldStatus: DataSyncer.isGlobalModel)
+                        NSLog("=======>Curretn global model is [\(DataSyncer.isGlobalModel)]")
+                }
         }
         
         private func notifyModelToVPN(sender: UISegmentedControl, oldStatus:Bool){
@@ -302,14 +293,11 @@ class HomeVC: UIViewController {
                         session.status != .invalid else{
                                 return
                 }
-                
-                let message = NSKeyedArchiver.archivedData(withRootObject: ["Global": DataSyncer.isGlobalModel])
+                guard let message = try? JSON(["Global": DataSyncer.isGlobalModel]).rawData() else{
+                        return
+                }
                 do{
-                        try session.sendProviderMessage(message, responseHandler: {reponse in
-                                if reponse != nil{
-                                        NSLog(String(data: reponse!, encoding: .utf8)!)
-                                }
-                        })
+                        try session.sendProviderMessage(message)
                         
                 }catch let err{
                         self.setModelStatus(sender: sender, oldStatus: oldStatus)

@@ -23,14 +23,18 @@ import Curve25519
 public class Protocol:NSObject{ 
        
         public static var EthSyncTime = TimeInterval(30)
+        public static var userAddress:String!
+        public static var userSubAddress:String!
+        public static var poolAddress:String!
+        public static var minerAddress:String!
+        
         var priKey:HopKey
         var aesKey:Data
-        var mainAddr:EthereumAddress
-        var subAddr:String
         var transactionWire:TxWire?
         
+        var mainAddr:EthereumAddress
+        
         public init(param:[String : NSObject], delegate:ProtocolDelegate)throws{
-                
                 let mpc         = (param["MPC_ADDR"] as! String)
                 let main_pri    = param["MAIN_PRI"] as! Data
                 let sub_pri     = param["SUB_PRI"] as! Data
@@ -41,26 +45,29 @@ public class Protocol:NSObject{
                 let minerID     = param["MINER_ADDR"] as! String
                 let userAddr    = (param["USER_ADDR"] as! String)
                 mainAddr        = EthereumAddress(userAddr)!
-                subAddr         = param["USER_SUB_ADDR"] as! String
                 
                 if param["IS_TEST"] as? Bool == false{
                         Protocol.EthSyncTime = TimeInterval(300)
                 }
                 
+                Protocol.userAddress = userAddr
+                Protocol.poolAddress = poolAddrStr
+                Protocol.minerAddress = minerID
+                Protocol.userSubAddress = (param["USER_SUB_ADDR"] as! String)
+                
                 self.aesKey = try priKey.genAesKey(forMiner:minerID, subPriKey: sub_pri)
                 guard let pool_ip = BasUtil.Query(addr: poolAddrStr) else{
                         throw HopError.hopProtocol("Can't not find pool[\(poolAddrStr) ip address]")
                 }
-                PacketAccountant.Inst.setEnv(MPSA: mpc, user: userAddr)
-                
+//                PacketAccountant.Inst.setEnv(MPSA: mpc, user: userAddr)
                 super.init()
                 
-                try EthUtil.sharedInstance.initEth()
-                
-                let micChain = MicroChain(paymentAddr: mpc,
-                                          pool: poolAddr,
-                                          userAddr: userAddr)
-                micChain.start()
+//                try EthUtil.sharedInstance.initEth()
+//
+//                let micChain = MicroChain(paymentAddr: mpc,
+//                                          pool: poolAddr,
+//                                          userAddr: userAddr)
+//                micChain.start()
                 
                 let receiptWire = RcpWire(poolAddr: poolAddrStr,
                                       userAddr: userAddr,
@@ -80,10 +87,6 @@ public class Protocol:NSObject{
                 }
                 transactionWire = tx_wire
         }
-        
-        private func openPaymenWire(){
-                
-        }
 }
 
 
@@ -96,7 +99,7 @@ extension Protocol: MicroPayDelegate{
         public func getSetupMsg(salt:Data) -> Data?{ do{
                 return try HopMessage.SetupMsg(iv:salt,
                                                mainAddr: self.mainAddr,
-                                               subAddr: self.subAddr,
+                                               subAddr: Protocol.userSubAddress,
                                                sigKey: self.priKey.mainPriKey!)
         }catch let err{
                 NSLog("--------->Setup msg to miner failed:=>\(err.localizedDescription)")

@@ -10,6 +10,9 @@ import Foundation
 import CoreData
 import IosLib
 import SwiftyJSON
+import CryptoSwift
+import Curve25519
+import web3swift
 
 class Wallet:NSObject{
         
@@ -24,7 +27,7 @@ class Wallet:NSObject{
         public static var WInst = Wallet()
         
         override init() {
-                
+                super.init()
                 let w = NSPredicate(format:"mps == %@", HopConstants.DefaultPaymenstService)
                 guard let core_data = NSManagedObject.findOneEntity(HopConstants.DBNAME_WALLET,
                                                               where: w,
@@ -47,6 +50,8 @@ class Wallet:NSObject{
                 self.ethBalance = core_data.ethBalance
                 self.approve = core_data.approve
                 coreData = core_data
+                
+//                test()
         }
         
         public func queryBalance(){
@@ -133,5 +138,35 @@ class Wallet:NSObject{
         
         public func SubPrikey() -> Data?{
                 return IosLibSubPriKeyData()
+        }
+        
+        func test() {
+                
+                if OpenWallet(auth: "123"){
+                        
+                        let priData = IosLibPriKeyData()!
+                        NSLog("\(priData)")
+                        
+                        let addr1 = SECP256K1.privateToPublic(privateKey: priData)
+                        let addr2 = SECP256K1.privateToPublic(privateKey: priData, compressed: true)
+                        NSLog("--------->addr1==>\(addr1!.toHexString())--->addr2==>\(addr2!.toHexString())")
+                        
+                        
+                        let data = "foo".data(using: .utf8)
+                        let hash = data!.sha3(.keccak256)
+                        NSLog("--------->hash data==>\(hash.toHexString())")
+                        
+                        let (sig, _) = SECP256K1.signForHash(hash: hash, privateKey: priData)
+                        NSLog("--------->sig data==>\(sig!.toHexString())")
+                        
+                        let sig2 = IosLibVerify(data, sig)!
+                        NSLog("--------->sig2 data==>\(sig2.toHexString())")
+                       
+                        let pubKey = SECP256K1.recoverPublicKey(hash: hash, signature: sig2, compressed: true)
+                        NSLog("--------->recoverd pubKey==>\(pubKey!.toHexString())")
+                        
+                        let addr = Web3.Utils.publicToAddress(pubKey!)!
+                        NSLog("--------->recoverd pubKey==>\(addr.address)")
+                }
         }
 }

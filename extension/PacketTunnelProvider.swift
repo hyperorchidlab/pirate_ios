@@ -8,6 +8,7 @@
 
 import NetworkExtension
 import NEKit
+import SwiftyJSON
 
 extension Data {
     var hexString: String {
@@ -159,21 +160,22 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
         override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
                 NSLog("--------->Handle App Message......")
-                guard let param = NSKeyedUnarchiver.unarchiveObject(with: messageData) as? [String:Any],
-                        let handler = completionHandler else{
+                guard let handler = completionHandler else{
                         return
                 }
+                let param = JSON(messageData)
                 
-                let is_global = param["Global"] as? Bool
-                let gt_status = param["GetModel"] as? Bool
+                let is_global = param["Global"].bool
+                let gt_status = param["GetModel"].bool
                 if is_global != nil{
                         HOPRule.ISGlobalMode = is_global!
                         NSLog("--------->Global model changed...\(HOPRule.ISGlobalMode)...")
-                        handler("Success".data(using: .utf8))
                 }
                 if gt_status != nil{
+                        guard let data = try? JSON(["Global": HOPRule.ISGlobalMode]).rawData() else{
+                                return
+                        }
                         NSLog("--------->App is querying golbal model [\(HOPRule.ISGlobalMode)]")
-                        let data = NSKeyedArchiver.archivedData(withRootObject: ["Global":HOPRule.ISGlobalMode])
                         handler(data)
                 }
         }
