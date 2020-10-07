@@ -23,7 +23,6 @@ class AppSetting:NSObject{
                 
                 AppSetting.initSetting()
                 _ = HopSodium.initialized
-                try? EthUtil.sharedInstance.initEth()//TODO::
                 Utils.initDomains()
                 
                 AppSetting.workQueue.async {

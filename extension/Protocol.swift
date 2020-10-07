@@ -68,8 +68,6 @@ public class Protocol:NSObject{
                         throw HopError.txWire("Init membership failed")
                 }
                 
-//                try EthUtil.sharedInstance.initEth()
-                
                 guard initRcp() else{
                         throw HopError.txWire("Init receipt wire failed")
                 }
