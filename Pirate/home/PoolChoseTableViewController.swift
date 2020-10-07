@@ -39,7 +39,7 @@ class PoolChoseTableViewController: UITableViewController {
                 super.viewDidLoad()
                 
                 self.tableView.rowHeight = 64
-                validPoolArr =  Membership.MemberArray()
+                validPoolArr =  MembershipUI.MemberArray()
                 curPoolAddr = AppSetting.coreData?.poolAddrInUsed?.lowercased()
                 
                 refreshControl = UIRefreshControl()
@@ -60,8 +60,8 @@ class PoolChoseTableViewController: UITableViewController {
         
         @objc private func reloadMembership(_ sender: Any?){
                 AppSetting.workQueue.async {
-                        Membership.reLoad()
-                        self.validPoolArr =  Membership.MemberArray()
+                        MembershipUI.reLoad()
+                        self.validPoolArr =  MembershipUI.MemberArray()
                         DispatchQueue.main.async {
                                 self.refreshControl?.endRefreshing()
                                 self.tableView.reloadData()

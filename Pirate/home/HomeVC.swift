@@ -39,7 +39,6 @@ class HomeVC: UIViewController {
         @IBOutlet weak var poolAddrLabel: UILabel!
         @IBOutlet weak var globalModelSeg: UISegmentedControl!
         
-        var rcpWire:RcpWire?
         var vpnStatusOn:Bool = false
         var targetManager:NETunnelProviderManager? = nil
         
@@ -103,7 +102,7 @@ class HomeVC: UIViewController {
                         return
                 }
                 
-                let membership = Membership.Cache[pool]
+                let membership = MembershipUI.Cache[pool]
                 guard let balance = membership?.packetBalance ?? 0 - Double(membership?.credit ?? 0),
                       Int(balance) > HopConstants.RechargePieceSize else{
                         SwitchTab(Idx: 1, tips: "Insuffcient Founds".locStr)
@@ -329,7 +328,7 @@ class HomeVC: UIViewController {
                                 let pool = Pool.CachedPool[poolAddr]
                                 self.poolNameLabel.text = pool?.Name
                                 
-                                let membership = Membership.Cache[poolAddr]
+                                let membership = MembershipUI.Cache[poolAddr]
                                 let balance = membership?.packetBalance ?? 0 - Double(membership?.credit ?? 0)
                                 self.packetBalanceLabel.text = "\((balance).ToPackets())"
                         }else{

@@ -36,7 +36,7 @@ class AppSetting:NSObject{
                         Pool.reloadCachedPool()
                 }
                 AppSetting.workQueue.async {
-                        Membership.reLoad()
+                        MembershipUI.reLoad()
                 }
                 AppSetting.workQueue.async {
                         Miner.LoadCache()

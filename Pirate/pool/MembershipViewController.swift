@@ -18,7 +18,7 @@ class MembershipViewController: UIViewController {
         override func viewDidLoad() {
                 super.viewDidLoad()
                 tableView.rowHeight = 80
-                self.memberships = Membership.MemberArray()
+                self.memberships = MembershipUI.MemberArray()
                 
                 refreshControl.addTarget(self, action: #selector(self.reloadMemberDetail(_:)), for: .valueChanged)
                 tableView.addSubview(refreshControl)
@@ -34,8 +34,8 @@ class MembershipViewController: UIViewController {
         //MARK: - object c
         @objc func reloadMemberDetail(_ sender: Any?){
                 AppSetting.workQueue.async {
-                        Membership.syncAllMyMemberships()
-                        self.memberships =  Membership.MemberArray()
+                        MembershipUI.syncAllMyMemberships()
+                        self.memberships =  MembershipUI.MemberArray()
                         DispatchQueue.main.async {
                                 self.refreshControl.endRefreshing()
                                 self.tableView.reloadData()
@@ -44,8 +44,8 @@ class MembershipViewController: UIViewController {
         }
         @objc func walletChanged(_ notification: Notification?) {
                 AppSetting.workQueue.async {
-                        Membership.syncAllMyMemberships()
-                        self.memberships = Membership.MemberArray()
+                        MembershipUI.syncAllMyMemberships()
+                        self.memberships = MembershipUI.MemberArray()
                         DispatchQueue.main.async {
                                 self.tableView.reloadData()
                         }

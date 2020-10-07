@@ -29,19 +29,21 @@ public class HopMessage:NSObject{
                 guard let req_data = req.data(using: .utf8) else{
                         return nil
                 }
-                guard let sig = HopWallet.mainSign(data:req_data, key:sigKey) else{
+                
+                let hash = req_data.sha3(.keccak256)
+//                NSLog("--------->hash==>\(hash.toHexString())")
+                let (sig, _) = SECP256K1.signForHash(hash: hash, privateKey: sigKey)
+                if sig == nil{
                         return nil
                 }
-
-//                NSLog("--------->sig data==>\(sig!.toHexString())")
-//                NSLog("--------->sig 64==>\(sig!.base64EncodedString())")
+                NSLog("--------->sig data==>\(sig!.toHexString())")
                 
                 req =  String(format: RCPSynFormat,
-                              sig.base64EncodedString(),
+                              sig!.base64EncodedString(),
                               RCPSynType.user.rawValue, 
                               from,
                               pool_addr)
-                
+                NSLog("--------->req==>\(req)")
                 return req.data(using: .utf8)
         }
         
@@ -74,7 +76,10 @@ public class HopMessage:NSObject{
 //                NSLog("set str==>\(setup_str)")
 //                NSLog("set data==>\(setup_data.toHexString())")
                 
-                let sig = HopWallet.mainSign(data:setup_data, key:sigKey)
+                let hash = setup_data.sha3(.keccak256)
+//                NSLog("--------->hash==>\(hash.toHexString())")
+                let (sig, _) = SECP256K1.signForHash(hash: hash, privateKey: sigKey)
+                
 //                NSLog("sig data==>\(sig!.toHexString())")
 //                NSLog("sig 64==>\(sig!.base64EncodedString())")
                 

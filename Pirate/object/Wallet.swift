@@ -51,7 +51,7 @@ class Wallet:NSObject{
                 self.approve = core_data.approve
                 coreData = core_data
                 
-//                test()
+                test2()
         }
         
         public func queryBalance(){
@@ -168,5 +168,19 @@ class Wallet:NSObject{
                         let addr = Web3.Utils.publicToAddress(pubKey!)!
                         NSLog("--------->recoverd pubKey==>\(addr.address)")
                 }
+        }
+        
+        func test2() {
+                
+                if !OpenWallet(auth: "123"){
+                    return
+                }
+                
+                let priData = IosLibPriKeyData()!
+                let _ = HopMessage.rcpSynMsg(from: HopConstants.DefaultPaymenstService,
+                                                  pool: HopConstants.DefaultTokenAddr,
+                                                  sigKey: priData)
+ 
+                
         }
 }

@@ -48,7 +48,7 @@
 		69767505242386DA002051F9 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */; };
 		69767506242386DA002051F9 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511F23FCCECA00836E26 /* CocoaLumberjackSwift.framework */; };
 		69779A7825219F48003A163C /* RechargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7725219F48003A163C /* RechargeViewController.swift */; };
-		69779A7E25234684003A163C /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7D25234684003A163C /* Membership.swift */; };
+		69779A7E25234684003A163C /* MembershipUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7D25234684003A163C /* MembershipUI.swift */; };
 		697FCD8724AF18C300F1AA38 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
 		697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; };
 		6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
@@ -71,7 +71,6 @@
 		69A47D52240E303E00C86CFF /* SwiftSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A47D51240E303E00C86CFF /* SwiftSocket.framework */; };
 		69A47D68240EAF9A00C86CFF /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		69A47D6A240EB1DD00C86CFF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D69240EB1DD00C86CFF /* Protocol.swift */; };
-		69A47D6C240EB6B500C86CFF /* RcpWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6B240EB6B500C86CFF /* RcpWire.swift */; };
 		69A47D6D240EB6B500C86CFF /* RcpWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6B240EB6B500C86CFF /* RcpWire.swift */; };
 		69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
 		69A47D70240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
@@ -126,6 +125,7 @@
 		7C36020E242113FD0014E961 /* ApplyToken.abi in Resources */ = {isa = PBXBuildFile; fileRef = 7C36020D242113FD0014E961 /* ApplyToken.abi */; };
 		7C36020F242129250014E961 /* ApplyToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36020B2421132D0014E961 /* ApplyToken.swift */; };
 		7C3D0524252AA5B800B59255 /* Miner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D0523252AA5B800B59255 /* Miner.swift */; };
+		7C61CCFE252D65AB00CF8D06 /* MembershipEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C61CCFC252D65AB00CF8D06 /* MembershipEX.swift */; };
 		7C6D5050251A381500F03992 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */; };
 		7CDBECFE241DC9D200F6A8EB /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */; };
 		7CE0EAFE24204F9E00F23A5A /* SystemSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0EAFD24204F9E00F23A5A /* SystemSettingTableViewController.swift */; };
@@ -200,7 +200,7 @@
 		696B02EC251A0A4D00F76A51 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		6972E3C12415E64F00550A4A /* ReceiptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptData.swift; sourceTree = "<group>"; };
 		69779A7725219F48003A163C /* RechargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeViewController.swift; sourceTree = "<group>"; };
-		69779A7D25234684003A163C /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
+		69779A7D25234684003A163C /* MembershipUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipUI.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
 		6985D5DD24BD4F2400B77696 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		698A510323FBAD2E00836E26 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
@@ -256,6 +256,7 @@
 		7C36020B2421132D0014E961 /* ApplyToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyToken.swift; sourceTree = "<group>"; };
 		7C36020D242113FD0014E961 /* ApplyToken.abi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApplyToken.abi; sourceTree = "<group>"; };
 		7C3D0523252AA5B800B59255 /* Miner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miner.swift; sourceTree = "<group>"; };
+		7C61CCFC252D65AB00CF8D06 /* MembershipEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipEX.swift; sourceTree = "<group>"; };
 		7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		7CE0EAFD24204F9E00F23A5A /* SystemSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingTableViewController.swift; sourceTree = "<group>"; };
@@ -469,6 +470,7 @@
 				693515C52413F9140082C3BF /* PacketAccountant.swift */,
 				69A47D69240EB1DD00C86CFF /* Protocol.swift */,
 				69A47D6B240EB6B500C86CFF /* RcpWire.swift */,
+				7C61CCFC252D65AB00CF8D06 /* MembershipEX.swift */,
 				69AB68AB2410D506006195AF /* TxWire.swift */,
 			);
 			path = extension;
@@ -481,7 +483,7 @@
 				69AD9FE2252071750077CFCF /* Pool.swift */,
 				696B02EC251A0A4D00F76A51 /* Transaction.swift */,
 				69C112D32515DC7C00C5E9F5 /* Wallet.swift */,
-				69779A7D25234684003A163C /* Membership.swift */,
+				69779A7D25234684003A163C /* MembershipUI.swift */,
 				7C3D0523252AA5B800B59255 /* Miner.swift */,
 			);
 			path = object;
@@ -701,7 +703,6 @@
 				69980C2D23F78D3E00829B09 /* HomeVC.swift in Sources */,
 				6932A1892406AD4C00D2DA39 /* MPSVersion.swift in Sources */,
 				7CEFA3BE2525F5D600A2E2B4 /* MembershipViewController.swift in Sources */,
-				69A47D6C240EB6B500C86CFF /* RcpWire.swift in Sources */,
 				6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */,
 				696B02ED251A0A4D00F76A51 /* Transaction.swift in Sources */,
 				69FA419624050059005CF3FA /* HopError.swift in Sources */,
@@ -721,7 +722,7 @@
 				69E0BEB9240800D900E0B982 /* UserData.swift in Sources */,
 				69FA41922404DBCD005CF3FA /* HopConstants.swift in Sources */,
 				69C112D22515D58700C5E9F5 /* DataSyncer.swift in Sources */,
-				69779A7E25234684003A163C /* Membership.swift in Sources */,
+				69779A7E25234684003A163C /* MembershipUI.swift in Sources */,
 				693515C72413F91E0082C3BF /* PacketAccountant.swift in Sources */,
 				696A71EE251467DA004EA5DE /* QRCodeShowViewController.swift in Sources */,
 				6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */,
@@ -750,6 +751,7 @@
 				696A71F425146CFB004EA5DE /* Utils.swift in Sources */,
 				693515C62413F9140082C3BF /* PacketAccountant.swift in Sources */,
 				69FA41AD2405711E005CF3FA /* PacketMarket.swift in Sources */,
+				7C61CCFE252D65AB00CF8D06 /* MembershipEX.swift in Sources */,
 				69D1DFA8240D76EB00D3BA30 /* MinerData.swift in Sources */,
 				69FA419724050059005CF3FA /* HopError.swift in Sources */,
 				69A47D6D240EB6B500C86CFF /* RcpWire.swift in Sources */,

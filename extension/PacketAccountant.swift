@@ -154,10 +154,6 @@ public class PacketAccountant: NSObject{
                         throw HopError.rcpWire("Signature verify failed for receipt")
                 }
                 
-                guard tx.author?.verify(HopConstants.DefaultTokenAddr, HopConstants.DefaultPaymenstService) == true else{
-                        throw HopError.rcpWire("Token or Payment address is not same with current setting")
-                }
-                
                 guard let cua = PacketAccountant.Inst.reloadUA(forPool: rcpData.tx!.to!) else{
                         NSLog("--------->no loacal user account data")
                         throw HopError.rcpWire("can't find local user account when update by receipt")

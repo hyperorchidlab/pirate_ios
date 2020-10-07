@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftSocket
-import web3swift
+import SwiftyJSON
 
 public class RcpWire:NSObject{
         
@@ -75,24 +75,24 @@ public class RcpWire:NSObject{
                                                 NSLog("--------->Read receipt data failed")
                                                 return
                                         }
-                       
-                                        NSLog("--------->Got receipt info from pool[\(pool_ip)]:=>\n\(String(bytes: d, encoding: .utf8) ?? "---")")
+                                        MembershipEX.updateByReceipt(data:Data(d))
                                         
-                                        guard let obj = try JSONSerialization.jsonObject(with: Data(d), options: []) as? [String:Any] else{
-                                                NSLog("--------->Parse receipt data to json object failed")
-                                                throw HopError.rcpWire("Parse receipt data to json object failed")
-                                        }
-                                        guard let rcp_obj = ReceiptData(json: obj) else{
-                                                NSLog("--------->Parese json object to swift object faileds")
-                                                throw HopError.rcpWire("Parese json object to swift object faileds")
-                                        }
-                                        
-                                        try PacketAccountant.Inst.updateByReceipt(rcpData:rcp_obj)
+//                                        NSLog("--------->Got receipt info from pool[\(pool_ip)]:=>\n\(String(bytes: d, encoding: .utf8) ?? "---")")
+//
+//                                        guard let obj = try JSONSerialization.jsonObject(with: Data(d), options: []) as? [String:Any] else{
+//                                                throw HopError.rcpWire("Parse receipt data to json object failed")
+//                                        }
+//                                        guard let rcp_obj = ReceiptData(json: obj) else{
+//                                                NSLog("--------->Parese json object to swift object faileds")
+//                                                throw HopError.rcpWire("Parese json object to swift object faileds")
+//                                        }
+//
+//                                        try PacketAccountant.Inst.updateByReceipt(rcpData:rcp_obj)
                         
                                 } catch let err{
                                         self.udpSocket.close()
                                         self.timer?.invalidate()
-                                        monitor.RcpWireExit()
+                                        monitor.RcpWireExit()//TODO::process this situation
                                         NSLog("--------->rcp receive wire[\(self.poolAddr)] err:\(err.localizedDescription)")
                                 }
                         }

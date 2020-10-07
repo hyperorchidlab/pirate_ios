@@ -12,7 +12,7 @@ import CoreData
 import BigInt
 
 
-public class MicroChain :NSObject{
+public class MicroChain2 :NSObject{
         
         var localVersion: MPSVersion
         var currentMPS:String

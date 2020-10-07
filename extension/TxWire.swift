@@ -52,7 +52,7 @@ public class TxWire:NSObject{
                         self.curUserAcc.inRecharge  += amount
                         
                         NSLog("--------->Transaction Wire need to recharge:[\(self.curUserAcc.inRecharge)]===>")
-                        guard let tx_data = TransactionDatya(userData: cua, amount: Int64(self.curUserAcc.inRecharge), for:  self.minerID) else{
+                        guard let tx_data = TransactionData(userData: cua, amount: Int64(self.curUserAcc.inRecharge), for:  self.minerID) else{
                                 NSLog("--------->recharge transaction creation failed")
                                 throw HopError.txWire("recharge transaction creation failed")
                         }
