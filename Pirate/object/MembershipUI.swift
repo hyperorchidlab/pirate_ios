@@ -67,6 +67,9 @@ class MembershipUI:NSObject{
                                 continue
                         }
                         obj.available = true
+                        if obj.needReload{
+                                needSync = true
+                        }
                 }
                 
                 if needSync{
