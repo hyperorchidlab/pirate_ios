@@ -324,14 +324,14 @@ class HomeVC: UIViewController {
         private func setPoolMinersUI(){
                 DispatchQueue.main.async {
                         if let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != ""{
-                                
                                 self.poolAddrLabel.text = poolAddr
-                                let pool = Pool.CachedPool[poolAddr]
-                                self.poolNameLabel.text = pool?.Name
-                                
-                                let membership = MembershipUI.Cache[poolAddr]
-                                let balance = membership?.packetBalance ?? 0 - Double(membership?.credit ?? 0)
-                                self.packetBalanceLabel.text = "\((balance).ToPackets())"
+                                if let pool = Pool.CachedPool[poolAddr]{
+                                        self.poolNameLabel.text = pool.Name
+                                }
+                                if let membership = MembershipUI.Cache[poolAddr]{
+                                        let balance = membership.packetBalance - Double(membership.credit)
+                                        self.packetBalanceLabel.text = "\((balance).ToPackets())"
+                                }
                         }else{
                                 self.poolAddrLabel.text = "Choose one pool please".locStr
                                 self.packetBalanceLabel.text = "0.0"
@@ -340,9 +340,10 @@ class HomeVC: UIViewController {
                         
                         if let minerAddr = AppSetting.coreData?.minerAddrInUsed, minerAddr != ""{
                                 self.minersIDLabel.text = minerAddr
-                                let m_data = Miner.CachedMiner[minerAddr.lowercased()]
-                                self.minerZoneLabel.text = m_data?.zon
-                                self.minersIPLabel.text = m_data?.ipAddr
+                                if let m_data = Miner.CachedMiner[minerAddr.lowercased()]{
+                                        self.minerZoneLabel.text = m_data.zon
+                                        self.minersIPLabel.text = m_data.ipAddr
+                                }
                         }else{
                                 self.minersIDLabel.text = "Choose one miner please".locStr
                                 self.minerZoneLabel.text = "NAN".locStr
