@@ -55,9 +55,9 @@ public class TransactionData:NSObject{
                 return "Transaction=>{\ntxsig=\(txSig ?? "<->")\nhashV=\(hashV ?? "<->")\nepoch=\(epoch!)\nnonce=\(nonce!)\ntime=\(time!)\nminerID=\(minerID!)\nfrom=\(from!) \nto=\(to!)\namount=\(amount!)\ncredit=\(credit!)\n}}"
         }
         
-        public init?(userData:CDUserAccount, amount:Int64, for miner:String){
+        public init(userData:CDMemberShip, amount:Int64, for miner:String){
                 super.init()
-                self.epoch = userData.epoch
+                self.epoch = Int32(userData.epoch)
                 self.nonce = userData.microNonce + 1
                 self.minerID = miner
                 self.from = EthereumAddress.toChecksumAddress(userData.userAddr!)

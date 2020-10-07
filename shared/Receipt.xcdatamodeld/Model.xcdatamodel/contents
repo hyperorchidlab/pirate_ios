@@ -25,6 +25,7 @@
         <attribute name="inRecharge" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="microNonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mps" optional="YES" attributeType="String"/>
+        <attribute name="needReload" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="nonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="packetBalance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="poolAddr" optional="YES" attributeType="String"/>
@@ -104,7 +105,7 @@
     <elements>
         <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="104"/>
         <element name="CDCurSettings" positionX="-54" positionY="117" width="128" height="148"/>
-        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="238"/>
+        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="253"/>
         <element name="CDMiner" positionX="-45" positionY="135" width="128" height="133"/>
         <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
         <element name="CDPoolData" positionX="-63" positionY="18" width="128" height="163"/>

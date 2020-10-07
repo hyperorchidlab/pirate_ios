@@ -49,7 +49,6 @@ class HOPAdapter: AdapterSocket {
         var readHead:Bool = true
         public let serverHost: String
         public let serverPort: Int
-        public let hopdelegate:MicroPayDelegate
         var internalStatus: HopAdapterStatus = .invalid
         var target:String?
         var salt:Data?
@@ -58,11 +57,9 @@ class HOPAdapter: AdapterSocket {
         
         public init(serverHost: String,
                     serverPort: Int,
-                    delegate d:MicroPayDelegate,
                     ID:Int) {
                 self.serverHost = serverHost
                 self.serverPort = serverPort
-                self.hopdelegate = d
                 self.objID = ID
                 super.init()
         }
@@ -79,7 +76,7 @@ class HOPAdapter: AdapterSocket {
                 internalStatus = .connecting
                 do {
                         self.salt = Data.randomBytes(length: HopConstants.HOP_WALLET_IVLEN)!
-                        let key = self.hopdelegate.AesKey()
+                        let key = Protocol.pInst.AesKey()
                         self.aesKey = try AES(key: key,
                                               blockMode: CFB(iv: self.salt!.bytes),
                                               padding:.noPadding)
@@ -94,7 +91,12 @@ class HOPAdapter: AdapterSocket {
         }
         
         override public func didConnectWith(socket: RawTCPSocketProtocol) {
-                guard let syn_data = self.hopdelegate.getSetupMsg(salt:self.salt!) else{
+                let setup_Data = try? HopMessage.SetupMsg(iv:self.salt!,
+                                        mainAddr: Protocol.pInst.userAddress,
+                                        subAddr: Protocol.pInst.userSubAddress,
+                                        sigKey: Protocol.pInst.signKey())
+                
+                guard let syn_data = setup_Data else{
 //                        observer?.signal(.errorOccured(HopError.msg("invalid setup message to miner"), on: self))
                         disconnect()
                         return
@@ -172,7 +174,7 @@ class HOPAdapter: AdapterSocket {
 //                        observer?.signal(.readData(decode_data, on: self))
                         let size = decode_data.count
 
-                        self.hopdelegate.CounterWork(size:size)
+                        Protocol.pInst.CounterWork(size:size)
                         delegate?.didRead(data: decode_data, from: self)
                         
                         NSLog("--------->[\(objID)]YYYYYY indeed read len [\(size)]---")

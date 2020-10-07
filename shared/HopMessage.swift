@@ -56,7 +56,7 @@ public class HopMessage:NSObject{
         static let SetupDataFormat = "{\"IV\":%@,\"MainAddr\":\"%@\",\"SubAddr\":\"%@\"}"
         static let SetupSynFormat = "{\"Sig\":\"%@\",\"IV\":%@,\"MainAddr\":\"%@\",\"SubAddr\":\"%@\"}"
         public static func SetupMsg(iv:Data,
-                                    mainAddr:EthereumAddress,
+                                    mainAddr:String,
                                     subAddr:String,
                                     sigKey:Data)throws -> Data{                
 //                var iv = Data.init(repeating: 0, count: 16)
@@ -69,7 +69,7 @@ public class HopMessage:NSObject{
                         throw HopError.msg("iv json data to string failed")
                 }
                 
-                let pool_addr =  mainAddr.address.lowercased()
+                let pool_addr =  mainAddr.lowercased()
                 let setup_str =  String(format: SetupDataFormat, iv_str, pool_addr, subAddr)
                 let setup_data = setup_str.data(using: .utf8)!
                 

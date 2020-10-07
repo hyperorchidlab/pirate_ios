@@ -21,7 +21,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         var proxyServer: ProxyServer!
         let proxyServerPort :UInt16 = 41080
         let proxyServerAddress = "127.0.0.1";
-        var hopInstance:Protocol?
         var enablePacketProcessing = false
         var interface: TUNInterface!
         
@@ -39,8 +38,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         return
                 }
                 do {
-                        hopInstance = try Protocol.init(param: ops, delegate: self)
-
+                        try Protocol.pInst.setup(param: ops, delegate: self)
                         let settings = try initSetting(rules: ops["ROUTE_RULES"] as! [String : NSObject],
                                            minerID: ops["MINER_ADDR"] as! String)
                         
@@ -136,8 +134,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 networkSettings.proxySettings = proxySettings;
                 RawSocketFactory.TunnelProvider = self
                 
-                guard let hopAdapterFactory = HOPAdapterFactory(miner:minerID,
-                                                                delegate: hopInstance!) else{
+                guard let hopAdapterFactory = HOPAdapterFactory(miner:minerID) else{
                         throw HopError.minerErr("--------->Initial miner data failed")
                 }
                 
