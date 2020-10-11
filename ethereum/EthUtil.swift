@@ -34,11 +34,6 @@ public final class EthUtil :NSObject{
                 self.HopToken = ERC20.init(web3: self.web3!, address:token)
                 self.PaymentService = try PacketMarket.init(web3: self.web3!, address: payService)
         }
-        
-        public func lastVersion()throws -> MPSVersion{
-                return try self.PaymentService!.vm()
-        }
-        
         public func syncSys()throws -> SysSetting{
                 return try self.PaymentService!.setting()
         }

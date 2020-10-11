@@ -32,11 +32,6 @@ public class PacketMarket:NSObject{
                 self.contract = c
         }
         
-        public func vm() throws -> MPSVersion{
-                let result = try viewRead(method: "vm")
-                return MPSVersion(result)
-        }
-        
         public func setting() throws -> SysSetting{
                 let result = try viewRead(method: "setting")
                 return SysSetting(result)

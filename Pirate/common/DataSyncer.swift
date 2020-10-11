@@ -20,12 +20,8 @@ public final class DataSyncer:NSObject{
         public var poolData:[String:PoolDetails] = [:]
         let dbContext = DataShareManager.privateQueueContext()
         var ethSetting:SysSetting?
-        var localVersion:MPSVersion
         
         private override init() {
-
-                self.localVersion = MPSVersion.Load(for:currentMPS, context: dbContext)
-                NSLog("=======>Local verion:=>\(self.localVersion.toString())")
                 
                 self.ethSetting = SysSetting.Load(for: currentMPS, context: dbContext)
                 NSLog("=======>Local ethereum system setting:=>\(self.ethSetting?.toString() ?? "empty")")
@@ -34,96 +30,5 @@ public final class DataSyncer:NSObject{
                 NSLog("=======>Pools in market size[\(self.poolData.count)]")
                 
                 super.init()
-        }
-        
-        public static func EthVersionCheck(){
-                dataQueue.async {
-                        NSLog("=======>EthVersionCheck start--->")
-                        do{
-                                try sharedInstance.timerCheck()
-                        }catch let err{
-                                NSLog("=======>EthVersionCheck err:\(err.localizedDescription)--->")
-                        }
-                }
-        }
-        
-        func timerCheck() throws{
-                
-                let vm = try EthUtil.sharedInstance.lastVersion()
-                
-                NSLog("=======>Ethereum verion:=>\(vm.toString())")
-                if vm.equal(self.localVersion){
-                        NSLog("=======>Versin manager equals")
-                        return
-                }
-                                
-                var hasErr = false
-                self.syncSysSetting(ethVer:vm.vSetting, &hasErr)
-                self.syncPoolData(ethVer:vm.vPool, &hasErr)
-                self.syncUserData(ethVer:vm.vUser, &hasErr)
-                if hasErr{
-                        NSLog("=======>Failed to update local version!")
-                        return
-                }
-                self.localVersion.update(mps: currentMPS, context: self.dbContext)
-                DataShareManager.syncAllContext(self.dbContext)
-        }
-        
-        func syncPoolData(ethVer:BigUInt, _ hasErr:inout Bool){
-                
-                if ethVer == self.localVersion.vPool{
-                        NSLog("=======>Pool data no need to sync......")
-                        return
-                }
-                
-                do{
-                        let pools = EthUtil.sharedInstance.AllPoosInMarket()
-                        try PoolDetails.savePoolData(pools, for: currentMPS, context: dbContext)
-                        self.poolData = pools
-                        self.localVersion.vPool = ethVer
-                        //TODO::Notification
-                }catch let err{
-                        NSLog(err.localizedDescription)
-                        hasErr = true
-                }
-        }
-        
-        func syncSysSetting(ethVer:BigUInt, _ hasErr:inout Bool){
-                
-                if ethVer == self.localVersion.vSetting && self.ethSetting != nil{
-                        NSLog("=======>System setting no need to sync......")
-                        return
-                }
-                do{
-                        let settings = try EthUtil.sharedInstance.syncSys()
-                        SysSetting.saveSysSetting(settings, for: currentMPS, context: dbContext)
-                        self.ethSetting = settings
-                        self.localVersion.vSetting = ethVer
-                        NSLog("=======>New system setting:=>\(settings.toString())")
-                        //TODO::Notification
-                }catch let err{
-                        NSLog(err.localizedDescription)
-                        hasErr = true
-                }
-        }
-        
-        func syncUserData(ethVer:BigUInt, _ hasErr:inout Bool){
-              
-//                guard let wallet_addr = self.wallet?.mainAddress else{
-//                        NSLog("=======>Empty account no need to sync user data......")
-//                        return
-//                }
-//
-//                if ethVer == self.localVersion.vUser{
-//                        NSLog("=======>Current user data no need to sync......")
-//                        return
-//                }
-//
-//                NSLog("=======>User data need to sync......")
-//                let user_datas = EthUtil.sharedInstance.AllMyUserData(userAddr:wallet_addr)
-//                for (pool, u_d) in user_datas{
-//                       PacketAccountant.Inst.updateByEthData(userData: u_d, forPool:pool)
-//                }
-//                self.localVersion.vUser = ethVer
         }
 }

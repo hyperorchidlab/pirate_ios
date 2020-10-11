@@ -12,8 +12,6 @@
 		691CCFA123F93F60007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		6924223E240D365000590536 /* PoolChoseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924223D240D365000590536 /* PoolChoseTableViewController.swift */; };
 		69242240240D368F00590536 /* MinerChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924223F240D368F00590536 /* MinerChooseTableViewController.swift */; };
-		6932A1892406AD4C00D2DA39 /* MPSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A1882406AD4C00D2DA39 /* MPSVersion.swift */; };
-		6932A18A2406AD7000D2DA39 /* MPSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A1882406AD4C00D2DA39 /* MPSVersion.swift */; };
 		6932A18C2406BAC100D2DA39 /* PoolDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A18B2406BAC100D2DA39 /* PoolDetails.swift */; };
 		6932A18D2406BAC100D2DA39 /* PoolDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A18B2406BAC100D2DA39 /* PoolDetails.swift */; };
 		6932A18F24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A18E24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift */; };
@@ -157,7 +155,6 @@
 		691CCF9F23F8240D007768DF /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6924223D240D365000590536 /* PoolChoseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolChoseTableViewController.swift; sourceTree = "<group>"; };
 		6924223F240D368F00590536 /* MinerChooseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinerChooseTableViewController.swift; sourceTree = "<group>"; };
-		6932A1882406AD4C00D2DA39 /* MPSVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSVersion.swift; sourceTree = "<group>"; };
 		6932A18B2406BAC100D2DA39 /* PoolDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolDetails.swift; sourceTree = "<group>"; };
 		6932A18E24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolDetailsCellTableViewCell.swift; sourceTree = "<group>"; };
 		6932A1912407A3AE00D2DA39 /* SysSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysSetting.swift; sourceTree = "<group>"; };
@@ -345,7 +342,6 @@
 			children = (
 				695E4C372401778600A13631 /* Receipt.xcdatamodeld */,
 				69FA41892404B348005CF3FA /* DataShareManager.swift */,
-				6932A1882406AD4C00D2DA39 /* MPSVersion.swift */,
 				69E0BEB8240800D900E0B982 /* UserData.swift */,
 				6932A18B2406BAC100D2DA39 /* PoolDetails.swift */,
 				6932A1912407A3AE00D2DA39 /* SysSetting.swift */,
@@ -688,7 +684,6 @@
 				69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */,
 				7CEFA3C22525F86F00A2E2B4 /* MembershipTableViewCell.swift in Sources */,
 				69980C2D23F78D3E00829B09 /* HomeVC.swift in Sources */,
-				6932A1892406AD4C00D2DA39 /* MPSVersion.swift in Sources */,
 				7CEFA3BE2525F5D600A2E2B4 /* MembershipViewController.swift in Sources */,
 				6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */,
 				696B02ED251A0A4D00F76A51 /* Transaction.swift in Sources */,
@@ -756,7 +751,6 @@
 				698A513B23FCE75700836E26 /* HOPAdapterFactory.swift in Sources */,
 				69980C5B23F7B3CD00829B09 /* PacketTunnelProvider.swift in Sources */,
 				69FA41942404DBD1005CF3FA /* HopAccount.swift in Sources */,
-				6932A18A2406AD7000D2DA39 /* MPSVersion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
