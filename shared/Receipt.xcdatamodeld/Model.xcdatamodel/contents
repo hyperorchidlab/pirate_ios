@@ -38,23 +38,6 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="CDPoolData" representedClassName="CDPoolData" syncable="YES" codeGenerationType="class">
-        <attribute name="contractAddress" optional="YES" attributeType="String"/>
-        <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="gtn" optional="YES" attributeType="Binary"/>
-        <attribute name="id" optional="YES" attributeType="Binary"/>
-        <attribute name="mainAddr" optional="YES" attributeType="String"/>
-        <attribute name="payerAddr" optional="YES" attributeType="String"/>
-        <attribute name="shortName" optional="YES" attributeType="String"/>
-        <attribute name="url" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="CDSystemSettings" representedClassName="CDSystemSettings" syncable="YES" codeGenerationType="class">
-        <attribute name="contractAddress" optional="YES" attributeType="String"/>
-        <attribute name="minerGTN" optional="YES" attributeType="Binary"/>
-        <attribute name="poolGTN" optional="YES" attributeType="Binary"/>
-        <attribute name="price" optional="YES" attributeType="Binary"/>
-        <attribute name="refund" optional="YES" attributeType="Binary"/>
-    </entity>
     <entity name="CDTransaction" representedClassName="CDTransaction" syncable="YES" codeGenerationType="class">
         <attribute name="actType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -62,27 +45,6 @@
         <attribute name="txHash" optional="YES" attributeType="String"/>
         <attribute name="txValue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="walletAddr" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="CDUserAccount" representedClassName="CDUserAccount" syncable="YES" codeGenerationType="class">
-        <attribute name="contractAddress" optional="YES" attributeType="String"/>
-        <attribute name="credit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="curTXHash" optional="YES" attributeType="String"/>
-        <attribute name="epoch" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="expire" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="inRecharge" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="microNonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="nonce" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="packetBalance" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="poolAddr" optional="YES" attributeType="String"/>
-        <attribute name="tokenBalance" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="userAddr" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="CDVersionManager" representedClassName="CDVersionManager" syncable="YES" codeGenerationType="class">
-        <attribute name="contractAddress" optional="YES" attributeType="String"/>
-        <attribute name="minerVersion" optional="YES" attributeType="Binary"/>
-        <attribute name="poolVersion" optional="YES" attributeType="Binary"/>
-        <attribute name="settingVersion" optional="YES" attributeType="Binary"/>
-        <attribute name="userVersion" optional="YES" attributeType="Binary"/>
     </entity>
     <entity name="CDWallet" representedClassName="CDWallet" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
@@ -98,11 +60,7 @@
         <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="253"/>
         <element name="CDMiner" positionX="-45" positionY="135" width="128" height="133"/>
         <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
-        <element name="CDPoolData" positionX="-63" positionY="18" width="128" height="163"/>
-        <element name="CDSystemSettings" positionX="-54" positionY="72" width="128" height="118"/>
         <element name="CDTransaction" positionX="-27" positionY="144" width="128" height="133"/>
-        <element name="CDUserAccount" positionX="-54" positionY="63" width="128" height="223"/>
-        <element name="CDVersionManager" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="CDWallet" positionX="-54" positionY="117" width="128" height="148"/>
     </elements>
 </model>

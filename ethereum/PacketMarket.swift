@@ -32,12 +32,6 @@ public class PacketMarket:NSObject{
                 self.contract = c
         }
         
-        public func setting() throws -> SysSetting{
-                let result = try viewRead(method: "setting")
-                return SysSetting(result)
-                         
-        }
-        
         public func Pools() -> [EthereumAddress]{
                 do{
                         let pools = try viewRead(method: "Pools")
@@ -52,16 +46,6 @@ public class PacketMarket:NSObject{
                 }
         }
         
-        public func PoolDetail(for pAddr:EthereumAddress) -> PoolDetails?{
-                do{
-                        let result = try viewRead(method: "PoolData", pAddr as AnyObject)
-                        return PoolDetails(result)
-                }catch let err{
-                        NSLog("=======>\(err.localizedDescription)")
-                        return nil
-                }
-        }
-        
         public func AllMyPoolsAddress(userAddr addr:EthereumAddress) -> [EthereumAddress]{
                 do{
                         let pools = try viewRead(method: "AllMyPools", addr as AnyObject)
@@ -72,16 +56,6 @@ public class PacketMarket:NSObject{
                 }catch let err{
                         NSLog("=======>\(err.localizedDescription)")
                         return []
-                }
-        }
-        
-        public func UserDataEth(userAddr:EthereumAddress, poolAddr:EthereumAddress) -> UserData?{
-                do{
-                        let result = try viewRead(method: "UserData", userAddr as AnyObject, poolAddr as AnyObject)
-                        return UserData(result)
-                }catch let err{
-                        NSLog("=======>\(err.localizedDescription)")
-                        return nil
                 }
         }
         

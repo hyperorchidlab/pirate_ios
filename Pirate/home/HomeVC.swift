@@ -144,7 +144,7 @@ class HomeVC: UIViewController {
                                "POOL_ADDR":pool as Any,
                                "USER_ADDR":Wallet.WInst.Address as Any,
                                "USER_SUB_ADDR":Wallet.WInst.SubAddress as Any,
-                               "GLOBAL_MODE":DataSyncer.isGlobalModel,
+                               "GLOBAL_MODE":AppSetting.isGlobalModel,
                                "MINER_ADDR":miner as Any]
                         as! [String : NSObject]
                 
@@ -185,15 +185,15 @@ class HomeVC: UIViewController {
         }
         
         @IBAction func changeModel(_ sender: UISegmentedControl) {
-                let old_model = DataSyncer.isGlobalModel
+                let old_model = AppSetting.isGlobalModel
                 
                 switch sender.selectedSegmentIndex{
                         case 0:
-                                DataSyncer.isGlobalModel = false
+                                AppSetting.isGlobalModel = false
                         case 1:
-                                DataSyncer.isGlobalModel = true
+                                AppSetting.isGlobalModel = true
                 default:
-                        DataSyncer.isGlobalModel = false
+                        AppSetting.isGlobalModel = false
                 }
                 
                 self.notifyModelToVPN(sender:sender, oldStatus:old_model)
@@ -278,9 +278,9 @@ class HomeVC: UIViewController {
                 }
                 try? session.sendProviderMessage(message){reponse in
                         let param = JSON(reponse!)
-                        DataSyncer.isGlobalModel = param["Global"].bool ?? false
-                        self.setModelStatus(sender: self.globalModelSeg, oldStatus: DataSyncer.isGlobalModel)
-                        NSLog("=======>Curretn global model is [\(DataSyncer.isGlobalModel)]")
+                        AppSetting.isGlobalModel = param["Global"].bool ?? false
+                        self.setModelStatus(sender: self.globalModelSeg, oldStatus: AppSetting.isGlobalModel)
+                        NSLog("=======>Curretn global model is [\(AppSetting.isGlobalModel)]")
                 }
         }
         
@@ -291,7 +291,7 @@ class HomeVC: UIViewController {
                         session.status != .invalid else{
                                 return
                 }
-                guard let message = try? JSON(["Global": DataSyncer.isGlobalModel]).rawData() else{
+                guard let message = try? JSON(["Global": AppSetting.isGlobalModel]).rawData() else{
                         return
                 }
                 do{

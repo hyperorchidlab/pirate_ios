@@ -34,69 +34,7 @@ public final class EthUtil :NSObject{
                 self.HopToken = ERC20.init(web3: self.web3!, address:token)
                 self.PaymentService = try PacketMarket.init(web3: self.web3!, address: payService)
         }
-        public func syncSys()throws -> SysSetting{
-                return try self.PaymentService!.setting()
-        }
         
-        public func AllPoosInMarket() -> [String:PoolDetails]{
-                guard let server = self.PaymentService else{
-                        return [:]
-                }
-                
-                let pool_addrs = server.Pools()
-                
-                guard pool_addrs.count > 0 else{
-                        NSLog("=======>Pools in market should not be empty......")
-                        return [:]
-                }
-                NSLog("=======>Pools in [\(pool_addrs.count)] size......")
-                var result:[String:PoolDetails] = [:]
-                
-                for pAddr in pool_addrs{
-                        
-                        if !pAddr.isValid2(){
-                                NSLog("=======>Invalid pool address=>[\(pAddr.address)]")
-                                continue
-                        }
-                        
-                        guard let pool_data = server.PoolDetail(for: pAddr) else{
-                                NSLog("=======>Pool details failed=>[\(pAddr.address)]")
-                                continue
-                        }
-                        NSLog("=======>New pool detail in market got:=>[\(pAddr.address)]")
-                        result[pAddr.address] = (pool_data)
-                }
-                
-                return result
-        }
-        
-        
-        public func AllMyUserData(userAddr addr:EthereumAddress) -> [EthereumAddress:UserData]{
-                guard let server = self.PaymentService else{
-                        return [:]
-                }
-                
-                let all_my_pools = server.AllMyPoolsAddress(userAddr:addr)
-                guard all_my_pools.count > 0 else{
-                        NSLog("=======>User data details should not be empty......")
-                        return [:]
-                }
-                
-                var result:[EthereumAddress:UserData] = [:]
-                for pAddr in all_my_pools{
-                        guard let u_d = server.UserDataEth(userAddr: addr, poolAddr: pAddr) else{
-                                NSLog("=======>User Data details failed=>[\(addr.address)=>\(pAddr.address)]")
-                                continue
-                        }
-                        result[pAddr] = u_d
-                }
-                
-                return result
-        }
-        
-        public func UserDataDetails(userAddr:EthereumAddress, poolAddr:EthereumAddress) -> UserData?{
-                return self.PaymentService?.UserDataEth(userAddr: userAddr, poolAddr: poolAddr)
-        }
         
         public func Balance(userAddr:EthereumAddress) -> (BigUInt, BigUInt){
                 guard let server = self.PaymentService else{
@@ -104,61 +42,6 @@ public final class EthUtil :NSObject{
                 }
                 
                 return server.Balance(userAddr: userAddr)
-        }
-        
-        public func approve(from:EthereumAddress, tokenNo:BigUInt, priKey:Data) -> web3swift.TransactionSendingResult?{
-                do {
-                        let pay_sys = EthereumAddress(HopConstants.DefaultPaymenstService)!
-                        
-                        guard let tx = try self.HopToken?.approve(from: from, spender: pay_sys, amount: tokenNo)else{
-                                return nil
-                        }
-                        let result = try tx.send(priKey: priKey)
-                        return result
-                }catch let err{
-                        NSLog("=======>\(err.localizedDescription)")
-                        return nil
-                }
-        }
-        
-        public func waitTilResult(txHash:String)->Bool{
-                var i = 0
-                repeat {
-                        do{
-                                let tr = try self.web3?.eth.getTransactionReceipt(txHash)
-                                NSLog("=======>status=>\(String(describing: tr?.status))")
-                                if tr?.status == .ok{
-                                        return true
-                                }
-                        }catch let err{
-                                NSLog("=======>\(err.localizedDescription)")
-                        }
-                        i += 1
-                        sleep(6)
-                        
-                } while (i < 10)
-                
-                return false
-        }
-        
-        public func buyAction(user:EthereumAddress, from:String, tokenNo:BigUInt, priKey:Data) -> web3swift.TransactionSendingResult?{
-                do {
-                        guard let service = self.PaymentService else{
-                                return nil
-                        }
-                        
-                        guard let poolAddr = EthereumAddress(from) else{
-                                return nil
-                        }
-                        
-                        return try service.BuyPacket(user:user,
-                                                      pool:poolAddr,
-                                                      tokenNo:tokenNo,
-                                                      priKey:priKey)
-                }catch let err{
-                        NSLog("=======>\(err.localizedDescription)")
-                        return nil
-                }
         }
 }
 
