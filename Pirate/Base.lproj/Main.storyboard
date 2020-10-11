@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--HomeVC-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController storyboardIdentifier="HomePageVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9pv-A4-QxB" customClass="HomeVC" customModule="Pirate" customModuleProvider="target" sceneMemberID="viewController">
@@ -224,7 +224,7 @@
                             <constraint firstItem="VOr-ll-MMB" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="ylh-ZL-0Xa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="Ztp-AP-vjI"/>
+                    <navigationItem key="navigationItem" id="Ztp-AP-vjI"/>
                     <connections>
                         <outlet property="connectButton" destination="X98-0J-3sd" id="CFG-0U-SGU"/>
                         <outlet property="globalModelSeg" destination="MQW-gS-npj" id="44C-d0-PdC"/>
@@ -460,7 +460,7 @@
             </objects>
             <point key="canvasLocation" x="4041" y="1515"/>
         </scene>
-        <!--Pools-->
+        <!--Market ListTVC-->
         <scene sceneID="zC3-86-Ojb">
             <objects>
                 <tableViewController storyboardIdentifier="MarketListVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H5E-Rb-xLf" customClass="MarketListTVC" customModule="Pirate" customModuleProvider="target" sceneMemberID="viewController">
@@ -556,7 +556,7 @@
                             <outlet property="delegate" destination="H5E-Rb-xLf" id="0to-8y-idR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Pools" id="IkB-ev-Zdz">
+                    <navigationItem key="navigationItem" id="IkB-ev-Zdz">
                         <barButtonItem key="rightBarButtonItem" title="My Pool" id="VKx-xL-JhS">
                             <connections>
                                 <segue destination="fO2-7d-jC3" kind="show" id="aF9-S5-AZI"/>
@@ -1631,7 +1631,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Igf-7c-725">
-                        <barButtonItem key="backBarButtonItem" title="Account" id="x9g-bU-4Ki"/>
                         <barButtonItem key="rightBarButtonItem" image="refresh_cion" id="cGl-lG-pEa">
                             <color key="tintColor" red="0.94901960780000005" green="0.52156862749999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -2343,7 +2342,7 @@
         <segue reference="gKr-DU-bPn"/>
         <segue reference="Ykb-TN-0aZ"/>
         <segue reference="qJJ-AI-AJd"/>
-        <segue reference="132-jk-Nft"/>
+        <segue reference="gyH-gj-gwM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="&gt;_icon" width="23" height="22"/>
