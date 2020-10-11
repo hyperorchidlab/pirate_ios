@@ -79,6 +79,12 @@ class MarketListTVC: UITableViewController {
                         self.ShowTips(msg: "Create your account first".locStr)
                         return
                 }
+                let tokenSum = 100 * HopConstants.DefaultTokenDecimal2
+                guard Wallet.WInst.approve > tokenSum else{
+                        SwitchTab(Idx: 2, tips: "Please Approve Token Usage".locStr)
+                        return
+                }
+                
                 let pool_details = self.poolList[sender.tag]
                 self.poolAddrToRecharge = pool_details.Address
                 

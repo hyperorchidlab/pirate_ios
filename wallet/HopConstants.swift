@@ -51,12 +51,6 @@ public struct HopConstants {
         static public let ETH_AES_PARAM = ScryptParam(dkLen: 32, N: 1 << 18, R:8, P:1, S:0)
         static public let HOP_AES_PARAM = ScryptParam(dkLen: 32, N: 1 << 15, R:8, P:1, S:8)
         
-        static public let DBNAME_POOL_DETAILS = "CDPoolData"
-        static public let DBNAME_VERSION = "CDVersionManager"
-        static public let DBNAME_SETTING = "CDSystemSettings"
-        static public let DBNAME_UserAccount = "CDUserAccount"
-        static public let DBNAME_LocalSetting = "CDCurSettings"
-        
         static public let DBNAME_WALLET = "CDWallet"
         static public let DBNAME_APPSETTING = "CDAppSetting"
         static public let DBNAME_TRASACTION = "CDTransaction"

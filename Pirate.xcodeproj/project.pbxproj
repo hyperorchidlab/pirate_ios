@@ -18,8 +18,6 @@
 		6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940EC8F240A75460029F526 /* ScannerViewController.swift */; };
 		6940EC92240A756D0029F526 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6940EC91240A756D0029F526 /* AVFoundation.framework */; };
 		695E4C392401778600A13631 /* Receipt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* Receipt.xcdatamodeld */; };
-		695E4C3D24017F5A00A13631 /* HopWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C3C24017F5A00A13631 /* HopWallet.swift */; };
-		695E4C3E24017F6100A13631 /* HopWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C3C24017F5A00A13631 /* HopWallet.swift */; };
 		696651F82400EF44001D16C4 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A510323FBAD2E00836E26 /* NEKit.framework */; };
 		696A71EC25146725004EA5DE /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71EB25146725004EA5DE /* PasswordViewController.swift */; };
 		696A71EE251467DA004EA5DE /* QRCodeShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71ED251467DA004EA5DE /* QRCodeShowViewController.swift */; };
@@ -90,10 +88,8 @@
 		69F1E40424012A0B00999194 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A513123FCCEDF00836E26 /* Yaml.framework */; };
 		69FA418A2404B348005CF3FA /* DataShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41892404B348005CF3FA /* DataShareManager.swift */; };
 		69FA418B2404B352005CF3FA /* DataShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41892404B348005CF3FA /* DataShareManager.swift */; };
-		69FA418D2404D83E005CF3FA /* HopAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA418C2404D83E005CF3FA /* HopAccount.swift */; };
 		69FA41922404DBCD005CF3FA /* HopConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41912404DBCD005CF3FA /* HopConstants.swift */; };
 		69FA41932404DBCD005CF3FA /* HopConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41912404DBCD005CF3FA /* HopConstants.swift */; };
-		69FA41942404DBD1005CF3FA /* HopAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA418C2404D83E005CF3FA /* HopAccount.swift */; };
 		69FA419624050059005CF3FA /* HopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA419524050059005CF3FA /* HopError.swift */; };
 		69FA419724050059005CF3FA /* HopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA419524050059005CF3FA /* HopError.swift */; };
 		69FA41A324055274005CF3FA /* EthUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41A224055274005CF3FA /* EthUtil.swift */; };
@@ -163,7 +159,6 @@
 		6948E6732400BCBC00D45CB6 /* web3swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = web3swift.framework; path = Carthage/Build/iOS/web3swift.framework; sourceTree = "<group>"; };
 		694A099D2401A1CC001F379C /* CryptoTokenKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoTokenKit.framework; path = System/Library/Frameworks/CryptoTokenKit.framework; sourceTree = SDKROOT; };
 		695E4C382401778600A13631 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		695E4C3C24017F5A00A13631 /* HopWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopWallet.swift; sourceTree = "<group>"; };
 		6966523E24012189001D16C4 /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SipHash.framework; path = Carthage/Build/iOS/SipHash.framework; sourceTree = "<group>"; };
 		696A71EB25146725004EA5DE /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		696A71ED251467DA004EA5DE /* QRCodeShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeShowViewController.swift; sourceTree = "<group>"; };
@@ -216,7 +211,6 @@
 		69C112D32515DC7C00C5E9F5 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		69D1DFA9240D7E8300D3BA30 /* MinerDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinerDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		69FA41892404B348005CF3FA /* DataShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShareManager.swift; sourceTree = "<group>"; };
-		69FA418C2404D83E005CF3FA /* HopAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopAccount.swift; sourceTree = "<group>"; };
 		69FA41912404DBCD005CF3FA /* HopConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopConstants.swift; sourceTree = "<group>"; };
 		69FA419524050059005CF3FA /* HopError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopError.swift; sourceTree = "<group>"; };
 		69FA41A224055274005CF3FA /* EthUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthUtil.swift; sourceTree = "<group>"; };
@@ -338,9 +332,7 @@
 		695E4C3B24017F3B00A13631 /* wallet */ = {
 			isa = PBXGroup;
 			children = (
-				695E4C3C24017F5A00A13631 /* HopWallet.swift */,
 				69987DFB2412225700029C0A /* HopSodium.swift */,
-				69FA418C2404D83E005CF3FA /* HopAccount.swift */,
 				69FA41912404DBCD005CF3FA /* HopConstants.swift */,
 				69FA419524050059005CF3FA /* HopError.swift */,
 			);
@@ -669,9 +661,7 @@
 				6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */,
 				696B02ED251A0A4D00F76A51 /* Transaction.swift in Sources */,
 				69FA419624050059005CF3FA /* HopError.swift in Sources */,
-				695E4C3D24017F5A00A13631 /* HopWallet.swift in Sources */,
 				7C36020C2421132D0014E961 /* ApplyToken.swift in Sources */,
-				69FA418D2404D83E005CF3FA /* HopAccount.swift in Sources */,
 				6924223E240D365000590536 /* PoolChoseTableViewController.swift in Sources */,
 				696A71EC25146725004EA5DE /* PasswordViewController.swift in Sources */,
 				696B02E52519EB2000F76A51 /* TransactionViewController.swift in Sources */,
@@ -710,7 +700,6 @@
 				69FA419724050059005CF3FA /* HopError.swift in Sources */,
 				69FA41A424055274005CF3FA /* EthUtil.swift in Sources */,
 				69A47D68240EAF9A00C86CFF /* BasUtil.swift in Sources */,
-				695E4C3E24017F6100A13631 /* HopWallet.swift in Sources */,
 				7C36020F242129250014E961 /* ApplyToken.swift in Sources */,
 				69FA41932404DBCD005CF3FA /* HopConstants.swift in Sources */,
 				698A513923FCE64E00836E26 /* HOPAdapter.swift in Sources */,
@@ -722,7 +711,6 @@
 				69A47D6A240EB1DD00C86CFF /* Protocol.swift in Sources */,
 				698A513B23FCE75700836E26 /* HOPAdapterFactory.swift in Sources */,
 				69980C5B23F7B3CD00829B09 /* PacketTunnelProvider.swift in Sources */,
-				69FA41942404DBD1005CF3FA /* HopAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

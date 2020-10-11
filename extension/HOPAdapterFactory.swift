@@ -21,7 +21,7 @@ class HOPAdapterFactory: AdapterFactory {
                         return nil
                 }
                 self.serverIP = ip
-                self.serverPort = Int(HopAccount.AddressToPort(addr: miner))
+                self.serverPort = Int(BasUtil.AddressToPort(addr: miner))
         }
         
         override open func getAdapterFor(session: ConnectSession) -> AdapterSocket {

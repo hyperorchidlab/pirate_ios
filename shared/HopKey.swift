@@ -20,7 +20,7 @@ public class HopKey:NSObject{
         
         public func genAesKey(forMiner:String, subPriKey:Data)throws ->Data{
                 
-                guard let miner_ed_pub = HopAccount.getPub(address: forMiner) else{
+                guard let miner_ed_pub = BasUtil.getPub(address: forMiner) else{
                         throw HopError.minerErr("Parse account's id to ed25519 public key failed".locStr)
                 }
                 

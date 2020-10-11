@@ -2014,11 +2014,11 @@
             </objects>
             <point key="canvasLocation" x="4040.579710144928" y="673.66071428571422"/>
         </scene>
-        <!--Home-->
+        <!--主页-->
         <scene sceneID="QlC-gV-0oN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Acn-GA-cWE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home_icon" selectedImage="home_icon_s" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="主页" image="home_icon" selectedImage="home_icon_s" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IDu-SI-jxr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2033,11 +2033,11 @@
             </objects>
             <point key="canvasLocation" x="1845" y="-765"/>
         </scene>
-        <!--Pools-->
+        <!--矿池-->
         <scene sceneID="Nup-O7-GI8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B4T-ED-EPK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pools" image="Recharge_icon_s" selectedImage="Recharge_icon" id="D8T-nd-U3n"/>
+                    <tabBarItem key="tabBarItem" title="矿池" image="Recharge_icon_s" selectedImage="Recharge_icon" id="D8T-nd-U3n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jle-Hh-hn5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2214,11 +2214,11 @@
             </objects>
             <point key="canvasLocation" x="225" y="-334"/>
         </scene>
-        <!--Account-->
+        <!--账号-->
         <scene sceneID="QeP-y5-jUs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oOR-8A-Jpg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" image="wallet_icon" selectedImage="wallet_icon_s" id="jbX-Er-G4d"/>
+                    <tabBarItem key="tabBarItem" title="账号" image="wallet_icon" selectedImage="wallet_icon_s" id="jbX-Er-G4d"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LQp-75-fbv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

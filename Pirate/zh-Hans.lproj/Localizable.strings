@@ -113,3 +113,16 @@
 "Copy Success"="复制成功";
 "Save success to your photo library"="成功保存到相册";
 "Exporting......"="正在导出......";
+
+
+"Pending"="挂起";
+"Apply GAS"="申请燃料";
+"Apply Token"="申请token";
+"Buy Service"="购买服务";
+"Unknown"="未知";
+"APP Authorization"="应用授权";
+
+"Choose one miner please"="请选择可用矿机";
+"Choose one pool please"="请选择可用矿池";
+"Insuffcient Founds"="";
+"Memship is invalid"="";

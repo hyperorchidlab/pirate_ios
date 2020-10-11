@@ -10,10 +10,49 @@ import Foundation
 import SwiftSocket
 import web3swift
 
+public struct New32aHash{
+        public static let offset = UInt32(2166136261)
+        public static let prime32 = UInt32(16777619)
+        
+        public static func hash(_ str:String) -> UInt32 {
+                
+                var hash = New32aHash.offset
+                let data = str.data(using: .utf8)
+                
+                for c in  data! {
+                        hash = hash ^ UInt32(c)
+                        (hash, _) = hash.multipliedReportingOverflow(by: New32aHash.prime32)
+                }
+                return hash
+        }
+}
+
 public class BasUtil{
         
         public static var BacCache:[String:String] = [:]
         public static let queue = DispatchQueue(label: "BAS_QUERY", qos: .utility)
+        
+        public static func IsHopID(str:String)->Bool{
+                return str.hasPrefix(HopConstants.HOP_SUB_PREFIX)
+        }
+        
+        public static func getPub(address:String?)->Data?{
+                
+                guard let str = address else{
+                        return nil
+                }
+                
+                let index = str.index(str.endIndex, offsetBy: HopConstants.HOP_SUB_PREFIX.count - str.count)
+                let sub_str = str.suffix(from: index)
+                
+                return String(sub_str).base58DecodedData
+        }
+        
+        public static func AddressToPort(addr:String) -> Int32{
+                        let hash = New32aHash.hash(addr)
+                        let (reminder, _) = hash.remainderReportingOverflow(dividingBy: HopConstants.SocketPortRange)
+                        return Int32(HopConstants.SocketPortInit + reminder)
+                }
         
         public static func Query(addr:String)->String?{
                 var resultIP:String? = nil
@@ -27,7 +66,7 @@ public class BasUtil{
                 }
                 
                 var ba_data:String?
-                if HopAccount.IsHopID(str:addr){
+                if BasUtil.IsHopID(str:addr){
                         ba_data = addr.data(using: .utf8)?.base64EncodedString()
                 }else{
                         ba_data = EthereumAddress(addr)?.addressData.base64EncodedString()
@@ -97,7 +136,7 @@ public class BasUtil{
         
         public static func Ping(addr:String, withIP ip:String)->TimeInterval{do{
                 let current = Date()
-                let port = HopAccount.AddressToPort(addr:addr)
+                let port = BasUtil.AddressToPort(addr:addr)
                 let conn = UDPClient(address: ip, port: Int32(port))
                 
                 
