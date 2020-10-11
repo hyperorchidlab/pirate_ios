@@ -224,7 +224,7 @@ class Transaction : NSObject {
                         return false
                 }
                 
-                let obj = Transaction(tx: txHash, typ: .authorize, value: token)
+                let obj = Transaction(tx: txHash, typ: .buyPool, value: token)
                 saveTX(obj, forAddress: Wallet.WInst.Address!)
                 return true
         }
