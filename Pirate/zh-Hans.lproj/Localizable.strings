@@ -142,3 +142,5 @@
 "No valid key data"="缺少账号私钥";
 "Invalid password"="无效密码";
 "Creating Account"="创建账号";
+"Unlock Account"="解锁账号";
+"Password"="密码";

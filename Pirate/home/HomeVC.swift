@@ -15,11 +15,11 @@ extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
         switch self {
         case .disconnected: return "Disconnected".locStr
-                case .invalid: return "Invalid".locStr
-                case .connected: return "Connected".locStr
-                case .connecting: return "Connecting".locStr
-                case .disconnecting: return "Disconnecting".locStr
-                case .reasserting: return "Reconnecting".locStr
+        case .invalid: return "Invalid".locStr
+        case .connected: return "Connected".locStr
+        case .connecting: return "Connecting".locStr
+        case .disconnecting: return "Disconnecting".locStr
+        case .reasserting: return "Reconnecting".locStr
         @unknown default:
                 return "unknown".locStr
         }
