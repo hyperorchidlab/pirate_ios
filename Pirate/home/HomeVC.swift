@@ -256,8 +256,6 @@ class HomeVC: UIViewController {
                 targetManager?.isEnabled = true
                 
                 let providerProtocol = NETunnelProviderProtocol()
-                let cur_ser = DataSyncer.sharedInstance.localSetting?.poolInUse ?? "no pool".locStr
-                providerProtocol.serverAddress = cur_ser
                 targetManager?.protocolConfiguration = providerProtocol
                 
                 targetManager?.saveToPreferences { err in

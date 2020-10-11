@@ -12,7 +12,6 @@
 		691CCFA123F93F60007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		6924223E240D365000590536 /* PoolChoseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924223D240D365000590536 /* PoolChoseTableViewController.swift */; };
 		69242240240D368F00590536 /* MinerChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924223F240D368F00590536 /* MinerChooseTableViewController.swift */; };
-		69242242240D389100590536 /* MinerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69242241240D389100590536 /* MinerData.swift */; };
 		6932A1892406AD4C00D2DA39 /* MPSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A1882406AD4C00D2DA39 /* MPSVersion.swift */; };
 		6932A18A2406AD7000D2DA39 /* MPSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A1882406AD4C00D2DA39 /* MPSVersion.swift */; };
 		6932A18C2406BAC100D2DA39 /* PoolDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A18B2406BAC100D2DA39 /* PoolDetails.swift */; };
@@ -84,7 +83,6 @@
 		69CAED6324012D820056E3E6 /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6966523E24012189001D16C4 /* SipHash.framework */; };
 		69CAED6424012D820056E3E6 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66F2400BCB800D45CB6 /* Starscream.framework */; };
 		69CAED6524012D820056E3E6 /* web3swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6732400BCBC00D45CB6 /* web3swift.framework */; };
-		69D1DFA8240D76EB00D3BA30 /* MinerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69242241240D389100590536 /* MinerData.swift */; };
 		69D1DFAA240D7E8300D3BA30 /* MinerDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DFA9240D7E8300D3BA30 /* MinerDetailsTableViewCell.swift */; };
 		69E0BEB9240800D900E0B982 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E0BEB8240800D900E0B982 /* UserData.swift */; };
 		69E0BEBA240800D900E0B982 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E0BEB8240800D900E0B982 /* UserData.swift */; };
@@ -159,7 +157,6 @@
 		691CCF9F23F8240D007768DF /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6924223D240D365000590536 /* PoolChoseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolChoseTableViewController.swift; sourceTree = "<group>"; };
 		6924223F240D368F00590536 /* MinerChooseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinerChooseTableViewController.swift; sourceTree = "<group>"; };
-		69242241240D389100590536 /* MinerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinerData.swift; sourceTree = "<group>"; };
 		6932A1882406AD4C00D2DA39 /* MPSVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSVersion.swift; sourceTree = "<group>"; };
 		6932A18B2406BAC100D2DA39 /* PoolDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolDetails.swift; sourceTree = "<group>"; };
 		6932A18E24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolDetailsCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -199,7 +196,6 @@
 		69779A7725219F48003A163C /* RechargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeViewController.swift; sourceTree = "<group>"; };
 		69779A7D25234684003A163C /* MembershipUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipUI.swift; sourceTree = "<group>"; };
 		6983F61D240E08AE004A32F7 /* BasUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasUtil.swift; sourceTree = "<group>"; };
-		6985D5DD24BD4F2400B77696 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		698A510323FBAD2E00836E26 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
 		698A510723FBF9C700836E26 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
@@ -219,7 +215,6 @@
 		69980C2823F78D3E00829B09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69980C2A23F78D3E00829B09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		69980C2C23F78D3E00829B09 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		69980C3123F78D3E00829B09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69980C3323F78D3F00829B09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69980C3623F78D3F00829B09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69980C3823F78D3F00829B09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -250,6 +245,8 @@
 		7C36020B2421132D0014E961 /* ApplyToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyToken.swift; sourceTree = "<group>"; };
 		7C36020D242113FD0014E961 /* ApplyToken.abi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApplyToken.abi; sourceTree = "<group>"; };
 		7C3D0523252AA5B800B59255 /* Miner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miner.swift; sourceTree = "<group>"; };
+		7C5E956225328CD600541CFB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		7C5E956725328D2900541CFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C61CCFC252D65AB00CF8D06 /* MembershipEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipEX.swift; sourceTree = "<group>"; };
 		7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
@@ -352,7 +349,6 @@
 				69E0BEB8240800D900E0B982 /* UserData.swift */,
 				6932A18B2406BAC100D2DA39 /* PoolDetails.swift */,
 				6932A1912407A3AE00D2DA39 /* SysSetting.swift */,
-				69242241240D389100590536 /* MinerData.swift */,
 				69A47D6E240EB8C100C86CFF /* HopMessage.swift */,
 				6972E3C12415E64F00550A4A /* ReceiptData.swift */,
 				7C22E5D5252AD8F6001461F3 /* HopKey.swift */,
@@ -705,7 +701,6 @@
 				696B02E52519EB2000F76A51 /* TransactionViewController.swift in Sources */,
 				696A71F02514680A004EA5DE /* Utils+ViewController.swift in Sources */,
 				695E4C392401778600A13631 /* Receipt.xcdatamodeld in Sources */,
-				69242242240D389100590536 /* MinerData.swift in Sources */,
 				69FA41AC2405711E005CF3FA /* PacketMarket.swift in Sources */,
 				698A514323FD58DC00836E26 /* Utils.swift in Sources */,
 				69980C3F23F792C400829B09 /* MarketListTVC.swift in Sources */,
@@ -742,7 +737,6 @@
 				693515C62413F9140082C3BF /* PacketAccountant.swift in Sources */,
 				69FA41AD2405711E005CF3FA /* PacketMarket.swift in Sources */,
 				7C61CCFE252D65AB00CF8D06 /* MembershipEX.swift in Sources */,
-				69D1DFA8240D76EB00D3BA30 /* MinerData.swift in Sources */,
 				69FA419724050059005CF3FA /* HopError.swift in Sources */,
 				69FA41A424055274005CF3FA /* EthUtil.swift in Sources */,
 				69A47D68240EAF9A00C86CFF /* BasUtil.swift in Sources */,
@@ -798,8 +792,8 @@
 		69980C3023F78D3E00829B09 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				69980C3123F78D3E00829B09 /* Base */,
-				6985D5DD24BD4F2400B77696 /* zh-Hans */,
+				7C5E956225328CD600541CFB /* zh-Hans */,
+				7C5E956725328D2900541CFB /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

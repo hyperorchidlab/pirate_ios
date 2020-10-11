@@ -20,7 +20,6 @@ public final class DataSyncer:NSObject{
         public var poolData:[String:PoolDetails] = [:]
         let dbContext = DataShareManager.privateQueueContext()
         var ethSetting:SysSetting?
-        var localSetting:CDCurSettings?
         var localVersion:MPSVersion
         
         private override init() {
@@ -35,11 +34,6 @@ public final class DataSyncer:NSObject{
                 NSLog("=======>Pools in market size[\(self.poolData.count)]")
                 
                 super.init()
-        }
-        
-        @objc func WalletChanged(_ notification: Notification?) {
-                let w = notification?.userInfo?["mainAddress"] as? String
-                localSetting = SysSetting.loadLocalSetting(for: currentMPS, curWallet: w, context: dbContext)
         }
         
         public static func EthVersionCheck(){
@@ -131,9 +125,5 @@ public final class DataSyncer:NSObject{
 //                       PacketAccountant.Inst.updateByEthData(userData: u_d, forPool:pool)
 //                }
 //                self.localVersion.vUser = ethVer
-        }
-        
-        public func updateLocalSetting(minerArr:[MinerData]){
-                self.localSetting?.updateMinerList(minerArr:minerArr, context:dbContext)
         }
 }

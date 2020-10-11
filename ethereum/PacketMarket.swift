@@ -166,15 +166,4 @@ public class PacketMarket:NSObject{
                         return []
                 }
         }
-        //MinerData
-        public func MinerDetails(address:Data)->MinerData?{
-                do{
-                        let ret = try viewRead(method: "MinerData", address as AnyObject)
-                        let m_d = MinerData(ret)
-                        return m_d
-                }catch let err{
-                        NSLog("=======>\(err.localizedDescription)")
-                        return nil
-                }
-        }
 }

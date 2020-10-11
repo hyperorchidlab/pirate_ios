@@ -165,51 +165,6 @@ public final class EthUtil :NSObject{
                         return nil
                 }
         }
-        
-        public func RandomMiners(inPool:String, maxItem:BigUInt = 16)->[MinerData]{
-                guard let service = self.PaymentService else{
-                        return []
-                }
-                
-                guard let pool_addr = EthereumAddress(inPool) else{
-                        return []
-                }
-                
-                let miner_size = service.MinerNo(ofPool: pool_addr)
-                guard miner_size > 0 else{
-                        return []
-                }
-                
-                var miner_addr:[Data] = []
-                
-                if miner_size < maxItem{
-                        miner_addr = service.PartOfMiners(inPool: pool_addr, start:0, end:miner_size)
-                }else{
-                        let start = BigUInt.randomInteger(lessThan: miner_size)
-                        var end = start + maxItem
-                        if end > miner_size{
-                                let ret_pre = service.PartOfMiners(inPool: pool_addr, start:0, end: end - miner_size)
-                                miner_addr.append(contentsOf: ret_pre)
-                                end = miner_size
-                        }
-                        let ret = service.PartOfMiners(inPool: pool_addr, start:start, end:end)
-                        miner_addr.append(contentsOf: ret)
-                }
-                
-                var result:[MinerData] = []
-                for addr in miner_addr{
-                        guard addr != HopAccount.invalidAddr else{
-                                NSLog("=======>invalid sub address:===>")
-                                continue
-                        }
-                        guard let m_data = service.MinerDetails(address: addr)else{
-                                continue
-                        }
-                        result.append(m_data)
-                }
-                
-                return result
-        }
 }
 
 extension EthereumAddress{

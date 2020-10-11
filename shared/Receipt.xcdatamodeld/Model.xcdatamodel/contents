@@ -7,15 +7,6 @@
         <attribute name="poolAddrInUsed" optional="YES" attributeType="String"/>
         <attribute name="servicePrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="CDCurSettings" representedClassName="CDCurSettings" syncable="YES" codeGenerationType="class">
-        <attribute name="basIPInUse" optional="YES" attributeType="String"/>
-        <attribute name="contractAddress" optional="YES" attributeType="String"/>
-        <attribute name="curMainAddr" optional="YES" attributeType="String"/>
-        <attribute name="minerInUse" optional="YES" attributeType="String"/>
-        <attribute name="minerListInUse" optional="YES" attributeType="Binary"/>
-        <attribute name="poolInUse" optional="YES" attributeType="String"/>
-        <attribute name="tokenAddrInUse" optional="YES" attributeType="String"/>
-    </entity>
     <entity name="CDMemberShip" representedClassName="CDMemberShip" syncable="YES" codeGenerationType="class">
         <attribute name="available" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="credit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -104,7 +95,6 @@
     </entity>
     <elements>
         <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="104"/>
-        <element name="CDCurSettings" positionX="-54" positionY="117" width="128" height="148"/>
         <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="253"/>
         <element name="CDMiner" positionX="-45" positionY="135" width="128" height="133"/>
         <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
