@@ -30,7 +30,7 @@ class SystemSettingTableViewController: UITableViewController {
 
                 switch indexPath.row {
                 case 0:
-                        self.ConfirmAlert(title: "Confirm".locStr, msg: "Replace current account") {
+                        self.ConfirmAlert(title: "Confirm".locStr, msg: "Replace current account".locStr) {
                                 self.performSegue(withIdentifier: "CreateAccountSegID", sender: self)
                         }
                 case 1:
@@ -147,7 +147,7 @@ extension SystemSettingTableViewController: UINavigationControllerDelegate, UIIm
                 self.showIndicator(withTitle: "", and: "Importing......".locStr)
                 NSLog("=======>Scan result:=>[\(code)]")
                 
-                self.ShowOneInput(title: "Import Account".locStr, placeHolder: "Password For Import", nextAction: { (password, isOK) in
+                self.ShowOneInput(title: "Import Account".locStr, placeHolder: "Password For Import".locStr, nextAction: { (password, isOK) in
                         defer{self.hideIndicator()}
                         guard let pwd = password, isOK else{
                                 return

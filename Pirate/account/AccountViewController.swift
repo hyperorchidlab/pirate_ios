@@ -148,13 +148,13 @@ class AccountViewController: UIViewController {
         
         @objc func changeBASIP() {
                 
-                self.ShowOneInput(title: "Change Dns".locStr, placeHolder: "New Dns") { (newdns, isOK) in
+                self.ShowOneInput(title: "Change Dns".locStr, placeHolder: "New Dns".locStr) { (newdns, isOK) in
                         guard let dns = newdns, isOK else{
                                 return
                         }
                         
                         guard dns.isValidIP() else{
-                                self.ShowTips(msg: "dns is invalid")
+                                self.ShowTips(msg: "DNS is invalid".locStr)
                                 return
                         }
                         
