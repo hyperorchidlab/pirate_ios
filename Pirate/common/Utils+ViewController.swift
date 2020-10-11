@@ -133,9 +133,13 @@ extension UIViewController {
                 }
         }
         
-        func ShowOneInput(title: String, placeHolder:String?, type:UIKeyboardType = .default, nextAction:((String?, Bool)->Void)?) {
+        func ShowOneInput(title: String, placeHolder:String?, securityShow:Bool = false, type:UIKeyboardType = .default, nextAction:((String?, Bool)->Void)?) {
                 
-                let ap = AlertPayload(title: title, placeholderTxt: placeHolder, securityShow:false, keyType: type, action: nextAction)
+                let ap = AlertPayload(title: title,
+                                      placeholderTxt: placeHolder,
+                                      securityShow:securityShow,
+                                      keyType: type,
+                                      action: nextAction)
                 
                 LoadAlertFromStryBoard(payload: ap)
         }

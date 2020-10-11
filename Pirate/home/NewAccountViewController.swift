@@ -130,7 +130,10 @@ extension NewAccountViewController: UINavigationControllerDelegate, UIImagePicke
                 self.showIndicator(withTitle: "", and: "Importing......".locStr)
                 NSLog("=======>Scan result:=>[\(code)]")
                 
-                self.ShowOneInput(title: "Import Account".locStr, placeHolder: "Password For Import".locStr, nextAction: { (password, isOK) in
+                self.ShowOneInput(title: "Import Account".locStr,
+                                  placeHolder: "Password For Import".locStr,
+                                  securityShow: true,
+                                  nextAction: { (password, isOK) in
                         defer{self.hideIndicator()}
                         guard let pwd = password, isOK else{
                                 return
