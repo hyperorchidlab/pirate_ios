@@ -176,24 +176,6 @@ class HOPAdapter: AdapterSocket {
 
                         Protocol.pInst.CounterWork(size:size)
                         delegate?.didRead(data: decode_data, from: self)
-                        
-//                        NSLog("--------->[\(objID)]YYYYYY indeed read len [\(size)]---")
-//                        
-//                        guard size > HOPAdapter.MAX_BUFFER_SIZE else{
-//                                delegate?.didRead(data: decode_data, from: self)
-//                                return
-//                        }
-//                        var idx = 0;
-//                        while idx < size{
-//                                var end = idx + HOPAdapter.MAX_BUFFER_SIZE
-//                                if end > size{
-//                                        end = size
-//                                }
-//                                delegate?.didRead(data: decode_data[idx..<end], from: self)
-//                                idx = end
-//                        }
-                        
-                       
                 default:
                     return
                 }
@@ -249,6 +231,7 @@ class HOPAdapter: AdapterSocket {
         
         func readLen(data:Data)throws{
                 
+<<<<<<< HEAD
                 guard data.count == HOPAdapter.PACK_HEAD_SIZE else{
                         throw HopError.minerErr("[\(objID)]【readLen】size header should not be[\(data.count)]")
                 }
@@ -257,6 +240,15 @@ class HOPAdapter: AdapterSocket {
                 self.socket.readDataTo(length: len)
                 self.readHead = false
 //                NSLog("--------->[\(objID)]XXXXXX need to read len [\(len)]---")
+=======
+                guard data.count == 4 else{
+                        throw HopError.minerErr("parse crypted data length err:")
+                }
+                let len = data.ToLen()
+                self.socket.readDataTo(length: len)
+                self.readHead = false
+//                NSLog("--------->[\(objID)]readLen:[\(len)] and counter---")
+>>>>>>> master
         }
         
         func readEncoded(data:Data) throws-> Data {
