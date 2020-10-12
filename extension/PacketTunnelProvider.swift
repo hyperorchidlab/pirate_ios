@@ -20,7 +20,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         let httpQueue = DispatchQueue.global(qos: .userInteractive)
         var proxyServer: ProxyServer!
         let proxyServerPort :UInt16 = 41080
-        let proxyServerAddress = "127.0.0.1";x
+        let proxyServerAddress = "127.0.0.1";
         var enablePacketProcessing = false
         var interface: TUNInterface!
         
