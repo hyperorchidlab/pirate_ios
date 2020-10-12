@@ -133,7 +133,7 @@ extension Protocol{
                                 } catch let err{
                                         self.rcpSocket.close()
                                         self.rcpTimer?.invalidate()
-                                        //TODO::process this situation error and exit
+                                        self.vpnDelegate.VPNShouldDone()
                                         NSLog("--------->rcp receive wire[\(self.poolAddress!)] err:\(err.localizedDescription)")
                                 }
                         }

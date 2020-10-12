@@ -230,8 +230,6 @@ class HOPAdapter: AdapterSocket {
         
         
         func readLen(data:Data)throws{
-                
-<<<<<<< HEAD
                 guard data.count == HOPAdapter.PACK_HEAD_SIZE else{
                         throw HopError.minerErr("[\(objID)]【readLen】size header should not be[\(data.count)]")
                 }
@@ -240,15 +238,6 @@ class HOPAdapter: AdapterSocket {
                 self.socket.readDataTo(length: len)
                 self.readHead = false
 //                NSLog("--------->[\(objID)]XXXXXX need to read len [\(len)]---")
-=======
-                guard data.count == 4 else{
-                        throw HopError.minerErr("parse crypted data length err:")
-                }
-                let len = data.ToLen()
-                self.socket.readDataTo(length: len)
-                self.readHead = false
-//                NSLog("--------->[\(objID)]readLen:[\(len)] and counter---")
->>>>>>> master
         }
         
         func readEncoded(data:Data) throws-> Data {
