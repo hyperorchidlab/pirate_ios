@@ -106,7 +106,7 @@ class DataShareManager: NSObject {
 
 extension NSManagedObject {
         
-        public class func findEntity(_ entityName: String, where w:NSPredicate,context: NSManagedObjectContext) -> [AnyObject]? {
+        public class func findEntity(_ entityName: String, where w:NSPredicate, orderBy:[NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> [AnyObject]? {
                 let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
                 request.predicate = w
                 let result: [AnyObject]?

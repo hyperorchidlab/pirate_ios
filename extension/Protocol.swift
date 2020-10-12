@@ -7,116 +7,196 @@
 //
 
 import Foundation
-import web3swift
 import Curve25519
+import CoreData
+import SwiftSocket
+import web3swift
 
 @objc public protocol ProtocolDelegate: NSObjectProtocol{
         func VPNShouldDone()
 }
 
-@objc public protocol MicroPayDelegate: NSObjectProtocol{
-        func getSetupMsg(salt:Data) -> Data?
-        func AesKey()->[UInt8]
-        func CounterWork(size:Int)
-}
-
 public class Protocol:NSObject{ 
-       
-        public static var EthSyncTime = TimeInterval(30)
-        var priKey:HopPriKey
-        var aesKey:Data
-        var mainAddr:EthereumAddress
-        var subAddr:String
-        var transactionWire:TxWire?
+        public static var pInst = Protocol()
+        public var userAddress:String!
+        public var userSubAddress:String!
+        public var poolAddress:String!
+        public var minerAddress:String!
+        public var poolIP:String!
+        private var priKey:HopKey!
+        private var aesKey:Data!
+        var vpnDelegate:ProtocolDelegate!
+        var isDebug:Bool = true
         
-        public init(param:[String : NSObject], delegate:ProtocolDelegate)throws{
-                
-                let erc20       = (param["HOP_ADDR"] as! String)
-                let mpc         = (param["MPC_ADDR"] as! String)
+        
+        var rcpSocket:UDPClient!
+        var rcpTimer:Timer?
+        var rcpKAData:Data!
+        public static let RCPKAQueue = DispatchQueue(label: "Receipt KA Queue", qos: .default)
+        public static let RCPQueue = DispatchQueue(label: "Receipt Wire Queue", qos: .default)
+        
+        var txSocket:UDPClient?
+        let txLock = NSLock()
+        var counter:Int = (HopConstants.RechargePieceSize / 2)
+        let TXQueue = DispatchQueue.init(label: "Transaction Wire Queue", qos: .default)
+        
+        
+        public override init() {
+                super.init()
+        }
+        
+        public func setup(param:[String : NSObject], delegate:ProtocolDelegate) throws{
                 
                 let main_pri    = param["MAIN_PRI"] as! Data
                 let sub_pri     = param["SUB_PRI"] as! Data
-                priKey          = HopPriKey(main: main_pri, sub: sub_pri)
-                
                 let poolAddrStr = (param["POOL_ADDR"] as! String)
-                let poolAddr    = EthereumAddress(poolAddrStr)!
                 let minerID     = param["MINER_ADDR"] as! String
                 let userAddr    = (param["USER_ADDR"] as! String)
-                mainAddr        = EthereumAddress(userAddr)!
-                subAddr         = param["USER_SUB_ADDR"] as! String
                 
-                if param["IS_TEST"] as? Bool == false{
-                        Protocol.EthSyncTime = TimeInterval(300)
-                }
+                self.isDebug = param["IS_TEST"] as? Bool ?? true
+                self.priKey = HopKey(main: main_pri, sub: sub_pri)
+                self.userAddress = userAddr
+                self.poolAddress = poolAddrStr
+                self.minerAddress = minerID
+                self.userSubAddress = (param["USER_SUB_ADDR"] as! String)
+                self.aesKey = try self.priKey.genAesKey(forMiner:minerID, subPriKey: sub_pri)
                 
-                self.aesKey = try priKey.genAesKey(forMiner:minerID, subPriKey: sub_pri)
                 guard let pool_ip = BasUtil.Query(addr: poolAddrStr) else{
                         throw HopError.hopProtocol("Can't not find pool[\(poolAddrStr) ip address]")
                 }
-                PacketAccountant.Inst.setEnv(MPSA: mpc, user: userAddr)
-                
-                super.init()
-                
-                try EthUtil.sharedInstance.initEth(ERC20: erc20,
-                                                   Contract: mpc,
-                                                   infura:param["INFU_TOKEN"] as? String,
-                                                   testNet:param["IS_TEST"] as? Bool)
-                
-                let micChain = MicroChain(paymentAddr: mpc,
-                                          pool: poolAddr,
-                                          userAddr: userAddr)
-                micChain.start()
-                
-                let receiptWire = RcpWire(poolAddr: poolAddrStr,
-                                      userAddr: userAddr,
-                                      priKey: main_pri,
-                                      ip: pool_ip)
-                
-                guard receiptWire.handshake() == true else{
-                        throw HopError.rcpWire("Can't create receipt wire!å")
+                self.poolIP = pool_ip
+                guard MembershipEX.Membership(user: userAddr, pool: poolAddrStr) else {
+                        throw HopError.txWire("Init membership failed[\(userAddr)---->\(poolAddrStr)]")
                 }
-                receiptWire.start(monitor:self)
-                 
-                guard let tx_wire = TxWire(poolAddr:poolAddrStr,
-                                         minerID:minerID,
-                                         signKey: main_pri,
-                                         ip: pool_ip) else{
-                        throw HopError.txWire("Init tx wire failed")
-                }
-                transactionWire = tx_wire
-        }
-        
-        private func openPaymenWire(){
                 
+                guard initRcp() else{
+                        throw HopError.txWire("Init receipt wire failed")
+                }
+                
+                initTX()
+                
+                self.rcpStart()
         }
 }
-
-
-extension Protocol: MicroPayDelegate{
+//MARK: - Receipt functions
+extension Protocol{
         
-        public func CounterWork(size: Int) {
-                transactionWire?.increase(size)
+        func initRcp() -> Bool{
+                self.rcpSocket = UDPClient(address: self.poolIP, port: Int32(HopConstants.ReceiptSyncPort))
+                let userAddr = EthereumAddress.toChecksumAddress(self.userAddress!)
+                self.rcpKAData = HopMessage.rcpKAMsg(from: userAddr!)
+                
+                DispatchQueue.main.async {
+                        self.rcpTimer = Timer.scheduledTimer(timeInterval: HopConstants.RCPKeepAlive,
+                                                     target: self,
+                                                     selector: #selector(self.rcpTimerAction),
+                                                     userInfo: nil,
+                                                     repeats: true)
+                }
+                
+                guard let data = HopMessage.rcpSynMsg(from: userAddr!,
+                                                    pool: self.poolAddress!,
+                                                    sigKey: self.priKey.mainPriKey!) else {
+                        NSLog("--------->rcp wire[\(self.userAddress!)->\(self.poolAddress!)]hand shake data error:")
+                        return false
+                }
+                
+                let ret = self.rcpSocket.send(data: data)
+                return ret.isSuccess
         }
+
+        @objc func rcpTimerAction(){
+                Protocol.RCPKAQueue.async {
+                        NSLog("--------->rcp wire[\(self.userAddress!)->\(self.poolAddress!)] keep alive start[\(self.rcpSocket.fd ?? 0)]")
+                        let ret = self.rcpSocket.send(data: self.rcpKAData)
+                        if ret.isFailure{
+                                let try_hand = self.initRcp()
+                                NSLog("--------->rcp wire[\(self.userAddress!)->\(self.poolAddress!)] try again hand shake[\(try_hand)]")
+                        }
+                }
+        }
+        public func rcpStart(){
+                Protocol.RCPQueue.async {
+                        while true{
+                                
+                                NSLog("--------->Ready to read receipt from pool[\(self.poolAddress!)] by fd:\(self.rcpSocket.fd ?? -1)")
+                                do{
+                                        let (data, pool_ip, _) = self.rcpSocket.recv(HopConstants.UDPBufferSize)
+                                        guard let d = data else{
+                                                NSLog("--------->Read receipt data failed")
+                                                return
+                                        }
+                                        NSLog("--------->Got receipt info from pool[\(pool_ip)]:=>\n\(String(bytes: d, encoding: .utf8) ?? "---")")
+                                        
+                                        try MembershipEX.membership.updateByReceipt(data:Data(d))
+                        
+                                } catch let err{
+                                        self.rcpSocket.close()
+                                        self.rcpTimer?.invalidate()
+                                        //TODO::process this situation error and exit
+                                        NSLog("--------->rcp receive wire[\(self.poolAddress!)] err:\(err.localizedDescription)")
+                                }
+                        }
+                }
+        }
+}
+//MARK: - TX functions
+extension Protocol{
         
-        public func getSetupMsg(salt:Data) -> Data?{ do{
-                return try HopMessage.SetupMsg(iv:salt,
-                                               mainAddr: self.mainAddr,
-                                               subAddr: self.subAddr,
-                                               sigKey: self.priKey.mainPriKey!)
-        }catch let err{
-                NSLog("--------->Setup msg to miner failed:=>\(err.localizedDescription)")
-                return nil
-        } }
-        
-        public func  AesKey()->[UInt8]{
+        public func AesKey()->[UInt8]{
                 return self.aesKey.bytes
         }
-}
-
-
-extension Protocol:ThreadMonitor{
+        public func signKey()->Data{
+                return self.priKey.mainPriKey!
+        }
         
-        public func RcpWireExit(){
+        func initTX(){
+                self.txSocket = UDPClient(address: self.poolIP, port: Int32(HopConstants.TxReceivePort))
+                if MembershipEX.membership.inRecharge > HopConstants.RechargePieceSize{
+                        NSLog("--------->Need to recharge because of last failure:\(MembershipEX.membership.inRecharge)")
+                        self.recharge(amount: 0)
+                }
+        }
+        
+        private func recharge(amount:Int64){
                 
+                let curMem = MembershipEX.membership!
+                self.TXQueue.async { do {
+                        curMem.inRecharge  += amount
+                        
+                        NSLog("--------->Transaction Wire need to recharge:[\(curMem.inRecharge)]===>")
+                        let tx_data = TransactionData(userData: curMem,
+                                                            amount: Int64(curMem.inRecharge),
+                                                            for:  self.minerAddress)
+                        
+                        guard let d = tx_data.createTxData(sigKey: self.priKey.mainPriKey!) else{
+                                NSLog("--------->Create transaction data failed")
+                                throw HopError.txWire("Create transaction data failed")
+                        }
+                        
+                        let ret = self.txSocket?.send(data: d)
+                        guard ret?.isSuccess == true else{
+                                //TODO::Notification
+                                throw HopError.txWire("Transaction Wire send failed==\(ret?.error?.localizedDescription ?? "<-empty error->")==>")
+                        }
+                        curMem.curTXHash = tx_data.hashV
+                        curMem.syncData()
+                        }catch let err{
+                                NSLog("--------->\(err.localizedDescription)")
+                        }
+                }
+        }
+        
+        public func CounterWork(size:Int){
+                
+                if txLock.try(){
+                        defer {txLock.unlock()}
+                        self.counter += size
+                        if self.counter < HopConstants.RechargePieceSize{
+                                return
+                        }
+                        self.recharge(amount: Int64(self.counter))
+                        self.counter = 0
+                }
         }
 }

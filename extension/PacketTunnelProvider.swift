@@ -8,7 +8,7 @@
 
 import NetworkExtension
 import NEKit
-import web3swift
+import SwiftyJSON
 
 extension Data {
     var hexString: String {
@@ -20,8 +20,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         let httpQueue = DispatchQueue.global(qos: .userInteractive)
         var proxyServer: ProxyServer!
         let proxyServerPort :UInt16 = 41080
-        let proxyServerAddress = "127.0.0.1";
-        var hopInstance:Protocol?
+        let proxyServerAddress = "127.0.0.1";x
         var enablePacketProcessing = false
         var interface: TUNInterface!
         
@@ -39,8 +38,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         return
                 }
                 do {
-                        hopInstance = try Protocol.init(param: ops, delegate: self)
-
+                        try Protocol.pInst.setup(param: ops, delegate: self)
                         let settings = try initSetting(rules: ops["ROUTE_RULES"] as! [String : NSObject],
                                            minerID: ops["MINER_ADDR"] as! String)
                         
@@ -91,11 +89,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         
                 }catch let err{
                        completionHandler(err)
-                        guard let hop_err = err as? HopError else{
-                                NSLog("--------->ethereum fetcher init failed\(err.localizedDescription)\n")
-                                return
-                        }
-                        NSLog("--------->ethereum fetcher init failed\(hop_err.description)\n")
+                       NSLog("--------->startTunnel failed\n[\(err.localizedDescription)]")
                }
         }
         
@@ -114,6 +108,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         NEIPv4Route(destinationAddress: "172.16.0.0", subnetMask: "255.240.0.0"),
                         NEIPv4Route(destinationAddress: "192.168.0.0", subnetMask: "255.255.0.0"),
                         NEIPv4Route(destinationAddress: "17.0.0.0", subnetMask: "255.0.0.0"),
+                        NEIPv4Route(destinationAddress: HopConstants.DefaultDnsIP, subnetMask: "255.255.255.255"),
                     ]
                 }
                 
@@ -129,18 +124,17 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 proxySettings.matchDomains = [""]
                 
                 if enablePacketProcessing {
-                    let DNSSettings = NEDNSSettings(servers: ["198.18.0.1"])
-                    DNSSettings.matchDomains = [""]
-                    DNSSettings.matchDomainsNoSearch = false
-                    networkSettings.dnsSettings = DNSSettings
+                        let DNSSettings = NEDNSSettings(servers: ["198.18.0.1"])
+                        DNSSettings.matchDomains = [""]
+                        DNSSettings.matchDomainsNoSearch = false
+                        networkSettings.dnsSettings = DNSSettings
                 }
                 
 
                 networkSettings.proxySettings = proxySettings;
                 RawSocketFactory.TunnelProvider = self
                 
-                guard let hopAdapterFactory = HOPAdapterFactory(miner:minerID,
-                                                                delegate: hopInstance!) else{
+                guard let hopAdapterFactory = HOPAdapterFactory(miner:minerID) else{
                         throw HopError.minerErr("--------->Initial miner data failed")
                 }
                 
@@ -163,21 +157,22 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
         override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
                 NSLog("--------->Handle App Message......")
-                guard let param = NSKeyedUnarchiver.unarchiveObject(with: messageData) as? [String:Any],
-                        let handler = completionHandler else{
+                guard let handler = completionHandler else{
                         return
                 }
+                let param = JSON(messageData)
                 
-                let is_global = param["Global"] as? Bool
-                let gt_status = param["GetModel"] as? Bool
+                let is_global = param["Global"].bool
+                let gt_status = param["GetModel"].bool
                 if is_global != nil{
                         HOPRule.ISGlobalMode = is_global!
                         NSLog("--------->Global model changed...\(HOPRule.ISGlobalMode)...")
-                        handler("Success".data(using: .utf8))
                 }
                 if gt_status != nil{
+                        guard let data = try? JSON(["Global": HOPRule.ISGlobalMode]).rawData() else{
+                                return
+                        }
                         NSLog("--------->App is querying golbal model [\(HOPRule.ISGlobalMode)]")
-                        let data = NSKeyedArchiver.archivedData(withRootObject: ["Global":HOPRule.ISGlobalMode])
                         handler(data)
                 }
         }

@@ -113,3 +113,36 @@
 "Copy Success"="复制成功";
 "Save success to your photo library"="成功保存到相册";
 "Exporting......"="正在导出......";
+
+
+"Pending"="挂起";
+"Apply GAS"="申请燃料";
+"Apply Token"="申请token";
+"Buy Service"="购买服务";
+"Unknown"="未知";
+"APP Authorization"="应用授权";
+
+"Choose one miner please"="请选择可用矿机";
+"Choose one pool please"="请选择可用矿池";
+"Insuffcient Founds"="余额不足";
+"Memship is invalid"="会员信息无效";
+"Confirm"="确认";
+"Replace current account"="覆盖当前账号";
+"No Valid Account"="无效的账号信息";
+"Import Account"="导入账号";
+"Password For Import"="用于导入的密码";
+"Import Failed"="导入失败";
+"Import Success"="导入成功";
+"Reloading Account Data"="重新加载账号数据";
+"Change Dns"="修改DNS配置";
+"DNS is invalid"="无效的DNS配置";
+"New Dns"="新的DNS地址";
+"Loading miners......"="加载矿机......";
+
+"No valid key data"="缺少账号私钥";
+"Invalid password"="无效密码";
+"Creating Account"="创建账号";
+"Unlock Account"="解锁账号";
+"Password"="密码";
+"Applying......"="申请中.....";
+"Opening......"="开打账号......";
