@@ -77,7 +77,7 @@ public enum TransactionType:Int16 {
                 case .applyToken:
                         return "Apply Token".locStr
                 case .buyPool:
-                        return "Buy Service".locStr
+                        return "Apply Service".locStr
                 case .unknown:
                         return "Unknown".locStr
                 case .authorize:
