@@ -142,6 +142,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 
                 var ipStrings:[String] = []
                 ipStrings.append(contentsOf: HopConstants.TelegramIPRange)
+                ipStrings.append(contentsOf: HopConstants.LineIPRange)
 //                ipStrings.append(contentsOf: HopConstants.NetflixIPRange)
                 let ipRange = try HOPIPRangeRule(adapterFactory: hopAdapterFactory, ranges: ipStrings)
                 
