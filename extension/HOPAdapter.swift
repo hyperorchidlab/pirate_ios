@@ -173,7 +173,8 @@ class HOPAdapter: AdapterSocket {
                         let decode_data = try self.readEncoded(data: data)
 //                        observer?.signal(.readData(decode_data, on: self))
                         let size = decode_data.count
-
+                        
+                        NSLog("--------->[\(objID)]YYYYYY did read len [\(size)]---")
                         Protocol.pInst.CounterWork(size:size)
                         delegate?.didRead(data: decode_data, from: self)
                 default:
@@ -237,7 +238,7 @@ class HOPAdapter: AdapterSocket {
                 let len = data.ToInt()
                 self.socket.readDataTo(length: len)
                 self.readHead = false
-//                NSLog("--------->[\(objID)]XXXXXX need to read len [\(len)]---")
+                NSLog("--------->[\(objID)]XXXXXX need to read len [\(len)]---")
         }
         
         func readEncoded(data:Data) throws-> Data {

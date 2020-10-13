@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6902ED092515DAED00BCDED6 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902ED082515DAED00BCDED6 /* iosLib.framework */; };
+		691566C525356B8D004983F3 /* HOPIPRangeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691566C425356B8D004983F3 /* HOPIPRangeRule.swift */; };
 		691CCFA023F8240D007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		691CCFA123F93F60007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		6924223E240D365000590536 /* PoolChoseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924223D240D365000590536 /* PoolChoseTableViewController.swift */; };
@@ -43,7 +44,7 @@
 		6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		698A513923FCE64E00836E26 /* HOPAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513823FCE64E00836E26 /* HOPAdapter.swift */; };
 		698A513B23FCE75700836E26 /* HOPAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */; };
-		698A513D23FCF90700836E26 /* HOPRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513C23FCF90700836E26 /* HOPRule.swift */; };
+		698A513D23FCF90700836E26 /* HOPDomainsRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513C23FCF90700836E26 /* HOPDomainsRule.swift */; };
 		698A514323FD58DC00836E26 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A514223FD58DC00836E26 /* Utils.swift */; };
 		698A514423FD5BC900836E26 /* gfw.plist in Resources */ = {isa = PBXBuildFile; fileRef = 698A513E23FD08B900836E26 /* gfw.plist */; };
 		69980C2923F78D3E00829B09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69980C2823F78D3E00829B09 /* AppDelegate.swift */; };
@@ -139,6 +140,7 @@
 
 /* Begin PBXFileReference section */
 		6902ED082515DAED00BCDED6 /* iosLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iosLib.framework; path = bin/iosLib.framework; sourceTree = "<group>"; };
+		691566C425356B8D004983F3 /* HOPIPRangeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOPIPRangeRule.swift; sourceTree = "<group>"; };
 		691CCF9F23F8240D007768DF /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6924223D240D365000590536 /* PoolChoseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolChoseTableViewController.swift; sourceTree = "<group>"; };
 		6924223F240D368F00590536 /* MinerChooseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinerChooseTableViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +189,7 @@
 		698A513123FCCEDF00836E26 /* Yaml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Yaml.framework; path = Carthage/Build/iOS/Yaml.framework; sourceTree = "<group>"; };
 		698A513823FCE64E00836E26 /* HOPAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPAdapter.swift; sourceTree = "<group>"; };
 		698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPAdapterFactory.swift; sourceTree = "<group>"; };
-		698A513C23FCF90700836E26 /* HOPRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPRule.swift; sourceTree = "<group>"; };
+		698A513C23FCF90700836E26 /* HOPDomainsRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPDomainsRule.swift; sourceTree = "<group>"; };
 		698A513E23FD08B900836E26 /* gfw.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = gfw.plist; sourceTree = "<group>"; };
 		698A514223FD58DC00836E26 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		69980C2523F78D3E00829B09 /* Pirate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pirate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,8 +415,9 @@
 		69980C5923F7B3CD00829B09 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				691566C425356B8D004983F3 /* HOPIPRangeRule.swift */,
 				69980C5A23F7B3CD00829B09 /* PacketTunnelProvider.swift */,
-				698A513C23FCF90700836E26 /* HOPRule.swift */,
+				698A513C23FCF90700836E26 /* HOPDomainsRule.swift */,
 				698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */,
 				698A513823FCE64E00836E26 /* HOPAdapter.swift */,
 				69980C5C23F7B3CD00829B09 /* Info.plist */,
@@ -695,9 +698,10 @@
 				7C36020F242129250014E961 /* ApplyToken.swift in Sources */,
 				69FA41932404DBCD005CF3FA /* HopConstants.swift in Sources */,
 				698A513923FCE64E00836E26 /* HOPAdapter.swift in Sources */,
-				698A513D23FCF90700836E26 /* HOPRule.swift in Sources */,
+				698A513D23FCF90700836E26 /* HOPDomainsRule.swift in Sources */,
 				69A47D70240EB8C100C86CFF /* HopMessage.swift in Sources */,
 				7C22E5D7252AD8F6001461F3 /* HopKey.swift in Sources */,
+				691566C525356B8D004983F3 /* HOPIPRangeRule.swift in Sources */,
 				69FA418B2404B352005CF3FA /* DataShareManager.swift in Sources */,
 				69987DFD241249A000029C0A /* HopSodium.swift in Sources */,
 				69A47D6A240EB1DD00C86CFF /* Protocol.swift in Sources */,
@@ -882,7 +886,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -895,7 +899,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
 				PRODUCT_NAME = Pirate;
 				PROVISIONING_PROFILE_SPECIFIER = dev_usa_pirate;
@@ -912,7 +916,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -925,7 +929,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
 				PRODUCT_NAME = Pirate;
 				PROVISIONING_PROFILE_SPECIFIER = release_uas_pirate;
@@ -940,7 +944,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -953,7 +957,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				OS_ACTIVITY_MODE = default;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -970,7 +974,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -983,7 +987,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				OS_ACTIVITY_MODE = default;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

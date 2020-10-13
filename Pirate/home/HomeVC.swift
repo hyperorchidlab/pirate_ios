@@ -277,7 +277,10 @@ class HomeVC: UIViewController {
                         return
                 }
                 try? session.sendProviderMessage(message){reponse in
-                        let param = JSON(reponse!)
+                        guard let rs = reponse else{
+                                return
+                        }
+                        let param = JSON(rs)
                         AppSetting.isGlobalModel = param["Global"].bool ?? false
                         self.setModelStatus(sender: self.globalModelSeg, oldStatus: AppSetting.isGlobalModel)
                         NSLog("=======>Curretn global model is [\(AppSetting.isGlobalModel)]")

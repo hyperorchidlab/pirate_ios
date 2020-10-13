@@ -9,7 +9,7 @@
 import UIKit
 import NEKit
 
-class HOPRule: AllRule {
+class HOPDomainsRule: AllRule {
         
         public let KEY_SUFFIX = "suffix"
         public let KEY_PREFIX = "prefix"
@@ -114,13 +114,14 @@ class HOPRule: AllRule {
         }
         
         override open func match(_ session: ConnectSession) -> AdapterFactory? {
-                if HOPRule.ISGlobalMode {
+                if HOPDomainsRule.ISGlobalMode {
                         return adapterFactory
                 }
                 if matchDomain(session.host) {
+                        NSLog("--------->$$$$$$[Domain]Hit host:[\(session.host):\(session.port)]")
                         return adapterFactory
                 }
-//                NSLog("--------->By pass host:[\(session.host):\(session.port)] Thread = [\(Thread.current.description)]")
+                NSLog("--------->*******[Domain]By pass host:[\(session.host):\(session.port)]")
                 return nil
         }
         

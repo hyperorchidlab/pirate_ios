@@ -21,7 +21,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         var proxyServer: ProxyServer!
         let proxyServerPort :UInt16 = 41080
         let proxyServerAddress = "127.0.0.1";
-        var enablePacketProcessing = false
+        var enablePacketProcessing = true
         var interface: TUNInterface!
         
         override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
@@ -42,7 +42,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         let settings = try initSetting(rules: ops["ROUTE_RULES"] as! [String : NSObject],
                                            minerID: ops["MINER_ADDR"] as! String)
                         
-                        HOPRule.ISGlobalMode = (ops["GLOBAL_MODE"] as? Bool == true)
+                        HOPDomainsRule.ISGlobalMode = (ops["GLOBAL_MODE"] as? Bool == true)
                 
                         self.setTunnelNetworkSettings(settings, completionHandler: {
                                 error in
@@ -138,12 +138,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         throw HopError.minerErr("--------->Initial miner data failed")
                 }
                 
-                let hopRule = HOPRule(adapterFactory: hopAdapterFactory, urls: rules)
+                let hopRule = HOPDomainsRule(adapterFactory: hopAdapterFactory, urls: rules)
                 
                 var ipStrings:[String] = []
                 ipStrings.append(contentsOf: HopConstants.TelegramIPRange)
 //                ipStrings.append(contentsOf: HopConstants.NetflixIPRange)
-                let ipRange = try IPRangeListRule(adapterFactory: hopAdapterFactory, ranges: ipStrings)
+                let ipRange = try HOPIPRangeRule(adapterFactory: hopAdapterFactory, ranges: ipStrings)
                 
                 RuleManager.currentManager = RuleManager(fromRules: [hopRule, ipRange], appendDirect: true)
                 return networkSettings
@@ -165,14 +165,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 let is_global = param["Global"].bool
                 let gt_status = param["GetModel"].bool
                 if is_global != nil{
-                        HOPRule.ISGlobalMode = is_global!
-                        NSLog("--------->Global model changed...\(HOPRule.ISGlobalMode)...")
+                        HOPDomainsRule.ISGlobalMode = is_global!
+                        NSLog("--------->Global model changed...\(HOPDomainsRule.ISGlobalMode)...")
                 }
                 if gt_status != nil{
-                        guard let data = try? JSON(["Global": HOPRule.ISGlobalMode]).rawData() else{
+                        guard let data = try? JSON(["Global": HOPDomainsRule.ISGlobalMode]).rawData() else{
                                 return
                         }
-                        NSLog("--------->App is querying golbal model [\(HOPRule.ISGlobalMode)]")
+                        NSLog("--------->App is querying golbal model [\(HOPDomainsRule.ISGlobalMode)]")
                         handler(data)
                 }
         }
