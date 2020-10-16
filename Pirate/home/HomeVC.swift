@@ -260,6 +260,7 @@ class HomeVC: UIViewController {
                 targetManager?.isEnabled = true
                 
                 let providerProtocol = NETunnelProviderProtocol()
+                providerProtocol.serverAddress = "HOP BlockChain"
                 targetManager?.protocolConfiguration = providerProtocol
                 
                 targetManager?.saveToPreferences { err in
