@@ -122,6 +122,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 proxySettings.httpsServer = NEProxyServer.init(address: proxyServerAddress, port: Int(proxyServerPort))
                 proxySettings.excludeSimpleHostnames = false;
                 proxySettings.matchDomains = [""]
+                proxySettings.exceptionList = ["*.infura.io"]
                 
                 if enablePacketProcessing {
                         let DNSSettings = NEDNSSettings(servers: ["198.18.0.1"])
