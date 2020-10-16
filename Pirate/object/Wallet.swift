@@ -104,9 +104,7 @@ class Wallet:NSObject{
                 core_data!.address = WInst.Address
                 core_data!.subAddress = WInst.SubAddress
                 WInst.coreData = core_data
-                
                 DataShareManager.saveContext(context)
-                PostNoti(HopConstants.NOTI_WALLET_CHANGED)
         }
         
         public static func ImportWallet(auth:String, josn:String) -> Bool{
@@ -114,6 +112,10 @@ class Wallet:NSObject{
                         return false
                 }
                 populateWallet(data: Data(josn.utf8))
+                AppSetting.workQueue.async {
+                        MembershipUI.syncAllMyMemberships()
+                        PostNoti(HopConstants.NOTI_TX_STATUS_CHANGED)
+                }
                 
                 return true
         }

@@ -58,7 +58,6 @@ class AccountViewController: UIViewController {
                 tap5.numberOfTapsRequired = 2
                 walletView.addGestureRecognizer(tap5)
                 
-                checkStatusButon()
                 loadTransaction()
                 
                 NotificationCenter.default.addObserver(self,
@@ -66,21 +65,18 @@ class AccountViewController: UIViewController {
                                                 #selector(dnsChanged(_:)),
                                                name: HopConstants.NOTI_DNS_CHANGED.name,
                                                object: nil)
+                
                 NotificationCenter.default.addObserver(self,
                                                selector:
                                                 #selector(txStatusChanged(_:)),
                                                name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
-                                               object: nil)
-                NotificationCenter.default.addObserver(self,
-                                               selector:
-                                                #selector(walletChanged(_:)),
-                                               name: HopConstants.NOTI_WALLET_CHANGED.name,
                                                object: nil)
         }
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 walletBalanceUI()
+                checkStatusButon()
         }
         
         private func loadTransaction(){
@@ -118,20 +114,6 @@ class AccountViewController: UIViewController {
         @objc func txStatusChanged(_ notification: Notification?) {
                 reloadWalletData()
                 loadTransaction()
-        }
-        
-        @objc func walletChanged(_ notification: Notification?) {
-                self.showIndicator(withTitle: "", and: "Reloading Account Data".locStr)
-                AppSetting.workQueue.async {
-                        Wallet.WInst.queryBalance()
-                        Transaction.reLoad()
-                        DispatchQueue.main.async {
-                                self.walletAddrLabel.text = Wallet.WInst.Address
-                                self.checkStatusButon()
-                                self.walletBalanceUI()
-                                self.hideIndicator()
-                        }
-                }
         }
         
         @objc func openTelegram() {
