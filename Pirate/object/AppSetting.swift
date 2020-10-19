@@ -12,7 +12,7 @@ import IosLib
 
 class AppSetting:NSObject{
         
-        public static let workQueue = DispatchQueue.init(label: "APP Work Queue")
+        public static let workQueue = DispatchQueue.init(label: "APP Work Queue", qos: .utility)
         public static var dnsIP:String?
         public static var isGlobalModel:Bool = false
         public static var servicePrice:Int64 = 0
