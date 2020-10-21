@@ -316,6 +316,10 @@ class HomeVC: UIViewController {
                 guard let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != "" else{
                         return
                 }
+                if let mem = MembershipUI.Cache[poolAddr.lowercased()]  {
+                        let balance = mem.packetBalance - Double(mem.credit)
+                        AppSetting.coreData?.tmpBalance = balance
+                }
                 
                 self.performSegue(withIdentifier: "ChooseMinersViewControllerSS", sender: self)
         }
