@@ -52,9 +52,14 @@ class MembershipUI:NSObject{
                 for cData in memberArr{
                         cData.available = false
                         Cache[cData.poolAddr!.lowercased()] = cData
+                        
+                        if AppSetting.coreData?.poolAddrInUsed?.lowercased() == cData.poolAddr!.lowercased(){
+                                let balance = cData.packetBalance - Double(cData.credit)
+                                AppSetting.coreData?.tmpBalance = balance
+                                PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
+                        }
                 }
-                
-                PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
+               
                 
                 AppSetting.workQueue.async {
                 guard let data = IosLibAvailablePools(addr) else{return}
@@ -108,12 +113,16 @@ class MembershipUI:NSObject{
                         
                         result.updateByETH(json: subJson, addr: addr)
                         Cache[poolAddr.lowercased()] = result
+                        if AppSetting.coreData?.poolAddrInUsed?.lowercased() == poolAddr.lowercased(){
+                                let balance = result.packetBalance - Double(result.credit)
+                                AppSetting.coreData?.tmpBalance = balance
+                                PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
+                        }
                 }
                 
                 DataShareManager.saveContext(dbContext)
                 DataShareManager.syncAllContext(dbContext)
                 PostNoti(HopConstants.NOTI_MEMBERSHIP_SYNCED)
-                PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
         }
         
 //        public func syncMemberDetailFromETH(){

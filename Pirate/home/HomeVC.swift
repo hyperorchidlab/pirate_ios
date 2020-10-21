@@ -108,12 +108,10 @@ class HomeVC: UIViewController {
                         self.ShowTips(msg: "Choose your node first".locStr)
                         return
                 }
-                
-                guard let membership = MembershipUI.Cache[pool.lowercased()] else{
+                guard let balance = AppSetting.coreData?.tmpBalance, balance != 0 else{
                         self.ShowTips(msg: "Memship is invalid".locStr)
                         return
                 }
-                let balance = membership.packetBalance - Double(membership.credit)
                 guard Int(balance) > HopConstants.RechargePieceSize else{
                         SwitchTab(Idx: 1){tab in
                                 tab.alertMessageToast(title: "Insuffcient Founds".locStr)
@@ -123,7 +121,7 @@ class HomeVC: UIViewController {
                
                 guard  Wallet.WInst.IsOpen() else{
                         self.ShowOnePassword() {
-                                do {try self._startVPN(pool: membership.poolAddr!, miner: miner)}catch let err{
+                                do {try self._startVPN(pool: pool, miner: miner)}catch let err{
                                         self.ShowTips(msg: err.localizedDescription)
                                 }
                         }
@@ -131,7 +129,7 @@ class HomeVC: UIViewController {
                 }
                 
                 do {
-                        try self._startVPN(pool: membership.poolAddr!, miner: miner)
+                        try self._startVPN(pool: pool, miner: miner)
                 }catch let err{
                         NSLog("=======>Failed to start the VPN: \(err)")
                         self.ShowTips(msg: err.localizedDescription)
@@ -337,6 +335,7 @@ class HomeVC: UIViewController {
                 DispatchQueue.main.async {
                         if let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != ""{
                                 self.poolAddrLabel.text = poolAddr
+                                self.packetBalanceLabel.text = AppSetting.coreData?.tmpBalance.ToPackets()
                         }else{
                                 self.poolAddrLabel.text = "Choose one pool please".locStr
                                 self.packetBalanceLabel.text = "0.0"
@@ -362,11 +361,10 @@ class HomeVC: UIViewController {
         }
         
         @objc func setPoolBalance(_ notification: Notification?){
-                guard let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != "" else{return}
-                if let membership = MembershipUI.Cache[poolAddr]{
-                        let balance = membership.packetBalance - Double(membership.credit)
-                        DispatchQueue.main.async {self.packetBalanceLabel.text = "\((balance).ToPackets())"}
+                guard let balance = AppSetting.coreData?.tmpBalance else {
+                        return
                 }
+                DispatchQueue.main.async {self.packetBalanceLabel.text = balance.ToPackets()}
         }
         
         @objc func setMinerDetails(_ notification: Notification?){DispatchQueue.main.async {
