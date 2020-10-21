@@ -55,10 +55,9 @@ class MembershipUI:NSObject{
                 }
                 
                 PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
-                guard let data = IosLibAvailablePools(addr) else{
-                        return
-                }
                 
+                AppSetting.workQueue.async {
+                guard let data = IosLibAvailablePools(addr) else{return}
                 let poolJson = JSON(data)
                 var needSync = false
                 for (poolAddr, _):(String, JSON) in poolJson{
@@ -73,7 +72,6 @@ class MembershipUI:NSObject{
                 }
                 
                 if needSync{
-                        AppSetting.workQueue.async {
                                 syncAllMyMemberships()
                         }
                 }

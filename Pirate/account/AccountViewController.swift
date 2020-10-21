@@ -183,16 +183,16 @@ class AccountViewController: UIViewController {
         @IBAction func ApplyTokenAction(_ sender: UIButton) {
                 self.showIndicator(withTitle: "", and: "Applying......".locStr)
                 
-                AppSetting.workQueue.async {
-                        defer{self.hideIndicator()}
+                AppSetting.workQueue.async { [weak self] in
+                        defer{self?.hideIndicator()}
                         if false == Transaction.applyFreeToken(forAddr: Wallet.WInst.Address!){
-                                self.ShowTips(msg: "Apply Failed".locStr)
+                                self?.ShowTips(msg: "Apply Failed".locStr)
                                 return
                         }
                         
                         DispatchQueue.main.async {
-                                self.applyFreeTokenBtn.isHidden = true
-                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                                self?.applyFreeTokenBtn.isHidden = true
+                                self?.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
                         }
                 }
         }
@@ -200,16 +200,16 @@ class AccountViewController: UIViewController {
         @IBAction func ApplyEthAction(_ sender: UIButton) {
                 self.showIndicator(withTitle: "", and: "Applying......".locStr)
                 
-                AppSetting.workQueue.async {
-                        defer{self.hideIndicator()}
+                AppSetting.workQueue.async {  [weak self] in
+                        defer{self?.hideIndicator()}
                         if false == Transaction.applyFreeEth(forAddr: Wallet.WInst.Address!){
-                                self.ShowTips(msg: "Apply Failed".locStr)
+                                self?.ShowTips(msg: "Apply Failed".locStr)
                                 return
                         }
                         
                         DispatchQueue.main.async {
-                                self.applyFreeEthBtn.isHidden = true
-                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                                self?.applyFreeEthBtn.isHidden = true
+                                self?.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
                         }
                 }
         }

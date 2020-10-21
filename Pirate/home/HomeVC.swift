@@ -115,7 +115,9 @@ class HomeVC: UIViewController {
                 }
                 let balance = membership.packetBalance - Double(membership.credit)
                 guard Int(balance) > HopConstants.RechargePieceSize else{
-                        SwitchTab(Idx: 1, tips: "Insuffcient Founds".locStr)
+                        SwitchTab(Idx: 1){tab in
+                                tab.alertMessageToast(title: "Insuffcient Founds".locStr)
+                        }
                         return
                 }
                
