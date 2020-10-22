@@ -11,20 +11,31 @@ import BigInt
 
 class Utils: NSObject {
         
-        public static var Domains:Dictionary<String, NSObject>!
+        public static var Domains:[String:NSObject] = [:]
+        public static var IPRange:[String:NSObject] = [:]
         public static var JavaScriptString = ""
         private override init() {
                 super.init()
         }
         //TODO:: throw
-        static func initDomains() {
+        static func initDomains() throws{
                 guard let url = Bundle.main.path(forResource: "gfw", ofType: "plist") else{
-                        return
+                        throw HopError.hopProtocol("no gfw file")
                 }
-                guard let dic = NSDictionary(contentsOfFile: url) else{
-                        return
+                
+                guard let dic = NSDictionary(contentsOfFile: url) as? [String:NSObject],
+                      let cnDic = dic["CN"] as? [String:NSObject] else{
+                        throw HopError.hopProtocol("gfw file ")
                 }
-                Utils.Domains = (dic as! Dictionary<String, NSObject>)
+                
+                guard let domains = cnDic["domains"] as? [String : NSObject] else{
+                        throw HopError.hopProtocol("invalid domain names")
+                }
+                guard let ips = cnDic["iprange"] as? [String : NSObject] else{
+                        throw HopError.hopProtocol("invalid ip ranges")
+                }
+                Utils.Domains = domains
+                Utils.IPRange = ips
         } 
         
         static func getJavascriptProxyForRules (domains:Array<String>, address:String, port:String) -> String {

@@ -24,7 +24,7 @@ class AppSetting:NSObject{
                 
                 AppSetting.initSetting()
                 _ = HopSodium.initialized
-                Utils.initDomains()
+//                Utils.initDomains()
                 
                 AppSetting.workQueue.async {
                         Wallet.WInst.queryBalance()

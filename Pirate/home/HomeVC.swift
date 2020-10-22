@@ -145,8 +145,7 @@ class HomeVC: UIViewController {
                 
                 self.showIndicator(withTitle: "VPN", and: "Starting VPN".locStr)
                 
-                let options = ["ROUTE_RULES": Utils.Domains["CN"] as Any,
-                               "MAIN_PRI":pri as Any,
+                let options = ["MAIN_PRI":pri as Any,
                                "SUB_PRI":subPri as Any,
                                "POOL_ADDR":pool as Any,
                                "USER_ADDR":Wallet.WInst.Address as Any,

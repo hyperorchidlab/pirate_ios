@@ -46,16 +46,13 @@ class HOPDomainsRule: AllRule {
         
         open var matchCriteria: [MatchCriterion] = []
         
-        public init(adapterFactory: AdapterFactory, urls:[String:NSObject]?) {
+        public init(adapterFactory: AdapterFactory, urls:[String:NSObject]) {
                 self.adapterFactory = adapterFactory
                 super.init(adapterFactory: adapterFactory)
                 self.matchCriteria = parse(dic:urls)
         }
         
-        func parse(dic:[String:NSObject]?) -> [MatchCriterion] {
-                guard let url_data = dic else{
-                        return []
-                }
+        func parse(dic url_data:[String:NSObject]) -> [MatchCriterion] {
                 
                 var items:[MatchCriterion] = []
                 
@@ -63,9 +60,9 @@ class HOPDomainsRule: AllRule {
                         for each in regex_arr{
                                 NSLog("--------->regex===>\(each)")
                                 do{
-                                let reg = try NSRegularExpression(pattern: each)
-                                let rule = MatchCriterion.regex(reg)
-                                items.append(rule)
+                                        let reg = try NSRegularExpression(pattern: each)
+                                        let rule = MatchCriterion.regex(reg)
+                                        items.append(rule)
                                 }catch let err{
                                         NSLog(err.localizedDescription)
                                 }
@@ -99,7 +96,6 @@ class HOPDomainsRule: AllRule {
                                 items.append(MatchCriterion.complete(each))
                         }
                 }
-                
                 return items
         }
         

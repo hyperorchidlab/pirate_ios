@@ -39,8 +39,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 }
                 do {
                         try Protocol.pInst.setup(param: ops, delegate: self)
-                        let settings = try initSetting(rules: ops["ROUTE_RULES"] as! [String : NSObject],
-                                           minerID: ops["MINER_ADDR"] as! String)
+                        let settings = try initSetting(minerID: ops["MINER_ADDR"] as! String)
                         
                         HOPDomainsRule.ISGlobalMode = (ops["GLOBAL_MODE"] as? Bool == true)
                 
@@ -93,7 +92,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                }
         }
         
-        func initSetting(rules: [String : NSObject], minerID:String)throws -> NEPacketTunnelNetworkSettings {
+        func initSetting(minerID:String)throws -> NEPacketTunnelNetworkSettings {
                 
                 let networkSettings = NEPacketTunnelNetworkSettings.init(tunnelRemoteAddress: proxyServerAddress)
                 let ipv4Settings = NEIPv4Settings.init(addresses: ["10.0.0.8"], subnetMasks: ["255.255.255.0"])
@@ -139,14 +138,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         throw HopError.minerErr("--------->Initial miner data failed")
                 }
                 
-                let hopRule = HOPDomainsRule(adapterFactory: hopAdapterFactory, urls: rules)
+                try Utils.initDomains()
+                
+                let hopRule = HOPDomainsRule(adapterFactory: hopAdapterFactory, urls: Utils.Domains)
                 
                 var ipStrings:[String] = []
-                ipStrings.append(contentsOf: HopConstants.TelegramIPRange)
-                ipStrings.append(contentsOf: HopConstants.LineIPRange)
-//                ipStrings.append(contentsOf: HopConstants.NetflixIPRange)
+                ipStrings.append(contentsOf: Utils.IPRange["line"] as! [String])
+                ipStrings.append(contentsOf: Utils.IPRange["tel"] as! [String])
+                ipStrings.append(contentsOf: Utils.IPRange["whatsapp"] as! [String])
+                ipStrings.append(contentsOf: Utils.IPRange["snap"] as! [String])
+                ipStrings.append(contentsOf: Utils.IPRange["netfix"] as! [String])
                 let ipRange = try HOPIPRangeRule(adapterFactory: hopAdapterFactory, ranges: ipStrings)
-                
+//                NSLog("--------->\(ipStrings)")
                 RuleManager.currentManager = RuleManager(fromRules: [hopRule, ipRange], appendDirect: true)
                 return networkSettings
         }

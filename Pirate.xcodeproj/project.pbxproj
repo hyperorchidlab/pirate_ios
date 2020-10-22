@@ -99,6 +99,7 @@
 		69FA41AC2405711E005CF3FA /* PacketMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41AB2405711E005CF3FA /* PacketMarket.swift */; };
 		69FA41AD2405711E005CF3FA /* PacketMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41AB2405711E005CF3FA /* PacketMarket.swift */; };
 		69FA41D3240667E1005CF3FA /* Receipt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* Receipt.xcdatamodeld */; };
+		7C1E58AE25417EDD0032F005 /* gfw.plist in Resources */ = {isa = PBXBuildFile; fileRef = 698A513E23FD08B900836E26 /* gfw.plist */; };
 		7C22E5D7252AD8F6001461F3 /* HopKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E5D5252AD8F6001461F3 /* HopKey.swift */; };
 		7C22E5DC252ADB8B001461F3 /* HopKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E5D5252AD8F6001461F3 /* HopKey.swift */; };
 		7C36020C2421132D0014E961 /* ApplyToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36020B2421132D0014E961 /* ApplyToken.swift */; };
@@ -569,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69FA41AA240553E9005CF3FA /* PacketMarket.abi in Resources */,
+				7C1E58AE25417EDD0032F005 /* gfw.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,7 +888,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -899,7 +901,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.2;
+				MARKETING_VERSION = 2.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
 				PRODUCT_NAME = Pirate;
 				PROVISIONING_PROFILE_SPECIFIER = dev_usa_pirate;
@@ -916,7 +918,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -929,7 +931,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.2;
+				MARKETING_VERSION = 2.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
 				PRODUCT_NAME = Pirate;
 				PROVISIONING_PROFILE_SPECIFIER = release_uas_pirate;
@@ -944,7 +946,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -957,7 +959,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.3.2;
+				MARKETING_VERSION = 2.3.3;
 				OS_ACTIVITY_MODE = default;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -974,7 +976,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -987,7 +989,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.3.2;
+				MARKETING_VERSION = 2.3.3;
 				OS_ACTIVITY_MODE = default;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
