@@ -114,10 +114,10 @@ class HOPDomainsRule: AllRule {
                         return adapterFactory
                 }
                 if matchDomain(session.host) {
-//                        NSLog("--------->$$$$$$[Domain]Hit host:[\(session.host):\(session.port)]")
+                        NSLog("--------->$$$$$$[Domain]Hit host:[\(session.host):\(session.port)]")
                         return adapterFactory
                 }
-//                NSLog("--------->*******[Domain]By pass host:[\(session.host):\(session.port)]")
+                NSLog("--------->*******[Domain]By pass host:[\(session.host):\(session.port)]")
                 return nil
         }
         

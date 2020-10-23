@@ -71,6 +71,27 @@ class HomeVC: UIViewController {
                                                        name: HopConstants.NOTI_MINER_INUSE_CHANGED.name, object: nil)
                 
                 
+                
+                
+                if #available(iOS 14.0, *) {
+                        NEDNSSettingsManager.shared().loadFromPreferences { (loadErr) in
+                                if let err = loadErr {
+                                        NSLog("=======>NEDNSSettingsManager load err: \(err)")
+                                        return
+                                }
+                                let dohSettings = NEDNSOverHTTPSSettings(servers: [ "2001:db8::2" ])
+                                dohSettings.serverURL = URL(string: "https://dnsserver.example.net/dns-query")
+                                NEDNSSettingsManager.shared().dnsSettings = dohSettings
+                                NEDNSSettingsManager.shared().saveToPreferences { (saveError) in
+                                        if let err = saveError{
+                                                NSLog("=======>NEDNSSettingsManager save err: \(err)")
+                                                return
+                                        }
+                                }
+                        }
+                } else {
+                        // Fallback on earlier versions
+                }
         }
         deinit {
                 NotificationCenter.default.removeObserver(self)

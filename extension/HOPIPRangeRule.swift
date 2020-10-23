@@ -69,11 +69,11 @@ open class HOPIPRangeRule: Rule {
 
         for range in ranges {
             if range.contains(ip: ip) {
-//                NSLog("--------->^^^^^^^^^[IP]Hit host:[\(session.host):\(session.port)]")
+                NSLog("--------->^^^^^^^^^[IP]Hit host:[\(session.host):\(session.port)]")
                 return adapterFactory
             }
         }
-//        NSLog("--------->@@@@@@[IP]By pass host:[\(session.host):\(session.port)]")
+        NSLog("--------->@@@@@@[IP]By pass host:[\(session.host):\(session.port)]")
         return nil
     }
 }
