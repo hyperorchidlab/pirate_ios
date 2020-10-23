@@ -73,25 +73,28 @@ class HomeVC: UIViewController {
                 
                 
                 
-                if #available(iOS 14.0, *) {
-                        NEDNSSettingsManager.shared().loadFromPreferences { (loadErr) in
-                                if let err = loadErr {
-                                        NSLog("=======>NEDNSSettingsManager load err: \(err)")
-                                        return
-                                }
-                                let dohSettings = NEDNSOverHTTPSSettings(servers: [ "2001:db8::2" ])
-                                dohSettings.serverURL = URL(string: "https://dnsserver.example.net/dns-query")
-                                NEDNSSettingsManager.shared().dnsSettings = dohSettings
-                                NEDNSSettingsManager.shared().saveToPreferences { (saveError) in
-                                        if let err = saveError{
-                                                NSLog("=======>NEDNSSettingsManager save err: \(err)")
-                                                return
-                                        }
-                                }
-                        }
-                } else {
-                        // Fallback on earlier versions
-                }
+//                if #available(iOS 14.0, *) {
+//                        NEDNSSettingsManager.shared().loadFromPreferences { (loadErr) in
+//                                if let err = loadErr {
+//                                        NSLog("=======>NEDNSSettingsManager load err: \(err)")
+//                                        return
+//                                }
+//                                NEDNSSettingsManager.shared().removeFromPreferences { (err) in
+//                                        NSLog("=======>NEDNSSettingsManager load err: \(err)")
+//                                }
+////                                let dohSettings = NEDNSOverHTTPSSettings(servers: [ "2001:db8::2" ])
+////                                dohSettings.serverURL = URL(string: "https://dnsserver.example.net/dns-query")
+////                                NEDNSSettingsManager.shared().dnsSettings = dohSettings
+////                                NEDNSSettingsManager.shared().saveToPreferences { (saveError) in
+////                                        if let err = saveError{
+////                                                NSLog("=======>NEDNSSettingsManager save err: \(err)")
+////                                                return
+////                                        }
+////                                }
+//                        }
+//                } else {
+//                        // Fallback on earlier versions
+//                }
         }
         deinit {
                 NotificationCenter.default.removeObserver(self)
