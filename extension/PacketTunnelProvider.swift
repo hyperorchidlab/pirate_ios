@@ -39,6 +39,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 }
                 do {
                         try Protocol.pInst.setup(param: ops, delegate: self)
+                        
+                        try Utils.initDomains()
+                        
                         let settings = try initSetting(minerID: ops["MINER_ADDR"] as! String)
                         
                         HOPDomainsRule.ISGlobalMode = (ops["GLOBAL_MODE"] as? Bool == true)
@@ -119,10 +122,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 proxySettings.httpServer = NEProxyServer.init(address: proxyServerAddress, port: Int(proxyServerPort))
                 proxySettings.httpsEnabled = true;
                 proxySettings.httpsServer = NEProxyServer.init(address: proxyServerAddress, port: Int(proxyServerPort))
-                proxySettings.excludeSimpleHostnames = false;
+                proxySettings.excludeSimpleHostnames = true;
                 proxySettings.matchDomains = [""]
-                proxySettings.exceptionList = ["*.infura.io"]
-                
+//                proxySettings.exceptionList = []//Utils.Exclusives
                 if enablePacketProcessing {
                         let DNSSettings = NEDNSSettings(servers: ["198.18.0.1"])
                         DNSSettings.matchDomains = [""]
@@ -137,8 +139,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 guard let hopAdapterFactory = HOPAdapterFactory(miner:minerID) else{
                         throw HopError.minerErr("--------->Initial miner data failed")
                 }
-                
-                try Utils.initDomains()
                 
                 let hopRule = HOPDomainsRule(adapterFactory: hopAdapterFactory, urls: Utils.Domains)
                 

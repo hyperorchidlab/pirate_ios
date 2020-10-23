@@ -58,7 +58,7 @@ class HOPDomainsRule: AllRule {
                 
                 if let regex_arr = url_data[KEY_REGEX] as? [String] {
                         for each in regex_arr{
-                                NSLog("--------->regex===>\(each)")
+//                                NSLog("--------->regex===>\(each)")
                                 do{
                                         let reg = try NSRegularExpression(pattern: each)
                                         let rule = MatchCriterion.regex(reg)
@@ -71,7 +71,7 @@ class HOPDomainsRule: AllRule {
                 
                 if let regex_arr = url_data[KEY_PREFIX] as? [String] {
                         for each in regex_arr{
-                                NSLog("--------->prefix===>\(each)")
+//                                NSLog("--------->prefix===>\(each)")
                                 items.append(MatchCriterion.prefix(each))
                         }
                 }
@@ -85,14 +85,14 @@ class HOPDomainsRule: AllRule {
                 
                 if let regex_arr = url_data[KEY_KEYWORD] as? [String] {
                         for each in regex_arr{
-                                NSLog("--------->keyword===>\(each)")
+//                                NSLog("--------->keyword===>\(each)")
                                 items.append(MatchCriterion.keyword(each))
                         }
                 }
                 
                 if let regex_arr = url_data[KEY_COMPLETE] as? [String] {
                         for each in regex_arr{
-                                NSLog("--------->complete===>\(each)")
+//                                NSLog("--------->complete===>\(each)")
                                 items.append(MatchCriterion.complete(each))
                         }
                 }

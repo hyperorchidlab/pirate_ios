@@ -25,6 +25,28 @@
 	</dict>
 	<key>CN</key>
 	<dict>
+		<key>exclude</key>
+		<array>
+			<string>*.icloud.com</string>
+			<string>*.infura.io</string>
+			<string>*.qq.com</string>
+			<string>*.apple.com</string>
+			<string>*.sina.com.cn</string>
+			<string>*.126.com</string>
+			<string>*.163.com</string>
+			<string>*.weibo.com</string>
+			<string>*.taobao.com</string>
+			<string>*.jd.com</string>
+			<string>*.tmall.com</string>
+			<string>*.toutiao.com</string>
+			<string>*.cmbchina.com</string>
+			<string>*dianping.com</string>
+			<string>*.meituan.com</string>
+			<string>*.umetrip.com</string>
+			<string>*.diditaxi.com.cn</string>
+			<string>*.ruubypay.com</string>
+			<string>*.amap.com</string>
+		</array>
 		<key>iprange</key>
 		<dict>
 			<key>netfix</key>
