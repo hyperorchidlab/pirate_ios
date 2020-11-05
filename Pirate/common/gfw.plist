@@ -219,6 +219,11 @@
 				<string>63.251.222.0/24</string>
                                 <string>202.160.128.0/24</string>
                                 <string>35.190.0.0/16</string>
+                                <string>3.208.0.0/12</string>
+                                <string>18.138.0.0/15</string>
+                                <string>54.208.0.0/15</string>
+                                <string>128.121.0.0/16</string>
+                                <string>34.192.0.0/12</string>
 			</array>
 			<key>whatsapp</key>
 			<array>
