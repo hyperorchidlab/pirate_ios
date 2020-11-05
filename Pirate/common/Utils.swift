@@ -25,6 +25,7 @@ class Utils: NSObject {
                 }
                 
                 guard let dic = NSDictionary(contentsOfFile: url) as? [String:NSObject],
+//                      let cnDic = dic["TEST"] as? [String:NSObject] else{
                       let cnDic = dic["CN"] as? [String:NSObject] else{
                         throw HopError.hopProtocol("gfw file ")
                 }
