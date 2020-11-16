@@ -217,39 +217,39 @@
 				<string>204.154.248.0/24</string>
 				<string>204.154.250.0/24</string>
 				<string>63.251.222.0/24</string>
-                                <string>202.160.128.0/24</string>
-                                <string>35.190.0.0/16</string>
-                                <string>3.208.0.0/12</string>
-                                <string>18.138.0.0/15</string>
-                                <string>54.208.0.0/15</string>
-                                <string>128.121.0.0/16</string>
-                                <string>34.192.0.0/12</string>
-                                <string>199.96.58.0/23</string>
-                                <string>199.59.148.0/22</string>
-                                <string>98.159.108.0/24</string>
-                                <string>67.230.160.0/20</string>
-                                <string>103.252.114.0/23</string>
-                                <string>199.193.112.0/21</string>
-                                <string>185.45.6.0/23</string>
-                                <string>104.244.43.0/24</string>
-                                <string>199.16.156.0/22</string>
-                                <string>202.160.130.0/24</string>
-                                <string>162.125.80.0/24</string>
-                                <string>162.125.7.0/24</string>
-                                <string>162.125.32.0/24</string>
-                                <string>199.96.62.0/23</string>
-                                <string>192.133.76.0/23</string>
+				<string>202.160.128.0/24</string>
+				<string>35.190.0.0/16</string>
+				<string>3.208.0.0/12</string>
+				<string>18.138.0.0/15</string>
+				<string>54.208.0.0/15</string>
+				<string>128.121.0.0/16</string>
+				<string>34.192.0.0/12</string>
+				<string>199.96.58.0/23</string>
+				<string>199.59.148.0/22</string>
+				<string>98.159.108.0/24</string>
+				<string>67.230.160.0/20</string>
+				<string>103.252.114.0/23</string>
+				<string>199.193.112.0/21</string>
+				<string>185.45.6.0/23</string>
+				<string>104.244.43.0/24</string>
+				<string>199.16.156.0/22</string>
+				<string>202.160.130.0/24</string>
+				<string>162.125.80.0/24</string>
+				<string>162.125.7.0/24</string>
+				<string>162.125.32.0/24</string>
+				<string>199.96.62.0/23</string>
+				<string>192.133.76.0/23</string>
 			</array>
 			<key>whatsapp</key>
 			<array>
 				<string>31.13.81.0/24</string>
-                                <string>173.252.88.0/21</string>
-                                <string>66.220.144.0/21</string>
-                                <string>50.87.0.0/16</string>
+				<string>173.252.88.0/21</string>
+				<string>66.220.144.0/21</string>
+				<string>50.87.0.0/16</string>
 				<string>31.13.87.0/24</string>
 				<string>31.13.85.0/24</string>
 				<string>31.13.64.0/19</string>
-                                <string>31.13.96.0/19</string>
+				<string>31.13.96.0/19</string>
 				<string>50.22.240.160/27</string>
 				<string>50.23.90.128/27</string>
 				<string>66.111.48.0/24</string>
@@ -5365,6 +5365,7 @@
 				<string>mmg.whatsapp.net</string>
 				<string>graph.facebook.com</string>
 				<string>static.whatsapp.net</string>
+				<string>raw.githubusercontent.com</string>
 				<string>gcs.sc-cdn.net</string>
 			</array>
 		</dict>
