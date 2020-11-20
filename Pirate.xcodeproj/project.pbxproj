@@ -905,7 +905,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
 				PRODUCT_NAME = Pirate;
 				PROVISIONING_PROFILE_SPECIFIER = dev_usa_pirate;
@@ -935,7 +935,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
 				PRODUCT_NAME = Pirate;
 				PROVISIONING_PROFILE_SPECIFIER = release_uas_pirate;
@@ -963,7 +963,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 2.3.4;
 				OS_ACTIVITY_MODE = default;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -993,7 +993,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 2.3.4;
 				OS_ACTIVITY_MODE = default;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
