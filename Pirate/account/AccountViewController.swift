@@ -25,6 +25,7 @@ class AccountViewController: UIViewController {
         @IBOutlet weak var tokenBalanceLabel: UILabel!
         @IBOutlet weak var dnsIPLabel: UILabel!
         @IBOutlet weak var authorBtn: UIButton!
+        @IBOutlet weak var usermanualView: UIView!
         
         var appVersion: String? {
             return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
@@ -57,6 +58,10 @@ class AccountViewController: UIViewController {
                 let tap5 = UITapGestureRecognizer(target: self, action: #selector(copyAddress))
                 tap5.numberOfTapsRequired = 2
                 walletView.addGestureRecognizer(tap5)
+                
+                let tap6 = UITapGestureRecognizer(target: self, action: #selector(showUserManual))
+                tap6.numberOfTapsRequired = 1
+                usermanualView.addGestureRecognizer(tap6)
                 
                 loadTransaction()
                 
@@ -160,6 +165,10 @@ class AccountViewController: UIViewController {
         @objc func copyAddress() {
                 UIPasteboard.general.string = Wallet.WInst.Address
                 self.ShowTips(msg: "Copy Success".locStr)
+        }
+        
+        @objc func showUserManual() {
+                self.performSegue(withIdentifier: "ShowManualPages", sender: self)
         }
         
         private func checkStatusButon(){

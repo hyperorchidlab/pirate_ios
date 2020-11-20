@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1504,7 +1504,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKp-Nm-CRA">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKp-Nm-CRA" userLabel="verion">
                                 <rect key="frame" x="8" y="306" width="398" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcR-Mq-m95">
@@ -1594,6 +1594,46 @@
                                     <action selector="ApplyEthAction:" destination="1fD-Hm-fHU" eventType="touchUpInside" id="WNB-vH-SEI"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uz5-rQ-oZ5" userLabel="User Manual">
+                                <rect key="frame" x="8" y="536" width="398" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3h-J1-0KY">
+                                        <rect key="frame" x="358" y="6" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="QVP-k8-gDE"/>
+                                            <constraint firstAttribute="width" constant="32" id="zoX-ys-kw3"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.94901960780000005" green="0.52156862749999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="&gt;_icon">
+                                            <color key="titleColor" red="0.94901960780000005" green="0.52156862749999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.94901960780000005" green="0.52156862749999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="W60-Qn-uxi" kind="presentation" identifier="ShowManualPages" id="GUk-rI-Yec"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JZ-Xp-hVd">
+                                        <rect key="frame" x="8" y="12.5" width="90.5" height="19"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="1JZ-Xp-hVd" firstAttribute="centerY" secondItem="uz5-rQ-oZ5" secondAttribute="centerY" id="IW1-Kj-yBe"/>
+                                    <constraint firstAttribute="height" constant="44" id="JO9-14-W8B"/>
+                                    <constraint firstItem="1JZ-Xp-hVd" firstAttribute="leading" secondItem="uz5-rQ-oZ5" secondAttribute="leading" constant="8" id="NEC-yj-EGO"/>
+                                    <constraint firstItem="q3h-J1-0KY" firstAttribute="centerY" secondItem="uz5-rQ-oZ5" secondAttribute="centerY" id="ZfJ-Eg-658"/>
+                                    <constraint firstAttribute="trailing" secondItem="q3h-J1-0KY" secondAttribute="trailing" constant="8" id="apa-nJ-0pa"/>
+                                    <constraint firstItem="q3h-J1-0KY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1JZ-Xp-hVd" secondAttribute="trailing" priority="100" constant="8" symbolic="YES" id="wXe-wq-peF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vea-4K-p7f"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -1608,10 +1648,12 @@
                             <constraint firstItem="da3-Ua-crF" firstAttribute="top" secondItem="vea-4K-p7f" secondAttribute="top" constant="4" id="FB2-al-rAm"/>
                             <constraint firstItem="dsq-Dx-7BW" firstAttribute="leading" secondItem="vea-4K-p7f" secondAttribute="leading" constant="8" id="HS4-Lp-TKT"/>
                             <constraint firstItem="SuG-Qz-e1H" firstAttribute="leading" secondItem="vea-4K-p7f" secondAttribute="leading" constant="8" id="L2R-kh-yLw"/>
+                            <constraint firstItem="uz5-rQ-oZ5" firstAttribute="leading" secondItem="vea-4K-p7f" secondAttribute="leading" constant="8" id="Ls3-p8-0Nn"/>
                             <constraint firstItem="vea-4K-p7f" firstAttribute="trailing" secondItem="A2C-5k-Qry" secondAttribute="trailing" constant="8" id="OYy-tU-lEt"/>
                             <constraint firstItem="vea-4K-p7f" firstAttribute="bottom" secondItem="NeT-dC-nWA" secondAttribute="bottom" constant="20" id="PCV-Dr-Jb1"/>
                             <constraint firstItem="dsq-Dx-7BW" firstAttribute="top" secondItem="nD4-1V-ddL" secondAttribute="bottom" constant="2" id="Sgk-08-SVN"/>
                             <constraint firstItem="vea-4K-p7f" firstAttribute="trailing" secondItem="da3-Ua-crF" secondAttribute="trailing" constant="8" id="TIW-a9-2oB"/>
+                            <constraint firstItem="uz5-rQ-oZ5" firstAttribute="top" secondItem="OKl-ZV-NGW" secondAttribute="bottom" constant="2" id="TQy-lw-92d"/>
                             <constraint firstItem="NeT-dC-nWA" firstAttribute="leading" secondItem="Jq5-0i-gHR" secondAttribute="leading" constant="8" id="UHQ-QX-3M9"/>
                             <constraint firstItem="da3-Ua-crF" firstAttribute="leading" secondItem="vea-4K-p7f" secondAttribute="leading" constant="8" id="XCk-Mg-yjT"/>
                             <constraint firstItem="OKl-ZV-NGW" firstAttribute="top" secondItem="Ii6-Wf-x3H" secondAttribute="bottom" constant="2" id="ZYE-Vr-Y2G"/>
@@ -1621,6 +1663,7 @@
                             <constraint firstItem="vea-4K-p7f" firstAttribute="trailing" secondItem="Ii6-Wf-x3H" secondAttribute="trailing" constant="8" id="jdd-vK-c1K"/>
                             <constraint firstItem="vea-4K-p7f" firstAttribute="trailing" secondItem="dsq-Dx-7BW" secondAttribute="trailing" constant="8" id="oYt-AF-zM2"/>
                             <constraint firstItem="OKl-ZV-NGW" firstAttribute="leading" secondItem="vea-4K-p7f" secondAttribute="leading" constant="8" id="onV-xf-epy"/>
+                            <constraint firstItem="vea-4K-p7f" firstAttribute="trailing" secondItem="uz5-rQ-oZ5" secondAttribute="trailing" constant="8" id="qS7-S8-FvU"/>
                             <constraint firstItem="A2C-5k-Qry" firstAttribute="top" secondItem="da3-Ua-crF" secondAttribute="bottom" constant="4" id="u05-Ne-Dn4"/>
                             <constraint firstItem="hKp-Nm-CRA" firstAttribute="top" secondItem="A2C-5k-Qry" secondAttribute="bottom" constant="16" id="vCb-Sn-4TF"/>
                             <constraint firstItem="Ii6-Wf-x3H" firstAttribute="leading" secondItem="vea-4K-p7f" secondAttribute="leading" constant="8" id="wTs-pE-rqr"/>
@@ -1652,6 +1695,7 @@
                         <outlet property="telegramView" destination="OKl-ZV-NGW" id="evx-Yx-w4a"/>
                         <outlet property="tokenBalanceLabel" destination="Ujt-ke-wwC" id="519-II-lFk"/>
                         <outlet property="transactionNOLabel" destination="gKQ-nX-a0z" id="qek-80-yVj"/>
+                        <outlet property="usermanualView" destination="uz5-rQ-oZ5" id="nyV-Yh-QOl"/>
                         <outlet property="walletAddrLabel" destination="EFd-S6-2XD" id="KCE-c8-uwS"/>
                         <outlet property="walletView" destination="da3-Ua-crF" id="yHY-38-KBD"/>
                     </connections>
@@ -1758,6 +1802,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWP-4W-1zB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4041" y="2591"/>
+        </scene>
+        <!--Pages View Controller-->
+        <scene sceneID="8of-60-8wb">
+            <objects>
+                <pageViewController storyboardIdentifier="PagesViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="W60-Qn-uxi" customClass="PagesViewController" customModule="Pirate" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KNp-Gh-wUC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4041" y="3329"/>
+        </scene>
+        <!--User Manual View Controller-->
+        <scene sceneID="Qfk-Gm-AWi">
+            <objects>
+                <viewController storyboardIdentifier="UserManualViewController" id="Jxz-h2-gf9" customClass="UserManualViewController" customModule="Pirate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uK8-t8-TrT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IOS_01" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pkQ-zZ-Ly9">
+                                <rect key="frame" x="8" y="52" width="398" height="802"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tEr-Ih-blY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pkQ-zZ-Ly9" firstAttribute="leading" secondItem="tEr-Ih-blY" secondAttribute="leading" constant="8" id="EPT-uz-Nee"/>
+                            <constraint firstItem="tEr-Ih-blY" firstAttribute="trailing" secondItem="pkQ-zZ-Ly9" secondAttribute="trailing" constant="8" id="FWu-2S-a1g"/>
+                            <constraint firstItem="pkQ-zZ-Ly9" firstAttribute="top" secondItem="tEr-Ih-blY" secondAttribute="top" constant="8" id="JT6-sO-WB8"/>
+                            <constraint firstItem="tEr-Ih-blY" firstAttribute="bottom" secondItem="pkQ-zZ-Ly9" secondAttribute="bottom" constant="8" id="pts-Oz-6oq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="GuideImageView" destination="pkQ-zZ-Ly9" id="Ouj-pr-6lK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QRX-cq-bKE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5084" y="3329"/>
         </scene>
         <!--New Account View Controller-->
         <scene sceneID="lOG-34-qte">
@@ -2348,6 +2429,7 @@
         <image name="&gt;_icon" width="23" height="22"/>
         <image name="Dis_butt" width="240" height="240"/>
         <image name="Global_icon" width="36" height="36"/>
+        <image name="IOS_01" width="407" height="891.5"/>
         <image name="QR_icon" width="22" height="22"/>
         <image name="Recharge_icon" width="26" height="26"/>
         <image name="Recharge_icon_s" width="26" height="26"/>

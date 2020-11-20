@@ -47,6 +47,8 @@
 		698A513D23FCF90700836E26 /* HOPDomainsRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513C23FCF90700836E26 /* HOPDomainsRule.swift */; };
 		698A514323FD58DC00836E26 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A514223FD58DC00836E26 /* Utils.swift */; };
 		698A514423FD5BC900836E26 /* gfw.plist in Resources */ = {isa = PBXBuildFile; fileRef = 698A513E23FD08B900836E26 /* gfw.plist */; };
+		698D07622567700200A55656 /* UserManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698D07612567700200A55656 /* UserManualViewController.swift */; };
+		698D0766256773C400A55656 /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698D0765256773C400A55656 /* PagesViewController.swift */; };
 		69980C2923F78D3E00829B09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69980C2823F78D3E00829B09 /* AppDelegate.swift */; };
 		69980C2B23F78D3E00829B09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69980C2A23F78D3E00829B09 /* SceneDelegate.swift */; };
 		69980C2D23F78D3E00829B09 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69980C2C23F78D3E00829B09 /* HomeVC.swift */; };
@@ -193,6 +195,9 @@
 		698A513C23FCF90700836E26 /* HOPDomainsRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPDomainsRule.swift; sourceTree = "<group>"; };
 		698A513E23FD08B900836E26 /* gfw.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = gfw.plist; sourceTree = "<group>"; };
 		698A514223FD58DC00836E26 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		698D07612567700200A55656 /* UserManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManualViewController.swift; sourceTree = "<group>"; };
+		698D0765256773C400A55656 /* PagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
+		698D07692567A4C000A55656 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		69980C2523F78D3E00829B09 /* Pirate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pirate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69980C2823F78D3E00829B09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69980C2A23F78D3E00829B09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,7 +230,6 @@
 		7C36020B2421132D0014E961 /* ApplyToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyToken.swift; sourceTree = "<group>"; };
 		7C36020D242113FD0014E961 /* ApplyToken.abi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApplyToken.abi; sourceTree = "<group>"; };
 		7C3D0523252AA5B800B59255 /* Miner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miner.swift; sourceTree = "<group>"; };
-		7C5E956225328CD600541CFB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		7C5E956725328D2900541CFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C61CCFC252D65AB00CF8D06 /* MembershipEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipEX.swift; sourceTree = "<group>"; };
 		7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 				696A71F52514891F004EA5DE /* AccountViewController.swift */,
 				696B02E42519EB2000F76A51 /* TransactionViewController.swift */,
 				7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */,
+				698D07612567700200A55656 /* UserManualViewController.swift */,
+				698D0765256773C400A55656 /* PagesViewController.swift */,
 			);
 			path = account;
 			sourceTree = "<group>";
@@ -650,10 +656,12 @@
 				696B02E9251A079500F76A51 /* RoundedCornerView.swift in Sources */,
 				7C22E5DC252ADB8B001461F3 /* HopKey.swift in Sources */,
 				6932A18F24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift in Sources */,
+				698D07622567700200A55656 /* UserManualViewController.swift in Sources */,
 				69FA41A324055274005CF3FA /* EthUtil.swift in Sources */,
 				69779A7825219F48003A163C /* RechargeViewController.swift in Sources */,
 				69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */,
 				7CEFA3C22525F86F00A2E2B4 /* MembershipTableViewCell.swift in Sources */,
+				698D0766256773C400A55656 /* PagesViewController.swift in Sources */,
 				69980C2D23F78D3E00829B09 /* HomeVC.swift in Sources */,
 				7CEFA3BE2525F5D600A2E2B4 /* MembershipViewController.swift in Sources */,
 				6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */,
@@ -744,8 +752,8 @@
 		69980C3023F78D3E00829B09 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7C5E956225328CD600541CFB /* zh-Hans */,
 				7C5E956725328D2900541CFB /* Base */,
+				698D07692567A4C000A55656 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
