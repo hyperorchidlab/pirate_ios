@@ -1609,7 +1609,7 @@
                                             <color key="titleShadowColor" red="0.94901960780000005" green="0.52156862749999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="W60-Qn-uxi" kind="presentation" identifier="ShowManualPages" id="GUk-rI-Yec"/>
+                                            <segue destination="Jxz-h2-gf9" kind="show" identifier="ShowManualPages" id="CSP-lz-sLY"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JZ-Xp-hVd">
@@ -1803,14 +1803,6 @@
             </objects>
             <point key="canvasLocation" x="4041" y="2591"/>
         </scene>
-        <!--Pages View Controller-->
-        <scene sceneID="8of-60-8wb">
-            <objects>
-                <pageViewController storyboardIdentifier="PagesViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="W60-Qn-uxi" customClass="PagesViewController" customModule="Pirate" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KNp-Gh-wUC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4041" y="3329"/>
-        </scene>
         <!--User Manual View Controller-->
         <scene sceneID="Qfk-Gm-AWi">
             <objects>
@@ -1819,26 +1811,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IOS_01" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pkQ-zZ-Ly9">
-                                <rect key="frame" x="8" y="52" width="398" height="802"/>
-                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="OYd-9G-GWR">
+                                <rect key="frame" x="8" y="805" width="398" height="0.0"/>
+                                <color key="pageIndicatorTintColor" red="0.96862745100000003" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.42745098040000001" green="0.59215686270000001" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ple-Ez-Nry">
+                                <rect key="frame" x="20" y="108" width="374" height="685"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tEr-Ih-blY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pkQ-zZ-Ly9" firstAttribute="leading" secondItem="tEr-Ih-blY" secondAttribute="leading" constant="8" id="EPT-uz-Nee"/>
-                            <constraint firstItem="tEr-Ih-blY" firstAttribute="trailing" secondItem="pkQ-zZ-Ly9" secondAttribute="trailing" constant="8" id="FWu-2S-a1g"/>
-                            <constraint firstItem="pkQ-zZ-Ly9" firstAttribute="top" secondItem="tEr-Ih-blY" secondAttribute="top" constant="8" id="JT6-sO-WB8"/>
-                            <constraint firstItem="tEr-Ih-blY" firstAttribute="bottom" secondItem="pkQ-zZ-Ly9" secondAttribute="bottom" constant="8" id="pts-Oz-6oq"/>
+                            <constraint firstItem="OYd-9G-GWR" firstAttribute="leading" secondItem="tEr-Ih-blY" secondAttribute="leading" constant="8" id="1Qh-pz-78h"/>
+                            <constraint firstItem="tEr-Ih-blY" firstAttribute="trailing" secondItem="ple-Ez-Nry" secondAttribute="trailing" constant="20" id="2Oq-ul-G2Z"/>
+                            <constraint firstItem="ple-Ez-Nry" firstAttribute="top" secondItem="tEr-Ih-blY" secondAttribute="top" constant="20" id="DOZ-Ht-LKw"/>
+                            <constraint firstItem="OYd-9G-GWR" firstAttribute="top" secondItem="tEr-Ih-blY" secondAttribute="bottom" constant="-8" id="PmH-7z-zhQ"/>
+                            <constraint firstItem="ple-Ez-Nry" firstAttribute="bottom" secondItem="tEr-Ih-blY" secondAttribute="bottom" constant="-20" id="QKW-1I-H56"/>
+                            <constraint firstItem="ple-Ez-Nry" firstAttribute="leading" secondItem="tEr-Ih-blY" secondAttribute="leading" constant="20" id="ToS-x0-1oX"/>
+                            <constraint firstItem="tEr-Ih-blY" firstAttribute="bottom" secondItem="OYd-9G-GWR" secondAttribute="bottom" constant="8" id="Vbn-D9-3Hk"/>
+                            <constraint firstItem="tEr-Ih-blY" firstAttribute="trailing" secondItem="OYd-9G-GWR" secondAttribute="trailing" constant="8" id="pIX-aS-h82"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="oSM-am-kTn"/>
                     <connections>
-                        <outlet property="GuideImageView" destination="pkQ-zZ-Ly9" id="Ouj-pr-6lK"/>
+                        <outlet property="pageControl" destination="OYd-9G-GWR" id="Hof-xK-cMm"/>
+                        <outlet property="scrollView" destination="ple-Ez-Nry" id="Mm7-C9-eJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRX-cq-bKE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5084" y="3329"/>
+            <point key="canvasLocation" x="4040.579710144928" y="3355.5803571428569"/>
         </scene>
         <!--New Account View Controller-->
         <scene sceneID="lOG-34-qte">
@@ -2429,7 +2432,6 @@
         <image name="&gt;_icon" width="23" height="22"/>
         <image name="Dis_butt" width="240" height="240"/>
         <image name="Global_icon" width="36" height="36"/>
-        <image name="IOS_01" width="407" height="891.5"/>
         <image name="QR_icon" width="22" height="22"/>
         <image name="Recharge_icon" width="26" height="26"/>
         <image name="Recharge_icon_s" width="26" height="26"/>
