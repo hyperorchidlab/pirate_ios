@@ -35,9 +35,7 @@ class Miner : NSObject {
                 }
                 
                 if minerArr.count == 0{
-                        AppSetting.workQueue.async {
-                                SyncMinerFromETH()
-                        }
+                        SyncMinerFromETH(pool)
                         return
                 }
         
@@ -46,36 +44,19 @@ class Miner : NSObject {
                 }
                 
                 PostNoti(HopConstants.NOTI_MINER_CACHE_LOADED)
-                AppSetting.workQueue.async {
-                        guard let data = IosLibMinerList(pool) else{
-                                return
-                        }
-                        
-                        let json = JSON(data)
-                        var needSync = false
-                        for (subAddr, _):(String, JSON) in json{
-                                guard let _ = CachedMiner[subAddr.lowercased()] else {
-                                        needSync = true
-                                        break
-                                }
-                        }
-                        if needSync{
-                                SyncMinerFromETH()
-                        }
-                }
         }
         
-        public static func SyncMinerFromETH(){
+        public static func SyncMinerFromETH(_ pool:String){
+                guard let data = IosLibMinerList(pool) else{
+                        return
+                }
+                
+                let json = JSON(data)
                 CachedMiner.removeAll()
                 guard let pool = AppSetting.coreData?.poolAddrInUsed else{
                         return
                 }
                 
-                guard let data = IosLibMinerWithDetails(pool) else {
-                        return
-                }
-                
-                let json = JSON(data)
                 let dbContext = DataShareManager.privateQueueContext()
                 
                 for (subAddr, subJson):(String, JSON) in json {
