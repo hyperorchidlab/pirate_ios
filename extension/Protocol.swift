@@ -49,7 +49,7 @@ public class Protocol:NSObject{
                 
                 let main_pri    = param["MAIN_PRI"] as! Data
                 let sub_pri     = param["SUB_PRI"] as! Data
-                let poolAddrStr = (param["POOL_ADDR"] as! String)
+                let poolAddrStr = EthereumAddress.toChecksumAddress(param["POOL_ADDR"] as! String)!
                 let minerID     = param["MINER_ADDR"] as! String
                 let userAddr    = (param["USER_ADDR"] as! String)
                 

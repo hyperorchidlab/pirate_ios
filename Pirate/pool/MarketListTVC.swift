@@ -81,7 +81,9 @@ class MarketListTVC: UITableViewController {
                 }
                 let tokenSum = 100 * HopConstants.DefaultTokenDecimal2
                 guard Wallet.WInst.approve > tokenSum else{
-                        SwitchTab(Idx: 2, tips: "Please Approve Token Usage".locStr)
+                        SwitchTab(Idx: 2){ tab in
+                                tab.alertMessageToast(title: "Please Approve Token Usage".locStr)
+                        }
                         return
                 }
                 

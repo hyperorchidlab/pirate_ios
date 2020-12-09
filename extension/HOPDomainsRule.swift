@@ -9,7 +9,7 @@
 import UIKit
 import NEKit
 
-class HOPRule: AllRule {
+class HOPDomainsRule: AllRule {
         
         public let KEY_SUFFIX = "suffix"
         public let KEY_PREFIX = "prefix"
@@ -46,26 +46,23 @@ class HOPRule: AllRule {
         
         open var matchCriteria: [MatchCriterion] = []
         
-        public init(adapterFactory: AdapterFactory, urls:[String:NSObject]?) {
+        public init(adapterFactory: AdapterFactory, urls:[String:NSObject]) {
                 self.adapterFactory = adapterFactory
                 super.init(adapterFactory: adapterFactory)
                 self.matchCriteria = parse(dic:urls)
         }
         
-        func parse(dic:[String:NSObject]?) -> [MatchCriterion] {
-                guard let url_data = dic else{
-                        return []
-                }
+        func parse(dic url_data:[String:NSObject]) -> [MatchCriterion] {
                 
                 var items:[MatchCriterion] = []
                 
                 if let regex_arr = url_data[KEY_REGEX] as? [String] {
                         for each in regex_arr{
-                                NSLog("--------->regex===>\(each)")
+//                                NSLog("--------->regex===>\(each)")
                                 do{
-                                let reg = try NSRegularExpression(pattern: each)
-                                let rule = MatchCriterion.regex(reg)
-                                items.append(rule)
+                                        let reg = try NSRegularExpression(pattern: each)
+                                        let rule = MatchCriterion.regex(reg)
+                                        items.append(rule)
                                 }catch let err{
                                         NSLog(err.localizedDescription)
                                 }
@@ -74,7 +71,7 @@ class HOPRule: AllRule {
                 
                 if let regex_arr = url_data[KEY_PREFIX] as? [String] {
                         for each in regex_arr{
-                                NSLog("--------->prefix===>\(each)")
+//                                NSLog("--------->prefix===>\(each)")
                                 items.append(MatchCriterion.prefix(each))
                         }
                 }
@@ -88,18 +85,17 @@ class HOPRule: AllRule {
                 
                 if let regex_arr = url_data[KEY_KEYWORD] as? [String] {
                         for each in regex_arr{
-                                NSLog("--------->keyword===>\(each)")
+//                                NSLog("--------->keyword===>\(each)")
                                 items.append(MatchCriterion.keyword(each))
                         }
                 }
                 
                 if let regex_arr = url_data[KEY_COMPLETE] as? [String] {
                         for each in regex_arr{
-                                NSLog("--------->complete===>\(each)")
+//                                NSLog("--------->complete===>\(each)")
                                 items.append(MatchCriterion.complete(each))
                         }
                 }
-                
                 return items
         }
         
@@ -114,13 +110,14 @@ class HOPRule: AllRule {
         }
         
         override open func match(_ session: ConnectSession) -> AdapterFactory? {
-                if HOPRule.ISGlobalMode {
+                if HOPDomainsRule.ISGlobalMode {
                         return adapterFactory
                 }
                 if matchDomain(session.host) {
+                        NSLog("--------->*******[Domain]Hit host:[\(session.host):\(session.port)]")
                         return adapterFactory
                 }
-//                NSLog("--------->By pass host:[\(session.host):\(session.port)] Thread = [\(Thread.current.description)]")
+                NSLog("--------->[Domain]By pass host:[\(session.host):\(session.port)]")
                 return nil
         }
         

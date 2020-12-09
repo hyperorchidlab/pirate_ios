@@ -50,16 +50,23 @@ class HomeVC: UIViewController {
                 let img = UIImage(named: "bg_image")!
                 self.view.backgroundColor = UIColor(patternImage: img)
                 
+                setPoolMinersAddress()
+                
                 NotificationCenter.default.addObserver(self, selector: #selector(VPNStatusDidChange(_:)),
-                                                       
                                                        name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(minerPoolDetailed(_:)),
+                
+                NotificationCenter.default.addObserver(self, selector: #selector(setPoolBalance(_:)),
                                                        name: HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED.name, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(minerPoolDetailed(_:)),
+                
+                NotificationCenter.default.addObserver(self, selector: #selector(setPoolName(_:)),
                                                        name: HopConstants.NOTI_POOL_CACHE_LOADED.name, object: nil)
+                
+                NotificationCenter.default.addObserver(self, selector: #selector(setMinerDetails(_:)),
+                                                       name: HopConstants.NOTI_MINER_CACHE_LOADED.name, object: nil)
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(poolChanged(_:)),
                                                        name: HopConstants.NOTI_POOL_INUSE_CHANGED.name, object: nil)
+                
                 NotificationCenter.default.addObserver(self, selector: #selector(minerChanged(_:)),
                                                        name: HopConstants.NOTI_MINER_INUSE_CHANGED.name, object: nil)
         }
@@ -72,8 +79,6 @@ class HomeVC: UIViewController {
                         self.showCreateDialog()
                         return
                 }
-                
-                setPoolMinersUI()
         }
         
         func showCreateDialog(){
@@ -101,20 +106,20 @@ class HomeVC: UIViewController {
                         self.ShowTips(msg: "Choose your node first".locStr)
                         return
                 }
-                
-                guard let membership = MembershipUI.Cache[pool.lowercased()] else{
+                guard let balance = AppSetting.coreData?.tmpBalance, balance != 0 else{
                         self.ShowTips(msg: "Memship is invalid".locStr)
                         return
                 }
-                let balance = membership.packetBalance - Double(membership.credit)
                 guard Int(balance) > HopConstants.RechargePieceSize else{
-                        SwitchTab(Idx: 1, tips: "Insuffcient Founds".locStr)
+                        SwitchTab(Idx: 1){tab in
+                                tab.alertMessageToast(title: "Insuffcient Founds".locStr)
+                        }
                         return
                 }
                
                 guard  Wallet.WInst.IsOpen() else{
                         self.ShowOnePassword() {
-                                do {try self._startVPN(pool: membership.poolAddr!, miner: miner)}catch let err{
+                                do {try self._startVPN(pool: pool, miner: miner)}catch let err{
                                         self.ShowTips(msg: err.localizedDescription)
                                 }
                         }
@@ -122,7 +127,7 @@ class HomeVC: UIViewController {
                 }
                 
                 do {
-                        try self._startVPN(pool: membership.poolAddr!, miner: miner)
+                        try self._startVPN(pool: pool, miner: miner)
                 }catch let err{
                         NSLog("=======>Failed to start the VPN: \(err)")
                         self.ShowTips(msg: err.localizedDescription)
@@ -138,8 +143,7 @@ class HomeVC: UIViewController {
                 
                 self.showIndicator(withTitle: "VPN", and: "Starting VPN".locStr)
                 
-                let options = ["ROUTE_RULES": Utils.Domains["CN"] as Any,
-                               "MAIN_PRI":pri as Any,
+                let options = ["MAIN_PRI":pri as Any,
                                "SUB_PRI":subPri as Any,
                                "POOL_ADDR":pool as Any,
                                "USER_ADDR":Wallet.WInst.Address as Any,
@@ -178,10 +182,6 @@ class HomeVC: UIViewController {
                 if status == .connected || status == .disconnected{
                         self.hideIndicator()
                 }
-        }
-        
-        @objc func minerPoolDetailed(_ notification: Notification?) {
-                self.setPoolMinersUI()
         }
         
         @IBAction func changeModel(_ sender: UISegmentedControl) {
@@ -224,6 +224,7 @@ class HomeVC: UIViewController {
         
         // MARK: - VPN Manager
         func reloadManagers() {
+                
                 NETunnelProviderManager.loadAllFromPreferences() { newManagers, error in
                         if let err = error {
                                 NSLog(err.localizedDescription)
@@ -256,6 +257,7 @@ class HomeVC: UIViewController {
                 targetManager?.isEnabled = true
                 
                 let providerProtocol = NETunnelProviderProtocol()
+                providerProtocol.serverAddress = "HOP BlockChain"
                 targetManager?.protocolConfiguration = providerProtocol
                 
                 targetManager?.saveToPreferences { err in
@@ -277,7 +279,10 @@ class HomeVC: UIViewController {
                         return
                 }
                 try? session.sendProviderMessage(message){reponse in
-                        let param = JSON(reponse!)
+                        guard let rs = reponse else{
+                                return
+                        }
+                        let param = JSON(rs)
                         AppSetting.isGlobalModel = param["Global"].bool ?? false
                         self.setModelStatus(sender: self.globalModelSeg, oldStatus: AppSetting.isGlobalModel)
                         NSLog("=======>Curretn global model is [\(AppSetting.isGlobalModel)]")
@@ -308,28 +313,30 @@ class HomeVC: UIViewController {
                 guard let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != "" else{
                         return
                 }
+                if let mem = MembershipUI.Cache[poolAddr.lowercased()]  {
+                        let balance = mem.packetBalance - Double(mem.credit)
+                        AppSetting.coreData?.tmpBalance = balance
+                }
                 
                 self.performSegue(withIdentifier: "ChooseMinersViewControllerSS", sender: self)
         }
+        
         @objc func minerChanged(_ notification: Notification?) {
                 if self.targetManager?.connection.status == .connected{
                         self.targetManager?.connection.stopVPNTunnel()
                 }
                 
-                setPoolMinersUI()
+                setPoolMinersAddress()
+                setPoolName(nil)
+                setPoolBalance(nil)
+                setMinerDetails(nil)
         }
         
-        private func setPoolMinersUI(){
+        private func setPoolMinersAddress(){
                 DispatchQueue.main.async {
                         if let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != ""{
                                 self.poolAddrLabel.text = poolAddr
-                                if let pool = Pool.CachedPool[poolAddr]{
-                                        self.poolNameLabel.text = pool.Name
-                                }
-                                if let membership = MembershipUI.Cache[poolAddr]{
-                                        let balance = membership.packetBalance - Double(membership.credit)
-                                        self.packetBalanceLabel.text = "\((balance).ToPackets())"
-                                }
+                                self.packetBalanceLabel.text = AppSetting.coreData?.tmpBalance.ToPackets()
                         }else{
                                 self.poolAddrLabel.text = "Choose one pool please".locStr
                                 self.packetBalanceLabel.text = "0.0"
@@ -338,10 +345,6 @@ class HomeVC: UIViewController {
                         
                         if let minerAddr = AppSetting.coreData?.minerAddrInUsed, minerAddr != ""{
                                 self.minersIDLabel.text = minerAddr
-                                if let m_data = Miner.CachedMiner[minerAddr.lowercased()]{
-                                        self.minerZoneLabel.text = m_data.zon
-                                        self.minersIPLabel.text = m_data.ipAddr
-                                }
                         }else{
                                 self.minersIDLabel.text = "Choose one miner please".locStr
                                 self.minerZoneLabel.text = "NAN".locStr
@@ -349,4 +352,32 @@ class HomeVC: UIViewController {
                         }
                 }
         }
+        
+        @objc func setPoolName(_ notification: Notification?){
+                guard let poolAddr = AppSetting.coreData?.poolAddrInUsed, poolAddr != "" else{return }
+                if let pool = Pool.CachedPool[poolAddr]{
+                        DispatchQueue.main.async {self.poolNameLabel.text = pool.Name}
+                }
+                
+        }
+        
+        @objc func setPoolBalance(_ notification: Notification?){
+                guard let balance = AppSetting.coreData?.tmpBalance else {
+                        return
+                }
+                DispatchQueue.main.async {self.packetBalanceLabel.text = balance.ToPackets()}
+        }
+        
+        @objc func setMinerDetails(_ notification: Notification?){DispatchQueue.main.async {
+                guard let minerAddr = AppSetting.coreData?.minerAddrInUsed, minerAddr != "" else{
+                        self.minersIDLabel.text = "Choose one miner please".locStr
+                        self.minerZoneLabel.text = "NAN".locStr
+                        self.minersIPLabel.text = "NAN".locStr
+                        return
+                }
+                if let m_data = Miner.CachedMiner[minerAddr.lowercased()]{
+                        self.minerZoneLabel.text = m_data.zon
+                        self.minersIPLabel.text = m_data.ipAddr
+                }
+        }}
 }

@@ -54,16 +54,27 @@ class RechargeViewController: UIViewController {
         private func buyAction(token:Double, user:String, pool:String){
                 self.showIndicator(withTitle: "", and: "Applying......".locStr)
                 AppSetting.workQueue.async {
+                        [weak self] in
                         
-                        defer{self.hideIndicator()}
+                        defer{self?.hideIndicator()}
                         
                         if false == Transaction.BuyPacket(userAddr: user, poolAddr: pool, token: token){
-                                self.ShowTips(msg: "Apply Failed".locStr)
+                                self?.ShowTips(msg: "Apply Failed".locStr)
                                 return
                         }
                         
                         DispatchQueue.main.async {
-                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                                self?.dismiss(animated: false){
+                                        SwitchTab(Idx: 2){tab in
+                                                guard let uinav = tab.selectedViewController  as? UINavigationController,
+                                                      let vc = uinav.topViewController as? AccountViewController else{
+                                                        return
+                                                }
+                                                
+                                                vc.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                                        }
+                                }
+                                self?.navigationController?.popViewController(animated: false)
                         }
                 }
         }
@@ -82,21 +93,27 @@ class RechargeViewController: UIViewController {
                 
                 var tokenNo = Double(0.0)
                 if sender.tag == -1{
-                        guard let noStr = TokenNoTFD.text else{
+                        guard let tn = Double(TokenNoTFD.text ?? "0") else{
                                 self.ShowTips(msg: "Token No Is Empty")
                                 TokenNoTFD.becomeFirstResponder()
                                 return
                         }
-                        tokenNo = Double(noStr)!
+                        tokenNo = tn
                 }else{
                         tokenNo = Double(sender.tag) * 1e9 / Double(AppSetting.servicePrice)
+                }
+                
+                guard tokenNo >= 1 else {
+                        self.ShowTips(msg: "Token No Too Small".locStr)
+                        return
                 }
                 
                 let tokenSum = tokenNo * HopConstants.DefaultTokenDecimal2
                 
                 guard Wallet.WInst.approve > tokenSum else{
-                        
-                        SwitchTab(Idx: 2, tips: "Please Approve Token Usage".locStr)
+                        SwitchTab(Idx: 2){tab in
+                                tab.alertMessageToast(title: "Please Approve Token Usage".locStr)
+                        }
                         return
                 }
                 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6902ED092515DAED00BCDED6 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902ED082515DAED00BCDED6 /* iosLib.framework */; };
+		691566C525356B8D004983F3 /* HOPIPRangeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691566C425356B8D004983F3 /* HOPIPRangeRule.swift */; };
 		691CCFA023F8240D007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		691CCFA123F93F60007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		6924223E240D365000590536 /* PoolChoseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924223D240D365000590536 /* PoolChoseTableViewController.swift */; };
@@ -43,9 +44,10 @@
 		6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		698A513923FCE64E00836E26 /* HOPAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513823FCE64E00836E26 /* HOPAdapter.swift */; };
 		698A513B23FCE75700836E26 /* HOPAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */; };
-		698A513D23FCF90700836E26 /* HOPRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513C23FCF90700836E26 /* HOPRule.swift */; };
+		698A513D23FCF90700836E26 /* HOPDomainsRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513C23FCF90700836E26 /* HOPDomainsRule.swift */; };
 		698A514323FD58DC00836E26 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A514223FD58DC00836E26 /* Utils.swift */; };
 		698A514423FD5BC900836E26 /* gfw.plist in Resources */ = {isa = PBXBuildFile; fileRef = 698A513E23FD08B900836E26 /* gfw.plist */; };
+		698D07622567700200A55656 /* UserManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698D07612567700200A55656 /* UserManualViewController.swift */; };
 		69980C2923F78D3E00829B09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69980C2823F78D3E00829B09 /* AppDelegate.swift */; };
 		69980C2B23F78D3E00829B09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69980C2A23F78D3E00829B09 /* SceneDelegate.swift */; };
 		69980C2D23F78D3E00829B09 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69980C2C23F78D3E00829B09 /* HomeVC.swift */; };
@@ -98,6 +100,7 @@
 		69FA41AC2405711E005CF3FA /* PacketMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41AB2405711E005CF3FA /* PacketMarket.swift */; };
 		69FA41AD2405711E005CF3FA /* PacketMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41AB2405711E005CF3FA /* PacketMarket.swift */; };
 		69FA41D3240667E1005CF3FA /* Receipt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* Receipt.xcdatamodeld */; };
+		7C1E58AE25417EDD0032F005 /* gfw.plist in Resources */ = {isa = PBXBuildFile; fileRef = 698A513E23FD08B900836E26 /* gfw.plist */; };
 		7C22E5D7252AD8F6001461F3 /* HopKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E5D5252AD8F6001461F3 /* HopKey.swift */; };
 		7C22E5DC252ADB8B001461F3 /* HopKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E5D5252AD8F6001461F3 /* HopKey.swift */; };
 		7C36020C2421132D0014E961 /* ApplyToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36020B2421132D0014E961 /* ApplyToken.swift */; };
@@ -139,6 +142,7 @@
 
 /* Begin PBXFileReference section */
 		6902ED082515DAED00BCDED6 /* iosLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iosLib.framework; path = bin/iosLib.framework; sourceTree = "<group>"; };
+		691566C425356B8D004983F3 /* HOPIPRangeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOPIPRangeRule.swift; sourceTree = "<group>"; };
 		691CCF9F23F8240D007768DF /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6924223D240D365000590536 /* PoolChoseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolChoseTableViewController.swift; sourceTree = "<group>"; };
 		6924223F240D368F00590536 /* MinerChooseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinerChooseTableViewController.swift; sourceTree = "<group>"; };
@@ -187,9 +191,11 @@
 		698A513123FCCEDF00836E26 /* Yaml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Yaml.framework; path = Carthage/Build/iOS/Yaml.framework; sourceTree = "<group>"; };
 		698A513823FCE64E00836E26 /* HOPAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPAdapter.swift; sourceTree = "<group>"; };
 		698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPAdapterFactory.swift; sourceTree = "<group>"; };
-		698A513C23FCF90700836E26 /* HOPRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPRule.swift; sourceTree = "<group>"; };
+		698A513C23FCF90700836E26 /* HOPDomainsRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOPDomainsRule.swift; sourceTree = "<group>"; };
 		698A513E23FD08B900836E26 /* gfw.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = gfw.plist; sourceTree = "<group>"; };
 		698A514223FD58DC00836E26 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		698D07612567700200A55656 /* UserManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManualViewController.swift; sourceTree = "<group>"; };
+		698D07692567A4C000A55656 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		69980C2523F78D3E00829B09 /* Pirate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pirate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69980C2823F78D3E00829B09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69980C2A23F78D3E00829B09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,7 +228,6 @@
 		7C36020B2421132D0014E961 /* ApplyToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyToken.swift; sourceTree = "<group>"; };
 		7C36020D242113FD0014E961 /* ApplyToken.abi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApplyToken.abi; sourceTree = "<group>"; };
 		7C3D0523252AA5B800B59255 /* Miner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miner.swift; sourceTree = "<group>"; };
-		7C5E956225328CD600541CFB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		7C5E956725328D2900541CFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C61CCFC252D65AB00CF8D06 /* MembershipEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipEX.swift; sourceTree = "<group>"; };
 		7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -351,6 +356,7 @@
 				696A71F52514891F004EA5DE /* AccountViewController.swift */,
 				696B02E42519EB2000F76A51 /* TransactionViewController.swift */,
 				7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */,
+				698D07612567700200A55656 /* UserManualViewController.swift */,
 			);
 			path = account;
 			sourceTree = "<group>";
@@ -413,8 +419,9 @@
 		69980C5923F7B3CD00829B09 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				691566C425356B8D004983F3 /* HOPIPRangeRule.swift */,
 				69980C5A23F7B3CD00829B09 /* PacketTunnelProvider.swift */,
-				698A513C23FCF90700836E26 /* HOPRule.swift */,
+				698A513C23FCF90700836E26 /* HOPDomainsRule.swift */,
 				698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */,
 				698A513823FCE64E00836E26 /* HOPAdapter.swift */,
 				69980C5C23F7B3CD00829B09 /* Info.plist */,
@@ -566,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69FA41AA240553E9005CF3FA /* PacketMarket.abi in Resources */,
+				7C1E58AE25417EDD0032F005 /* gfw.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +653,7 @@
 				696B02E9251A079500F76A51 /* RoundedCornerView.swift in Sources */,
 				7C22E5DC252ADB8B001461F3 /* HopKey.swift in Sources */,
 				6932A18F24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift in Sources */,
+				698D07622567700200A55656 /* UserManualViewController.swift in Sources */,
 				69FA41A324055274005CF3FA /* EthUtil.swift in Sources */,
 				69779A7825219F48003A163C /* RechargeViewController.swift in Sources */,
 				69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */,
@@ -695,9 +704,10 @@
 				7C36020F242129250014E961 /* ApplyToken.swift in Sources */,
 				69FA41932404DBCD005CF3FA /* HopConstants.swift in Sources */,
 				698A513923FCE64E00836E26 /* HOPAdapter.swift in Sources */,
-				698A513D23FCF90700836E26 /* HOPRule.swift in Sources */,
+				698A513D23FCF90700836E26 /* HOPDomainsRule.swift in Sources */,
 				69A47D70240EB8C100C86CFF /* HopMessage.swift in Sources */,
 				7C22E5D7252AD8F6001461F3 /* HopKey.swift in Sources */,
+				691566C525356B8D004983F3 /* HOPIPRangeRule.swift in Sources */,
 				69FA418B2404B352005CF3FA /* DataShareManager.swift in Sources */,
 				69987DFD241249A000029C0A /* HopSodium.swift in Sources */,
 				69A47D6A240EB1DD00C86CFF /* Protocol.swift in Sources */,
@@ -738,8 +748,8 @@
 		69980C3023F78D3E00829B09 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7C5E956225328CD600541CFB /* zh-Hans */,
 				7C5E956725328D2900541CFB /* Base */,
+				698D07692567A4C000A55656 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -882,7 +892,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -895,7 +905,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
 				PRODUCT_NAME = Pirate;
 				PROVISIONING_PROFILE_SPECIFIER = dev_usa_pirate;
@@ -912,7 +922,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -925,7 +935,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
 				PRODUCT_NAME = Pirate;
 				PROVISIONING_PROFILE_SPECIFIER = release_uas_pirate;
@@ -940,7 +950,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -953,7 +963,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3.4;
 				OS_ACTIVITY_MODE = default;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -970,7 +980,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -983,7 +993,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3.4;
 				OS_ACTIVITY_MODE = default;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

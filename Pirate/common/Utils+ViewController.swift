@@ -36,13 +36,14 @@ public func instantiateViewController(storyboardName: String, viewControllerIden
 }
 
 
-func SwitchTab(Idx:Int, tips:String? = nil) {
+func SwitchTab(Idx:Int, action:((_ tab:UITabBarController)->Void)? = nil) {
         DispatchQueue.main.async {
                 guard let tabbarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController else { return }
                 tabbarController.selectedIndex = Idx
-                if let tipTxt = tips{
-                        tabbarController.alertMessageToast(title: tipTxt)
+                guard let act = action else{
+                        return
                 }
+                act(tabbarController)
         }
 }
 

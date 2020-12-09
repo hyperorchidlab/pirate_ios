@@ -25,6 +25,7 @@ class AccountViewController: UIViewController {
         @IBOutlet weak var tokenBalanceLabel: UILabel!
         @IBOutlet weak var dnsIPLabel: UILabel!
         @IBOutlet weak var authorBtn: UIButton!
+        @IBOutlet weak var usermanualView: UIView!
         
         var appVersion: String? {
             return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
@@ -58,7 +59,10 @@ class AccountViewController: UIViewController {
                 tap5.numberOfTapsRequired = 2
                 walletView.addGestureRecognizer(tap5)
                 
-                checkStatusButon()
+                let tap6 = UITapGestureRecognizer(target: self, action: #selector(showUserManual))
+                tap6.numberOfTapsRequired = 1
+                usermanualView.addGestureRecognizer(tap6)
+                
                 loadTransaction()
                 
                 NotificationCenter.default.addObserver(self,
@@ -66,21 +70,18 @@ class AccountViewController: UIViewController {
                                                 #selector(dnsChanged(_:)),
                                                name: HopConstants.NOTI_DNS_CHANGED.name,
                                                object: nil)
+                
                 NotificationCenter.default.addObserver(self,
                                                selector:
                                                 #selector(txStatusChanged(_:)),
                                                name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
-                                               object: nil)
-                NotificationCenter.default.addObserver(self,
-                                               selector:
-                                                #selector(walletChanged(_:)),
-                                               name: HopConstants.NOTI_WALLET_CHANGED.name,
                                                object: nil)
         }
         
         override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 walletBalanceUI()
+                checkStatusButon()
         }
         
         private func loadTransaction(){
@@ -118,20 +119,6 @@ class AccountViewController: UIViewController {
         @objc func txStatusChanged(_ notification: Notification?) {
                 reloadWalletData()
                 loadTransaction()
-        }
-        
-        @objc func walletChanged(_ notification: Notification?) {
-                self.showIndicator(withTitle: "", and: "Reloading Account Data".locStr)
-                AppSetting.workQueue.async {
-                        Wallet.WInst.queryBalance()
-                        Transaction.reLoad()
-                        DispatchQueue.main.async {
-                                self.walletAddrLabel.text = Wallet.WInst.Address
-                                self.checkStatusButon()
-                                self.walletBalanceUI()
-                                self.hideIndicator()
-                        }
-                }
         }
         
         @objc func openTelegram() {
@@ -180,6 +167,10 @@ class AccountViewController: UIViewController {
                 self.ShowTips(msg: "Copy Success".locStr)
         }
         
+        @objc func showUserManual() {
+                self.performSegue(withIdentifier: "ShowManualPages", sender: self)
+        }
+        
         private func checkStatusButon(){
                 self.applyFreeEthBtn.isHidden =  Wallet.WInst.ethBalance > 0.005
                 self.applyFreeTokenBtn.isHidden = Wallet.WInst.tokenBalance > 20
@@ -201,16 +192,16 @@ class AccountViewController: UIViewController {
         @IBAction func ApplyTokenAction(_ sender: UIButton) {
                 self.showIndicator(withTitle: "", and: "Applying......".locStr)
                 
-                AppSetting.workQueue.async {
-                        defer{self.hideIndicator()}
+                AppSetting.workQueue.async { [weak self] in
+                        defer{self?.hideIndicator()}
                         if false == Transaction.applyFreeToken(forAddr: Wallet.WInst.Address!){
-                                self.ShowTips(msg: "Apply Failed".locStr)
+                                self?.ShowTips(msg: "Apply Failed".locStr)
                                 return
                         }
                         
                         DispatchQueue.main.async {
-                                self.applyFreeTokenBtn.isHidden = true
-                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                                self?.applyFreeTokenBtn.isHidden = true
+                                self?.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
                         }
                 }
         }
@@ -218,16 +209,16 @@ class AccountViewController: UIViewController {
         @IBAction func ApplyEthAction(_ sender: UIButton) {
                 self.showIndicator(withTitle: "", and: "Applying......".locStr)
                 
-                AppSetting.workQueue.async {
-                        defer{self.hideIndicator()}
+                AppSetting.workQueue.async {  [weak self] in
+                        defer{self?.hideIndicator()}
                         if false == Transaction.applyFreeEth(forAddr: Wallet.WInst.Address!){
-                                self.ShowTips(msg: "Apply Failed".locStr)
+                                self?.ShowTips(msg: "Apply Failed".locStr)
                                 return
                         }
                         
                         DispatchQueue.main.async {
-                                self.applyFreeEthBtn.isHidden = true
-                                self.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
+                                self?.applyFreeEthBtn.isHidden = true
+                                self?.performSegue(withIdentifier: "ShowTransactionDetailsSegID", sender: self)
                         }
                 }
         }

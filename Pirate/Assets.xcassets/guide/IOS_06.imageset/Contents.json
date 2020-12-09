@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Dis_butt.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Dis_butt@2x.png",
+      "filename" : "IOS_06.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Dis_butt@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

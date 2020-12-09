@@ -22,14 +22,6 @@ class MembershipViewController: UIViewController {
                 
                 refreshControl.addTarget(self, action: #selector(self.reloadMemberDetail(_:)), for: .valueChanged)
                 tableView.addSubview(refreshControl)
-                
-                NotificationCenter.default.addObserver(self,
-                                               selector: #selector(walletChanged(_:)),
-                                               name: HopConstants.NOTI_WALLET_CHANGED.name,
-                                               object: nil)
-        }
-        deinit {
-                NotificationCenter.default.removeObserver(self)
         }
         //MARK: - object c
         @objc func reloadMemberDetail(_ sender: Any?){
@@ -38,15 +30,6 @@ class MembershipViewController: UIViewController {
                         self.memberships =  MembershipUI.MemberArray()
                         DispatchQueue.main.async {
                                 self.refreshControl.endRefreshing()
-                                self.tableView.reloadData()
-                        }
-                }
-        }
-        @objc func walletChanged(_ notification: Notification?) {
-                AppSetting.workQueue.async {
-                        MembershipUI.syncAllMyMemberships()
-                        self.memberships = MembershipUI.MemberArray()
-                        DispatchQueue.main.async {
                                 self.tableView.reloadData()
                         }
                 }
