@@ -24,7 +24,7 @@ class MembershipUI:NSObject{
                 super.init()
         }
         
-        public static func reLoad(){
+        public static func loadCache(){
                 
                 guard let addr = Wallet.WInst.Address else{
                         return
@@ -50,8 +50,16 @@ class MembershipUI:NSObject{
                 }
         
                 for cData in memberArr{
-                        cData.available = false
-                        Cache[cData.poolAddr!.lowercased()] = cData
+                        let poolAddr = cData.poolAddr!.lowercased()
+                        Cache[poolAddr] = cData
+                        
+                        if cData.needReload{
+                                guard let data = IosLibMemberShipData(addr, poolAddr) else {
+                                        continue
+                                }
+                                let json = JSON(data)
+                                cData.updateByMemberDetail(json: json, addr: addr)
+                        }
                         
                         if AppSetting.coreData?.poolAddrInUsed?.lowercased() == cData.poolAddr!.lowercased(){
                                 let balance = cData.packetBalance - Double(cData.credit)
@@ -59,44 +67,30 @@ class MembershipUI:NSObject{
                                 PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
                         }
                 }
-               
-                
-                AppSetting.workQueue.async {
-                guard let data = IosLibAvailablePools(addr) else{return}
-                let poolJson = JSON(data)
-                var needSync = false
-                for (poolAddr, _):(String, JSON) in poolJson{
-                        guard let obj = Cache[poolAddr.lowercased()] else{
-                                needSync = true
-                                continue
-                        }
-                        obj.available = true
-                        if obj.needReload{
-                                needSync = true
-                        }
-                }
-                
-                if needSync{
-                                syncAllMyMemberships()
-                        }
-                }
         }
         
-        //TODO:: test this carefully
+        
         public static func syncAllMyMemberships(){
+                
                 guard let addr = Wallet.WInst.Address else{
                         return
                 }
+                let poolAddr = Array(Pool.CachedPool.keys)[0]
+                guard let data = IosLibAvailablePools(addr, poolAddr) else{return}
+                let poolJson = JSON(data)
                 
+                var idx = 0
                 Cache.removeAll()
-                guard let data = IosLibMemberShipData(addr) else {
-                        return
-                }
-                
-                let json = JSON(data)
                 let dbContext = DataShareManager.privateQueueContext()
                 
-                for (poolAddr, subJson):(String, JSON) in json {
+                while (idx < poolJson.count){
+                        let poolAddr = poolJson[idx].string!.lowercased()
+                        idx += 1
+                        
+                        guard let data = IosLibMemberShipData(addr, poolAddr) else {
+                                continue
+                        }
+                        let json = JSON(data)
                         
                         let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
                                             HopConstants.DefaultPaymenstService,
@@ -106,14 +100,14 @@ class MembershipUI:NSObject{
                         let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
                         request.predicate = w
                         guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
-                                let cData = CDMemberShip.newMembership(json: subJson, pool:poolAddr, user:addr)
-                                Cache[poolAddr.lowercased()] = cData
+                                let cData = CDMemberShip.newMembership(json: json, pool:poolAddr, user:addr)
+                                Cache[poolAddr] = cData
                                 continue
                         }
                         
-                        result.updateByETH(json: subJson, addr: addr)
-                        Cache[poolAddr.lowercased()] = result
-                        if AppSetting.coreData?.poolAddrInUsed?.lowercased() == poolAddr.lowercased(){
+                        result.updateByMemberDetail(json: json, addr: addr)
+                        Cache[poolAddr] = result
+                        if AppSetting.coreData?.poolAddrInUsed?.lowercased() == poolAddr{
                                 let balance = result.packetBalance - Double(result.credit)
                                 AppSetting.coreData?.tmpBalance = balance
                                 PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
@@ -124,37 +118,6 @@ class MembershipUI:NSObject{
                 DataShareManager.syncAllContext(dbContext)
                 PostNoti(HopConstants.NOTI_MEMBERSHIP_SYNCED)
         }
-        
-//        public func syncMemberDetailFromETH(){
-//                guard let addr = Wallet.WInst.Address else{
-//                        return
-//                }
-//
-//                guard let data = IosLibUserDataOnBlockChain(coreData?.userAddr, self.poolAddr) else{
-//                        return
-//                }
-//
-//                let json = JSON(data)
-//                let dbContext = DataShareManager.privateQueueContext()
-//                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
-//                                    HopConstants.DefaultPaymenstService,
-//                                    addr,
-//                                    obj.poolAddr)
-//
-//                let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
-//                request.predicate = w
-//                guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
-//                        let cData = CDMemberShip(context: dbContext)
-//                        cData.populate(obj: obj, addr: addr)
-//                        obj.coreData = cData
-//                        MemberShip.Cache[obj.poolAddr] = obj
-//                        return
-//                }
-//                result.updateByObj(obj: obj, addr: addr)
-//
-//                DataShareManager.saveContext(dbContext)
-//                DataShareManager.syncAllContext(dbContext)
-//        }
 }
 
 extension CDMemberShip{
@@ -165,9 +128,8 @@ extension CDMemberShip{
                 data.poolAddr = pool
                 data.userAddr = user
                 data.mps = HopConstants.DefaultPaymenstService
-                data.nonce = json["Nonce"].int64 ?? 0
-                data.tokenBalance = json["TokenBalance"].double ?? 0
-                data.packetBalance = json["RemindPacket"].double ?? 0
+                data.tokenBalance = json["token_balance"].double ?? 0
+                data.packetBalance = json["traffic_balance"].double ?? 0
                 data.expire = json["Expire"].string ?? ""
                 data.epoch = json["Epoch"].int64 ?? 0
                 data.microNonce = json["ClaimedMicNonce"].int64 ?? 0
@@ -178,7 +140,7 @@ extension CDMemberShip{
                 return data
         }
         
-        func updateByETH(json:JSON, addr:String){
+        func updateByMemberDetail(json:JSON, addr:String){
                 
                 self.available = true
                 guard let nonce = json["Nonce"].int64 else{

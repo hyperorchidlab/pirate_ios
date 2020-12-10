@@ -59,7 +59,7 @@ class MinerChooseViewController: UIViewController {
         @IBAction func LoadRandomMiners(_ sender: Any) {
                 self.showIndicator(withTitle: "", and: "Loading miners......".locStr)
                 AppSetting.workQueue.async {
-                        Miner.SyncMinerFromETH(self.curPool!)
+                        Miner.SyncMinerUnder(pool: self.curPool!)
                         self.hideIndicator()
                 }
         }

@@ -60,7 +60,7 @@ class PoolChoseTableViewController: UITableViewController {
         
         @objc private func reloadMembership(_ sender: Any?){
                 AppSetting.workQueue.async {
-                        MembershipUI.reLoad()
+                        MembershipUI.syncAllMyMemberships()
                         self.validPoolArr =  MembershipUI.MemberArray()
                         DispatchQueue.main.async {
                                 self.refreshControl?.endRefreshing()

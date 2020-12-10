@@ -35,7 +35,7 @@ class Miner : NSObject {
                 }
                 
                 if minerArr.count == 0{
-                        SyncMinerFromETH(pool)
+                        SyncMinerUnder(pool: pool)
                         return
                 }
         
@@ -46,7 +46,7 @@ class Miner : NSObject {
                 PostNoti(HopConstants.NOTI_MINER_CACHE_LOADED)
         }
         
-        public static func SyncMinerFromETH(_ pool:String){
+        public static func SyncMinerUnder(pool:String){
                 guard let data = IosLibMinerList(pool) else{
                         return
                 }
@@ -59,7 +59,10 @@ class Miner : NSObject {
                 
                 let dbContext = DataShareManager.privateQueueContext()
                 
-                for (subAddr, subJson):(String, JSON) in json {
+                for (_, subJson):(String, JSON) in json {
+                        guard let subAddr = subJson["sub_addr"].string else{
+                                continue
+                        }
                         let w = NSPredicate(format: "mps == %@ AND subAddr == %@ AND poolAddr == %@",
                                             HopConstants.DefaultPaymenstService,
                                             subAddr,
@@ -69,11 +72,14 @@ class Miner : NSObject {
                         request.predicate = w
                         guard let result = try? dbContext.fetch(request).last as? CDMiner else{
                                 let cData = CDMiner.newMiner(json: subJson)
+                                cData.poolAddr = pool
+                                cData.subAddr = subAddr
                                 CachedMiner[subAddr.lowercased()] = cData
                                 continue
                         }
                         
-                        result.updateByETH(json: subJson)
+                        result.zon = json["zone"].string!
+                        result.ipAddr = json["ip_addr"].string!
                         CachedMiner[subAddr.lowercased()] = result
                 }
                 
@@ -88,19 +94,11 @@ extension CDMiner{
                 
                 let dbContext = DataShareManager.privateQueueContext()
                 let data = CDMiner(context: dbContext)
-                
-                data.poolAddr = json["PoolAddr"].string!
-                data.subAddr = json["SubAddr"].string!
                 data.mps = HopConstants.DefaultPaymenstService
-                data.zon = json["Zone"].string!
+                data.zon = json["zone"].string!
                 data.ping = -1
-                data.ipAddr = "0.0.0.0"
+                data.ipAddr = json["ip_addr"].string!
                 
                 return data
-        }
-        
-        public func updateByETH(json:JSON){
-                self.poolAddr = json["PoolAddr"].string!
-                self.zon = json["Zone"].string!
         }
 }
