@@ -128,13 +128,9 @@ extension CDMemberShip{
                 data.poolAddr = pool
                 data.userAddr = user
                 data.mps = HopConstants.DefaultPaymenstService
-                data.tokenBalance = json["token_balance"].double ?? 0
-                data.packetBalance = json["traffic_balance"].double ?? 0
-                data.expire = json["Expire"].string ?? ""
-                data.epoch = json["Epoch"].int64 ?? 0
-                data.microNonce = json["ClaimedMicNonce"].int64 ?? 0
-                data.credit = 0
-                data.curTXHash = nil
+                data.tokenBalance = json["left_token_balance"].double ?? 0
+                data.packetBalance = json["left_traffic_balance"].double ?? 0
+                data.credit = json["used_traffic"].int64 ?? 0
                 data.inRecharge = 0
                 data.available = true
                 return data
@@ -143,64 +139,14 @@ extension CDMemberShip{
         func updateByMemberDetail(json:JSON, addr:String){
                 
                 self.available = true
-                guard let nonce = json["Nonce"].int64 else{
-                        return
-                }
-                if self.nonce >= nonce{
-                        NSLog("======>[updateByETH]:nothing to update for pool[\(self.poolAddr ?? "")]")
-                        return
-                }
                 
-                let epoch = json["Epoch"].int64 ?? 0
-                if self.epoch > epoch{
-                        NSLog("======>[updateByETH]: [self opech =\(self.epoch)]invalid epoch[\(epoch)] info for pool[\(self.poolAddr ?? "")]")
-                        return
-                }
+                self.tokenBalance = json["left_token_balance"].double ?? 0
+                self.packetBalance = json["left_traffic_balance"].double ?? 0
+                let credit = json["used_traffic"].int64 ?? 0
                 
-                guard let tokenBalance = json["TokenBalance"].double,
-                      let packetBalance = json["RemindPacket"].double,
-                      let expire = json["Expire"].string else{
-                        NSLog("======>[updateByETH]: invalid josn[\(json)]")
-                        return
-                }
-                
-                if self.epoch == epoch{
-                        self.nonce = nonce
-                        self.tokenBalance = tokenBalance
-                        self.packetBalance = packetBalance
-                        self.expire = expire
-                        
-                        NSLog("======>[updateByETH]: update sucess nonce=[\(nonce)] epoch=[\(epoch)]")
-                        return
-                }
-                
-                guard let microNonce = json["ClaimedMicNonce"].int64,
-                      let claimedAmount = json["ClaimedAmount"].int64 else{
-                        NSLog("======>[updateByETH]: invalid josn[\(json)]")
-                        return
-                }
-                
-                if self.microNonce < microNonce{
-                        NSLog("======>[updateByETH]: invalid microNonce=[\(microNonce)]")
-                        return
-                }
-                
-                self.nonce = nonce
-                self.tokenBalance = tokenBalance
-                self.packetBalance = packetBalance
-                self.expire = expire
-                self.microNonce = microNonce
-                self.epoch = epoch
-                
-                let reminder = self.credit + self.inRecharge - claimedAmount
-                if reminder < 0{
-                        self.credit = 0
-                        self.inRecharge = 0
-                        NSLog("======>[updateByETH]:Something wrong [credit=\(self.credit)] [claimedAmount=\(claimedAmount)]")
-                } else {
-                        self.credit = reminder
-                        self.inRecharge = 0
-                        self.curTXHash = nil
-                }
+//                let reminder = self.credit + self.inRecharge
+//                if reminder <= credit{
+//                        
+//                }
         }
 }
