@@ -78,6 +78,11 @@ class AccountViewController: UIViewController {
                                                 #selector(txStatusSynced(_:)),
                                                name: HopConstants.NOTI_TX_SYNC_SUCCESS.name,
                                                object: nil)
+                
+                NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(txChanged(_:)),
+                                                       name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
+                                                       object: nil)
         }
         
         override func viewWillAppear(_ animated: Bool) {
@@ -103,8 +108,11 @@ class AccountViewController: UIViewController {
                 }
         }
         
-        @objc func txStatusSynced(_ notification: Notification?) {
+        @objc func txChanged(_ notification: Notification?) {
                 reloadWalletData()
+        }
+
+        @objc func txStatusSynced(_ notification: Notification?) {
                 DispatchQueue.main.async {
                         if Transaction.CachedTX.count > 0{
                                 self.transactionNOLabel.isHidden = false

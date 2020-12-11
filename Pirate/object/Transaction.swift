@@ -148,6 +148,7 @@ class Transaction : NSObject {
                 txHash = tx
                 txType = typ
                 txValue = value ?? 0
+                txStatus = .pending
         }
         
         public init(coredata:CDTransaction){
@@ -203,6 +204,7 @@ class Transaction : NSObject {
                 
                 IosLibMonitorTx(obj.txHash, HopConstants.NOTI_TX_STATUS_CHANGED.name.rawValue)
                 DataShareManager.saveContext(dbCtx)
+                PostNoti(HopConstants.NOTI_TX_SYNC_SUCCESS)
         }
         
         
