@@ -63,7 +63,9 @@ class AccountViewController: UIViewController {
                 tap6.numberOfTapsRequired = 1
                 usermanualView.addGestureRecognizer(tap6)
                 
-                loadTransaction()
+                AppSetting.workQueue.async {
+                        Transaction.reLoad()
+                }
                 
                 NotificationCenter.default.addObserver(self,
                                                selector:
@@ -73,8 +75,8 @@ class AccountViewController: UIViewController {
                 
                 NotificationCenter.default.addObserver(self,
                                                selector:
-                                                #selector(txStatusChanged(_:)),
-                                               name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
+                                                #selector(txStatusSynced(_:)),
+                                               name: HopConstants.NOTI_TX_SYNC_SUCCESS.name,
                                                object: nil)
         }
         
@@ -82,20 +84,6 @@ class AccountViewController: UIViewController {
                 super.viewWillAppear(animated)
                 walletBalanceUI()
                 checkStatusButon()
-        }
-        
-        private func loadTransaction(){
-                AppSetting.workQueue.async {
-                        Transaction.reLoad()
-                        DispatchQueue.main.async {
-                                if Transaction.CachedTX.count > 0{
-                                        self.transactionNOLabel.isHidden = false
-                                        self.transactionNOLabel.text = "\(Transaction.CachedTX.count)"
-                                }else{
-                                        self.transactionNOLabel.isHidden = true
-                                }
-                        }
-                }
         }
         
         private func walletBalanceUI(){
@@ -109,16 +97,22 @@ class AccountViewController: UIViewController {
         }
         
         // MARK: - Embedded Actions
-        
         @objc func dnsChanged(_ notification: Notification?) {
                 DispatchQueue.main.async {
                         self.dnsIPLabel.text = AppSetting.dnsIP
                 }
         }
         
-        @objc func txStatusChanged(_ notification: Notification?) {
+        @objc func txStatusSynced(_ notification: Notification?) {
                 reloadWalletData()
-                loadTransaction()
+                DispatchQueue.main.async {
+                        if Transaction.CachedTX.count > 0{
+                                self.transactionNOLabel.isHidden = false
+                                self.transactionNOLabel.text = "\(Transaction.CachedTX.count)"
+                        }else{
+                                self.transactionNOLabel.isHidden = true
+                        }
+                }
         }
         
         @objc func openTelegram() {

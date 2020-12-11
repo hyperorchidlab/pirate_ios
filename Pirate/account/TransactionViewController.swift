@@ -10,14 +10,12 @@ import UIKit
 
 class TransactionViewController: UIViewController {
 
-        var tableData:[Transaction] = []
+        var tableData:[Transaction] = Transaction.CachedArray()
         var refreshControl: UIRefreshControl! = UIRefreshControl()
         @IBOutlet weak var tableview: UITableView!
         
         override func viewDidLoad() {
                 super.viewDidLoad()
-                loadTXData()
-                
                 tableview.rowHeight = 80
                 refreshControl.tintColor = UIColor.red
                 refreshControl.addTarget(self, action: #selector(self.reloadCachedTx(_:)), for: .valueChanged)
@@ -28,11 +26,12 @@ class TransactionViewController: UIViewController {
                                                        name: HopConstants.NOTI_TX_STATUS_CHANGED.name,
                                                        object: nil)
         }
+        
         deinit {
                 NotificationCenter.default.removeObserver(self)
         }
         
-        func loadTXData(){
+        @objc private func reloadCachedTx(_ sender: Any?){
                 AppSetting.workQueue.async {
                         Transaction.reLoad()
                         self.tableData = Transaction.CachedArray()
@@ -41,10 +40,6 @@ class TransactionViewController: UIViewController {
                                 self.tableview.reloadData()
                         }
                 }
-        }
-        
-        @objc private func reloadCachedTx(_ sender: Any?){
-                loadTXData()
         }
         
         @objc func txChanged(_ notification: Notification?) {

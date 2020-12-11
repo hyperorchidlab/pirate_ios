@@ -119,7 +119,6 @@ class Transaction : NSObject {
                 }
                 
                 for cData in txArr{
-                        
                         let txObj = Transaction(coredata:cData)
                         CachedTX[txObj.txHash!] = txObj
                         
@@ -129,17 +128,17 @@ class Transaction : NSObject {
                                 txObj.coreData?.status = txObj.txStatus.rawValue
                         }
                 }
+                
+                PostNoti(HopConstants.NOTI_TX_SYNC_SUCCESS)
         }
         
         public static func updateStatus(forTx tx: String){
-                
-                
                 guard let obj = CachedTX[tx] else{
                         return
                 }
-                
-                obj.coreData?.status = IosLibTXStatus(tx)
-                obj.txStatus = TransactionStatus(rawValue: (obj.coreData?.status)!) ?? .nosuch
+                let status = IosLibTXStatus(tx)
+                obj.coreData?.status = status
+                obj.txStatus = TransactionStatus(rawValue: status) ?? .nosuch
                 
                 DataShareManager.saveContext(DataShareManager.privateQueueContext())
         }

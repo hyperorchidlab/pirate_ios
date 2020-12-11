@@ -60,6 +60,7 @@ public struct HopConstants {
         
         static let NOTI_DNS_CHANGED = Notification.init(name: Notification.Name("NOTI_DNS_CHANGED"))
         static let NOTI_TX_STATUS_CHANGED = Notification.init(name: Notification.Name("NOTI_TX_STATUS_CHANGED"))
+        static let NOTI_TX_SYNC_SUCCESS = Notification.init(name: Notification.Name("NOTI_TX_SYNC_SUCCESS"))
         static let NOTI_POOL_CACHE_LOADED = Notification.init(name: Notification.Name("NOTI_POOL_CACHE_LOADED"))
         static let NOTI_MEMBERSHIP_SYNCED = Notification.init(name: Notification.Name("NOTI_MEMBERSHIP_SYNCED"))
         static let NOTI_MEMBERSHIPL_CACHE_LOADED = Notification.init(name: Notification.Name("NOTI_MEMBERSHIPL_CACHE_LOADED"))
