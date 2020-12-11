@@ -72,7 +72,7 @@ class MembershipUI:NSObject{
         
         public static func syncAllMyMemberships(){
                 
-                guard let addr = Wallet.WInst.Address else{
+                guard let addr = Wallet.WInst.Address, Pool.CachedPool.count > 0 else{
                         return
                 }
                 let poolAddr = Array(Pool.CachedPool.keys)[0]
@@ -136,17 +136,13 @@ extension CDMemberShip{
                 return data
         }
         
+        //TODO::Make sure how to change local receipt
         func updateByMemberDetail(json:JSON, addr:String){
-                
                 self.available = true
                 
                 self.tokenBalance = json["left_token_balance"].double ?? 0
                 self.packetBalance = json["left_traffic_balance"].double ?? 0
                 let credit = json["used_traffic"].int64 ?? 0
-                
-//                let reminder = self.credit + self.inRecharge
-//                if reminder <= credit{
-//                        
-//                }
+                self.credit = credit
         }
 }
