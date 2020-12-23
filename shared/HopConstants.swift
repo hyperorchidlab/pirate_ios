@@ -20,8 +20,8 @@ public struct HopConstants {
         static public let EthScanUrl = "https://etherscan.io/tx/"
         static public let DefaultDnsIP = "167.179.75.39"//"198.13.44.159"
         static public let DefaultBasPort = 8853
-        static public let ReceiptSyncPort = 32021
-        static public let TxReceivePort = 32020
+        static public let ReceiptSyncPort = 42021
+        static public let TxReceivePort = 42020
         static public let DefaultRCPTimeOut = 4
         static public let RCPKeepAlive = TimeInterval(30)
         static public let RechargePieceSize  = 1 << 22 //4M

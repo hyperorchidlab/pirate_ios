@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import IosLib
+import SwiftyJSON
 class MinerChooseViewController: UIViewController {
 
         @IBOutlet weak var minerListView: UITableView!
@@ -75,15 +76,15 @@ class MinerChooseViewController: UIViewController {
                                        self.minerListView.reloadData()
                                 }
                        }
-                       let miner_addr = m_data.subAddr!
-                        guard let ip = BasUtil.Query(addr: miner_addr) else{
-                        m_data.ipAddr = "no bas".locStr
-                               return
-                       }
-                       
-                       m_data.ipAddr = ip
-                       let ping =  BasUtil.Ping(addr: miner_addr, withIP: ip)
-                       m_data.ping = ping
+                        
+                        let miner_addr = m_data.subAddr!
+                        guard let ret = IosLibTestPing(miner_addr) else{
+                                m_data.ipAddr = "no bas".locStr
+                                return
+                        }
+                        let jsonData = JSON(ret)
+                        m_data.ipAddr = jsonData["IP"].string
+                        m_data.ping = jsonData["Ping"].double ?? -1
                 }
         }
         
@@ -98,13 +99,17 @@ class MinerChooseViewController: UIViewController {
                 BasUtil.queue.async {
                         let dispatchGrp = DispatchGroup()
                         
-                        
                         for miner in self.minerArray{
                                 dispatchGrp.enter()
-                                        let (ip, ping) = BasUtil.Ping(addr: miner.subAddr!)
-                                        miner.ipAddr = ip
-                                        miner.ping = ping
-                                        NSLog("=======> ip=\(ip) ping=\(ping)")
+                                
+                                guard let ret = IosLibTestPing(miner.subAddr!) else{
+                                        miner.ipAddr = "no bas".locStr
+                                        continue
+                                }
+                                let jsonData = JSON(ret)
+                                miner.ipAddr = jsonData["IP"].string
+                                miner.ping = jsonData["Ping"].double ?? -1
+                                
                                 dispatchGrp.leave()
                         }
                         
