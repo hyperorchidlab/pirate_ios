@@ -46,6 +46,6 @@ class MembershipTableViewCell: UITableViewCell {
                 
                 poolNameLabel.text = pool?.Name
                 poolAddressLabel.text = pool?.Address
-                balanceLabel.text = "\((obj.packetBalance - Double(obj.credit)).ToPackets())"
+                balanceLabel.text = "\(obj.packetBalance.ToPackets())"
         }
 }

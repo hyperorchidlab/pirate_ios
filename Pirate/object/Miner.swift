@@ -87,6 +87,25 @@ class Miner : NSObject {
                 PostNoti(HopConstants.NOTI_MINER_CACHE_LOADED)
                 PostNoti(HopConstants.NOTI_MINER_SYNCED)
         }
+        
+        public static func minerInof(mid:String) throws ->(String, Int32) {
+                
+                if let m_data = Miner.CachedMiner[mid.lowercased()]{
+                        return (m_data.ipAddr!, IosLibMinerPort(mid))
+                }
+                
+                guard let data = IosLibMinerAddr(mid) else {
+                        throw HopError.minerErr("Invalid miner infos".locStr)
+                }
+                
+                let jsonData = JSON(data)
+                guard let mip = jsonData["IP"].string,
+                      let port = jsonData["Port"].int32 else{
+                        throw HopError.minerErr("Invalid miner infos".locStr)
+                }
+                
+                return (mip, port)
+        }
 }
 
 extension CDMiner{

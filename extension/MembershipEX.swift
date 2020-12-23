@@ -19,15 +19,17 @@ class MembershipEX:NSObject{
                 let dbContext = DataShareManager.privateQueueContext()
                 let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
                                     HopConstants.DefaultPaymenstService,
-                                    user,
-                                    pool)
+                                    user, pool)//"0xfa0628a247e35ba340eb1d4a058ab8a9755dd044"
 
-                let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
-                request.predicate = w
-                guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
+                
+                guard let result =  NSManagedObject.findOneEntity(HopConstants.DBNAME_MEMBERSHIP,
+                                             where: w,
+                                             context: dbContext) as? CDMemberShip else{
+                        NSLog("--------->Invalid Membership user=\(user) pool=\(pool)")
                         return false
                 }
                 
+                NSLog("--------->\(result.toString())")
                 membership = result
                 return true
         }
@@ -47,8 +49,8 @@ extension CDMemberShip{
                 guard tx.verifyTx() == true else{
                         throw HopError.rcpWire("Signature verify failed for receipt")
                 }
-                guard self.userAddr?.lowercased() == tx.from?.lowercased(),
-                      self.poolAddr?.lowercased() == tx.to?.lowercased() else {
+                guard self.userAddr?.lowercased() == tx.user?.lowercased(),
+                      self.poolAddr?.lowercased() == tx.pool?.lowercased() else {
                         throw HopError.rcpWire("Pool and user are not for me!")
                 }
                 
@@ -57,33 +59,33 @@ extension CDMemberShip{
                         NSLog("--------->++++++++>User account after update\n\(self.toString())")
                         self.syncData()
                 }
-                
-                if self.epoch != tx.epoch!{
-                        self.needReload = true
-                        throw HopError.rcpWire("epoch are not same, need reload from eth")
-                }
-                
-                if self.microNonce + 1 > tx.nonce!{
-                        NSLog("--------->Receipt's nonce[\(tx.nonce!)] is too low[\(self.microNonce)]")
-                        return
-                }
-                
-                let next_credit = tx.credit! + tx.amount!
-                let cur_credit = self.credit + self.inRecharge
-                if cur_credit > next_credit{
-                        NSLog("--------->Lower packet receipt cur=[\(cur_credit)] next=[\(next_credit)]")
-                        return
-                }
-                
-                self.credit = next_credit
-                self.microNonce = tx.nonce!
-                self.curTXHash = nil
-                self.inRecharge = 0
+//                
+//                if self.epoch != tx.epoch!{
+//                        self.needReload = true
+//                        throw HopError.rcpWire("epoch are not same, need reload from eth")
+//                }
+//                
+//                if self.microNonce + 1 > tx.nonce!{
+//                        NSLog("--------->Receipt's nonce[\(tx.nonce!)] is too low[\(self.microNonce)]")
+//                        return
+//                }
+//                
+//                let next_credit = tx.credit! + tx.amount!
+//                let cur_credit = self.credit + self.inRecharge
+//                if cur_credit > next_credit{
+//                        NSLog("--------->Lower packet receipt cur=[\(cur_credit)] next=[\(next_credit)]")
+//                        return
+//                }
+//                
+//                self.credit = next_credit
+//                self.microNonce = tx.nonce!
+//                self.curTXHash = nil
+//                self.inRecharge = 0
         }
         
         func toString() -> String{
                 
-                return "\nUserAccount =>{\nUserAddr=\(self.userAddr!)\n PoolAddr=\(self.poolAddr!)\n Nonce=\(self.nonce)\n Epoch=\(self.epoch) \n TokenBalance=\(self.tokenBalance)\n RemindPacket=\(self.packetBalance)\n Expire=\(self.expire ?? "<--->")\n Credit=\(self.credit)  \n MicroNonce=\(self.microNonce)\n InRecharge=\(self.inRecharge)\n CurTXHash=\(self.curTXHash ?? "---")\n } "
+                return "\nUserAccount =>{\nUserAddr=\(self.userAddr!)\n PoolAddr=\(self.poolAddr!)\n TokenBalance=\(self.tokenBalance)\n RemindPacket=\(self.packetBalance)\n  usedTraffic=\(self.usedTraffic)\n inRecharge=\(self.inRecharge)\n } "
         }
         
         func syncData() {

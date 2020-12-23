@@ -48,10 +48,14 @@ class MembershipUI:NSObject{
                         }
                         return
                 }
-        
+                
+                
+                
                 for cData in memberArr{
                         let poolAddr = cData.poolAddr!.lowercased()
                         Cache[poolAddr] = cData
+                        
+                        NSLog("=======>Membership addr=\(addr) pool=\(cData.poolAddr ?? "<->")")
                         
                         if cData.needReload{
                                 guard let data = IosLibMemberShipData(addr, poolAddr) else {
@@ -62,7 +66,7 @@ class MembershipUI:NSObject{
                         }
                         
                         if AppSetting.coreData?.poolAddrInUsed?.lowercased() == cData.poolAddr!.lowercased(){
-                                let balance = cData.packetBalance - Double(cData.credit)
+                                let balance = cData.packetBalance
                                 AppSetting.coreData?.tmpBalance = balance
                                 PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
                         }
@@ -97,6 +101,7 @@ class MembershipUI:NSObject{
                                             addr,
                                             poolAddr)
                         
+                        NSLog("=======>Membership addr=\(addr) poolAddr=\(poolAddr)")
                         let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
                         request.predicate = w
                         guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
@@ -108,7 +113,7 @@ class MembershipUI:NSObject{
                         result.updateByMemberDetail(json: json, addr: addr)
                         Cache[poolAddr] = result
                         if AppSetting.coreData?.poolAddrInUsed?.lowercased() == poolAddr{
-                                let balance = result.packetBalance - Double(result.credit)
+                                let balance = result.packetBalance
                                 AppSetting.coreData?.tmpBalance = balance
                                 PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
                         }
@@ -130,7 +135,7 @@ extension CDMemberShip{
                 data.mps = HopConstants.DefaultPaymenstService
                 data.tokenBalance = json["left_token_balance"].double ?? 0
                 data.packetBalance = json["left_traffic_balance"].double ?? 0
-                data.credit = json["used_traffic"].int64 ?? 0
+                data.usedTraffic = json["used_traffic"].int64 ?? 0
                 data.inRecharge = 0
                 data.available = true
                 return data
@@ -143,6 +148,6 @@ extension CDMemberShip{
                 self.tokenBalance = json["left_token_balance"].double ?? 0
                 self.packetBalance = json["left_traffic_balance"].double ?? 0
                 let credit = json["used_traffic"].int64 ?? 0
-                self.credit = credit
+                self.usedTraffic = credit
         }
 }

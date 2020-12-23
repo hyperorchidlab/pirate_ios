@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20A5395g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D5029f" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDAppSetting" representedClassName="CDAppSetting" syncable="YES" codeGenerationType="class">
         <attribute name="dnsIP" optional="YES" attributeType="String"/>
         <attribute name="minerAddrInUsed" optional="YES" attributeType="String"/>
@@ -10,18 +10,13 @@
     </entity>
     <entity name="CDMemberShip" representedClassName="CDMemberShip" syncable="YES" codeGenerationType="class">
         <attribute name="available" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="credit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="curTXHash" optional="YES" attributeType="String"/>
-        <attribute name="epoch" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="expire" optional="YES" attributeType="String"/>
         <attribute name="inRecharge" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="microNonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mps" optional="YES" attributeType="String"/>
         <attribute name="needReload" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="nonce" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="packetBalance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="poolAddr" optional="YES" attributeType="String"/>
         <attribute name="tokenBalance" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="usedTraffic" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="userAddr" optional="YES" attributeType="String"/>
     </entity>
     <entity name="CDMiner" representedClassName="CDMiner" syncable="YES" codeGenerationType="class">
@@ -58,7 +53,7 @@
     </entity>
     <elements>
         <element name="CDAppSetting" positionX="-45" positionY="126" width="128" height="119"/>
-        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="253"/>
+        <element name="CDMemberShip" positionX="-45" positionY="117" width="128" height="164"/>
         <element name="CDMiner" positionX="-45" positionY="135" width="128" height="133"/>
         <element name="CDPool" positionX="-36" positionY="126" width="128" height="104"/>
         <element name="CDTransaction" positionX="-27" positionY="144" width="128" height="133"/>

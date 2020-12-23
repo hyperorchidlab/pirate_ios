@@ -143,13 +143,17 @@ class HomeVC: UIViewController {
                 
                 self.showIndicator(withTitle: "VPN", and: "Starting VPN".locStr)
                 
+                let (mIP, mPort) = try Miner.minerInof(mid: miner)
+                
                 let options = ["MAIN_PRI":pri as Any,
                                "SUB_PRI":subPri as Any,
                                "POOL_ADDR":pool as Any,
                                "USER_ADDR":Wallet.WInst.Address as Any,
                                "USER_SUB_ADDR":Wallet.WInst.SubAddress as Any,
                                "GLOBAL_MODE":AppSetting.isGlobalModel,
-                               "MINER_ADDR":miner as Any]
+                               "MINER_ADDR":miner as Any,
+                               "MINER_IP":mIP as Any,
+                               "MINER_PORT":mPort as Any]
                         as! [String : NSObject]
                 
                 try self.targetManager!.connection.startVPNTunnel(options: options)
@@ -314,7 +318,7 @@ class HomeVC: UIViewController {
                         return
                 }
                 if let mem = MembershipUI.Cache[poolAddr.lowercased()]  {
-                        let balance = mem.packetBalance - Double(mem.credit)
+                        let balance = mem.packetBalance
                         AppSetting.coreData?.tmpBalance = balance
                 }
                 
