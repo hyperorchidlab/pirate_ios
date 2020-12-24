@@ -143,7 +143,7 @@ class HomeVC: UIViewController {
                 
                 self.showIndicator(withTitle: "VPN", and: "Starting VPN".locStr)
                 
-                let (mIP, mPort) = try Miner.minerInof(mid: miner)
+                let (mIP, mPort) = try Miner.prepareMiner(mid: miner, user: Wallet.WInst.Address!)
                 
                 let options = ["MAIN_PRI":pri as Any,
                                "SUB_PRI":subPri as Any,

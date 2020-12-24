@@ -11,6 +11,7 @@ import Curve25519
 import CoreData
 import SwiftSocket
 import web3swift
+import SwiftyJSON
 
 @objc public protocol ProtocolDelegate: NSObjectProtocol{
         func VPNShouldDone()
@@ -65,13 +66,13 @@ public class Protocol:NSObject{
                 
                 self.aesKey             = try self.priKey.genAesKey(forMiner:minerID, subPriKey: sub_pri)
                 
-                guard MembershipEX.Membership(user: userAddr, pool: poolAddrStr) else {
+                guard MembershipEX.Membership(user: userAddr, pool: poolAddrStr, miner: minerID) else {
                         throw HopError.txWire("Init membership failed[\(userAddr)---->\(poolAddrStr)]")
                 }
                 
                 self.txSocket = UDPClient(address: self.minerIP, port: self.minerPort)
-                if MembershipEX.membership.inRecharge > HopConstants.RechargePieceSize{
-                        NSLog("--------->Need to recharge because of last failure:\(MembershipEX.membership.inRecharge)")
+                if Int(MembershipEX.minerCredit.inCharge) > HopConstants.RechargePieceSize{
+                        NSLog("--------->Need to recharge because of last failure:\(MembershipEX.minerCredit.inCharge)")
                         self.recharge(amount: 0)
                 }
         }
@@ -88,14 +89,15 @@ extension Protocol{
         }
         private func recharge(amount:Int64){
                 
-                let curMem = MembershipEX.membership!
+                let credit = MembershipEX.minerCredit!
+                let member = MembershipEX.membership!
                 self.TXQueue.async { do {
-                        curMem.inRecharge += amount
+                        credit.inCharge += amount
                         
-                        NSLog("--------->Transaction Wire need to recharge:[\(curMem.inRecharge)]===>")
-                        let tx_data = TransactionData(userData: curMem,
-                                                    amount: Int64(curMem.inRecharge),
-                                                    for:  self.minerAddress)
+                        NSLog("--------->Transaction Wire need to recharge:[\(credit.inCharge)]===>")
+                        let tx_data = TransactionData(member: member,
+                                                      credit: credit,
+                                                      amount: Int64(credit.inCharge))
                         
                         guard let d = tx_data.createTxData(sigKey: self.priKey.mainPriKey!) else{
                                 NSLog("--------->Create transaction data failed")
@@ -104,11 +106,14 @@ extension Protocol{
                         
                         let ret = self.txSocket?.send(data: d)
                         guard ret?.isSuccess == true else{
-                                //TODO::Notification
                                 throw HopError.txWire("Transaction Wire send failed==\(ret?.error?.localizedDescription ?? "<-empty error->")==>")
                         }
                         
-                        curMem.syncData()
+                        guard let response = self.txSocket?.recv(1024) else{
+                                throw HopError.txWire("Transaction Wire read micro tx")
+                        }
+                        
+                        try credit.update(json: JSON(response))
                         
                         }catch let err{
                                 NSLog("--------->\(err.localizedDescription)")

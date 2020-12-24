@@ -123,6 +123,7 @@ class MembershipUI:NSObject{
                 DataShareManager.syncAllContext(dbContext)
                 PostNoti(HopConstants.NOTI_MEMBERSHIP_SYNCED)
         }
+        
 }
 
 extension CDMemberShip{
@@ -136,7 +137,6 @@ extension CDMemberShip{
                 data.tokenBalance = json["left_token_balance"].double ?? 0
                 data.packetBalance = json["left_traffic_balance"].double ?? 0
                 data.usedTraffic = json["used_traffic"].int64 ?? 0
-                data.inRecharge = 0
                 data.available = true
                 return data
         }
@@ -149,5 +149,34 @@ extension CDMemberShip{
                 self.packetBalance = json["left_traffic_balance"].double ?? 0
                 let credit = json["used_traffic"].int64 ?? 0
                 self.usedTraffic = credit
+        }
+}
+
+//TODO::
+extension CDMinerCredit{
+                
+        public static func newEntity(json:JSON?, user:String, mid:String){
+                let dbContext = DataShareManager.privateQueueContext()
+                let data = CDMinerCredit(context: dbContext)
+                if json == nil{
+                        data.credit = 0
+                }else{
+                        data.credit = json!["miner_credit"].int64 ?? 0
+                }
+                data.inCharge = 0
+                data.minerID = mid
+                data.mps = HopConstants.DefaultPaymenstService
+                data.userAddr = user
+        }
+        
+        public func update(json:JSON){
+                let credit = json["miner_credit"].int64 ?? 0
+                if self.credit > credit{
+                        return
+                }
+                
+                self.credit = credit
+                
+                PostNoti(HopConstants.NOTI_MINER_CREDIT_CHANGED)
         }
 }

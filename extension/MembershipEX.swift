@@ -14,10 +14,11 @@ import web3swift
 class MembershipEX:NSObject{
         
         public static var membership:CDMemberShip!
+        public static var minerCredit:CDMinerCredit!
         
-        public static func Membership(user:String, pool:String) -> Bool{
+        public static func Membership(user:String, pool:String, miner:String) -> Bool{
                 let dbContext = DataShareManager.privateQueueContext()
-                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
+                var w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
                                     HopConstants.DefaultPaymenstService,
                                     user, pool)//"0xfa0628a247e35ba340eb1d4a058ab8a9755dd044"
 
@@ -29,17 +30,45 @@ class MembershipEX:NSObject{
                         return false
                 }
                 
+                w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND minerID == true", HopConstants.DefaultPaymenstService, user, miner)
+                guard let mc = NSManagedObject.findOneEntity(HopConstants.DBNAME_MINERCREDIT,
+                                                             where: w,
+                                                             context: dbContext) as? CDMinerCredit else{
+                        NSLog("--------->Invalid miner credit user=\(user) pool=\(miner)")
+                        return false
+                }
                 NSLog("--------->\(result.toString())")
                 membership = result
+                
+                NSLog("--------->\(mc.toString())")
+                minerCredit = mc
                 return true
         }
 }
 
 extension CDMemberShip{
-        //TODO::need a big check
-        func updateByReceipt(data:Data) throws{
+
+        
+        func toString() -> String{
                 
-                let json = JSON(data)
+                return "\nUserAccount =>{\nUserAddr=\(self.userAddr!)\n PoolAddr=\(self.poolAddr!)\n TokenBalance=\(self.tokenBalance)\n RemindPacket=\(self.packetBalance)\n  usedTraffic=\(self.usedTraffic)\n } "
+        }
+}
+
+extension CDMinerCredit{
+        public func toString()->String{
+                return "{\nuserAddr=\(self.userAddr!)\nminerID=\(self.minerID!)\ninCharge=\(self.inCharge)\ncredit=\(self.credit)}"
+        }
+        
+        
+        func syncData() {
+                let dbContext = DataShareManager.privateQueueContext()
+                DataShareManager.saveContext(dbContext)
+                DataShareManager.syncAllContext(dbContext)
+        }
+        
+        public func update(json:JSON)throws{
+                
                 let rcp = ReceiptData(json: json)
                 guard let tx = rcp.tx else{
                         throw HopError.rcpWire("No valid transaction data")
@@ -50,7 +79,7 @@ extension CDMemberShip{
                         throw HopError.rcpWire("Signature verify failed for receipt")
                 }
                 guard self.userAddr?.lowercased() == tx.user?.lowercased(),
-                      self.poolAddr?.lowercased() == tx.pool?.lowercased() else {
+                      self.minerID?.lowercased() == tx.minerID?.lowercased() else {
                         throw HopError.rcpWire("Pool and user are not for me!")
                 }
                 
@@ -59,38 +88,11 @@ extension CDMemberShip{
                         NSLog("--------->++++++++>User account after update\n\(self.toString())")
                         self.syncData()
                 }
-//                
-//                if self.epoch != tx.epoch!{
-//                        self.needReload = true
-//                        throw HopError.rcpWire("epoch are not same, need reload from eth")
-//                }
-//                
-//                if self.microNonce + 1 > tx.nonce!{
-//                        NSLog("--------->Receipt's nonce[\(tx.nonce!)] is too low[\(self.microNonce)]")
-//                        return
-//                }
-//                
-//                let next_credit = tx.credit! + tx.amount!
-//                let cur_credit = self.credit + self.inRecharge
-//                if cur_credit > next_credit{
-//                        NSLog("--------->Lower packet receipt cur=[\(cur_credit)] next=[\(next_credit)]")
-//                        return
-//                }
-//                
-//                self.credit = next_credit
-//                self.microNonce = tx.nonce!
-//                self.curTXHash = nil
-//                self.inRecharge = 0
-        }
-        
-        func toString() -> String{
+                let credit = json["miner_credit"].int64 ?? 0
+                if self.credit > credit{
+                        return
+                }
                 
-                return "\nUserAccount =>{\nUserAddr=\(self.userAddr!)\n PoolAddr=\(self.poolAddr!)\n TokenBalance=\(self.tokenBalance)\n RemindPacket=\(self.packetBalance)\n  usedTraffic=\(self.usedTraffic)\n inRecharge=\(self.inRecharge)\n } "
-        }
-        
-        func syncData() {
-                let dbContext = DataShareManager.privateQueueContext()
-                DataShareManager.saveContext(dbContext)
-                DataShareManager.syncAllContext(dbContext)
+                self.credit = credit
         }
 }

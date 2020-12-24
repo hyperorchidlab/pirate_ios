@@ -25,7 +25,7 @@ public class TransactionData:NSObject{
         public static let abiPrefix = "\u{19}Ethereum Signed Message:\n32"
         
         var usedTraffic:Int64?
-        var time:String?
+        var time:Int64?
         var minerID:String?
         var minerAmount:Int64?
         var minerCredit:Int64?
@@ -39,7 +39,7 @@ public class TransactionData:NSObject{
         public init(json:JSON){
                 self.txSig = json["signature"].string
                 self.hashV = json["hash"].string
-                self.time = json["time"].string
+                self.time = json["time"].int64
                 self.minerID = json["minerID"].string
                 self.user = json["user"].string
                 self.pool = json["pool"].string
@@ -50,16 +50,18 @@ public class TransactionData:NSObject{
         }
         
         public func toString()->String{
-                return "Transaction=>{\ntxsig=\(txSig ?? "<->")\nhashV=\(hashV ?? "<->")\ntime=\(time!)\nminerID=\(minerID!)\nfrom=\(user!) \nto=\(pool!)\nminerAmount=\(minerAmount!)\nminerCredit=\(minerCredit!)\ncontractAddr=\(contractAddr!)\ntokenAddr=\(tokenAddr!)\n}\n"
+                return "Transaction=>{\ntxsig=\(txSig ?? "<->")\nhashV=\(hashV ?? "<->")\ntime=\(time!)\nminerID=\(minerID!)\nfrom=\(user!) \nto=\(pool!)\nminerAmount=\(minerAmount!)\nminerCredit=\(minerCredit!)\n}\n"
         }
         
-        public init(userData:CDMemberShip, amount:Int64, for miner:String){
+        public init(member:CDMemberShip, credit:CDMinerCredit, amount:Int64){
                 super.init()
-                self.minerID = miner
-                self.user = EthereumAddress.toChecksumAddress(userData.userAddr!)
-                self.pool = EthereumAddress.toChecksumAddress(userData.poolAddr!)
+                self.usedTraffic = member.usedTraffic
+                self.time = Int64(Date().timeIntervalSince1970 * 1000)
+                self.minerID = credit.minerID
                 self.minerAmount = amount
-                self.minerCredit = userData.usedTraffic
+                self.minerCredit = member.usedTraffic
+                self.user = EthereumAddress.toChecksumAddress(member.userAddr!)
+                self.pool = EthereumAddress.toChecksumAddress(member.poolAddr!)
         }
         
         func createABIHash() -> Data?{
@@ -80,10 +82,10 @@ public class TransactionData:NSObject{
                 return  pre_encode?.sha3(.keccak256)
         }
         /*
-         {"signature":"wcOjDhMc2nthSa3jTHzO/nsxqsv9d3ESo8cYTFvlmg8177fNqJk6ION/hCMXb5Qp+wqlfiM6m8PD1qjStnE/7AA=","hash":"8HGDVD9Q8fz2iqs8/pBWv6EjECbrjeNgeyDeNIuDe7Q=","used_traffic":1000,"time":1608721312222,"minerID":"HOGpBCzYGgzuSsJGuMDMpVsp24gPVScuiziZswwWLJ8fN1","user":"0xc3df37433b0aaa18e120dbff932cc3e64db79336","pool":"0xc3df37433b0aaa18e120dbff932cc3e64db79336","miner_amount":4,"miner_credit":12,"author":{"contract":"0xc3df37433b0aaa18e120dbff932cc3e64db79336","token":"0xc3df37433b0aaa18e120dbff932cc3e64db79336"}}
+         {"typ":0,"tx":{"signature":"wcOjDhMc2nthSa3jTHzO/nsxqsv9d3ESo8cYTFvlmg8177fNqJk6ION/hCMXb5Qp+wqlfiM6m8PD1qjStnE/7AA=","hash":"8HGDVD9Q8fz2iqs8/pBWv6EjECbrjeNgeyDeNIuDe7Q=","used_traffic":1000,"time":1608808536718,"minerID":"HOGpBCzYGgzuSsJGuMDMpVsp24gPVScuiziZswwWLJ8fN1","user":"0xc3df37433b0aaa18e120dbff932cc3e64db79336","pool":"0xc3df37433b0aaa18e120dbff932cc3e64db79336","miner_amount":4,"miner_credit":12,"author":{"contract":"0xc3df37433b0aaa18e120dbff932cc3e64db79336","token":"0xc3df37433b0aaa18e120dbff932cc3e64db79336"}}}
          */
         
-        public static let TxFormat = "{\"signature\":\"%@\",\"hash\":\"%@\",\"used_traffic\":%d,\"time\":\"%@\",\"minerID\":\"%@\",\"user\":\"%@\",\"pool\":\"%@\",\"miner_amount\":%d,\"miner_credit\":%d,\"author\":{\"contract\":\"%@\",\"token\":\"%@\"}}"
+        public static let TxFormat = "{\"typ\":0,\"tx\":{\"signature\":\"%@\",\"hash\":\"%@\",\"used_traffic\":%d,\"time\":\"%@\",\"minerID\":\"%@\",\"user\":\"%@\",\"pool\":\"%@\",\"miner_amount\":%d,\"miner_credit\":%d,\"author\":{\"contract\":\"%@\",\"token\":\"%@\"}}}"
         
         func createTxData(sigKey:Data) -> Data?{
                 guard let hash_data = self.createABIHash() else {
@@ -103,8 +105,8 @@ public class TransactionData:NSObject{
                 NSLog("--------->Create transaction:\(tx_str)")
                 return tx_str.data(using: .utf8)
         }
+        
         public func verifyTx() -> Bool{
-           
                 guard self.tokenAddr?.lowercased() == HopConstants.DefaultTokenAddr.lowercased(),
                       self.contractAddr?.lowercased() == HopConstants.DefaultPaymenstService.lowercased() else {
                         NSLog("--------->verifyTx mps or token wrong")
@@ -136,7 +138,7 @@ public class TransactionData:NSObject{
 }
 
 public class ReceiptData:NSObject{
-        
+        var success:Bool = false
         var sig:String?
         var tx:TransactionData?
         
@@ -145,7 +147,14 @@ public class ReceiptData:NSObject{
         }
         
         public init(json:JSON){
-                self.sig = json["sig"].string
+                let code = json["code"].int
+                if code != 0{
+                        success = false
+                        return
+                }
+                
+                let minderTX = json["data"]
+                self.sig = minderTX["sig"].string
                 let txJson = json["tx"]
                 self.tx = TransactionData(json: txJson)
         }

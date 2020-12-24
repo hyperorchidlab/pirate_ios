@@ -88,7 +88,37 @@ class Miner : NSObject {
                 PostNoti(HopConstants.NOTI_MINER_SYNCED)
         }
         
-        public static func minerInof(mid:String) throws ->(String, Int32) {
+        public static func prepareMiner(mid:String, user:String) throws ->(String, Int32) {
+                let (ip, port) = try minerNetAddr(mid: mid)
+                guard let ret = IosLibSyncMinerCredit(ip, user, Int(port)) else{
+                        throw HopError.minerErr("sync miner ip:port failed")
+                }
+                
+                let dbContext = DataShareManager.privateQueueContext()
+                defer {
+                        DataShareManager.saveContext(dbContext)
+                        DataShareManager.syncAllContext(dbContext)
+                }
+                
+                if ret.count == 0{
+                        CDMinerCredit.newEntity(json:nil, user: user, mid: mid)
+                        return (ip, port)
+                }
+                let json = JSON(ret)
+                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND minerID == true", HopConstants.DefaultPaymenstService, user, mid)
+                guard let minerCredit = NSManagedObject.findOneEntity(HopConstants.DBNAME_MINERCREDIT,
+                                                             where: w,
+                                                             context: dbContext) as? CDMinerCredit else{
+                        CDMinerCredit.newEntity(json: json, user: user, mid: mid)
+                        return (ip, port)
+                }
+                
+                minerCredit.update(json:json)
+                
+                return (ip, port)
+        }
+        
+        public static func minerNetAddr(mid:String) throws ->(String, Int32) {
                 
                 if let m_data = Miner.CachedMiner[mid.lowercased()]{
                         return (m_data.ipAddr!, IosLibMinerPort(mid))

@@ -56,6 +56,7 @@ public struct HopConstants {
         static public let DBNAME_POOL = "CDPool"
         static public let DBNAME_MINER = "CDMiner"
         static public let DBNAME_MEMBERSHIP = "CDMemberShip"
+        static public let DBNAME_MINERCREDIT = "CDMinerCredit"
         
         
         static let NOTI_DNS_CHANGED = Notification.init(name: Notification.Name("NOTI_DNS_CHANGED"))
@@ -68,6 +69,7 @@ public struct HopConstants {
         static let NOTI_MINER_CACHE_LOADED = Notification.init(name: Notification.Name("NOTI_MINER_CACHE_LOADED"))
         static let NOTI_MINER_SYNCED = Notification.init(name: Notification.Name("NOTI_MINER_SYNCED"))
         static let NOTI_MINER_INUSE_CHANGED = Notification.init(name: Notification.Name("NOTI_MINER_INUSE_CHANGED"))
+        static let NOTI_MINER_CREDIT_CHANGED = Notification.init(name: Notification.Name("NOTI_MINER_CREDIT_CHANGED"))
         
         static public func WalletPath() -> URL{
                 let base = DataShareManager.sharedInstance.containerURL
