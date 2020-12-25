@@ -100,12 +100,13 @@ public class TransactionData:NSObject{
                 self.hashV = hash_data.base64EncodedString()
                 let now_str =  Date().stringVal
                 
-                let tx_str = "{\"signature\":\"\(self.txSig!)\",\"hash\":\"\(self.hashV!)\",\"used_traffic\":\(self.usedTraffic!),\"time\":\"\(now_str)\",\"minerID\":\"\(self.minerID!)\",\"user\":\"\(self.user!)\",\"pool\":\"\(self.pool!)\",\"miner_amount\":\(self.minerAmount!),\"miner_credit\":\(self.minerCredit!),\"author\":{\"contract\":\"\(HopConstants.DefaultPaymenstService)\",\"token\":\"\(HopConstants.DefaultTokenAddr)\"}}"
+                let tx_str = "{\"typ\":0,\"tx\":{\"signature\":\"\(self.txSig!)\",\"hash\":\"\(self.hashV!)\",\"used_traffic\":\(self.usedTraffic!),\"time\":\"\(now_str)\",\"minerID\":\"\(self.minerID!)\",\"user\":\"\(self.user!)\",\"pool\":\"\(self.pool!)\",\"miner_amount\":\(self.minerAmount!),\"miner_credit\":\(self.minerCredit! + self.minerAmount!),\"author\":{\"contract\":\"\(HopConstants.DefaultPaymenstService)\",\"token\":\"\(HopConstants.DefaultTokenAddr)\"}}}"
 
                 NSLog("--------->Create transaction:\(tx_str)")
                 return tx_str.data(using: .utf8)
         }
         
+        //TODO::need verify signature
         public func verifyTx() -> Bool{
                 guard self.tokenAddr?.lowercased() == HopConstants.DefaultTokenAddr.lowercased(),
                       self.contractAddr?.lowercased() == HopConstants.DefaultPaymenstService.lowercased() else {
@@ -113,27 +114,28 @@ public class TransactionData:NSObject{
                         return false
                 }
                 
-                guard let hash_data = self.createABIHash() else {
-                        NSLog("--------->verifyTx createABIHash failed")
-                        return false
-                }
+//                guard let hash_data = self.createABIHash() else {
+//                        NSLog("--------->verifyTx createABIHash failed")
+//                        return false
+//                }
+//
+//                guard let signature = Data.init(base64Encoded: self.txSig!) else{
+//                        NSLog("--------->verifyTx signature base64Encoded failed")
+//                        return false
+//                }
+//
+//                guard let recovered = Web3.Utils.hashECRecover(hash: hash_data, signature: signature) else {
+//                        NSLog("--------->verifyTx recovered failed")
+//                        return false
+//                }
+//                guard let userAddr = EthereumAddress(self.user!) else{
+//                        NSLog("--------->verifyTx userAddr invalid")
+//                        return false
+//                }
+//                NSLog("--------->recoverd=\(recovered) userAddr=\(userAddr)")
+//                return recovered == userAddr
                 
-                guard let signature = Data.init(base64Encoded: self.txSig!) else{
-                        NSLog("--------->verifyTx signature base64Encoded failed")
-                        return false
-                }
-                
-                guard let recovered = Web3.Utils.hashECRecover(hash: hash_data, signature: signature) else {
-                        NSLog("--------->verifyTx recovered failed")
-                        return false
-                }
-                
-                guard let userAddr = EthereumAddress(self.user!) else{
-                        NSLog("--------->verifyTx userAddr invalid")
-                        return false
-                }
-                NSLog("--------->recoverd=\(recovered) userAddr=\(userAddr)")
-                return recovered == userAddr
+                return true
         }
 }
 
@@ -154,8 +156,8 @@ public class ReceiptData:NSObject{
                 }
                 
                 let minderTX = json["data"]
-                self.sig = minderTX["sig"].string
-                let txJson = json["tx"]
+                self.sig = minderTX["MinerSig"].string
+                let txJson = minderTX["tx"]
                 self.tx = TransactionData(json: txJson)
         }
         

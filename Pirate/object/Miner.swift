@@ -90,31 +90,28 @@ class Miner : NSObject {
         
         public static func prepareMiner(mid:String, user:String) throws ->(String, Int32) {
                 let (ip, port) = try minerNetAddr(mid: mid)
-                guard let ret = IosLibSyncMinerCredit(ip, user, Int(port)) else{
-                        throw HopError.minerErr("sync miner ip:port failed")
-                }
-                
                 let dbContext = DataShareManager.privateQueueContext()
                 defer {
                         DataShareManager.saveContext(dbContext)
                         DataShareManager.syncAllContext(dbContext)
                 }
                 
-                if ret.count == 0{
-                        CDMinerCredit.newEntity(json:nil, user: user, mid: mid)
+                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND minerID == %@", HopConstants.DefaultPaymenstService, user, mid)
+                var minerCredit = NSManagedObject.findOneEntity(HopConstants.DBNAME_MINERCREDIT,
+                                                             where: w,
+                                                             context: dbContext) as? CDMinerCredit
+                if minerCredit == nil{
+                        minerCredit = CDMinerCredit.newEntity(user: user, mid: mid)
+                }
+                
+                guard let ret = IosLibSyncMinerCredit(ip, user, Int(port)) else{
+                        throw HopError.minerErr("sync miner ip:port failed")
+                }
+                if ret.count <= 1{
                         return (ip, port)
                 }
                 let json = JSON(ret)
-                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND minerID == true", HopConstants.DefaultPaymenstService, user, mid)
-                guard let minerCredit = NSManagedObject.findOneEntity(HopConstants.DBNAME_MINERCREDIT,
-                                                             where: w,
-                                                             context: dbContext) as? CDMinerCredit else{
-                        CDMinerCredit.newEntity(json: json, user: user, mid: mid)
-                        return (ip, port)
-                }
-                
-                minerCredit.update(json:json)
-                
+                minerCredit!.update(json:json)
                 return (ip, port)
         }
         

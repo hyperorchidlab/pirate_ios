@@ -30,11 +30,11 @@ class MembershipEX:NSObject{
                         return false
                 }
                 
-                w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND minerID == true", HopConstants.DefaultPaymenstService, user, miner)
+                w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND minerID == %@", HopConstants.DefaultPaymenstService, user, miner)
                 guard let mc = NSManagedObject.findOneEntity(HopConstants.DBNAME_MINERCREDIT,
                                                              where: w,
                                                              context: dbContext) as? CDMinerCredit else{
-                        NSLog("--------->Invalid miner credit user=\(user) pool=\(miner)")
+                        NSLog("--------->Invalid miner credit user=\(user) miner=\(miner)")
                         return false
                 }
                 NSLog("--------->\(result.toString())")
@@ -47,7 +47,6 @@ class MembershipEX:NSObject{
 }
 
 extension CDMemberShip{
-
         
         func toString() -> String{
                 
@@ -56,6 +55,7 @@ extension CDMemberShip{
 }
 
 extension CDMinerCredit{
+        
         public func toString()->String{
                 return "{\nuserAddr=\(self.userAddr!)\nminerID=\(self.minerID!)\ninCharge=\(self.inCharge)\ncredit=\(self.credit)}"
         }

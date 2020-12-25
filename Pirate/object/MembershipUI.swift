@@ -155,28 +155,24 @@ extension CDMemberShip{
 //TODO::
 extension CDMinerCredit{
                 
-        public static func newEntity(json:JSON?, user:String, mid:String){
+        public static func newEntity(user:String, mid:String) -> CDMinerCredit{
                 let dbContext = DataShareManager.privateQueueContext()
                 let data = CDMinerCredit(context: dbContext)
-                if json == nil{
-                        data.credit = 0
-                }else{
-                        data.credit = json!["miner_credit"].int64 ?? 0
-                }
+                data.credit = 0
                 data.inCharge = 0
                 data.minerID = mid
                 data.mps = HopConstants.DefaultPaymenstService
                 data.userAddr = user
+                return data
         }
         
         public func update(json:JSON){
                 let credit = json["miner_credit"].int64 ?? 0
-                if self.credit > credit{
+                if self.credit >= credit{
                         return
                 }
                 
                 self.credit = credit
-                
                 PostNoti(HopConstants.NOTI_MINER_CREDIT_CHANGED)
         }
 }

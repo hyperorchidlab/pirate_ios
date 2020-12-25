@@ -119,8 +119,11 @@ class HomeVC: UIViewController {
                
                 guard  Wallet.WInst.IsOpen() else{
                         self.ShowOnePassword() {
-                                do {try self._startVPN(pool: pool, miner: miner)}catch let err{
+                                do {
+                                        try self._startVPN(pool: pool, miner: miner)
+                                }catch let err{
                                         self.ShowTips(msg: err.localizedDescription)
+                                        self.hideIndicator()
                                 }
                         }
                         return
@@ -131,20 +134,19 @@ class HomeVC: UIViewController {
                 }catch let err{
                         NSLog("=======>Failed to start the VPN: \(err)")
                         self.ShowTips(msg: err.localizedDescription)
+                        self.hideIndicator()
                 }
         }
         
         private func _startVPN(pool:String, miner:String) throws{
                 
+                self.showIndicator(withTitle: "VPN", and: "Starting VPN".locStr)
+                
                 guard let pri = Wallet.WInst.MainPrikey(),
                       let subPri = Wallet.WInst.SubPrikey() else {
                         throw HopError.wallet("No valid key data".locStr)
                 }
-                
-                self.showIndicator(withTitle: "VPN", and: "Starting VPN".locStr)
-                
                 let (mIP, mPort) = try Miner.prepareMiner(mid: miner, user: Wallet.WInst.Address!)
-                
                 let options = ["MAIN_PRI":pri as Any,
                                "SUB_PRI":subPri as Any,
                                "POOL_ADDR":pool as Any,
