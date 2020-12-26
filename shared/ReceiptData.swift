@@ -80,10 +80,10 @@ public class TransactionData:NSObject{
         
         func createABIHash() -> Data?{
                 
-                let parameters:[AnyObject] = [EthereumAddress(HopConstants.DefaultPaymenstService)! as AnyObject,
-                                              EthereumAddress(HopConstants.DefaultTokenAddr)! as AnyObject,
-                                        EthereumAddress(self.user!)! as AnyObject,
-                                        EthereumAddress(self.pool!)! as AnyObject,
+                let parameters:[AnyObject] = [HopConstants.DefaultPaymenstService as AnyObject,
+                                              HopConstants.DefaultTokenAddr as AnyObject,
+                                        self.user! as AnyObject,
+                                        self.pool! as AnyObject,
                                         self.minerCredit as AnyObject,
                                         self.minerAmount as AnyObject,
                                         self.usedTraffic as AnyObject]
