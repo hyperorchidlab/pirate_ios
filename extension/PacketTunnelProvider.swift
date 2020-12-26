@@ -124,7 +124,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 proxySettings.httpsServer = NEProxyServer.init(address: proxyServerAddress, port: Int(proxyServerPort))
                 proxySettings.excludeSimpleHostnames = true;
                 proxySettings.matchDomains = [""]
-//                proxySettings.exceptionList = []//Utils.Exclusives
+                proxySettings.exceptionList = Utils.Exclusives
+                NSLog("--------->exclude->\(proxySettings.exceptionList!)")
                 if enablePacketProcessing {
                         let DNSSettings = NEDNSSettings(servers: ["198.18.0.1"])
                         DNSSettings.matchDomains = [""]

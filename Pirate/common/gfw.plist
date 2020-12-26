@@ -38,6 +38,7 @@
 		<key>exclude</key>
 		<array>
 			<string>*.icloud.com</string>
+                        <string>*.icloud.com.cn</string>
 			<string>*.weixin.com</string>
 			<string>*.qq.com</string>
 			<string>*.apple.com</string>

@@ -13,12 +13,12 @@ class Utils: NSObject {
         
         public static var Domains:[String:NSObject] = [:]
         public static var IPRange:[String:NSObject] = [:]
-//        public static var Exclusives:[String] = []
+        public static var Exclusives:[String] = []
         public static var JavaScriptString = ""
         private override init() {
                 super.init()
         }
-        //TODO:: throw
+        
         static func initDomains() throws{
                 guard let url = Bundle.main.path(forResource: "gfw", ofType: "plist") else{
                         throw HopError.hopProtocol("no gfw file")
@@ -37,11 +37,11 @@ class Utils: NSObject {
                         throw HopError.hopProtocol("invalid ip ranges")
                 }
                 
-//                guard let ex = cnDic["exclude"] as? [String] else{
-//                        throw HopError.hopProtocol("invalid exclusive domains")
-//                }
-//                
-//                Utils.Exclusives = ex
+                guard let ex = cnDic["exclude"] as? [String] else{
+                        throw HopError.hopProtocol("invalid exclusive domains")
+                }
+                
+                Utils.Exclusives = ex
                 Utils.Domains = domains
                 Utils.IPRange = ips
         } 
