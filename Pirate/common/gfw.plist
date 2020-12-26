@@ -37,6 +37,7 @@
 	<dict>
 		<key>exclude</key>
 		<array>
+                        <string>*.com.cn</string>
 			<string>*.icloud.com</string>
                         <string>*.icloud.com.cn</string>
 			<string>*.weixin.com</string>
@@ -3189,7 +3190,6 @@
 				<string>latibet.org</string>
 				<string>le-vpn.com</string>
 				<string>leafyvpn.net</string>
-				<string>com.cn</string>
 				<string>lefora.com</string>
 				<string>left21.hk</string>
 				<string>legalporno.com</string>

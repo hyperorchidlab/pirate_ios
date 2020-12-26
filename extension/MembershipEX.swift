@@ -68,7 +68,7 @@ extension CDMinerCredit{
         }
         
         public func update(json:JSON)throws{
-                
+                                
                 let rcp = ReceiptData(json: json)
                 guard let tx = rcp.tx else{
                         throw HopError.rcpWire("No valid transaction data")

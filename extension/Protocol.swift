@@ -95,12 +95,11 @@ extension Protocol{
                         credit.inCharge += amount
                         
                         NSLog("--------->Transaction Wire need to recharge:[\(credit.inCharge)]===>")
-                        let tx_data = TransactionData(member: member,
+                        let tx_data = TransactionData.initForRechargge(member: member,
                                                       credit: credit,
                                                       amount: Int64(credit.inCharge))
                         
                         guard let d = tx_data.createTxData(sigKey: self.priKey.mainPriKey!) else{
-                                NSLog("--------->Create transaction data failed")
                                 throw HopError.txWire("Create transaction data failed")
                         }
                         
@@ -108,15 +107,16 @@ extension Protocol{
                         guard ret?.isSuccess == true else{
                                 throw HopError.txWire("Transaction Wire send failed==\(ret?.error?.localizedDescription ?? "<-empty error->")==>")
                         }
-                        
-                        guard let response = self.txSocket?.recv(1024) else{
+//                        let (response, ip, port) = self.txSocket!.recv(1024)
+                        guard let (response, _, _) = self.txSocket?.recv(1024) else{
                                 throw HopError.txWire("Transaction Wire read micro tx")
                         }
                         
-                        try credit.update(json: JSON(response))
+                        NSLog("--------->Transaction response=[\(String.init(data: Data.init(response!), encoding: .utf8) ?? "<->")]")
+                        try credit.update(json: JSON(response as Any))
                         
                         }catch let err{
-                                NSLog("--------->\(err.localizedDescription)")
+                                NSLog("--------->Transaction Wire err:=>\(err.localizedDescription)")
                         }
                 }
         }

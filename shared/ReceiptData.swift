@@ -36,32 +36,46 @@ public class TransactionData:NSObject{
         var txSig:String?
         var hashV:String?
         
-        public init(json:JSON){
-                self.txSig = json["signature"].string
-                self.hashV = json["hash"].string
-                self.time = json["time"].int64
-                self.minerID = json["minerID"].string
-                self.user = json["user"].string
-                self.pool = json["pool"].string
-                self.minerAmount = json["miner_amount"].int64
-                self.minerCredit = json["miner_credit"].int64
-                self.contractAddr = json["author"]["contract"].string
-                self.tokenAddr = json["author"]["token"].string
+        public override init(){
+                super.init()
+        }
+        
+        static public func initByReceipt(json:JSON) -> TransactionData{
+                
+                let data = TransactionData()
+                
+                data.txSig = json["signature"].string
+                data.hashV = json["hash"].string
+                data.time = json["time"].int64
+                data.minerID = json["minerID"].string
+                data.user = json["user"].string
+                data.pool = json["pool"].string
+                data.minerAmount = json["miner_amount"].int64
+                data.minerCredit = json["miner_credit"].int64
+                data.contractAddr = json["author"]["contract"].string
+                data.tokenAddr = json["author"]["token"].string
+                data.usedTraffic = json["used_traffic"].int64
+                
+                return data
         }
         
         public func toString()->String{
                 return "Transaction=>{\ntxsig=\(txSig ?? "<->")\nhashV=\(hashV ?? "<->")\ntime=\(time!)\nminerID=\(minerID!)\nfrom=\(user!) \nto=\(pool!)\nminerAmount=\(minerAmount!)\nminerCredit=\(minerCredit!)\n}\n"
         }
         
-        public init(member:CDMemberShip, credit:CDMinerCredit, amount:Int64){
-                super.init()
-                self.usedTraffic = member.usedTraffic
-                self.time = Int64(Date().timeIntervalSince1970 * 1000)
-                self.minerID = credit.minerID
-                self.minerAmount = amount
-                self.minerCredit = member.usedTraffic
-                self.user = EthereumAddress.toChecksumAddress(member.userAddr!)
-                self.pool = EthereumAddress.toChecksumAddress(member.poolAddr!)
+        static public func initForRechargge(member:CDMemberShip, credit:CDMinerCredit, amount:Int64) -> TransactionData{
+                
+                let data = TransactionData()
+                
+                data.usedTraffic = member.usedTraffic
+                data.time = Int64(Date().timeIntervalSince1970 * 1000)
+                data.minerID = credit.minerID
+                data.minerAmount = amount
+                data.minerCredit = credit.credit + amount
+                data.user = EthereumAddress.toChecksumAddress(member.userAddr!)
+                data.pool = EthereumAddress.toChecksumAddress(member.poolAddr!)
+                
+                return data
         }
         
         func createABIHash() -> Data?{
@@ -75,6 +89,7 @@ public class TransactionData:NSObject{
                                         self.usedTraffic as AnyObject]
                 
                 let tx_encode = ABIEncoder.encode(types:TransactionData.txInputType, values: parameters)
+//                NSLog("--------->tx_encode===>\(tx_encode?.toHexString())")
                 let tx_hash = tx_encode!.sha3(.keccak256)
                 let pre_parameters:[AnyObject] = [TransactionData.abiPrefix as AnyObject, tx_hash as AnyObject]
                 
@@ -98,9 +113,8 @@ public class TransactionData:NSObject{
                 }
                 self.txSig = d.base64EncodedString()
                 self.hashV = hash_data.base64EncodedString()
-                let now_str =  Date().stringVal
                 
-                let tx_str = "{\"typ\":0,\"tx\":{\"signature\":\"\(self.txSig!)\",\"hash\":\"\(self.hashV!)\",\"used_traffic\":\(self.usedTraffic!),\"time\":\"\(now_str)\",\"minerID\":\"\(self.minerID!)\",\"user\":\"\(self.user!)\",\"pool\":\"\(self.pool!)\",\"miner_amount\":\(self.minerAmount!),\"miner_credit\":\(self.minerCredit! + self.minerAmount!),\"author\":{\"contract\":\"\(HopConstants.DefaultPaymenstService)\",\"token\":\"\(HopConstants.DefaultTokenAddr)\"}}}"
+                let tx_str = "{\"typ\":0,\"tx\":{\"signature\":\"\(self.txSig!)\",\"hash\":\"\(self.hashV!)\",\"used_traffic\":\(self.usedTraffic!),\"time\":\(self.time!),\"minerID\":\"\(self.minerID!)\",\"user\":\"\(self.user!)\",\"pool\":\"\(self.pool!)\",\"miner_amount\":\(self.minerAmount!),\"miner_credit\":\(self.minerCredit!),\"author\":{\"contract\":\"\(HopConstants.DefaultPaymenstService)\",\"token\":\"\(HopConstants.DefaultTokenAddr)\"}}}"
 
                 NSLog("--------->Create transaction:\(tx_str)")
                 return tx_str.data(using: .utf8)
@@ -157,8 +171,7 @@ public class ReceiptData:NSObject{
                 
                 let minderTX = json["data"]
                 self.sig = minderTX["MinerSig"].string
-                let txJson = minderTX["tx"]
-                self.tx = TransactionData(json: txJson)
+                self.tx = TransactionData.initByReceipt(json: minderTX)
         }
         
         public func toString()->String{

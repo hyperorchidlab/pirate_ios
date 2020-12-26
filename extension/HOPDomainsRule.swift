@@ -114,16 +114,17 @@ class HOPDomainsRule: AllRule {
                         return adapterFactory
                 }
                 if matchDomain(session.host) {
-                        NSLog("--------->*******[Domain]Hit host:[\(session.host):\(session.port)]")
+//                        NSLog("--------->*******[Domain]Hit host:[\(session.host):\(session.port)]")
                         return adapterFactory
                 }
-                NSLog("--------->[Domain]By pass host:[\(session.host):\(session.port)]")
+//                NSLog("--------->[Domain]By pass host:[\(session.host):\(session.port)]")
                 return nil
         }
         
         fileprivate func matchDomain(_ domain: String) -> Bool {
             for criterion in matchCriteria {
                 if criterion.match(domain) {
+//                        NSLog("--------->match:[\(criterion)]")
                     return true
                 }
             }
