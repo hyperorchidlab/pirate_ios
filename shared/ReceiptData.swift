@@ -60,14 +60,14 @@ public class TransactionData:NSObject{
         }
         
         public func toString()->String{
-                return "Transaction=>{\ntxsig=\(txSig ?? "<->")\nhashV=\(hashV ?? "<->")\ntime=\(time!)\nminerID=\(minerID!)\nfrom=\(user!) \nto=\(pool!)\nminerAmount=\(minerAmount!)\nminerCredit=\(minerCredit!)\n}\n"
+                return "Transaction=>{\ntxsig=\(txSig ?? "<->")\nhashV=\(hashV ?? "<->")\ntime=\(time!)\nminerID=\(minerID!)\nfrom=\(user!) \nto=\(pool!)\nminerAmount=\(minerAmount!)\nminerCredit=\(minerCredit!)\nself.usedTraffic=\(self.usedTraffic!)}\n"
         }
         
         static public func initForRechargge(member:CDMemberShip, credit:CDMinerCredit, amount:Int64) -> TransactionData{
                 
                 let data = TransactionData()
                 
-                data.usedTraffic = member.usedTraffic
+                data.usedTraffic = member.usedTraffic + amount
                 data.time = Int64(Date().timeIntervalSince1970 * 1000)
                 data.minerID = credit.minerID
                 data.minerAmount = amount
@@ -121,12 +121,28 @@ public class TransactionData:NSObject{
         }
         
         //TODO::need verify signature
-        public func verifyTx() -> Bool{
+        public func verifyTx(credit:CDMinerCredit, member:CDMemberShip) -> Bool{
                 guard self.tokenAddr?.lowercased() == HopConstants.DefaultTokenAddr.lowercased(),
                       self.contractAddr?.lowercased() == HopConstants.DefaultPaymenstService.lowercased() else {
                         NSLog("--------->verifyTx mps or token wrong")
                         return false
                 }
+                
+                guard credit.userAddr?.lowercased() == self.user?.lowercased(),
+                      credit.minerID?.lowercased() == self.minerID?.lowercased() else {
+                        NSLog("--------->Pool and user are not for me!")
+                        return false
+                }
+                
+                if credit.credit > self.minerCredit!{
+                        NSLog("--------->credit invalid [\(credit.credit) ===> [\(self.minerCredit!)]")
+                        return false
+                }
+                if member.usedTraffic >= self.usedTraffic!{
+                        NSLog("--------->old receipt [\(member.usedTraffic)] ===> [\(self.usedTraffic!)]")
+                        return false
+                }
+                
                 
 //                guard let hash_data = self.createABIHash() else {
 //                        NSLog("--------->verifyTx createABIHash failed")

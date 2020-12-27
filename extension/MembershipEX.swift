@@ -44,6 +44,13 @@ class MembershipEX:NSObject{
                 minerCredit = mc
                 return true
         }
+        
+        public static func syncData() {
+                let dbContext = DataShareManager.privateQueueContext()
+                DataShareManager.saveContext(dbContext)
+                DataShareManager.syncAllContext(dbContext)
+        }
+        
 }
 
 extension CDMemberShip{
@@ -51,6 +58,11 @@ extension CDMemberShip{
         func toString() -> String{
                 
                 return "\nUserAccount =>{\nUserAddr=\(self.userAddr!)\n PoolAddr=\(self.poolAddr!)\n TokenBalance=\(self.tokenBalance)\n RemindPacket=\(self.packetBalance)\n  usedTraffic=\(self.usedTraffic)\n } "
+        }
+        
+        public func update(tx: TransactionData){
+              
+                self.usedTraffic = tx.usedTraffic!
         }
 }
 
@@ -60,39 +72,11 @@ extension CDMinerCredit{
                 return "{\nuserAddr=\(self.userAddr!)\nminerID=\(self.minerID!)\ninCharge=\(self.inCharge)\ncredit=\(self.credit)}"
         }
         
-        
-        func syncData() {
-                let dbContext = DataShareManager.privateQueueContext()
-                DataShareManager.saveContext(dbContext)
-                DataShareManager.syncAllContext(dbContext)
-        }
-        
-        public func update(json:JSON)throws{
-                                
-                let rcp = ReceiptData(json: json)
-                guard let tx = rcp.tx else{
-                        throw HopError.rcpWire("No valid transaction data")
+        public func update(tx:TransactionData){
+                self.credit = tx.minerCredit!
+                self.inCharge -= tx.minerAmount!
+                if self.inCharge < 0{
+                        self.inCharge = 0
                 }
-                NSLog("--------->create rcp\n\(rcp.toString())")
-                
-                guard tx.verifyTx() == true else{
-                        throw HopError.rcpWire("Signature verify failed for receipt")
-                }
-                guard self.userAddr?.lowercased() == tx.user?.lowercased(),
-                      self.minerID?.lowercased() == tx.minerID?.lowercased() else {
-                        throw HopError.rcpWire("Pool and user are not for me!")
-                }
-                
-                NSLog("--------->********>User account before update\n\(self.toString())")
-                defer {
-                        NSLog("--------->++++++++>User account after update\n\(self.toString())")
-                        self.syncData()
-                }
-                let credit = json["miner_credit"].int64 ?? 0
-                if self.credit > credit{
-                        return
-                }
-                
-                self.credit = credit
         }
 }

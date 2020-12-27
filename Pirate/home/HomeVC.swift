@@ -146,7 +146,7 @@ class HomeVC: UIViewController {
                       let subPri = Wallet.WInst.SubPrikey() else {
                         throw HopError.wallet("No valid key data".locStr)
                 }
-                let (mIP, mPort) = try Miner.prepareMiner(mid: miner, user: Wallet.WInst.Address!)
+                let (mIP, mPort) = try Miner.prepareMiner(mid: miner, pool: pool)
                 let options = ["MAIN_PRI":pri as Any,
                                "SUB_PRI":subPri as Any,
                                "POOL_ADDR":pool as Any,

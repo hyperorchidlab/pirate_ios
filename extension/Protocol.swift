@@ -107,13 +107,28 @@ extension Protocol{
                         guard ret?.isSuccess == true else{
                                 throw HopError.txWire("Transaction Wire send failed==\(ret?.error?.localizedDescription ?? "<-empty error->")==>")
                         }
-//                        let (response, ip, port) = self.txSocket!.recv(1024)
-                        guard let (response, _, _) = self.txSocket?.recv(1024) else{
+                        guard let (response, _, _) = self.txSocket?.recv(1024), let resData = response else{
                                 throw HopError.txWire("Transaction Wire read micro tx")
                         }
                         
-                        NSLog("--------->Transaction response=[\(String.init(data: Data.init(response!), encoding: .utf8) ?? "<->")]")
-                        try credit.update(json: JSON(response as Any))
+                        let rcp = ReceiptData(json: JSON(Data(resData)))
+                        guard let tx = rcp.tx else{
+                                throw HopError.rcpWire("No valid transaction data")
+                        }
+                        NSLog("--------->create rcp\n\(rcp.toString())")
+                        
+                        NSLog("--------->********>User account before update\n\(member.toString())\(credit.toString())")
+                        defer {
+                                NSLog("--------->++++++++>User account after update\n\(member.toString())\(credit.toString())")
+                                MembershipEX.syncData()
+                        }
+                        
+                        guard tx.verifyTx(credit: credit, member: member) == true else{
+                                throw HopError.rcpWire("Signature verify failed for receipt")
+                        }
+                        
+                        credit.update(tx: tx)
+                        member.update(tx: tx)
                         
                         }catch let err{
                                 NSLog("--------->Transaction Wire err:=>\(err.localizedDescription)")

@@ -14,8 +14,6 @@ import SwiftyJSON
 class MembershipUI:NSObject{
         public static var Cache:[String:CDMemberShip] = [:]
         
-        var coreData:CDMemberShip?
-        
         public static func MemberArray() ->[CDMemberShip]{
                 return Array(Cache.values)
         }
@@ -150,9 +148,20 @@ extension CDMemberShip{
                 let credit = json["used_traffic"].int64 ?? 0
                 self.usedTraffic = credit
         }
+        
+        //TODO:: signature check
+        public func update(json:JSON){
+                let credit = json["used_traffic"].int64 ?? 0
+                if self.usedTraffic >= credit{
+                        return
+                }
+                
+                self.usedTraffic = credit
+                PostNoti(HopConstants.NOTI_MINER_CREDIT_CHANGED)
+        }
 }
 
-//TODO::
+
 extension CDMinerCredit{
                 
         public static func newEntity(user:String, mid:String) -> CDMinerCredit{
@@ -165,7 +174,7 @@ extension CDMinerCredit{
                 data.userAddr = user
                 return data
         }
-        
+        //TODO:: signature check
         public func update(json:JSON){
                 let credit = json["miner_credit"].int64 ?? 0
                 if self.credit >= credit{

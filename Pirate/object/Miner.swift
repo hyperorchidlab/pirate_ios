@@ -88,7 +88,8 @@ class Miner : NSObject {
                 PostNoti(HopConstants.NOTI_MINER_SYNCED)
         }
         
-        public static func prepareMiner(mid:String, user:String) throws ->(String, Int32) {
+        public static func prepareMiner(mid:String, pool:String) throws ->(String, Int32) {
+                let user = Wallet.WInst.Address!
                 let (ip, port) = try minerNetAddr(mid: mid)
                 let dbContext = DataShareManager.privateQueueContext()
                 defer {
@@ -112,6 +113,8 @@ class Miner : NSObject {
                 }
                 let json = JSON(ret)
                 minerCredit!.update(json:json)
+                let mem = MembershipUI.Cache[pool.lowercased()]
+                mem?.update(json: json)
                 return (ip, port)
         }
         
