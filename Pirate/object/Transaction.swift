@@ -94,7 +94,7 @@ class Transaction : NSObject {
         
         var coreData:CDTransaction?
         var txValue:Double = 0
-        var txStatus:TransactionStatus = .nosuch
+        var txStatus:TransactionStatus = .pending
         var txHash:String?
         var txType:TransactionType = .unknown
         
