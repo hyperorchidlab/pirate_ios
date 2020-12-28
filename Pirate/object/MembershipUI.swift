@@ -64,7 +64,7 @@ class MembershipUI:NSObject{
                         }
                         
                         if AppSetting.coreData?.poolAddrInUsed?.lowercased() == cData.poolAddr!.lowercased(){
-                                let balance = cData.packetBalance
+                                let balance = cData.packetBalance - Double(cData.usedTraffic)
                                 AppSetting.coreData?.tmpBalance = balance
                                 PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
                         }
@@ -111,7 +111,7 @@ class MembershipUI:NSObject{
                         result.updateByMemberDetail(json: json, addr: addr)
                         Cache[poolAddr] = result
                         if AppSetting.coreData?.poolAddrInUsed?.lowercased() == poolAddr{
-                                let balance = result.packetBalance
+                                let balance = result.packetBalance - Double(result.usedTraffic)
                                 AppSetting.coreData?.tmpBalance = balance
                                 PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
                         }
@@ -148,17 +148,6 @@ extension CDMemberShip{
                 let credit = json["used_traffic"].int64 ?? 0
                 self.usedTraffic = credit
         }
-        
-        //TODO:: signature check
-        public func update(json:JSON){
-                let credit = json["used_traffic"].int64 ?? 0
-                if self.usedTraffic >= credit{
-                        return
-                }
-                
-                self.usedTraffic = credit
-                PostNoti(HopConstants.NOTI_MINER_CREDIT_CHANGED)
-        }
 }
 
 
@@ -174,14 +163,26 @@ extension CDMinerCredit{
                 data.userAddr = user
                 return data
         }
-        //TODO:: signature check
-        public func update(json:JSON){
+        
+        public func update(json:JSON) throws{
+                
                 let credit = json["miner_credit"].int64 ?? 0
-                if self.credit >= credit{
-                        return
+                if self.credit < credit{
+                        self.credit = credit
                 }
                 
-                self.credit = credit
-                PostNoti(HopConstants.NOTI_MINER_CREDIT_CHANGED)
+                let pool = json["pool"].string!
+                guard let mem = MembershipUI.Cache[pool.lowercased()] else{
+                        throw HopError.minerErr("invalid pool address in tx synced")
+                }
+                let usedTR = json["used_traffic"].int64 ?? 0
+                if mem.usedTraffic < usedTR{
+                        mem.usedTraffic = usedTR
+                        AppSetting.coreData?.tmpBalance =  mem.packetBalance - Double(mem.usedTraffic)
+                        PostNoti(HopConstants.NOTI_MEMBERSHIPL_CACHE_LOADED)
+                }
+                if mem.usedTraffic < credit{
+                        mem.usedTraffic = credit
+                }
         }
 }

@@ -146,7 +146,7 @@ class HomeVC: UIViewController {
                       let subPri = Wallet.WInst.SubPrikey() else {
                         throw HopError.wallet("No valid key data".locStr)
                 }
-                let (mIP, mPort) = try Miner.prepareMiner(mid: miner, pool: pool)
+                let (mIP, mPort) = try Miner.prepareMiner(mid: miner)
                 let options = ["MAIN_PRI":pri as Any,
                                "SUB_PRI":subPri as Any,
                                "POOL_ADDR":pool as Any,
@@ -320,7 +320,7 @@ class HomeVC: UIViewController {
                         return
                 }
                 if let mem = MembershipUI.Cache[poolAddr.lowercased()]  {
-                        let balance = mem.packetBalance
+                        let balance = mem.packetBalance - Double(mem.usedTraffic)
                         AppSetting.coreData?.tmpBalance = balance
                 }
                 
