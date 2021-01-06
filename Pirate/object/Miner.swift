@@ -78,8 +78,8 @@ class Miner : NSObject {
                                 continue
                         }
                         
-                        result.zon = json["zone"].string!
-                        result.ipAddr = json["ip_addr"].string!
+                        result.zon = json["zone"].string ?? "<->"
+                        result.ipAddr = json["ip_addr"].string ?? "<->"
                         CachedMiner[subAddr.lowercased()] = result
                 }
                 
