@@ -167,9 +167,9 @@ extension CDMinerCredit{
         public func update(json:JSON) throws{
                 
                 let credit = json["miner_credit"].int64 ?? 0
-                if self.credit < credit{
+//                if self.credit < credit{
                         self.credit = credit
-                }
+//                }
                 
                 let pool = json["pool"].string!
                 guard let mem = MembershipUI.Cache[pool.lowercased()] else{

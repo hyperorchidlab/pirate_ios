@@ -34,13 +34,12 @@ public class Protocol:NSObject{
         var rcpSocket:UDPClient!
         var rcpTimer:Timer?
         var rcpKAData:Data!
-        public static let RCPKAQueue = DispatchQueue(label: "Receipt KA Queue", qos: .default)
-        public static let RCPQueue = DispatchQueue(label: "Receipt Wire Queue", qos: .default)
         
         var txSocket:UDPClient?
         let txLock = NSLock()
         var counter:Int = (HopConstants.RechargePieceSize / 2)
-        let TXQueue = DispatchQueue.init(label: "Transaction Wire Queue", qos: .default)
+        let SendQueue = DispatchQueue.init(label: "Transaction Wire Sending Queue", qos: .utility)
+        let ReceiveQueue = DispatchQueue.init(label: "Transaction Wire Receiving Queue", qos: .utility)
         
         
         public override init() {
@@ -71,6 +70,7 @@ public class Protocol:NSObject{
                 }
                 
                 self.txSocket = UDPClient(address: self.minerIP, port: self.minerPort)
+                self.reading()
                 if Int(MembershipEX.minerCredit.inCharge) > HopConstants.RechargePieceSize{
                         NSLog("--------->Need to recharge because of last failure:\(MembershipEX.minerCredit.inCharge)")
                         self.recharge(amount: 0)
@@ -87,26 +87,14 @@ extension Protocol{
         public func signKey()->Data{
                 return self.priKey.mainPriKey!
         }
-        private func recharge(amount:Int64){
+        
+        private func reading(){
                 
                 let credit = MembershipEX.minerCredit!
                 let member = MembershipEX.membership!
-                self.TXQueue.async { do {
-                        credit.inCharge += amount
-                        
-                        NSLog("--------->Transaction Wire need to recharge:[\(credit.inCharge)]===>")
-                        let tx_data = TransactionData.initForRechargge(member: member,
-                                                      credit: credit,
-                                                      amount: Int64(credit.inCharge))
-                        
-                        guard let d = tx_data.createTxData(sigKey: self.priKey.mainPriKey!) else{
-                                throw HopError.txWire("Create transaction data failed")
-                        }
-                        
-                        let ret = self.txSocket?.send(data: d)
-                        guard ret?.isSuccess == true else{
-                                throw HopError.txWire("Transaction Wire send failed==\(ret?.error?.localizedDescription ?? "<-empty error->")==>")
-                        }
+                
+                self.ReceiveQueue.async {while true{
+                        do {
                         guard let (response, _, _) = self.txSocket?.recv(1024), let resData = response else{
                                 throw HopError.txWire("Transaction Wire read micro tx")
                         }
@@ -129,9 +117,43 @@ extension Protocol{
                         
                         credit.update(tx: tx)
                         member.update(tx: tx)
+                                
+                        }catch let err{
+                                NSLog("--------->Transaction Wire read err:=>\(err.localizedDescription)")
+                                self.txSocket = UDPClient(address: self.minerIP, port: self.minerPort)
+                        }
+                }
+                }
+        }
+        
+        private func recharge(amount:Int64){
+                
+                let credit = MembershipEX.minerCredit!
+                let member = MembershipEX.membership!
+                
+                self.SendQueue.async { do {
+                        
+                        credit.inCharge += amount
+                        MembershipEX.syncData()
+                        
+                        NSLog("--------->Transaction Wire need to recharge:[\(credit.inCharge)]===>")
+                        let tx_data = TransactionData.initForRechargge(member: member,
+                                                      credit: credit,
+                                                      amount: Int64(credit.inCharge))
+                        
+                        guard let d = tx_data.createTxData(sigKey: self.priKey.mainPriKey!) else{
+                                throw HopError.txWire("Create transaction data failed")
+                        }
+                        
+                        let ret = self.txSocket?.send(data: d)
+                        guard ret?.isSuccess == true else{
+                                throw HopError.txWire("Transaction Wire send failed==\(ret?.error?.localizedDescription ?? "<-empty error->")==>")
+                        }
+                        NSLog("--------->send tx success......")
                         
                         }catch let err{
-                                NSLog("--------->Transaction Wire err:=>\(err.localizedDescription)")
+                                NSLog("--------->Transaction Wire write err:=>\(err.localizedDescription)")
+                                self.txSocket = UDPClient(address: self.minerIP, port: self.minerPort)
                         }
                 }
         }

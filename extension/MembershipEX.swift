@@ -61,7 +61,6 @@ extension CDMemberShip{
         }
         
         public func update(tx: TransactionData){
-              
                 self.usedTraffic = tx.usedTraffic!
         }
 }
