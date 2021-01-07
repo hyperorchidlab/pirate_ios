@@ -27,6 +27,7 @@ public class Protocol:NSObject{
         public var minerPort:Int32!
         private var priKey:HopKey!
         private var aesKey:Data!
+        private var lastMsg:Data!
         var vpnDelegate:ProtocolDelegate!
         var isDebug:Bool = true
         
@@ -96,7 +97,7 @@ extension Protocol{
                 self.ReceiveQueue.async {while true{
                         do {
                         guard let (response, _, _) = self.txSocket?.recv(1024), let resData = response else{
-                                throw HopError.txWire("Transaction Wire read micro tx")
+                                throw HopError.rcpWire("Read micro tx failed`")
                         }
                         
                         let rcp = ReceiptData(json: JSON(Data(resData)))
@@ -117,6 +118,7 @@ extension Protocol{
                         
                         credit.update(tx: tx)
                         member.update(tx: tx)
+                        self.lastMsg = nil
                                 
                         }catch let err{
                                 NSLog("--------->Transaction Wire read err:=>\(err.localizedDescription)")
@@ -135,21 +137,26 @@ extension Protocol{
                         
                         credit.inCharge += amount
                         MembershipEX.syncData()
-                        
                         NSLog("--------->Transaction Wire need to recharge:[\(credit.inCharge)]===>")
-                        let tx_data = TransactionData.initForRechargge(member: member,
-                                                      credit: credit,
-                                                      amount: Int64(credit.inCharge))
                         
-                        guard let d = tx_data.createTxData(sigKey: self.priKey.mainPriKey!) else{
-                                throw HopError.txWire("Create transaction data failed")
+                        if self.lastMsg == nil{
+                                let tx_data = TransactionData.initForRechargge(member: member,
+                                                              credit: credit,
+                                                              amount: Int64(credit.inCharge))
+                                
+                                guard let d = tx_data.createTxData(sigKey: self.priKey.mainPriKey!) else{
+                                        throw HopError.txWire("Create transaction data failed")
+                                }
+                                self.lastMsg = d
+                        }else{
+                                NSLog("--------->Need resend last tx data......")
                         }
                         
-                        let ret = self.txSocket?.send(data: d)
+                        let ret = self.txSocket?.send(data: self.lastMsg)
                         guard ret?.isSuccess == true else{
                                 throw HopError.txWire("Transaction Wire send failed==\(ret?.error?.localizedDescription ?? "<-empty error->")==>")
                         }
-                        NSLog("--------->send tx success......")
+                        NSLog("--------->Send tx success......")
                         
                         }catch let err{
                                 NSLog("--------->Transaction Wire write err:=>\(err.localizedDescription)")
