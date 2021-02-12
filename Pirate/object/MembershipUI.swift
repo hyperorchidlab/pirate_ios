@@ -47,8 +47,6 @@ class MembershipUI:NSObject{
                         return
                 }
                 
-                
-                
                 for cData in memberArr{
                         let poolAddr = cData.poolAddr!.lowercased()
                         Cache[poolAddr] = cData
@@ -77,8 +75,19 @@ class MembershipUI:NSObject{
                 guard let addr = Wallet.WInst.Address, Pool.CachedPool.count > 0 else{
                         return
                 }
-                let poolAddr = Array(Pool.CachedPool.keys)[0]
-                guard let data = IosLibAvailablePools(addr, poolAddr) else{return}
+                let poolAddr = Array(Pool.CachedPool.keys)
+                let pool_str = JSON(poolAddr).rawString()
+                
+                guard let validPoolData = IosLibRandomConn(pool_str) else {
+                        NSLog("======>All pools are unavailable")
+                        return
+                }
+                
+                guard let validPool = String(data:validPoolData, encoding: .utf8) else {
+                        return
+                }
+                NSLog("======>valid pool to query is[\(validPool)]")
+                guard let data = IosLibAvailablePools(addr, validPool) else{return}
                 let poolJson = JSON(data)
                 
                 var idx = 0
@@ -89,7 +98,7 @@ class MembershipUI:NSObject{
                         let poolAddr = poolJson[idx].string!.lowercased()
                         idx += 1
                         
-                        guard let data = IosLibMemberShipData(addr, poolAddr) else {
+                        guard let data = IosLibMemberShipData(addr, validPool) else {
                                 continue
                         }
                         let json = JSON(data)
