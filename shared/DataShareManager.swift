@@ -11,7 +11,7 @@ import CoreData
 
 class DataShareManager: NSObject {
         // MARK: - Initialization
-        static let GroupIdentity = "group.com.hop.client.pirate"
+        static let GroupIdentity = "group.com.hop.pirate.jack"
         public static var sharedInstance = DataShareManager()
         
         func synced(_ lock: AnyObject, closure: () -> ()) {

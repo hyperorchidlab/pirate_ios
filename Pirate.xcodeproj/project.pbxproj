@@ -890,7 +890,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
@@ -905,10 +905,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hop.pirate.jack;
 				PRODUCT_NAME = Pirate;
-				PROVISIONING_PROFILE_SPECIFIER = dev_usa_pirate;
+				PROVISIONING_PROFILE_SPECIFIER = dev_pirate_jack;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -920,7 +920,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
@@ -935,10 +935,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hop.pirate.jack;
 				PRODUCT_NAME = Pirate;
-				PROVISIONING_PROFILE_SPECIFIER = release_uas_pirate;
+				PROVISIONING_PROFILE_SPECIFIER = release_pirate_jack;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -963,11 +963,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.2;
+				MARKETING_VERSION = 1.0;
 				OS_ACTIVITY_MODE = default;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hop.pirate.jack.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev_usa_pirate_extension;
+				PROVISIONING_PROFILE_SPECIFIER = dev_pirate_jack_extension;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -993,11 +993,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.2;
+				MARKETING_VERSION = 1.0;
 				OS_ACTIVITY_MODE = default;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hop.client.pirate.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hop.pirate.jack.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = release_uas_pirate_extension;
+				PROVISIONING_PROFILE_SPECIFIER = release_pirate_jack_extension;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
