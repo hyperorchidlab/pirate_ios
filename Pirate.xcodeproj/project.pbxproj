@@ -18,7 +18,7 @@
 		693E92D624A89A9D00149A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 693E92D824A89A9D00149A75 /* InfoPlist.strings */; };
 		6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940EC8F240A75460029F526 /* ScannerViewController.swift */; };
 		6940EC92240A756D0029F526 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6940EC91240A756D0029F526 /* AVFoundation.framework */; };
-		695E4C392401778600A13631 /* Receipt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* Receipt.xcdatamodeld */; };
+		695E4C392401778600A13631 /* jack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* jack.xcdatamodeld */; };
 		696651F82400EF44001D16C4 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A510323FBAD2E00836E26 /* NEKit.framework */; };
 		696A71EC25146725004EA5DE /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71EB25146725004EA5DE /* PasswordViewController.swift */; };
 		696A71EE251467DA004EA5DE /* QRCodeShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71ED251467DA004EA5DE /* QRCodeShowViewController.swift */; };
@@ -99,7 +99,7 @@
 		69FA41AA240553E9005CF3FA /* PacketMarket.abi in Resources */ = {isa = PBXBuildFile; fileRef = 69FA41A8240553E8005CF3FA /* PacketMarket.abi */; };
 		69FA41AC2405711E005CF3FA /* PacketMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41AB2405711E005CF3FA /* PacketMarket.swift */; };
 		69FA41AD2405711E005CF3FA /* PacketMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41AB2405711E005CF3FA /* PacketMarket.swift */; };
-		69FA41D3240667E1005CF3FA /* Receipt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* Receipt.xcdatamodeld */; };
+		69FA41D3240667E1005CF3FA /* jack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* jack.xcdatamodeld */; };
 		7C1E58AE25417EDD0032F005 /* gfw.plist in Resources */ = {isa = PBXBuildFile; fileRef = 698A513E23FD08B900836E26 /* gfw.plist */; };
 		7C22E5D7252AD8F6001461F3 /* HopKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E5D5252AD8F6001461F3 /* HopKey.swift */; };
 		7C22E5DC252ADB8B001461F3 /* HopKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E5D5252AD8F6001461F3 /* HopKey.swift */; };
@@ -328,7 +328,7 @@
 				69987DFB2412225700029C0A /* HopSodium.swift */,
 				69FA41912404DBCD005CF3FA /* HopConstants.swift */,
 				69FA419524050059005CF3FA /* HopError.swift */,
-				695E4C372401778600A13631 /* Receipt.xcdatamodeld */,
+				695E4C372401778600A13631 /* jack.xcdatamodeld */,
 				69FA41892404B348005CF3FA /* DataShareManager.swift */,
 				69A47D6E240EB8C100C86CFF /* HopMessage.swift */,
 				6972E3C12415E64F00550A4A /* ReceiptData.swift */,
@@ -668,7 +668,7 @@
 				696A71EC25146725004EA5DE /* PasswordViewController.swift in Sources */,
 				696B02E52519EB2000F76A51 /* TransactionViewController.swift in Sources */,
 				696A71F02514680A004EA5DE /* Utils+ViewController.swift in Sources */,
-				695E4C392401778600A13631 /* Receipt.xcdatamodeld in Sources */,
+				695E4C392401778600A13631 /* jack.xcdatamodeld in Sources */,
 				69FA41AC2405711E005CF3FA /* PacketMarket.swift in Sources */,
 				698A514323FD58DC00836E26 /* Utils.swift in Sources */,
 				69980C3F23F792C400829B09 /* MarketListTVC.swift in Sources */,
@@ -693,7 +693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69FA41D3240667E1005CF3FA /* Receipt.xcdatamodeld in Sources */,
+				69FA41D3240667E1005CF3FA /* jack.xcdatamodeld in Sources */,
 				6972E3C32415E64F00550A4A /* ReceiptData.swift in Sources */,
 				696A71F425146CFB004EA5DE /* Utils.swift in Sources */,
 				69FA41AD2405711E005CF3FA /* PacketMarket.swift in Sources */,
@@ -892,7 +892,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -922,7 +922,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -950,7 +950,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -980,7 +980,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1037,13 +1037,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		695E4C372401778600A13631 /* Receipt.xcdatamodeld */ = {
+		695E4C372401778600A13631 /* jack.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				695E4C382401778600A13631 /* Model.xcdatamodel */,
 			);
 			currentVersion = 695E4C382401778600A13631 /* Model.xcdatamodel */;
-			path = Receipt.xcdatamodeld;
+			path = jack.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

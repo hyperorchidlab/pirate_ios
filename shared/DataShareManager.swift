@@ -34,7 +34,7 @@ class DataShareManager: NSObject {
         }()
         
         lazy var managedObjectModel: NSManagedObjectModel = {
-                let modelURL = Bundle.main.url(forResource: "Receipt", withExtension: "momd")!
+                let modelURL = Bundle.main.url(forResource: "jack", withExtension: "momd")!
                 return NSManagedObjectModel(contentsOf: modelURL)!
         }()
         

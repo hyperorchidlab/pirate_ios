@@ -104,6 +104,7 @@ class MinerChooseViewController: UIViewController {
                                 
                                 guard let ret = IosLibTestPing(miner.subAddr!) else{
                                         miner.ipAddr = "no bas".locStr
+                                        dispatchGrp.leave()
                                         continue
                                 }
                                 let jsonData = JSON(ret)

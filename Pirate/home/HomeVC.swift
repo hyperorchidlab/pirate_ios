@@ -259,11 +259,11 @@ class HomeVC: UIViewController {
         
         func setupVPN(){
                 
-                targetManager?.localizedDescription = "Hyper Orchid Protocol".locStr
+                targetManager?.localizedDescription = "Hyper Orchid Protocol-jack".locStr
                 targetManager?.isEnabled = true
                 
                 let providerProtocol = NETunnelProviderProtocol()
-                providerProtocol.serverAddress = "HOP BlockChain"
+                providerProtocol.serverAddress = "HOP BlockChain -jack".locStr
                 targetManager?.protocolConfiguration = providerProtocol
                 
                 targetManager?.saveToPreferences { err in
