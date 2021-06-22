@@ -3,15 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		084987FE26043941007DDAD4 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
-		0849880C26043A24007DDAD4 /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66A2400BC6000D45CB6 /* BigInt.framework */; };
-		0849881A260441AB007DDAD4 /* Curve25519.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FD93942402ED5700DB9DBC /* Curve25519.framework */; };
-		0849881D260441B9007DDAD4 /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66A2400BC6000D45CB6 /* BigInt.framework */; };
-		088C3C622680DDFF00E5A715 /* web3swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6732400BCBC00D45CB6 /* web3swift.framework */; };
 		6902ED092515DAED00BCDED6 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902ED082515DAED00BCDED6 /* iosLib.framework */; };
 		691566C525356B8D004983F3 /* HOPIPRangeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691566C425356B8D004983F3 /* HOPIPRangeRule.swift */; };
 		691CCFA023F8240D007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
@@ -24,7 +19,6 @@
 		6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940EC8F240A75460029F526 /* ScannerViewController.swift */; };
 		6940EC92240A756D0029F526 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6940EC91240A756D0029F526 /* AVFoundation.framework */; };
 		695E4C392401778600A13631 /* jack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* jack.xcdatamodeld */; };
-		696651F82400EF44001D16C4 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A510323FBAD2E00836E26 /* NEKit.framework */; };
 		696A71EC25146725004EA5DE /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71EB25146725004EA5DE /* PasswordViewController.swift */; };
 		696A71EE251467DA004EA5DE /* QRCodeShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71ED251467DA004EA5DE /* QRCodeShowViewController.swift */; };
 		696A71F02514680A004EA5DE /* Utils+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71EF2514680A004EA5DE /* Utils+ViewController.swift */; };
@@ -33,18 +27,13 @@
 		696A71F825148F5F004EA5DE /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71F725148F5F004EA5DE /* ConfirmViewController.swift */; };
 		696A71FA25149F2E004EA5DE /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71F925149F2E004EA5DE /* NewAccountViewController.swift */; };
 		696B02D425187B8E00F76A51 /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02D325187B8E00F76A51 /* AppSetting.swift */; };
-		696B02DC25188C6700F76A51 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696B02DB25188C6700F76A51 /* SwiftyJSON.framework */; };
-		696B02DD25188C6700F76A51 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696B02DB25188C6700F76A51 /* SwiftyJSON.framework */; };
 		696B02E52519EB2000F76A51 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02E42519EB2000F76A51 /* TransactionViewController.swift */; };
 		696B02E9251A079500F76A51 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02E8251A079500F76A51 /* RoundedCornerView.swift */; };
 		696B02ED251A0A4D00F76A51 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B02EC251A0A4D00F76A51 /* Transaction.swift */; };
 		6972E3C22415E64F00550A4A /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E3C12415E64F00550A4A /* ReceiptData.swift */; };
 		6972E3C32415E64F00550A4A /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E3C12415E64F00550A4A /* ReceiptData.swift */; };
-		69767505242386DA002051F9 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511C23FCCEBE00836E26 /* CocoaLumberjack.framework */; };
-		69767506242386DA002051F9 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A511F23FCCECA00836E26 /* CocoaLumberjackSwift.framework */; };
 		69779A7825219F48003A163C /* RechargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7725219F48003A163C /* RechargeViewController.swift */; };
 		69779A7E25234684003A163C /* MembershipUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69779A7D25234684003A163C /* MembershipUI.swift */; };
-		697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; };
 		6983F61E240E08AE004A32F7 /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		698A513923FCE64E00836E26 /* HOPAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513823FCE64E00836E26 /* HOPAdapter.swift */; };
 		698A513B23FCE75700836E26 /* HOPAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A513A23FCE75700836E26 /* HOPAdapterFactory.swift */; };
@@ -63,31 +52,42 @@
 		69980C6023F7B3CD00829B09 /* extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 69980C5823F7B3CD00829B09 /* extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		69987DFC2412225700029C0A /* HopSodium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69987DFB2412225700029C0A /* HopSodium.swift */; };
 		69987DFD241249A000029C0A /* HopSodium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69987DFB2412225700029C0A /* HopSodium.swift */; };
-		69A47D52240E303E00C86CFF /* SwiftSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A47D51240E303E00C86CFF /* SwiftSocket.framework */; };
+		699BB8702681CA4B00524FC6 /* BigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; };
+		699BB8762681CA6000524FC6 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; };
+		699BB8782681CA6000524FC6 /* Curve25519.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; };
+		699BB87A2681CA6000524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; };
+		699BB87D2681CA7D00524FC6 /* MBProgressHUD.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */; };
+		699BB8812681CA8A00524FC6 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; };
+		699BB8842681CA9300524FC6 /* secp256k1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; };
+		699BB8872681CA9600524FC6 /* SipHash.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; };
+		699BB88A2681CA9B00524FC6 /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; };
+		699BB88D2681CA9E00524FC6 /* SwiftSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */; };
+		699BB8902681CAA100524FC6 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; };
+		699BB8932681CD9200524FC6 /* web3swift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; };
+		699BB8992681CDEB00524FC6 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; };
+		699BB89B2681CDEB00524FC6 /* web3swift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; };
+		699BB8A02681CDEB00524FC6 /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89E2681CDEB00524FC6 /* Yaml.xcframework */; };
+		699BB8A22681CDEB00524FC6 /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */; };
+		699BB8A42681CE1C00524FC6 /* BigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; };
+		699BB8A62681CE1C00524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; };
+		699BB8A82681CE1C00524FC6 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; };
+		699BB8AA2681CE1C00524FC6 /* Curve25519.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; };
+		699BB8AC2681CE1C00524FC6 /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8952681CDB000524FC6 /* NEKit.xcframework */; };
+		699BB8AE2681CE1C00524FC6 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; };
+		699BB8B02681CE1C00524FC6 /* secp256k1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; };
+		699BB8B22681CE1C00524FC6 /* SipHash.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; };
+		699BB8B42681CE1D00524FC6 /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; };
+		699BB8BA2681CE1D00524FC6 /* Sodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; };
+		699BB8BC2681CE1D00524FC6 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */; };
+		699BB8BE2681CE1E00524FC6 /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B82681CE1D00524FC6 /* lwip.xcframework */; };
+		699BB8C02681CE1E00524FC6 /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B92681CE1D00524FC6 /* MMDB.xcframework */; };
 		69A47D68240EAF9A00C86CFF /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		69A47D6A240EB1DD00C86CFF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D69240EB1DD00C86CFF /* Protocol.swift */; };
 		69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
 		69A47D70240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
 		69AD9FE3252071750077CFCF /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD9FE2252071750077CFCF /* Pool.swift */; };
-		69B0D9DE24AF1DEC006B665B /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6702400BCB800D45CB6 /* secp256k1.framework */; };
 		69C112D42515DC7C00C5E9F5 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C112D32515DC7C00C5E9F5 /* Wallet.swift */; };
-		69CAED5F24012D820056E3E6 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A510723FBF9C700836E26 /* CocoaAsyncSocket.framework */; };
-		69CAED6124012D820056E3E6 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66D2400BC8A00D45CB6 /* PromiseKit.framework */; };
-		69CAED6324012D820056E3E6 /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6966523E24012189001D16C4 /* SipHash.framework */; };
-		69CAED6424012D820056E3E6 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66F2400BCB800D45CB6 /* Starscream.framework */; };
-		69CAED6524012D820056E3E6 /* web3swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6732400BCBC00D45CB6 /* web3swift.framework */; };
 		69D1DFAA240D7E8300D3BA30 /* MinerDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DFA9240D7E8300D3BA30 /* MinerDetailsTableViewCell.swift */; };
-		69F1E3EA24012A0A00999194 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A510723FBF9C700836E26 /* CocoaAsyncSocket.framework */; };
-		69F1E3F024012A0B00999194 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E65823FFBE0500D45CB6 /* CryptoSwift.framework */; };
-		69F1E3F224012A0B00999194 /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A512223FCCECF00836E26 /* lwip.framework */; };
-		69F1E3F424012A0B00999194 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A512523FCCED100836E26 /* MMDB.framework */; };
-		69F1E3F624012A0B00999194 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66D2400BC8A00D45CB6 /* PromiseKit.framework */; };
-		69F1E3F824012A0B00999194 /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E6702400BCB800D45CB6 /* secp256k1.framework */; };
-		69F1E3FA24012A0B00999194 /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6966523E24012189001D16C4 /* SipHash.framework */; };
-		69F1E3FC24012A0B00999194 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A512B23FCCED800836E26 /* Sodium.framework */; };
-		69F1E3FE24012A0B00999194 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6948E66F2400BCB800D45CB6 /* Starscream.framework */; };
-		69F1E40024012A0B00999194 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A512E23FCCEDB00836E26 /* tun2socks.framework */; };
-		69F1E40424012A0B00999194 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698A513123FCCEDF00836E26 /* Yaml.framework */; };
 		69FA418A2404B348005CF3FA /* DataShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41892404B348005CF3FA /* DataShareManager.swift */; };
 		69FA418B2404B352005CF3FA /* DataShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41892404B348005CF3FA /* DataShareManager.swift */; };
 		69FA41932404DBCD005CF3FA /* HopConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41912404DBCD005CF3FA /* HopConstants.swift */; };
@@ -110,7 +110,6 @@
 		7C61CCFE252D65AB00CF8D06 /* MembershipEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C61CCFC252D65AB00CF8D06 /* MembershipEX.swift */; };
 		7C6D5050251A381500F03992 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D504F251A381500F03992 /* TransactionTableViewCell.swift */; };
 		7C9D51832532F0710083E2F5 /* HopConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA41912404DBCD005CF3FA /* HopConstants.swift */; };
-		7CDBECFE241DC9D200F6A8EB /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */; };
 		7CE0EAFE24204F9E00F23A5A /* SystemSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0EAFD24204F9E00F23A5A /* SystemSettingTableViewController.swift */; };
 		7CEFA3BE2525F5D600A2E2B4 /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEFA3BD2525F5D600A2E2B4 /* MembershipViewController.swift */; };
 		7CEFA3C22525F86F00A2E2B4 /* MembershipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEFA3C12525F86F00A2E2B4 /* MembershipTableViewCell.swift */; };
@@ -210,6 +209,25 @@
 		69980C5C23F7B3CD00829B09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69980C5D23F7B3CD00829B09 /* extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = extension.entitlements; sourceTree = "<group>"; };
 		69987DFB2412225700029C0A /* HopSodium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopSodium.swift; sourceTree = "<group>"; };
+		699BB86F2681CA4A00524FC6 /* BigInt.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BigInt.xcframework; path = Carthage/Build/BigInt.xcframework; sourceTree = "<group>"; };
+		699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoSwift.xcframework; path = Carthage/Build/CryptoSwift.xcframework; sourceTree = "<group>"; };
+		699BB8742681CA6000524FC6 /* Curve25519.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Curve25519.xcframework; path = Carthage/Build/Curve25519.xcframework; sourceTree = "<group>"; };
+		699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaAsyncSocket.xcframework; path = Carthage/Build/CocoaAsyncSocket.xcframework; sourceTree = "<group>"; };
+		699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MBProgressHUD.xcframework; path = Carthage/Build/MBProgressHUD.xcframework; sourceTree = "<group>"; };
+		699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromiseKit.xcframework; path = Carthage/Build/PromiseKit.xcframework; sourceTree = "<group>"; };
+		699BB8832681CA9300524FC6 /* secp256k1.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = secp256k1.xcframework; path = Carthage/Build/secp256k1.xcframework; sourceTree = "<group>"; };
+		699BB8862681CA9600524FC6 /* SipHash.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SipHash.xcframework; path = Carthage/Build/SipHash.xcframework; sourceTree = "<group>"; };
+		699BB8892681CA9A00524FC6 /* Starscream.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Starscream.xcframework; path = Carthage/Build/Starscream.xcframework; sourceTree = "<group>"; };
+		699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SwiftSocket.xcframework; path = Carthage/Build/SwiftSocket.xcframework; sourceTree = "<group>"; };
+		699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SwiftyJSON.xcframework; path = Carthage/Build/SwiftyJSON.xcframework; sourceTree = "<group>"; };
+		699BB8922681CD9200524FC6 /* web3swift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = web3swift.xcframework; path = Carthage/Build/web3swift.xcframework; sourceTree = "<group>"; };
+		699BB8952681CDB000524FC6 /* NEKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NEKit.xcframework; path = Carthage/Build/NEKit.xcframework; sourceTree = "<group>"; };
+		699BB89E2681CDEB00524FC6 /* Yaml.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Yaml.xcframework; path = Carthage/Build/Yaml.xcframework; sourceTree = "<group>"; };
+		699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = tun2socks.xcframework; path = Carthage/Build/tun2socks.xcframework; sourceTree = "<group>"; };
+		699BB8B62681CE1D00524FC6 /* Sodium.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Sodium.xcframework; path = Carthage/Build/Sodium.xcframework; sourceTree = "<group>"; };
+		699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = Carthage/Build/CocoaLumberjack.xcframework; sourceTree = "<group>"; };
+		699BB8B82681CE1D00524FC6 /* lwip.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = lwip.xcframework; path = Carthage/Build/lwip.xcframework; sourceTree = "<group>"; };
+		699BB8B92681CE1D00524FC6 /* MMDB.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MMDB.xcframework; path = Carthage/Build/MMDB.xcframework; sourceTree = "<group>"; };
 		69A47D51240E303E00C86CFF /* SwiftSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSocket.framework; path = Carthage/Build/iOS/SwiftSocket.framework; sourceTree = "<group>"; };
 		69A47D69240EB1DD00C86CFF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		69A47D6E240EB8C100C86CFF /* HopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopMessage.swift; sourceTree = "<group>"; };
@@ -242,21 +260,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0849880C26043A24007DDAD4 /* BigInt.framework in Frameworks */,
+				699BB8872681CA9600524FC6 /* SipHash.xcframework in Frameworks */,
+				699BB8842681CA9300524FC6 /* secp256k1.xcframework in Frameworks */,
+				699BB8782681CA6000524FC6 /* Curve25519.xcframework in Frameworks */,
 				6902ED092515DAED00BCDED6 /* iosLib.framework in Frameworks */,
-				69CAED5F24012D820056E3E6 /* CocoaAsyncSocket.framework in Frameworks */,
-				7CDBECFE241DC9D200F6A8EB /* MBProgressHUD.framework in Frameworks */,
 				6940EC92240A756D0029F526 /* AVFoundation.framework in Frameworks */,
-				69CAED6124012D820056E3E6 /* PromiseKit.framework in Frameworks */,
-				69B0D9DE24AF1DEC006B665B /* secp256k1.framework in Frameworks */,
-				697FCD8A24AF18CC00F1AA38 /* CryptoSwift.framework in Frameworks */,
-				69CAED6324012D820056E3E6 /* SipHash.framework in Frameworks */,
-				69CAED6424012D820056E3E6 /* Starscream.framework in Frameworks */,
-				69CAED6524012D820056E3E6 /* web3swift.framework in Frameworks */,
+				699BB8902681CAA100524FC6 /* SwiftyJSON.xcframework in Frameworks */,
+				699BB8812681CA8A00524FC6 /* PromiseKit.xcframework in Frameworks */,
+				699BB87D2681CA7D00524FC6 /* MBProgressHUD.xcframework in Frameworks */,
+				699BB88D2681CA9E00524FC6 /* SwiftSocket.xcframework in Frameworks */,
+				699BB8702681CA4B00524FC6 /* BigInt.xcframework in Frameworks */,
+				699BB8932681CD9200524FC6 /* web3swift.xcframework in Frameworks */,
+				699BB87A2681CA6000524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */,
+				699BB88A2681CA9B00524FC6 /* Starscream.xcframework in Frameworks */,
 				691CCFA023F8240D007768DF /* NetworkExtension.framework in Frameworks */,
-				69A47D52240E303E00C86CFF /* SwiftSocket.framework in Frameworks */,
-				696B02DC25188C6700F76A51 /* SwiftyJSON.framework in Frameworks */,
-				084987FE26043941007DDAD4 /* Curve25519.framework in Frameworks */,
+				699BB8762681CA6000524FC6 /* CryptoSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,25 +282,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69F1E3FA24012A0B00999194 /* SipHash.framework in Frameworks */,
-				69F1E3F424012A0B00999194 /* MMDB.framework in Frameworks */,
-				696B02DD25188C6700F76A51 /* SwiftyJSON.framework in Frameworks */,
-				69F1E3F224012A0B00999194 /* lwip.framework in Frameworks */,
-				69F1E3FC24012A0B00999194 /* Sodium.framework in Frameworks */,
-				696651F82400EF44001D16C4 /* NEKit.framework in Frameworks */,
-				69F1E3EA24012A0A00999194 /* CocoaAsyncSocket.framework in Frameworks */,
-				69F1E3F624012A0B00999194 /* PromiseKit.framework in Frameworks */,
-				69F1E3F824012A0B00999194 /* secp256k1.framework in Frameworks */,
-				69F1E40424012A0B00999194 /* Yaml.framework in Frameworks */,
-				69F1E40024012A0B00999194 /* tun2socks.framework in Frameworks */,
-				0849881A260441AB007DDAD4 /* Curve25519.framework in Frameworks */,
+				699BB8A82681CE1C00524FC6 /* CryptoSwift.xcframework in Frameworks */,
+				699BB8B42681CE1D00524FC6 /* Starscream.xcframework in Frameworks */,
+				699BB8B22681CE1C00524FC6 /* SipHash.xcframework in Frameworks */,
+				699BB89B2681CDEB00524FC6 /* web3swift.xcframework in Frameworks */,
+				699BB8AC2681CE1C00524FC6 /* NEKit.xcframework in Frameworks */,
+				699BB8A42681CE1C00524FC6 /* BigInt.xcframework in Frameworks */,
+				699BB8992681CDEB00524FC6 /* SwiftyJSON.xcframework in Frameworks */,
+				699BB8A22681CDEB00524FC6 /* tun2socks.xcframework in Frameworks */,
+				699BB8A02681CDEB00524FC6 /* Yaml.xcframework in Frameworks */,
+				699BB8B02681CE1C00524FC6 /* secp256k1.xcframework in Frameworks */,
+				699BB8AA2681CE1C00524FC6 /* Curve25519.xcframework in Frameworks */,
 				691CCFA123F93F60007768DF /* NetworkExtension.framework in Frameworks */,
-				69F1E3FE24012A0B00999194 /* Starscream.framework in Frameworks */,
-				0849881D260441B9007DDAD4 /* BigInt.framework in Frameworks */,
-				69767505242386DA002051F9 /* CocoaLumberjack.framework in Frameworks */,
-				69767506242386DA002051F9 /* CocoaLumberjackSwift.framework in Frameworks */,
-				088C3C622680DDFF00E5A715 /* web3swift.framework in Frameworks */,
-				69F1E3F024012A0B00999194 /* CryptoSwift.framework in Frameworks */,
+				699BB8A62681CE1C00524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */,
+				699BB8BC2681CE1D00524FC6 /* CocoaLumberjack.xcframework in Frameworks */,
+				699BB8BA2681CE1D00524FC6 /* Sodium.xcframework in Frameworks */,
+				699BB8BE2681CE1E00524FC6 /* lwip.xcframework in Frameworks */,
+				699BB8AE2681CE1C00524FC6 /* PromiseKit.xcframework in Frameworks */,
+				699BB8C02681CE1E00524FC6 /* MMDB.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +309,25 @@
 		691CCF9E23F8240D007768DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */,
+				699BB8B82681CE1D00524FC6 /* lwip.xcframework */,
+				699BB8B92681CE1D00524FC6 /* MMDB.xcframework */,
+				699BB8B62681CE1D00524FC6 /* Sodium.xcframework */,
+				699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */,
+				699BB89E2681CDEB00524FC6 /* Yaml.xcframework */,
+				699BB8952681CDB000524FC6 /* NEKit.xcframework */,
+				699BB8922681CD9200524FC6 /* web3swift.xcframework */,
+				699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */,
+				699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */,
+				699BB8892681CA9A00524FC6 /* Starscream.xcframework */,
+				699BB8862681CA9600524FC6 /* SipHash.xcframework */,
+				699BB8832681CA9300524FC6 /* secp256k1.xcframework */,
+				699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */,
+				699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */,
+				699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */,
+				699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */,
+				699BB8742681CA6000524FC6 /* Curve25519.xcframework */,
+				699BB86F2681CA4A00524FC6 /* BigInt.xcframework */,
 				696B02DB25188C6700F76A51 /* SwiftyJSON.framework */,
 				6902ED082515DAED00BCDED6 /* iosLib.framework */,
 				7CDBECFD241DC9D200F6A8EB /* MBProgressHUD.framework */,
@@ -588,27 +624,27 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/BigInt.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/secp256k1.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SipHash.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/web3swift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Curve25519.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftSocket.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Sodium.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Yaml.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/lwip.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MMDB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NEKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Resolver.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/tun2socks.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/CocoaAsyncSocket.framework",
+				"$(SRCROOT)/Carthage/Build/CryptoSwift.framework",
+				"$(SRCROOT)/Carthage/Build/PromiseKit.framework",
+				"$(SRCROOT)/Carthage/Build/secp256k1.framework",
+				"$(SRCROOT)/Carthage/Build/SipHash.framework",
+				"$(SRCROOT)/Carthage/Build/Starscream.framework",
+				"$(SRCROOT)/Carthage/Build/web3swift.framework",
+				"$(SRCROOT)/Carthage/Build/Curve25519.framework",
+				"$(SRCROOT)/Carthage/Build/SwiftSocket.framework",
+				"$(SRCROOT)/Carthage/Build/Sodium.framework",
+				"$(SRCROOT)/Carthage/Build/MBProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/Yaml.framework",
+				"$(SRCROOT)/Carthage/Build/lwip.framework",
+				"$(SRCROOT)/Carthage/Build/MMDB.framework",
+				"$(SRCROOT)/Carthage/Build/NEKit.framework",
+				"$(SRCROOT)/Carthage/Build/Resolver.framework",
+				"$(SRCROOT)/Carthage/Build/tun2socks.framework",
+				"$(SRCROOT)/Carthage/Build/CocoaLumberjack.framework",
+				"$(SRCROOT)/Carthage/Build/CocoaLumberjackSwift.framework",
+				"$(SRCROOT)/Carthage/Build/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/BigInt.framework",
 			);
 			name = Cart;
 			outputFileListPaths = (
@@ -898,7 +934,7 @@
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build",
 					"$(PROJECT_DIR)/bin",
 				);
 				INFOPLIST_FILE = Pirate/Info.plist;
@@ -928,7 +964,7 @@
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build",
 					"$(PROJECT_DIR)/bin",
 				);
 				INFOPLIST_FILE = Pirate/Info.plist;
@@ -956,7 +992,7 @@
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				INFOPLIST_FILE = extension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -987,7 +1023,7 @@
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				INFOPLIST_FILE = extension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
