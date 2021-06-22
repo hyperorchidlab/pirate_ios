@@ -48,69 +48,70 @@
 		69980C6023F7B3CD00829B09 /* extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 69980C5823F7B3CD00829B09 /* extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		69987DFC2412225700029C0A /* HopSodium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69987DFB2412225700029C0A /* HopSodium.swift */; };
 		69987DFD241249A000029C0A /* HopSodium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69987DFB2412225700029C0A /* HopSodium.swift */; };
-		699BB8C22681E21200524FC6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6940EC91240A756D0029F526 /* AVFoundation.framework */; };
 		699BB8C52681E21400524FC6 /* BigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; };
-		699BB8C62681E21400524FC6 /* BigInt.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8C62681E21400524FC6 /* BigInt.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8C72681E21600524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; };
-		699BB8C82681E21600524FC6 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8C82681E21600524FC6 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8C92681E21700524FC6 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; };
-		699BB8CA2681E21700524FC6 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8CA2681E21700524FC6 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8CB2681E21900524FC6 /* Curve25519.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; };
-		699BB8CC2681E21900524FC6 /* Curve25519.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8CC2681E21900524FC6 /* Curve25519.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8CF2681E22100524FC6 /* MBProgressHUD.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */; };
-		699BB8D02681E22100524FC6 /* MBProgressHUD.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8D02681E22100524FC6 /* MBProgressHUD.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8D12681E22300524FC6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		699BB8D32681E22500524FC6 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; };
-		699BB8D42681E22500524FC6 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8D42681E22500524FC6 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8D52681E22700524FC6 /* secp256k1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; };
-		699BB8D62681E22700524FC6 /* secp256k1.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8D62681E22700524FC6 /* secp256k1.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8D72681E22800524FC6 /* SipHash.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; };
-		699BB8D82681E22800524FC6 /* SipHash.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8D82681E22800524FC6 /* SipHash.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8D92681E22A00524FC6 /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; };
-		699BB8DA2681E22A00524FC6 /* Starscream.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8DA2681E22A00524FC6 /* Starscream.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8DB2681E22B00524FC6 /* SwiftSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */; };
-		699BB8DC2681E22B00524FC6 /* SwiftSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8DC2681E22B00524FC6 /* SwiftSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8DD2681E22D00524FC6 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; };
-		699BB8DE2681E22D00524FC6 /* SwiftyJSON.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8DE2681E22D00524FC6 /* SwiftyJSON.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8DF2681E22E00524FC6 /* web3swift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; };
-		699BB8E02681E22E00524FC6 /* web3swift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E02681E22E00524FC6 /* web3swift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8E12681E23300524FC6 /* BigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; };
-		699BB8E22681E23300524FC6 /* BigInt.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E22681E23300524FC6 /* BigInt.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8E42681E23500524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; };
-		699BB8E52681E23500524FC6 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E52681E23500524FC6 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8E62681E23700524FC6 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */; };
-		699BB8E72681E23700524FC6 /* CocoaLumberjack.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E72681E23700524FC6 /* CocoaLumberjack.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8E82681E23800524FC6 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; };
-		699BB8E92681E23800524FC6 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E92681E23800524FC6 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8EA2681E23A00524FC6 /* Curve25519.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; };
-		699BB8EB2681E23A00524FC6 /* Curve25519.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8EB2681E23A00524FC6 /* Curve25519.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8EC2681E23B00524FC6 /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B82681CE1D00524FC6 /* lwip.xcframework */; };
-		699BB8ED2681E23B00524FC6 /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B82681CE1D00524FC6 /* lwip.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8ED2681E23B00524FC6 /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B82681CE1D00524FC6 /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8EE2681E23E00524FC6 /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8952681CDB000524FC6 /* NEKit.xcframework */; };
-		699BB8EF2681E23E00524FC6 /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8952681CDB000524FC6 /* NEKit.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8EF2681E23E00524FC6 /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8952681CDB000524FC6 /* NEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8F02681E24000524FC6 /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B92681CE1D00524FC6 /* MMDB.xcframework */; };
-		699BB8F12681E24000524FC6 /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B92681CE1D00524FC6 /* MMDB.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8F12681E24000524FC6 /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B92681CE1D00524FC6 /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8F22681E27D00524FC6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		699BB8F42681E28000524FC6 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; };
-		699BB8F52681E28000524FC6 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8F52681E28000524FC6 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8F62681E28900524FC6 /* secp256k1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; };
-		699BB8F72681E28900524FC6 /* secp256k1.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8F72681E28900524FC6 /* secp256k1.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8F82681E28A00524FC6 /* SipHash.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; };
-		699BB8F92681E28A00524FC6 /* SipHash.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8F92681E28A00524FC6 /* SipHash.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8FA2681E28C00524FC6 /* Sodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; };
-		699BB8FB2681E28C00524FC6 /* Sodium.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8FB2681E28C00524FC6 /* Sodium.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8FC2681E28D00524FC6 /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; };
-		699BB8FD2681E28D00524FC6 /* Starscream.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8FD2681E28D00524FC6 /* Starscream.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB8FE2681E28F00524FC6 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; };
-		699BB8FF2681E28F00524FC6 /* SwiftyJSON.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8FF2681E28F00524FC6 /* SwiftyJSON.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB9002681E29000524FC6 /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */; };
-		699BB9012681E29000524FC6 /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB9012681E29000524FC6 /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB9022681E29200524FC6 /* web3swift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; };
-		699BB9032681E29200524FC6 /* web3swift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB9032681E29200524FC6 /* web3swift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB9042681E29400524FC6 /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89E2681CDEB00524FC6 /* Yaml.xcframework */; };
-		699BB9052681E29400524FC6 /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89E2681CDEB00524FC6 /* Yaml.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB9052681E29400524FC6 /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89E2681CDEB00524FC6 /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699BB9062681E2AC00524FC6 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902ED082515DAED00BCDED6 /* iosLib.framework */; };
 		699BB9082681E30900524FC6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6940EC91240A756D0029F526 /* AVFoundation.framework */; };
+		699BB9092681FAD300524FC6 /* Sodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; };
+		699BB90A2681FAD300524FC6 /* Sodium.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69A47D68240EAF9A00C86CFF /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		69A47D6A240EB1DD00C86CFF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D69240EB1DD00C86CFF /* Protocol.swift */; };
 		69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
@@ -173,6 +174,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				699BB90A2681FAD300524FC6 /* Sodium.xcframework in Embed Frameworks */,
 				699BB8D82681E22800524FC6 /* SipHash.xcframework in Embed Frameworks */,
 				699BB8DC2681E22B00524FC6 /* SwiftSocket.xcframework in Embed Frameworks */,
 				699BB8CA2681E21700524FC6 /* CryptoSwift.xcframework in Embed Frameworks */,
@@ -349,7 +351,7 @@
 				699BB8DF2681E22E00524FC6 /* web3swift.xcframework in Frameworks */,
 				699BB8D52681E22700524FC6 /* secp256k1.xcframework in Frameworks */,
 				699BB8D92681E22A00524FC6 /* Starscream.xcframework in Frameworks */,
-				699BB8C22681E21200524FC6 /* AVFoundation.framework in Frameworks */,
+				699BB9092681FAD300524FC6 /* Sodium.xcframework in Frameworks */,
 				699BB8C72681E21600524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */,
 				699BB8CF2681E22100524FC6 /* MBProgressHUD.xcframework in Frameworks */,
 				699BB8C52681E21400524FC6 /* BigInt.xcframework in Frameworks */,
@@ -638,7 +640,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = hyperorchid;
 				TargetAttributes = {
 					69980C2423F78D3E00829B09 = {
