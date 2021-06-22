@@ -46,6 +46,11 @@ class MembershipTableViewCell: UITableViewCell {
                 
                 poolNameLabel.text = pool?.Name
                 poolAddressLabel.text = pool?.Address
+            if obj.available {
                 balanceLabel.text = "\(obj.packetBalance.ToPackets())"
+            } else {
+                balanceLabel.text = "--"
+            }
+            
         }
 }

@@ -23,9 +23,10 @@ class MarketListTVC: UITableViewController {
                 
                 self.poolList = Pool.ArrayData()
                 
-                self.tableView.estimatedRowHeight = 140
-                self.tableView.rowHeight = 140
-                
+                self.tableView.estimatedRowHeight = 170
+                self.tableView.rowHeight = 170
+                self.tableView.allowsSelection = false
+            
                 refreshControl = UIRefreshControl()
                 refreshControl!.tintColor = UIColor.red
                 refreshControl!.addTarget(self, action: #selector(self.reloadPoolList(_:)), for: .valueChanged)

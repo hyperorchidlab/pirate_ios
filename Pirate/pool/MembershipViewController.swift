@@ -43,7 +43,7 @@ class MembershipViewController: UIViewController {
                 }
         }
         
-        @IBAction func RechargeAction(_ sender: UIButton) {
+        @IBAction func RechargeAction(_ sender: UIButton) { 
                 curPoolAddr = self.memberships[sender.tag].poolAddr
                 self.performSegue(withIdentifier: "ShowRechargePage", sender: self)
         }
@@ -56,7 +56,7 @@ extension MembershipViewController:UITableViewDelegate, UITableViewDataSource{
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MembershipTableViewCellRID", for: indexPath)
-                if let c = cell as? MembershipTableViewCell{
+                if let c = cell as? MembershipTableViewCell {
                         let obj = self.memberships[indexPath.row]
                         c.populate(membership: obj, idx:indexPath.row)
                         return c

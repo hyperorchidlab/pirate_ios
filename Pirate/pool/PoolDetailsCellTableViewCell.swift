@@ -17,8 +17,12 @@ class PoolDetailsCellTableViewCell: UITableViewCell {
         @IBOutlet weak var buyButton: UIButton!
 //        @IBOutlet weak var GTN: UILabel!
         @IBOutlet weak var shortName: UILabel!
-        @IBOutlet weak var email: UILabel!
-        @IBOutlet weak var url: UILabel!
+    
+        @IBOutlet weak var lastDayUsed: UILabel!
+        @IBOutlet weak var lastMonthUsed: UILabel!
+        @IBOutlet weak var totalUsed: UILabel!
+        @IBOutlet weak var totalRecharge: UILabel!
+        
 //        @IBOutlet weak var address: UILabel!
         
         override func awakeFromNib() {
@@ -36,8 +40,15 @@ class PoolDetailsCellTableViewCell: UITableViewCell {
         
         public func initWith(details d:Pool, index:Int){
                 self.shortName.text = d.Name
-                self.email.text = d.Email
-                self.url.text = d.Url ?? "NAN".locStr
+//                self.email.text = d.Email
+//                self.url.text = d.Url ?? "NAN".locStr
+                
+            self.lastDayUsed.text = String(d.lastDayUsed ?? 0.0)
+            self.lastMonthUsed.text = String(d.lastMonUsed ?? 0.0)
+            self.totalUsed.text = String(d.totalUsed ?? 0.0)
+            self.totalRecharge.text = String(d.totalRechage ?? 0)
+            
+            
                 let color = BackGroudColor[index%3]
                 self.buyButton.setTitleColor(color, for: .normal)
                 self.backGroundView.backgroundColor = color

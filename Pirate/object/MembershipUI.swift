@@ -31,7 +31,7 @@ class MembershipUI:NSObject{
                 Cache.removeAll()
                 
                 let dbContext = DataShareManager.privateQueueContext()
-                let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND available == true", HopConstants.DefaultPaymenstService, addr)
+                let w = NSPredicate(format: "mps == %@ AND userAddr == %@", HopConstants.DefaultPaymenstService, addr)
                 let order = [NSSortDescriptor.init(key: "epoch", ascending: false)]
                 guard let memberArr = NSManagedObject.findEntity(HopConstants.DBNAME_MEMBERSHIP,
                                                              where: w,
@@ -77,7 +77,7 @@ class MembershipUI:NSObject{
                 }
                 let poolAddr = Array(Pool.CachedPool.keys)
                 let pool_str = JSON(poolAddr).rawString()
-                
+            
                 guard let validPoolData = IosLibRandomConn(pool_str) else {
                         NSLog("======>All pools are unavailable")
                         return
@@ -86,10 +86,12 @@ class MembershipUI:NSObject{
                 guard let validPool = String(data:validPoolData, encoding: .utf8) else {
                         return
                 }
+
                 NSLog("======>valid pool to query is[\(validPool)]")
                 guard let data = IosLibAvailablePools(addr, validPool) else{return}
                 let poolJson = JSON(data)
                 
+            
                 var idx = 0
                 Cache.removeAll()
                 let dbContext = DataShareManager.privateQueueContext()
@@ -97,20 +99,28 @@ class MembershipUI:NSObject{
                 while (idx < poolJson.count){
                         let poolAddr = poolJson[idx].string!.lowercased()
                         idx += 1
+                    
+                        let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
+                                        HopConstants.DefaultPaymenstService,
+                                        addr,
+                                        poolAddr)
+                        let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
+                        request.predicate = w
+
                         
-                        guard let data = IosLibMemberShipData(addr, validPool) else {
+                        guard let data = IosLibMemberShipData(addr, poolAddr) else {
+                                guard let result = try? dbContext.fetch(request).last as? CDMemberShip else {
+                                        let cData = CDMemberShip.newUnavailableMembership(pool:poolAddr, user:addr)
+                                        Cache[poolAddr] = cData
+                                        continue
+                                }
+                                if result.available {
+                                    result.updateUnavailableByMemberDetail(addr: addr)
+                                }
+                                Cache[poolAddr] = result
                                 continue
                         }
                         let json = JSON(data)
-                        
-                        let w = NSPredicate(format: "mps == %@ AND userAddr == %@ AND poolAddr == %@",
-                                            HopConstants.DefaultPaymenstService,
-                                            addr,
-                                            poolAddr)
-                        
-                        NSLog("=======>Membership addr=\(addr) poolAddr=\(poolAddr)")
-                        let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_MEMBERSHIP)
-                        request.predicate = w
                         guard let result = try? dbContext.fetch(request).last as? CDMemberShip else{
                                 let cData = CDMemberShip.newMembership(json: json, pool:poolAddr, user:addr)
                                 Cache[poolAddr] = cData
@@ -147,6 +157,24 @@ extension CDMemberShip{
                 data.available = true
                 return data
         }
+
+        public static func newUnavailableMembership(pool:String, user:String) -> CDMemberShip {
+                let dbContext = DataShareManager.privateQueueContext()
+                let data = CDMemberShip(context: dbContext)
+                data.poolAddr = pool
+                data.userAddr = user
+                data.mps = HopConstants.DefaultPaymenstService
+                data.tokenBalance = 0
+                data.packetBalance = 0
+                data.usedTraffic = 0
+                data.available = false
+                return data
+        }
+    
+        func updateUnavailableByMemberDetail(addr:String){
+                self.available = false
+        }
+
         
         //TODO::Make sure how to change local receipt
         func updateByMemberDetail(json:JSON, addr:String){

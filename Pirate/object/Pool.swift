@@ -17,8 +17,14 @@ class Pool : NSObject {
         var Address:String!
         var Url:String?
         var Email:String?
+    
+        var lastDayUsed:Double?
+        var lastMonUsed:Double?
+        var totalUsed:Double?
+        var totalRechage:Int64?
+    
         var coreData:CDPool?
-        
+            
         public static var CachedPool:[String: Pool] = [:]
         
         override init() {
@@ -58,6 +64,12 @@ class Pool : NSObject {
                 self.Name = coredata.name
                 self.Url = coredata.url
                 self.Email = coredata.email
+            
+                self.lastDayUsed = coredata.lastday
+                self.lastMonUsed = coredata.lastmonth
+                self.totalUsed = coredata.totaluse
+                self.totalRechage = coredata.totalcharge
+            
                 self.coreData = coredata
         }
         
@@ -67,11 +79,18 @@ class Pool : NSObject {
                 self.Name = json["Name"].string
                 self.Email = json["Email"].string
                 self.Url = json["Url"].string
+            
+                self.lastDayUsed = json["pool_stat"]["last_day_used_m_bytes"].double
+                self.lastMonUsed = json["pool_stat"]["last_month_used_g_bytes"].double
+                self.totalUsed = json["pool_stat"]["total_used_g_bytes"].double
+                self.totalRechage = json["pool_stat"]["total_charged_user_cnt"].int64
         }
+    
+    
         
         public static func syncPoolFromETH(){
                 
-                CachedPool.removeAll()
+//                CachedPool.removeAll()
                 guard let data = IosLibPoolInMarket() else {
                         return
                 }
@@ -83,36 +102,65 @@ class Pool : NSObject {
                 let request = NSFetchRequest<NSFetchRequestResult>(entityName: HopConstants.DBNAME_POOL)
                 request.predicate = w
                 if let result = try? dbContext.fetch(request){
-                        for oldData in result{
-                                dbContext.delete(oldData as! NSManagedObject)
-                        }
-                }
-                
-                for (_, subJson):(String, JSON) in json {
                         
+                    for (_, subJson):(String, JSON) in json {
                         let obj = Pool(json: subJson)
                         let cData = CDPool(context: dbContext)
+                        
+                        for oldData in result {
+                            let oldJsonData = JSON(oldData)
+                            let oldObj = Pool(json: oldJsonData)
+                            if oldJsonData["MainAddr"].string == subJson["MainAddr"].string {
+                                dbContext.delete(oldData as! NSManagedObject)
+                                CachedPool.removeValue(forKey: oldObj.Address.lowercased())
+                            }
+                        }
+                        
                         cData.populate(obj)
                         obj.coreData = cData
                         
                         CachedPool[obj.Address.lowercased()] = obj
+                            
+                    }
+                    
                 }
+                
+//                for (_, subJson):(String, JSON) in json {
+//
+//                        let obj = Pool(json: subJson)
+//                        let cData = CDPool(context: dbContext)
+//                        cData.populate(obj)
+//                        obj.coreData = cData
+//
+//                        CachedPool[obj.Address.lowercased()] = obj
+//                }
                 DataShareManager.saveContext(dbContext)
                 PostNoti(HopConstants.NOTI_POOL_CACHE_LOADED)
         }
         
         public static func ArrayData() ->[Pool]{
-                return Array(CachedPool.values)
+            var vals = Array(CachedPool.values)
+            
+            vals.sort( by: { (vl1: Pool, vl2: Pool) -> Bool in
+                return (vl1.totalUsed ?? 0.0) > (vl2.totalUsed ?? 0.0) ? true : false
+            })
+            
+                return vals
         }
 }
 
-extension CDPool{
+extension CDPool {
         
         func populate(_ obj: Pool){
                 self.address = obj.Address
                 self.name = obj.Name
                 self.email = obj.Email
                 self.url = obj.Url
+                
+                self.lastday = obj.lastDayUsed ?? 0.0
+                self.lastmonth = obj.lastMonUsed ?? 0.0
+                self.totaluse = obj.totalUsed ?? 0.0
+                self.totalcharge = obj.totalRechage ?? 0
                 self.mps = HopConstants.DefaultPaymenstService
         }
 }

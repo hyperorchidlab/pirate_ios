@@ -50,8 +50,9 @@
 /* Class = "UILabel"; text = "燃料:"; ObjectID = "DXJ-QT-bWm"; */
 "DXJ-QT-bWm.text" = "燃料:";
 
-/* Class = "UILabel"; text = "https://docs.hyperorchid.org/"; ObjectID = "EO9-hi-EMb"; */
-"EO9-hi-EMb.text" = "https://docs.hyperorchid.org/";
+/* Class = "UILabel"; text = "https://docs.hopchain.org/"; ObjectID = "EO9-hi-EMb"; */
+"EO9-hi-EMb.text" = "https://docs.hopchain.org/";
+//"EO9-hi-EMb.text" = "https://docs.hyperorchid.org/";
 
 /* Class = "UIButton"; normalTitle = "取消"; ObjectID = "I1m-qF-qQg"; */
 "I1m-qF-qQg.normalTitle" = "取消";
@@ -129,7 +130,7 @@
 "VzK-wv-fkw.text" = "Label";
 
 /* Class = "UILabel"; text = "google@gmail.com"; ObjectID = "WBp-rd-xdF"; */
-"WBp-rd-xdF.text" = "google@gmail.com";
+//"WBp-rd-xdF.text" = "google@gmail.com";
 
 /* Class = "UILabel"; text = "扫描二维码导入账号"; ObjectID = "WTx-0N-lUd"; */
 "WTx-0N-lUd.text" = "扫描二维码导入账号";
@@ -264,7 +265,7 @@
 "xIz-Ld-d0T.text" = "导入账号二维码";
 
 /* Class = "UILabel"; text = "http://hyperorchid.com"; ObjectID = "xum-6T-r37"; */
-"xum-6T-r37.text" = "http://hyperorchid.com";
+//"xum-6T-r37.text" = "http://hyperorchid.com";
 
 /* Class = "UILabel"; text = "HO5hZwFfSWAEC9urSAvW8yroMmikDwHq6M1GDc98Ns9qEm"; ObjectID = "yZ5-3P-xca"; */
 "yZ5-3P-xca.text" = "HO5hZwFfSWAEC9urSAvW8yroMmikDwHq6M1GDc98Ns9qEm";

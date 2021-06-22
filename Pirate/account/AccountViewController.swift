@@ -159,7 +159,7 @@ class AccountViewController: UIViewController {
         }
         
         @objc func showDoc() {
-                if let url = URL(string: "https://docs.hyperorchid.org/") {
+                if let url = URL(string: "https://docs.hopchain.org/") {
                     UIApplication.shared.open(url)
                 }
         }
