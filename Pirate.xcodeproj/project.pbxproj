@@ -7,17 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6902ED092515DAED00BCDED6 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902ED082515DAED00BCDED6 /* iosLib.framework */; };
 		691566C525356B8D004983F3 /* HOPIPRangeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691566C425356B8D004983F3 /* HOPIPRangeRule.swift */; };
-		691CCFA023F8240D007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
-		691CCFA123F93F60007768DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
 		6924223E240D365000590536 /* PoolChoseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924223D240D365000590536 /* PoolChoseTableViewController.swift */; };
 		69242240240D368F00590536 /* MinerChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924223F240D368F00590536 /* MinerChooseTableViewController.swift */; };
 		6932A18F24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932A18E24077E7800D2DA39 /* PoolDetailsCellTableViewCell.swift */; };
 		693E92D024A8816200149A75 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 693E92D224A8816200149A75 /* Localizable.strings */; };
 		693E92D624A89A9D00149A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 693E92D824A89A9D00149A75 /* InfoPlist.strings */; };
 		6940EC90240A75460029F526 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940EC8F240A75460029F526 /* ScannerViewController.swift */; };
-		6940EC92240A756D0029F526 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6940EC91240A756D0029F526 /* AVFoundation.framework */; };
 		695E4C392401778600A13631 /* jack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 695E4C372401778600A13631 /* jack.xcdatamodeld */; };
 		696A71EC25146725004EA5DE /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71EB25146725004EA5DE /* PasswordViewController.swift */; };
 		696A71EE251467DA004EA5DE /* QRCodeShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A71ED251467DA004EA5DE /* QRCodeShowViewController.swift */; };
@@ -52,35 +48,69 @@
 		69980C6023F7B3CD00829B09 /* extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 69980C5823F7B3CD00829B09 /* extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		69987DFC2412225700029C0A /* HopSodium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69987DFB2412225700029C0A /* HopSodium.swift */; };
 		69987DFD241249A000029C0A /* HopSodium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69987DFB2412225700029C0A /* HopSodium.swift */; };
-		699BB8702681CA4B00524FC6 /* BigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; };
-		699BB8762681CA6000524FC6 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; };
-		699BB8782681CA6000524FC6 /* Curve25519.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; };
-		699BB87A2681CA6000524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; };
-		699BB87D2681CA7D00524FC6 /* MBProgressHUD.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */; };
-		699BB8812681CA8A00524FC6 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; };
-		699BB8842681CA9300524FC6 /* secp256k1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; };
-		699BB8872681CA9600524FC6 /* SipHash.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; };
-		699BB88A2681CA9B00524FC6 /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; };
-		699BB88D2681CA9E00524FC6 /* SwiftSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */; };
-		699BB8902681CAA100524FC6 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; };
-		699BB8932681CD9200524FC6 /* web3swift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; };
-		699BB8992681CDEB00524FC6 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; };
-		699BB89B2681CDEB00524FC6 /* web3swift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; };
-		699BB8A02681CDEB00524FC6 /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89E2681CDEB00524FC6 /* Yaml.xcframework */; };
-		699BB8A22681CDEB00524FC6 /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */; };
-		699BB8A42681CE1C00524FC6 /* BigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; };
-		699BB8A62681CE1C00524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; };
-		699BB8A82681CE1C00524FC6 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; };
-		699BB8AA2681CE1C00524FC6 /* Curve25519.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; };
-		699BB8AC2681CE1C00524FC6 /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8952681CDB000524FC6 /* NEKit.xcframework */; };
-		699BB8AE2681CE1C00524FC6 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; };
-		699BB8B02681CE1C00524FC6 /* secp256k1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; };
-		699BB8B22681CE1C00524FC6 /* SipHash.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; };
-		699BB8B42681CE1D00524FC6 /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; };
-		699BB8BA2681CE1D00524FC6 /* Sodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; };
-		699BB8BC2681CE1D00524FC6 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */; };
-		699BB8BE2681CE1E00524FC6 /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B82681CE1D00524FC6 /* lwip.xcframework */; };
-		699BB8C02681CE1E00524FC6 /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B92681CE1D00524FC6 /* MMDB.xcframework */; };
+		699BB8C22681E21200524FC6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6940EC91240A756D0029F526 /* AVFoundation.framework */; };
+		699BB8C52681E21400524FC6 /* BigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; };
+		699BB8C62681E21400524FC6 /* BigInt.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8C72681E21600524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; };
+		699BB8C82681E21600524FC6 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8C92681E21700524FC6 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; };
+		699BB8CA2681E21700524FC6 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8CB2681E21900524FC6 /* Curve25519.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; };
+		699BB8CC2681E21900524FC6 /* Curve25519.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8CF2681E22100524FC6 /* MBProgressHUD.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */; };
+		699BB8D02681E22100524FC6 /* MBProgressHUD.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB87C2681CA7D00524FC6 /* MBProgressHUD.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8D12681E22300524FC6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
+		699BB8D32681E22500524FC6 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; };
+		699BB8D42681E22500524FC6 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8D52681E22700524FC6 /* secp256k1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; };
+		699BB8D62681E22700524FC6 /* secp256k1.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8D72681E22800524FC6 /* SipHash.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; };
+		699BB8D82681E22800524FC6 /* SipHash.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8D92681E22A00524FC6 /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; };
+		699BB8DA2681E22A00524FC6 /* Starscream.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8DB2681E22B00524FC6 /* SwiftSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */; };
+		699BB8DC2681E22B00524FC6 /* SwiftSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88C2681CA9E00524FC6 /* SwiftSocket.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8DD2681E22D00524FC6 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; };
+		699BB8DE2681E22D00524FC6 /* SwiftyJSON.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8DF2681E22E00524FC6 /* web3swift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; };
+		699BB8E02681E22E00524FC6 /* web3swift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E12681E23300524FC6 /* BigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; };
+		699BB8E22681E23300524FC6 /* BigInt.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB86F2681CA4A00524FC6 /* BigInt.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E42681E23500524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; };
+		699BB8E52681E23500524FC6 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8752681CA6000524FC6 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E62681E23700524FC6 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */; };
+		699BB8E72681E23700524FC6 /* CocoaLumberjack.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B72681CE1D00524FC6 /* CocoaLumberjack.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8E82681E23800524FC6 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; };
+		699BB8E92681E23800524FC6 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8732681CA6000524FC6 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8EA2681E23A00524FC6 /* Curve25519.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; };
+		699BB8EB2681E23A00524FC6 /* Curve25519.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8742681CA6000524FC6 /* Curve25519.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8EC2681E23B00524FC6 /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B82681CE1D00524FC6 /* lwip.xcframework */; };
+		699BB8ED2681E23B00524FC6 /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B82681CE1D00524FC6 /* lwip.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8EE2681E23E00524FC6 /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8952681CDB000524FC6 /* NEKit.xcframework */; };
+		699BB8EF2681E23E00524FC6 /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8952681CDB000524FC6 /* NEKit.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8F02681E24000524FC6 /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B92681CE1D00524FC6 /* MMDB.xcframework */; };
+		699BB8F12681E24000524FC6 /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B92681CE1D00524FC6 /* MMDB.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8F22681E27D00524FC6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CCF9F23F8240D007768DF /* NetworkExtension.framework */; };
+		699BB8F42681E28000524FC6 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; };
+		699BB8F52681E28000524FC6 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8802681CA8A00524FC6 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8F62681E28900524FC6 /* secp256k1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; };
+		699BB8F72681E28900524FC6 /* secp256k1.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8832681CA9300524FC6 /* secp256k1.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8F82681E28A00524FC6 /* SipHash.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; };
+		699BB8F92681E28A00524FC6 /* SipHash.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8862681CA9600524FC6 /* SipHash.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8FA2681E28C00524FC6 /* Sodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; };
+		699BB8FB2681E28C00524FC6 /* Sodium.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8B62681CE1D00524FC6 /* Sodium.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8FC2681E28D00524FC6 /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; };
+		699BB8FD2681E28D00524FC6 /* Starscream.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8892681CA9A00524FC6 /* Starscream.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB8FE2681E28F00524FC6 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; };
+		699BB8FF2681E28F00524FC6 /* SwiftyJSON.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB88F2681CAA100524FC6 /* SwiftyJSON.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB9002681E29000524FC6 /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */; };
+		699BB9012681E29000524FC6 /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89F2681CDEB00524FC6 /* tun2socks.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB9022681E29200524FC6 /* web3swift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; };
+		699BB9032681E29200524FC6 /* web3swift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB8922681CD9200524FC6 /* web3swift.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB9042681E29400524FC6 /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89E2681CDEB00524FC6 /* Yaml.xcframework */; };
+		699BB9052681E29400524FC6 /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 699BB89E2681CDEB00524FC6 /* Yaml.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		699BB9062681E2AC00524FC6 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902ED082515DAED00BCDED6 /* iosLib.framework */; };
+		699BB9082681E30900524FC6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6940EC91240A756D0029F526 /* AVFoundation.framework */; };
 		69A47D68240EAF9A00C86CFF /* BasUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983F61D240E08AE004A32F7 /* BasUtil.swift */; };
 		69A47D6A240EB1DD00C86CFF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D69240EB1DD00C86CFF /* Protocol.swift */; };
 		69A47D6F240EB8C100C86CFF /* HopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A47D6E240EB8C100C86CFF /* HopMessage.swift */; };
@@ -135,6 +165,55 @@
 				69980C6023F7B3CD00829B09 /* extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		699BB8C42681E21200524FC6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				699BB8D82681E22800524FC6 /* SipHash.xcframework in Embed Frameworks */,
+				699BB8DC2681E22B00524FC6 /* SwiftSocket.xcframework in Embed Frameworks */,
+				699BB8CA2681E21700524FC6 /* CryptoSwift.xcframework in Embed Frameworks */,
+				699BB8C82681E21600524FC6 /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
+				699BB8E02681E22E00524FC6 /* web3swift.xcframework in Embed Frameworks */,
+				699BB8C62681E21400524FC6 /* BigInt.xcframework in Embed Frameworks */,
+				699BB8CC2681E21900524FC6 /* Curve25519.xcframework in Embed Frameworks */,
+				699BB8D02681E22100524FC6 /* MBProgressHUD.xcframework in Embed Frameworks */,
+				699BB8D62681E22700524FC6 /* secp256k1.xcframework in Embed Frameworks */,
+				699BB8DA2681E22A00524FC6 /* Starscream.xcframework in Embed Frameworks */,
+				699BB8D42681E22500524FC6 /* PromiseKit.xcframework in Embed Frameworks */,
+				699BB8DE2681E22D00524FC6 /* SwiftyJSON.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		699BB8E32681E23300524FC6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				699BB9052681E29400524FC6 /* Yaml.xcframework in Embed Frameworks */,
+				699BB8FF2681E28F00524FC6 /* SwiftyJSON.xcframework in Embed Frameworks */,
+				699BB8FB2681E28C00524FC6 /* Sodium.xcframework in Embed Frameworks */,
+				699BB8EF2681E23E00524FC6 /* NEKit.xcframework in Embed Frameworks */,
+				699BB8E92681E23800524FC6 /* CryptoSwift.xcframework in Embed Frameworks */,
+				699BB8F52681E28000524FC6 /* PromiseKit.xcframework in Embed Frameworks */,
+				699BB8ED2681E23B00524FC6 /* lwip.xcframework in Embed Frameworks */,
+				699BB8E72681E23700524FC6 /* CocoaLumberjack.xcframework in Embed Frameworks */,
+				699BB8F72681E28900524FC6 /* secp256k1.xcframework in Embed Frameworks */,
+				699BB9012681E29000524FC6 /* tun2socks.xcframework in Embed Frameworks */,
+				699BB9032681E29200524FC6 /* web3swift.xcframework in Embed Frameworks */,
+				699BB8E22681E23300524FC6 /* BigInt.xcframework in Embed Frameworks */,
+				699BB8E52681E23500524FC6 /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
+				699BB8FD2681E28D00524FC6 /* Starscream.xcframework in Embed Frameworks */,
+				699BB8EB2681E23A00524FC6 /* Curve25519.xcframework in Embed Frameworks */,
+				699BB8F92681E28A00524FC6 /* SipHash.xcframework in Embed Frameworks */,
+				699BB8F12681E24000524FC6 /* MMDB.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -260,21 +339,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				699BB8872681CA9600524FC6 /* SipHash.xcframework in Frameworks */,
-				699BB8842681CA9300524FC6 /* secp256k1.xcframework in Frameworks */,
-				699BB8782681CA6000524FC6 /* Curve25519.xcframework in Frameworks */,
-				6902ED092515DAED00BCDED6 /* iosLib.framework in Frameworks */,
-				6940EC92240A756D0029F526 /* AVFoundation.framework in Frameworks */,
-				699BB8902681CAA100524FC6 /* SwiftyJSON.xcframework in Frameworks */,
-				699BB8812681CA8A00524FC6 /* PromiseKit.xcframework in Frameworks */,
-				699BB87D2681CA7D00524FC6 /* MBProgressHUD.xcframework in Frameworks */,
-				699BB88D2681CA9E00524FC6 /* SwiftSocket.xcframework in Frameworks */,
-				699BB8702681CA4B00524FC6 /* BigInt.xcframework in Frameworks */,
-				699BB8932681CD9200524FC6 /* web3swift.xcframework in Frameworks */,
-				699BB87A2681CA6000524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */,
-				699BB88A2681CA9B00524FC6 /* Starscream.xcframework in Frameworks */,
-				691CCFA023F8240D007768DF /* NetworkExtension.framework in Frameworks */,
-				699BB8762681CA6000524FC6 /* CryptoSwift.xcframework in Frameworks */,
+				699BB9082681E30900524FC6 /* AVFoundation.framework in Frameworks */,
+				699BB8DD2681E22D00524FC6 /* SwiftyJSON.xcframework in Frameworks */,
+				699BB8D32681E22500524FC6 /* PromiseKit.xcframework in Frameworks */,
+				699BB8D72681E22800524FC6 /* SipHash.xcframework in Frameworks */,
+				699BB8DB2681E22B00524FC6 /* SwiftSocket.xcframework in Frameworks */,
+				699BB8C92681E21700524FC6 /* CryptoSwift.xcframework in Frameworks */,
+				699BB9062681E2AC00524FC6 /* iosLib.framework in Frameworks */,
+				699BB8DF2681E22E00524FC6 /* web3swift.xcframework in Frameworks */,
+				699BB8D52681E22700524FC6 /* secp256k1.xcframework in Frameworks */,
+				699BB8D92681E22A00524FC6 /* Starscream.xcframework in Frameworks */,
+				699BB8C22681E21200524FC6 /* AVFoundation.framework in Frameworks */,
+				699BB8C72681E21600524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */,
+				699BB8CF2681E22100524FC6 /* MBProgressHUD.xcframework in Frameworks */,
+				699BB8C52681E21400524FC6 /* BigInt.xcframework in Frameworks */,
+				699BB8CB2681E21900524FC6 /* Curve25519.xcframework in Frameworks */,
+				699BB8D12681E22300524FC6 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,24 +362,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				699BB8A82681CE1C00524FC6 /* CryptoSwift.xcframework in Frameworks */,
-				699BB8B42681CE1D00524FC6 /* Starscream.xcframework in Frameworks */,
-				699BB8B22681CE1C00524FC6 /* SipHash.xcframework in Frameworks */,
-				699BB89B2681CDEB00524FC6 /* web3swift.xcframework in Frameworks */,
-				699BB8AC2681CE1C00524FC6 /* NEKit.xcframework in Frameworks */,
-				699BB8A42681CE1C00524FC6 /* BigInt.xcframework in Frameworks */,
-				699BB8992681CDEB00524FC6 /* SwiftyJSON.xcframework in Frameworks */,
-				699BB8A22681CDEB00524FC6 /* tun2socks.xcframework in Frameworks */,
-				699BB8A02681CDEB00524FC6 /* Yaml.xcframework in Frameworks */,
-				699BB8B02681CE1C00524FC6 /* secp256k1.xcframework in Frameworks */,
-				699BB8AA2681CE1C00524FC6 /* Curve25519.xcframework in Frameworks */,
-				691CCFA123F93F60007768DF /* NetworkExtension.framework in Frameworks */,
-				699BB8A62681CE1C00524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */,
-				699BB8BC2681CE1D00524FC6 /* CocoaLumberjack.xcframework in Frameworks */,
-				699BB8BA2681CE1D00524FC6 /* Sodium.xcframework in Frameworks */,
-				699BB8BE2681CE1E00524FC6 /* lwip.xcframework in Frameworks */,
-				699BB8AE2681CE1C00524FC6 /* PromiseKit.xcframework in Frameworks */,
-				699BB8C02681CE1E00524FC6 /* MMDB.xcframework in Frameworks */,
+				699BB9042681E29400524FC6 /* Yaml.xcframework in Frameworks */,
+				699BB8FA2681E28C00524FC6 /* Sodium.xcframework in Frameworks */,
+				699BB8EA2681E23A00524FC6 /* Curve25519.xcframework in Frameworks */,
+				699BB9022681E29200524FC6 /* web3swift.xcframework in Frameworks */,
+				699BB8E62681E23700524FC6 /* CocoaLumberjack.xcframework in Frameworks */,
+				699BB8F62681E28900524FC6 /* secp256k1.xcframework in Frameworks */,
+				699BB8EC2681E23B00524FC6 /* lwip.xcframework in Frameworks */,
+				699BB8E12681E23300524FC6 /* BigInt.xcframework in Frameworks */,
+				699BB8F42681E28000524FC6 /* PromiseKit.xcframework in Frameworks */,
+				699BB8FE2681E28F00524FC6 /* SwiftyJSON.xcframework in Frameworks */,
+				699BB8FC2681E28D00524FC6 /* Starscream.xcframework in Frameworks */,
+				699BB8F82681E28A00524FC6 /* SipHash.xcframework in Frameworks */,
+				699BB8E82681E23800524FC6 /* CryptoSwift.xcframework in Frameworks */,
+				699BB8EE2681E23E00524FC6 /* NEKit.xcframework in Frameworks */,
+				699BB9002681E29000524FC6 /* tun2socks.xcframework in Frameworks */,
+				699BB8E42681E23500524FC6 /* CocoaAsyncSocket.xcframework in Frameworks */,
+				699BB8F22681E27D00524FC6 /* NetworkExtension.framework in Frameworks */,
+				699BB8F02681E24000524FC6 /* MMDB.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,8 +600,8 @@
 				69980C2223F78D3E00829B09 /* Frameworks */,
 				69980C2323F78D3E00829B09 /* Resources */,
 				69980C5323F7946C00829B09 /* Embed App Extensions */,
-				6966523C24011280001D16C4 /* Cart */,
 				697FCD8F24AF1A6000F1AA38 /* Run Script */,
+				699BB8C42681E21200524FC6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -540,6 +620,7 @@
 				69980C5423F7B3CD00829B09 /* Sources */,
 				69980C5523F7B3CD00829B09 /* Frameworks */,
 				69980C5623F7B3CD00829B09 /* Resources */,
+				699BB8E32681E23300524FC6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -616,45 +697,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6966523C24011280001D16C4 /* Cart */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/CocoaAsyncSocket.framework",
-				"$(SRCROOT)/Carthage/Build/CryptoSwift.framework",
-				"$(SRCROOT)/Carthage/Build/PromiseKit.framework",
-				"$(SRCROOT)/Carthage/Build/secp256k1.framework",
-				"$(SRCROOT)/Carthage/Build/SipHash.framework",
-				"$(SRCROOT)/Carthage/Build/Starscream.framework",
-				"$(SRCROOT)/Carthage/Build/web3swift.framework",
-				"$(SRCROOT)/Carthage/Build/Curve25519.framework",
-				"$(SRCROOT)/Carthage/Build/SwiftSocket.framework",
-				"$(SRCROOT)/Carthage/Build/Sodium.framework",
-				"$(SRCROOT)/Carthage/Build/MBProgressHUD.framework",
-				"$(SRCROOT)/Carthage/Build/Yaml.framework",
-				"$(SRCROOT)/Carthage/Build/lwip.framework",
-				"$(SRCROOT)/Carthage/Build/MMDB.framework",
-				"$(SRCROOT)/Carthage/Build/NEKit.framework",
-				"$(SRCROOT)/Carthage/Build/Resolver.framework",
-				"$(SRCROOT)/Carthage/Build/tun2socks.framework",
-				"$(SRCROOT)/Carthage/Build/CocoaLumberjack.framework",
-				"$(SRCROOT)/Carthage/Build/CocoaLumberjackSwift.framework",
-				"$(SRCROOT)/Carthage/Build/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/BigInt.framework",
-			);
-			name = Cart;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
 		697FCD8F24AF1A6000F1AA38 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -930,7 +972,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -960,7 +1002,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pirate/pirate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -988,7 +1030,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1019,7 +1061,7 @@
 				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6A53CAFMZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
