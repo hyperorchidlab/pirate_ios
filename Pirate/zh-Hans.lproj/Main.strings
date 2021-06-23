@@ -47,6 +47,12 @@
 /* Class = "UITabBarItem"; title = "矿池"; ObjectID = "D8T-nd-U3n"; */
 "D8T-nd-U3n.title" = "矿池";
 
+/* Class = "UINavigationItem; title = "矿池"; ObjectID = "tiD-fw-ect" */
+"tiD-fw-ect.title" = "矿池";
+
+/* Class = "UINavigationItem; title = "可用矿机"; ObjectID = "GWQ-PP-24m" */
+"GWQ-PP-24m.title" = "可用矿机";
+
 /* Class = "UILabel"; text = "燃料:"; ObjectID = "DXJ-QT-bWm"; */
 "DXJ-QT-bWm.text" = "燃料:";
 
@@ -94,7 +100,7 @@
 "PHq-77-RKW.text" = "Apply Eth";
 
 /* Class = "UITableViewSection"; headerTitle = "Wallet"; ObjectID = "PsM-PE-LPm"; */
-"PsM-PE-LPm.headerTitle" = "Wallet";
+"PsM-PE-LPm.headerTitle" = "钱包";
 
 /* Class = "UILabel"; text = "输入token数量:"; ObjectID = "RRd-o0-M0x"; */
 "RRd-o0-M0x.text" = "输入token数量:";
@@ -111,8 +117,8 @@
 /* Class = "UILabel"; text = "新建"; ObjectID = "Tvx-y6-lTr"; */
 "Tvx-y6-lTr.text" = "新建";
 
-/* Class = "UIButton"; normalTitle = "加入"; ObjectID = "UGj-e7-Db4"; */
-"UGj-e7-Db4.normalTitle" = "加入";
+/* Class = "UIButton"; normalTitle = "充值"; ObjectID = "UGj-e7-Db4"; */
+"UGj-e7-Db4.normalTitle" = "充值";
 
 /* Class = "UILabel"; text = "JP"; ObjectID = "URc-Di-TsO"; */
 "URc-Di-TsO.text" = "JP";
@@ -277,3 +283,11 @@
 "zv5-jm-pky.normalTitle" = "取消";
 
 "1JZ-Xp-hVd.text" = "用户手册";
+
+"WBp-rd-xdF.text" = "昨天使用流量(M)：";
+
+"xum-6T-r37.text" = "上个月使用流量(G)：";
+
+"g03-iY-6vy.text" = "总使用流量(G)：";
+
+"Okz-0V-iil.text" = "总充值次数：";

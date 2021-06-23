@@ -12,15 +12,15 @@ import web3swift
 
 class MarketListTVC: UITableViewController {
         // MARK: - Table view variables
-        
-        let dbContext = DataShareManager.privateQueueContext()
+    
+    let dbContext = DataShareManager.privateQueueContext()
         var poolList:[Pool] = []
         var poolAddrToRecharge:String?
         
         // MARK: - Table view init
         override func viewDidLoad() {
                 super.viewDidLoad()
-                
+    
                 self.poolList = Pool.ArrayData()
                 
                 self.tableView.estimatedRowHeight = 170

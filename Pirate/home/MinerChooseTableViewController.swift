@@ -13,7 +13,7 @@ class MinerChooseViewController: UIViewController {
 
         @IBOutlet weak var minerListView: UITableView!
         
-        
+    
         var minerArray:[CDMiner] = []
         var curPool:String?
         var curMiner:String?
@@ -23,7 +23,6 @@ class MinerChooseViewController: UIViewController {
                 super.viewDidLoad()
                 
                 minerListView.rowHeight = 97
-                
                 curPool = AppSetting.coreData?.poolAddrInUsed
                 curMiner = AppSetting.coreData?.minerAddrInUsed
                 
